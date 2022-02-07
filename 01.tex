@@ -1,0 +1,1405 @@
+\chapter{}
+
+\topic{Kapanskly's problems}
+
+Let $G$ be a group and $K$ be a field. If  
+$x\in G$ is such that $x^n=1$, then, since 
+\[
+(1-x)(1+x+x^2+\cdots+x^{n-1})=0, 
+\] 
+it follows that $K[G]$ has non-trivial zero divisors. What happens in the case
+where $G$ is torsion-free?
+
+\begin{example}
+	\label{example:k[Z]}
+	Let $G=\langle x\rangle\simeq\Z$. We claim that $K[G]$ has no zero divisors. 
+	Let $\alpha,\beta\in K[G]\setminus\{0\}$ and write 
+	$\alpha=\sum_{i\leq n}a_ix^i$ with $a_n\ne 0$ and $\beta=\sum_{j\leq m}b_jx^j$
+	with $b_m\ne 0$. Since the coefficient of $x^{n+m}$ of $\alpha\beta$ is non-zero,
+	it follows that 
+	$\alpha\beta\ne 0$.
+\end{example}
+
+A similar problem concerns units of group algebras.  A unit $u\in K[G]$ is said
+to be \textbf{trivial} if $u=\lambda g$ for some $\lambda\in K\setminus\{0\}$ and
+$g\in G$.	
+
+\begin{exercise}
+	Prove that units of $\C[C_2]$ are trivial. 
+\end{exercise}
+
+\begin{exercise}
+	Prove that $\C[C_5]$ has non-trivial units. 
+\end{exercise}
+
+% Si $g$ tiene orden cinco, entonces 1-g+g^2-g^3+g^4$ es una unidad no trivial con
+% inverso $\frac12+\frac12g$. 
+
+We mention some intriguing problems, generally known as Kaplansky's problems. 
+%En general, no es fácil determinar si $K[G]$ tiene divisores de cero. Los
+%siguientes problemas abiertos fueron formulados por Kaplansky:
+
+\begin{problem}[Units]
+	\label{prob:units}
+	Let $G$ be a torsion-free group. Is it true that all units of $K[G]$ are
+	trivial?
+\end{problem}
+
+\index{Ring!reduced}
+A ring $R$ is \textbf{reduced} if for all $r\in R$ such that 
+$r^2=0$ one has $r=0$. 
+
+\begin{problem}
+	\label{prob:reducido}
+	Let $G$ be a torsion-free group. Is it true that 
+	$K[G]$ is reduced? 
+\end{problem}
+
+\begin{problem}[Zero divisors]
+	\label{prob:dominio}
+	Let $G$ be a torsion-free group. Is it true that 
+	$K[G]$ is a domain?
+\end{problem}
+
+We mentioned before the semisimplicity problem. 
+
+\begin{problem}[Semisimplicity]
+	\label{prob:J}
+	Let $G$ be a torsion-free group. It is true that 
+	$J(K[G])=0$ if $G$ is non-trivial?
+\end{problem}
+
+\begin{problem}[Idempotents]
+	\label{pro:idempotente}
+	Let $G$ be a torsion-free group and $\alpha\in K[G]$ be an idempotent. 
+	Is it true that $\alpha\in\{0,1\}$?
+\end{problem}
+
+\begin{exercise}
+	Prove that if $K[G]$ has no zero-divisors and $\alpha\in K[G]$ is an
+	idempotent, then $\alpha\in\{0,1\}$.
+\end{exercise}
+
+\begin{exercise}
+	Prove that $K[\Z/4]$ contains non-trivial zero divisors and every
+	idemportent of $K[\Z/4]$ is trivial. 
+\end{exercise}
+
+%Claramente si $\alpha\in K[G]$ es un idempotente no trivial, entonces $K[G]$ no
+%tiene divisores de cero pues $\alpha(1-\alpha)=0$.
+
+%Tiene sentido plantear los cuatro problemas anteriores en el caso en que $K$ sea un dominio. 
+
+%Veremos que valen las siguientes implicaciones
+The problems mentinoed are all related. Our goal is the prove
+the following implications:
+\[
+	\ref{prob:J}\Longleftarrow\ref{prob:units}\Longrightarrow\ref{prob:reducido}\Longleftrightarrow\ref{prob:dominio}
+\]
+
+We first prove that an affirmative solution to the Units
+Problem~\ref{prob:units} yields a solution to Problem~\ref{prob:reducido}
+about the reducibility of group algebras.
+
+\begin{theorem}
+	Let $G$ be a non-trivial group. Assume that $K[G]$ has only trivial units.
+	Then $K[G]$ is reduced. 
+\end{theorem}
+
+\begin{proof}
+	Let $\alpha\in K[G]$ be such that $\alpha^2=0$. We claim that 
+	$\alpha=0$. Since $\alpha^2=0$, 
+	\[
+		(1-\alpha)(1+\alpha)=1-\alpha^2=1, 
+	\]
+	it follows that $1-\alpha$ is a unit of $K[G]$. Since units of $K[G]$ are 
+	trivial, there exist $\lambda\in K\setminus\{0\}$ and $g\in G$ such that 
+	$1-\alpha=\lambda g$. If $g\ne 1$, then 
+	\[
+		0=\alpha^2=(1-\lambda g)^2=1-2\lambda g+\lambda^2g^2,
+	\]
+	a contradiction. Therefore $g=1$ and hence $\alpha=1-\lambda\in K$. Since
+	$K$ is a field, one concludes that $\alpha=0$.
+\end{proof}
+
+We now prove that an affirmative solution to the Units Problem
+~\ref{prob:units} also yields a solution to the Jacobson Semisimplicity Problem
+~\ref{prob:J}. 
+
+\begin{theorem}
+	Let $G$ be a non-trivial group. Assume that $K[G]$ has only trivial units. 
+	If $|K|>2$ or $|G|>2$, then $J(K[G])=\{0\}$.
+\end{theorem}
+
+\begin{proof}
+	Let $\alpha\in J(K[G])$. There exist $\lambda\in K\setminus\{0\}$ and $g\in
+	G$ such that $1-\alpha=\lambda g$. Assume that $g\ne 1$.  If $|K|\geq3$,
+	then there exist $\mu\in K\setminus\{0,1\}$ such that
+	\[
+		1-\alpha\mu=1-\mu+\lambda\mu g 
+	\]
+	is a non-trivial unit, a contradiction.
+	If $|G|\geq3$, there exists $h\in G\setminus\{1,g^{-1}\}$ such that
+	$1-\alpha h=1-h+\lambda gh$ is a non-trivial unit, a contradiction.  Thus
+	$g=1$ and hence $\alpha=1-\lambda\in K$. Therefore $1+\alpha h$ is a
+	trivial unit for all $h\ne 1$ and hence 	$\alpha=0$.
+\end{proof}
+
+\begin{exercise}
+	Prove that if $G=\langle g\rangle\simeq\Z/2$, then 
+	$J(\F_2[G])=\{0,g-1\}\ne\{0\}$. 
+\end{exercise}
+
+\topic{Passman's theorem}
+
+Now we prove that an affirmative solution 
+to the Units Problem 
+(Open Problem~\ref{prob:units}) 
+yields a solution to 
+Open Problem~\ref{prob:dominio} about zero divisors in group algebras.
+The proof is hard and requires some preliminaries. We first need
+to discuss a group theoretical tool known as the \emph{transfer map}. 
+
+If $H$ is a subgroup of $G$, a \textbf{transversal} of $H$ in $G$ is a complete
+set of coset representatives of $G/H$. 
+
+\begin{theorem}
+	\label{thm:transfer}
+	Let $G$ be a group and $H$ be a finite-index subgroup of $G$. The map 	
+	\[
+		\nu\colon G\to H/[H,H],\quad
+		g\mapsto d(Rg,R),
+	\]
+	does not depend on the transversal $R$ of $H$ in $G$ and it is a group
+	homomorphism. 
+\end{theorem}
+
+To prove the theorem we first need a lemma. 
+
+\begin{lemma}
+	\label{lem:d}
+	Let $G$ be a group and $H$ be a subgroup of $G$ of finite index.  Let $R$
+	and $S$ be transversals of $H$ in $G$ and let $\alpha\colon H\to H/[H,H]$
+	be the canonical map. Then 
+	\[
+		d(R,S)=\prod \alpha(rs^{-1}),
+	\]
+	where the product is taken over all pairs 
+	$(r,s)\in R\times S$ such that $Hr=Hs$,
+	is well-defined and satisfies the following properties:
+	\begin{enumerate}
+		\item $d(R,S)^{-1}=d(S,R)$.
+		\item $d(R,S)d(S,T)=d(R,T)$ for all transversal $T$ of $H$ in $G$.
+		\item $d(Rg,Sg)=d(R,S)$.
+		\item $d(Rg,R)=d(Sg,S)$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	The product that defines $d(R,S)$ is well-defined since $H/[H,H]$ is 
+	an abelian group. The first three claim are trivial. Let us prove
+	4). By 2), 
+	\[
+		d(Rg,Sg)d(Sg,S)d(S,R)=d(Rg,S)d(S,R)=d(Rg,R).
+	\]
+	Since $H/[H,H]$ is abelian, 1) and 3) imply that 	
+	\[
+		d(Rg,Sg)d(Sg,S)d(S,R)=d(R,S)d(S,R)d(Sg,S)=d(Sg,S).\qedhere
+	\]
+\end{proof}
+
+We are know ready to prove the theorem: 
+
+\begin{proof}[Proof of Theorem \ref{thm:transfer}]
+	The lemma implies that the map does not depend on the transversal used. 
+	Moreover, $\nu$ is a group homomorphism, as 
+	\begin{align*}
+		\nu(gh)&=d(R(gh),R)
+		=d(R(gh),Rh)d(Rh,R)
+		=d(Rg,R)d(Rh,R)=\nu(g)\nu(h).\qedhere
+	\end{align*}
+\end{proof}
+
+The theorem justifies the following definition: 
+
+\begin{definition}
+	Let $G$ be a group and $H$ be a finite-index subgroup of $G$. The
+	\textbf{transfer map} of $G$ in $H$ is the group homomorphism 
+	\[
+		\nu\colon G\to H/[H,H],
+		\quad
+		g\mapsto d(Rg,R),
+	\]
+	of Theorem~\ref{thm:transfer}, where $R$ is some transversal of $H$ in $G$.
+\end{definition}
+
+Veamos cómo calcular el morfismo de transferencia. Si $H$ es un subgrupo de $G$
+de índice $n$, fijemos un transversal $T=\{x_1,\dots,x_n\}$. Para $g\in G$, 
+\[
+	\nu(g)=\prod \alpha(xy^{-1}),
+\]
+donde el producto se hace sobre los pares $(x,y)\in (Tg,T)$ tales que $Hx=Hy$
+y $\alpha\colon H\to H/[H,H]$ es el morfismo canónico. 
+Si escribimos
+$x=x_ig$ para algún $i\in\{1,\dots,n\}$, entonces 
+$Hx_ig=Hx_{\sigma(i)}$ para alguna permutación $\sigma\in\Sym_n$. Luego
+\[
+	\nu(g)=\prod_{i=1}^n\alpha(x_igx_{\sigma(i)}^{-1}).
+\]
+
+\begin{lemma}
+	\label{lem:transfer}
+	Sean $G$ un grupo y $H$ un subgrupo de índice finito $n$ y sea $T$ un
+	transversal de $H$ en $G$.  Para cada $g\in G$ existe $k$ y existen
+	enteros positivos $n_1,\dots,n_k$ tales que $n_1+\cdots+n_k=n$ y elementos
+	$t_1,\dots,t_k\in T$ tales que 
+	\[
+		\nu(g)=\prod_{i=1}^k \alpha(t_ig^{n_i}t_i^{-1}),
+	\]
+	donde $\alpha\colon H\to H/[H,H]$ es el morfismo canónico. 
+\end{lemma}
+
+\begin{proof}
+	Sabemos que existe una permutación $\sigma\in\Sym_n$ tal que 
+	\[
+	\nu(g)=\prod_{i=1}^n t_igt_{\sigma(i)}^{-1}. 
+	\]
+	Si escribimos a $\sigma$ como producto de $k$ ciclos disjuntos
+	$\sigma=\alpha_1\cdots\alpha_k$, donde cada $\alpha_j$ es un ciclo de
+	longitud $n_j$,  entonces para cada ciclo de la forma $(i_1\cdots i_{n_j})$
+	reordenamos el producto de forma tal que
+	\[
+		\alpha(x_{i_1}gx_{i_2}^{-1})\alpha(x_{i_2}gx_{i_3}^{-1})\cdots \alpha(x_{i_{n_j}}gx_{i_1}^{-1})=\alpha(x_{i_1}g^{n_1}x_{i_1}^{-1}).
+	\]
+	Luego existen $t_1,\dots,t_k\in T$ tales que
+	$\nu(g)=\prod_{j=1}^k t_ig^{n_i}t_i^{-1}$. 
+\end{proof}
+
+El morfismo de transferencia nos permite demostrar el siguiente
+lema:
+
+\begin{lemma}
+	\label{lem:center}
+	Si $G$ es un grupo tal que su centro $Z(G)$ tiene índice finito $n$, entonces
+	$(gh)^n=g^nh^n$ para todo $g,h\in G$.	
+\end{lemma}
+
+\begin{proof}
+	Sea $g\in G$.  Por el lema~\ref{lem:transfer} sabemos que existen enteros
+	positivos $n_1,\dots,n_k$ tales que $n_1+\cdots+n_k=n$ y elementos
+	$t_1,\dots,t_k$ de un transversal de $Z(G)$ en $G$ tales que 
+	\[
+		\nu(g)=\prod_{i=1}^k \alpha(t_ig^{n_1}t_i^{-1}),
+	\]
+	donde $\alpha\colon G\to H/[H,H]$ es el morfismo canónico.  Como
+	$g^{n_i}\in Z(G)$ para todo $i\in\{1,\dots,k\}$ (pues $t_ig^{n_i}t_i^{-1}\in Z(G)$), se sigue que
+	$\nu(g)=g^{n_1+\cdots+n_k}=g^n$.  Como $\nu$ es un morfismo de
+	grupos por el teorema~\ref{thm:transfer}, se concluye que
+	\[
+		(gh)^n=\nu(gh)=\nu(g)\nu(h)=g^nh^n. 
+	\]
+\end{proof}
+
+Dado un grupo $G$ consideramos 
+el subconjunto
+\[
+	\Delta(G)=\{g\in G:(G:C_G(g))<\infty\}.
+\]
+
+\begin{exercise}
+	Demuestre que $\Delta(\Delta(G))=\Delta(G)$.
+\end{exercise}
+
+\begin{lemma}
+	Si $G$ es un grupo, entonces $\Delta(G)$ es un subgrupo característico de
+	$G$.
+\end{lemma}
+
+\begin{proof}
+	Primero veamos que $\Delta(G)$ es un subgrupo de $G$. Si $x,y\in\Delta(G)$
+	y $g\in G$, entonces $g(xy^{-1})g^{-1}=(gxg^{-1})(gyg^{-1})^{-1}$. Además
+	$1\in\Delta(G)$. Veamos ahora que $\Delta(G)$ es característico en $G$. Si
+	$f\in\Aut(G)$ y $x\in G$, entonces, como $f(gxg^{-1})=f(g)f(x)f(g)^{-1}$,
+	se concluye que $f(x)\in\Delta(G)$.
+\end{proof}
+
+\begin{exercise}
+	Demuestre que si $G=\langle r,s:s^2=1,srs=r^{-1}\rangle$ es el grupo
+	diedral infinito, entonces $\Delta(G)=\langle r\rangle$.
+\end{exercise}
+
+\begin{exercise}
+	Sean $H$ y $K$ subgrupos de $G$ de índice finito. Demuestre que 
+	\[
+	(G:H\cap K)\leq (G:H)(G:K). 
+	\]
+\end{exercise}
+
+\begin{lemma}
+	\label{lem:FCabeliano}
+	Si $G$ es un grupo sin torsión tal que $\Delta(G)=G$, entonces $G$ es
+	abeliano.
+\end{lemma}
+
+\begin{proof}
+	Sean $x,y\in G$ y sea $S=\langle x,y\rangle$. El grupo $Z(S)=C_S(x)\cap C_S(y)$ tiene
+	índice finito, digamos $n$, en $S$. Como por el lema~\ref{lem:center} la
+	función $S\to Z(S)$, $s\mapsto s^n$, es un morfismo de grupos, se tiene que 
+	\[
+		[x,y]^n=(xyx^{-1}y^{-1})^n=x^ny^nx^{-n}y^{-n}=1
+	\]
+	pues $x^n\in Z(S)$. Como $G$ es libre de torsión, $[x,y]=1$.
+\end{proof}
+
+\begin{lemma}[Neumann]
+	\index{Lema!de Neumann}
+	\label{lem:Neumann}
+	Sean $H_1,\dots,H_m$ subgrupos de $G$. Supongamos que existen finitos elementos 
+	$a_{ij}\in G$, $1\leq i\leq m$, $1\leq j\leq n$, tales que 
+	\[
+		G=\bigcup_{i=1}^m\bigcup_{j=1}^n H_ia_{ij}.
+	\]
+	Entonces algún $H_i$ tiene índice finito en $G$.
+\end{lemma}
+
+\begin{proof}
+	Procederemos por inducción en $m$. El caso $m=1$ es trivial. Supongamos
+	entonces que $m\geq2$. Si $(G:H_1)=\infty$, existe $b\in G$ tal que 
+	\[
+		Hb\cap\left(
+	\bigcup_{j=1}^nH_1a_{1j}\right)=\emptyset.
+	\]
+	Como entonces $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, se concluye que
+	\[
+		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n Ha_{ij}b^{-1}a_{1k}.
+	\]
+	Luego $G$ puede cubrirse con finitas coclases de $H_2,\dots,H_m$ y por hipótesis inductiva 
+	alguno de estos $H_j$ tiene índice finito en $G$.
+\end{proof}
+
+Veremos ahora un operador de proyección del álgebra de grupo. Si $G$ es un
+grupo y $H$ es un subgrupo de $G$, se define
+\[
+	\pi_H\colon K[G]\to K[H],\quad
+	\pi_H\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in H}\lambda_gg.
+\]
+
+\begin{exercise}
+	Sea $G$ un grupo y sea $H$ un subgrupo de $G$. Demuestre que si $\alpha\in
+	K[G]$, entonces $\pi_H$ es un morfismo de $(K[H],K[H])$-bimódulos con las
+	multiplicaciones a izquierda y a derecha, es decir:
+	\[
+		\pi_H(\beta\alpha\gamma)=\beta\pi_H(\alpha)\gamma
+	\]
+	para todo 
+	$\beta,\gamma\in K[H]$.
+\end{exercise}
+
+%\begin{proof}
+%	Supongamos que $\alpha=\sum_{g\in G}\lambda_gg=\alpha_1+\alpha_2$, donde
+%	$\alpha_1=\sum_{g\not\in H}\lambda_gg$ y $\alpha_2=\sum_{g\in
+%	H}\lambda_gg=\pi_H(\alpha)$. Entonces
+%	$\beta\alpha\gamma=\beta\alpha_1\gamma+\beta\alpha_2\gamma$, donde
+%	$\beta\alpha_1\gamma\not\in K[H]$ y $\beta\alpha_2\gamma\in K[H]$.
+%\end{proof}
+
+\begin{lemma}
+	\label{lem:escritura}
+	Sea $X$ un transversal a izquierda de $H$ en $G$. Todo $\alpha\in K[G]$ se
+	escribe unívocamente como 
+	\[
+	\alpha=\sum_{x\in X}x\alpha_x,
+	\]
+	donde $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$.
+\end{lemma}
+
+\begin{proof}
+	Sea $\alpha\in K[G]$. Como $\supp\alpha$ es finito, $\supp\alpha$ está
+	contenido en finitas coclases de $H$, digamos $x_1H,\dots,x_nH$, donde los
+	$x_j$ son elementos de $X$. Escribimos $\alpha=\alpha_1+\cdots+\alpha_n$,
+	donde $\alpha_i=\sum_{g\in x_iH}\lambda_gg$. Si $g\in x_iH$, entonces
+	$x_i^{-1}g\in H$ y luego podemos escribir
+	\[
+		\alpha=\sum_{i=1}^n x_i(x_i^{-1}\alpha_i)=\sum_{x\in X}x\alpha_x
+	\]
+	con $\alpha_x\in K[H]$ para todo $x\in X$. Para la unicidad observemos que
+	para cada $x\in X$ gracias al ejercicio anterior se tiene 
+	\[
+		\pi_H(x^{-1}\alpha)
+		=\pi_H\left(\sum_{y\in X}x^{-1}y\alpha_y\right)
+		=\sum_{y\in X}\pi_H(x^{-1}y)\alpha_y=\alpha_x
+	\]
+	pues 
+	\[
+		\pi_H(x^{-1}y)=\begin{cases}
+		1 & \text{si $x=y$},\\
+		0 & \text{si $x\ne y$}.
+	\end{cases}
+	\]
+\end{proof}
+
+%De la misma forma puede obtenerse un análogo al lema~\ref{lem:escritura} en el
+%caso en que se tenga un transversal a derecha. 
+
+\begin{lemma}
+	\label{lem:ideal_pi}
+	Sea $G$ un grupo y $H$ un subgrupo de $G$.  Si $I$ es un ideal a izquierda
+	no nulo de $K[G]$, entonces $\pi_H(I)\ne 0$.
+\end{lemma}
+
+\begin{proof}
+	Sea $X$ un transversal a izquierda de $H$ en $G$ y sea $\alpha\in I\setminus\{0\}$. Por
+	el lema~\ref{lem:escritura} podemos escribir $\alpha=\sum_{x\in
+	X}x\alpha_x$ con $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$ para todo $x\in X$.
+	Como $\alpha\ne0$, existe $y\in X$ tal que $0\ne
+	\alpha_y=\pi_H(y^{-1}\alpha)\in\pi_H(I)$ ($y^{-1}\alpha\in I$ pues $I$ es
+	un ideal a izquierda).
+\end{proof}
+
+Antes de avanzar, veamos una aplicación del operador de proyección:
+
+\begin{proposition}
+	Sean $G$ un grupo, $H$ un subgrupo de $G$ y $\alpha\in K[H]$. Valen las siguientes afirmaciones:
+	\begin{enumerate}
+		\item $\alpha$ es inversible en $K[H]$ si y sólo si $\alpha$ es
+			inversible en $K[G]$.
+		\item $\alpha$ es un divisor de cero en $K[H]$ si y sólo si $\alpha$ es
+			un divisor de cero en $K[G]$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Si $\alpha$ es inversible en $K[G]$, existe $\beta\in K[G]$ tal que
+	$\alpha\beta=\beta\alpha=1$. Al aplicar $\pi_H$ y usar que $\pi_H$ es un
+	morfismo de $(K[H],K[H])$-bimódulos, 
+	\[
+		\alpha\pi_H(\beta)=\pi_H(\alpha\beta)=\pi_H(1)=1=\pi_H(1)=\pi_H(\beta\alpha)=\pi_H(\beta)\alpha.
+	\]
+	Si $\alpha\beta=0$ para algún $\beta\in K[G]\setminus\{0\}$, sea $g\in G$
+	tal que $1\in\supp(\beta g)$. Como $\alpha(\beta g)=0$, 
+	\[
+		0=\pi_H(0)=\pi_H(\alpha(\beta g))=\alpha\pi_H(\beta g),
+	\]
+	donde $\pi_H(\beta g)\in K[H]\setminus\{0\}$ pues $1\in\supp(\beta g)$. 
+\end{proof}
+
+\begin{lemma}[Passman]
+	\index{Lema!de Passman}
+	\label{lem:Passman}
+	Sea $G$ un grupo y sean  
+	$\gamma_1,\gamma_2\in K[G]$ con $\gamma_1K[G]\gamma_2=0$.
+	Entonces $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=0$.
+\end{lemma}
+
+\begin{proof}
+	Basta ver que $\pi_{\Delta(G)}(\gamma_1)\gamma_2=0$ pues en este caso 
+	\[
+		0=\pi_{\Delta(G)}(\pi_{\Delta(G)}(\gamma_1)\gamma_2)=\pi_{\Delta}(\gamma_1)\pi_{\Delta(G)}(\gamma_2).
+	\]
+	Escribimos $\gamma_1=\alpha_1+\beta_1$, donde 
+	\begin{align*}
+		&\alpha_1=a_1u_1+\cdots+a_ru_r, && u_1,\dots,u_r\in\Delta(G),\\
+		&\beta_1=b_1v_1+\cdots+b_sv_s, && v_1,\dots,v_s\not\in\Delta(G),\\
+		&\gamma_2=c_1w_1+\cdots+c_tw_t,&& w_1,\dots,w_t\in G.
+	\end{align*}
+	El subgrupo $C=\bigcap_{i=1}^rC_G(u_i)$ tiene índice finito en $G$.
+	Supongamos que 
+	\[
+		0\ne \pi_{\Delta}(\gamma_1)\gamma_2=\alpha_1\gamma_2
+	\]
+	y sea $g\in\supp(\alpha_1\gamma_2)$. 
+	Si $v_i$ es conjugado de algún
+	$gw_j^{-1}$ en $G$, sea $g_{ij}\in G$ tal que
+	$g_{ij}^{-1}v_ig_{ij}=gw_j^{-1}$. Si $v_i$ y $gw_j^{-1}$ no son conjugados
+	tomamos $g_{ij}=1$. 
+
+	Para cada $x\in C$ se tiene $\alpha_1\gamma_2=(x^{-1}\alpha_1x)\gamma_2$. Como además 
+	\[
+		x^{-1}\gamma_1x\gamma_2\in x^{-1}\gamma_1K[G]\gamma_2=0,
+	\]
+	tenemos 
+	\begin{align*}
+		(a_1u_1+\cdots+a_ru_r)\gamma_2&=
+		\alpha_1\gamma_2=x^{-1}\alpha_1x\gamma_2=-x^{-1}\beta_1x\gamma_2\\
+		&=-x^{-1}(b_1v_1+\cdots+b_sv_r)x(c_1w_1+\cdots+c_tw_t).
+	\end{align*}
+	Como $g\in\supp(\alpha_1\gamma_2)$, existen $i,j$ tales que $g=x^{-1}v_ixw_j$.
+	Luego $v_i$ y $gw_j^{-1}$ son conjugados y entonces 
+	$x^{-1}v_ix=gw_j^{-1}=g_{ij}^{-1}v_ig_{ij}$, es decir $x\in C_G(v_i)g_{ij}$. Esto demuestra que
+	\[
+		C\subseteq\bigcup_{i,j}C_G(v_i)g_{ij}
+	\]
+	y como $C$ tiene índice finito en $G$, esto implica que $G$ puede cubrirse
+	con finitas coclases de los $C_G(v_i)$. Pero como $v_i\not\in\Delta(G)$, cada
+	uno de los $C_G(v_i)$ tiene índice infinito en $G$, una contradicción al lema
+	de Neumann.
+\end{proof}
+
+\begin{theorem}
+	Sea $G$ un grupo sin torsión. Si $K[G]$ es reducido, entonces $K[G]$ es un
+	dominio.	
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $K[G]$ no es un dominio y sean $\gamma_1,\gamma_2\in K[G]\setminus\{0\}$
+	tales que $\gamma_2\gamma_1=0$. Si $\alpha\in K[G]$, entonces
+	\[
+		(\gamma_1\alpha\gamma_2)^2=\gamma_1\alpha\gamma_2\gamma_1\alpha\gamma_2=0
+	\]
+	y luego $\gamma_1\alpha\gamma_2=0$ pues $K[G]$ es reducido. En particular,
+	$\gamma_1K[G]\gamma_2=0$. Sea $I$ el ideal a izquierda de $K[G]$ generado
+	por $\gamma_2$. Como $I\ne 0$, $\pi_{\Delta(G)}(I)\ne 0$ por el lema~\ref{lem:ideal_pi}
+	y luego $\pi_{\Delta(G)}(\beta\gamma_2)\ne 0$ para algún $\beta\in K[G]$. Similarmente se demuestra que
+	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne 0$ para algún $\alpha\in K[G]$. Como
+	\[
+		\gamma_1\alpha K[G]\beta\gamma_2\subseteq \gamma_1 K[G]\gamma_2=0,
+	\]
+	se tiene que $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=0$ por
+	el lema de Passman. Luego $K[\Delta(G)]$ tiene divisores de cero, una contradicción 
+	pues $\Delta(G)$ es un grupo abeliano.
+\end{proof}
+
+\section{Grupos (bi)ordenables}
+
+En esta sección estudiaremos algunas propiedades del grupo $G$ motivadas por el
+análisis que se hizo en el ejemplo~\ref{example:k[Z]}.
+
+\begin{definition}
+	\index{Grupo!biordenable}
+	Un grupo $G$ se dice \textbf{biordenable} si existe un orden total $<$ en $G$
+	tal que $x<y$ implica que $xz<yz$ y $zx<zy$ para todo $x,y,z\in G$.
+\end{definition}
+
+\begin{example}
+	El grupo $\R_{>0}$ de números reales positivos es biordenable.
+\end{example}
+
+\begin{exercise}
+	Sea $G$ un grupo biordenable y sean $x,x',y,y'\in G$. Demuestre que si
+	$x<y$ y $x'<y'$, entonces $xx'<yy'$.
+\end{exercise}
+
+\begin{exercise}
+	Sea $G$ un grupo biordenable y sean $g,h\in G$. Demuestre que si $g^n=h^n$
+	para algún $n>0$ entonces $g=h$.
+\end{exercise}
+
+\begin{definition}
+	Sea $G$ un grupo biordenable. El cono positivo es el conjunto $P(G)=\{x\in
+	G:1<x\}$.
+\end{definition}
+
+\begin{lemma}
+	\label{lemma:biordenableP1}
+	Sea $G$ un grupo biordenable con cono positivo $P$. Entonces
+	\begin{enumerate}
+		\item $P$ es cerrado para la multiplicación.
+		\item $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta).
+		\item $xPx^{-1}=P$ para todo $x\in G$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Si $x,y\in P$ y $z\in G$, entonces, como $1<x$ y además $1<y$, se tiene que
+	$1<xy$.  Luego $1=z1z^{-1}<zxz^{-1}$. Queda demostrar entonces la segunda
+	afirmación: Si $g\in G$, entonces $g=1$ o $g>1$ o $g<1$. Como $g<1$ y si
+	sólo si $1<g^{-1}$. 
+\end{proof}
+
+\begin{lemma}
+	\label{lem:biordenableP2}
+	Sea $G$ un grupo y sea $P$ un subconjunto de $G$ cerrado para la
+	multiplicación y tal que $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta) y
+	$xPx^{-1}=P$ para todo $x\in G$. Si definimos $x<y$ si y sólo si
+	$yx^{-1}\in P$, entonces $G$ resulta biordenable con cono positivo $P$.
+\end{lemma}
+
+\begin{proof}
+	Sean $x,y\in G$. Como $yx^{-1}\in G$ y sabemos que $G=P\cup
+	P^{-1}\cup\{1\}$ (unión disjunta), se tiene exactamente alguna de las
+	siguientes tres posibilidades: $yx^{-1}\in P$, $xy^{-1}=(yx^{-1})^{-1}\in
+	P$ o bien $yx^{-1}=1$. Luego $x<y$, $y<x$ o bien $x=y$. Si $x<y$ y $z\in
+	G$, entonces $zx<zy$ pues $(zy)(zx)^{-1}=z(yx^{-1})z^{-1}\in P$ ya que
+	$zPz^{-1}=P$. Además $xz<yz$ pues $(yz)(xz)^{-1}=yx^{-1}\in P$. Para demostrar que 
+	que $P$ es el cono positivo de este biorden en $G$ basta observar que
+	$x1^{-1}=x\in P$ si y sólo si $1<x$. 
+\end{proof}
+
+\begin{proposition}
+	\label{pro:BOsintorsion}
+	Todo grupo biordenable es libre de torsión.
+\end{proposition}
+
+\begin{proof}
+	Sea $G$ un grupo biordenable y sea $g\in G\setminus\{1\}$. 
+	Si $g>1$, entonces 
+	$1<g<g^2<\cdots$. Si $g<1$, entonces $1>g>g^2>\cdots$. Luego $g^n\ne 1$ para todo $n\ne 0$. 
+\end{proof}
+
+\begin{example}
+	El grupo $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$ no es biordenable y es libre de torsión. 
+	Supongamos que $G$ es biordenable y sea $P$ su cono positivo. Si $x\in P$
+	entonces $yxy^{-1}=x^{-1}\in P$, una contradicción. Entonces $x^{-1}\in P$
+	y luego $x=y^{-1}x^{-1}y\in P$, una contradicción.
+\end{example}
+
+\begin{theorem}
+	\label{thm:BO}
+	Sea $G$ un grupo biordenable. Entonces $K[G]$ es un dominio tal que
+	solamente tiene unidades triviales. Más aún, si $G$ es no trivial,
+	$J(K[G])=0$. 
+\end{theorem}
+
+\begin{proof}
+	Sean $\alpha,\beta\in K[G]$ tales que 
+	\begin{align*}
+		\alpha&=\sum_{i=1}^m a_ig_i, && g_1<g_2<\cdots<g_m,&& a_i\ne 0 && \forall i\in\{1,\dots,m\},\\
+		\beta&=\sum_{j=1}^n b_jh_j, && h_1<h_2<\cdots<h_n, && b_j\ne 0 && \forall j\in\{1,\dots,n\}.
+	\end{align*}
+	Entonces 
+	\[
+		g_1h_1\leq g_ih_j\leq g_mh_n
+	\]
+	para todo $i,j$. Además $g_1h_1=g_ih_j$ si y sólo si $i=j=1$. El
+	coeficiente de $g_1h_1$ en $\alpha\beta$ es $a_1b_1\ne 0$ y en particular
+	$\alpha\beta\ne0$. Si $\alpha\beta=\beta\alpha=1$, entonces el coefciente
+	de $g_mh_n$ en $\alpha\beta$ es $a_mb_n$ y luego $m=n=1$ y por lo tanto
+	$\alpha=a_1g_1$ y $\beta=b_1h_1$ con $a_1b_1=b_1a_1=1$ en $K$ y $g_1h_1=1$
+	en $G$.
+\end{proof}
+
+\begin{theorem}[Levi]
+	\label{thm:Levi}
+	\index{Teorema!de Levi}
+	Sea $A$ un grupo abeliano. Entonces $A$ es biordenable si y sólo si $A$ es
+	libre de torsión.
+\end{theorem}
+
+\begin{proof}
+	Si $A$ es biordenable, entonces $A$ no tiene torsión por la
+	proposición~\ref{pro:BOsintorsion}. Supongamos entonces que $A$ es un grupo
+	abeliano sin torsión y veamos que es biordenable.  Sea $\mathcal{S}$ la
+	clase de subconjuntos $P$ de $A$ tales que $0\in P$, $P$ es cerrado para la
+	suma de $A$ y cumplen con la siguiente propiedad: si $x\in P$ y $-x\in P$,
+	entonces $x=0$.
+	Claramente $\mathcal{S}$ es no vacía pues
+	$\{0\}\in\mathcal{S}$.  Si ordenamos parcialmente a $\mathcal{S}$ con la
+	inclusión, vemos que el elemento $\bigcup_{i\in I}P_i$ es una cota superior
+	para la cadena $P_1\subseteq P_2\subseteq\cdots$ de $\mathcal{S}$. Por el
+	lema de Zorn, $\mathcal{S}$ tiene un elemento maximal $P\in\mathcal{S}$.
+
+	\begin{claim}
+		Si $x\in A$ es tal que $kx\in P$ para algún $k>0$, entonces $x\in P$.		
+	\end{claim}
+
+	Para demostrar la afirmación sea $Q=\{x\in A:kx\in P\text{ para algún
+	$k>0$}\}$. Veamos que $Q\in\mathcal{S}$.  Trivialmente $0\in Q$. Además $Q$
+	es cerrado por la adición: si $k_1x_1\in P$ y $k_2x_2\in P$ entonces
+	$k_1k_2(x_1+x_2)\in P$. Sea $x\in A$ tal que $x\in Q$ y $-x\in Q$. Entonces
+	$kx\in P$ y $l(-x)\in P$ para algún $l>0$. Como entonces $klx\in P$ y
+	$kl(-x)\in P$, se concluye que $klx=0$, una contradicción pues $A$ no tiene
+	torsión. Luego $x\in Q\subseteq P$. 
+
+	\begin{claim}
+		Si $x\in A$ es tal que $x\not\in P$ entonces $-x\in P$. 	
+	\end{claim}
+
+	Supongamos que $-x\not\in P$ y sea $P_1=\{y+nx:y\in P,\,n\geq0\}$. Vamos a
+	ver que $P_1\in\mathcal{S}$.  Claramente $0\in P_1$ y $P_1$ es cerrado para
+	la suma. Si $P_1\not\in S$ 
+	existe 
+	\[
+		0\ne y_1+n_1x=-(y_2+n_2x),
+	\]
+	donde $y_1,y_2\in P$ y $n_1,n_2\geq0$. Entonces $y_1+y_2=-(n_1+n_2)x$. Si
+	$n_1=n_2=0$, entonces $y_1=-y_2\in P$ y luego $y_1=y_2=0$ y se concluye que
+	$y_1+n_1x=0$, una contradicción. Si $n_1+n_2>0$, entonces, como 
+	\[
+		(n_1+n_2)(-x)=y_1+y_2\in P,
+	\]
+	la primera afirmación que hicimos implica que $-x\in P$, una contradicción. 
+	Demostramos entonces que $P_1\in\mathcal{S}$. 
+	Como $P\subseteq P_1$, la maximalidad de $P$ implica que 
+	$x\in P=P_1$.
+
+	\medskip
+	Gracias al lema~\ref{lem:biordenableP2} sabemos que el conjunto
+	$P^*=P\setminus\{0\}$ que construimos es en realidad el cono positivo de un
+	biorden en $A$. En efecto, $P^*$ es cerrado para la suma pues si $x,y\in
+	P^*$, entonces $x+y\in P$ y si $x+y=0$ entonces, como $x=-y\in P$, se
+	concluye que $x=y=0$. Además $G=P^*\cup -P^*\cup\{0\}$ (unión disjunta)
+	pues demostramos en la segunda afirmación que si $x\not\in P^*$ entonces
+	$-x\in P$. 
+\end{proof}
+
+\begin{corollary}
+	Sea $A$ un grupo abeliano no trivial y sin torsión. Entonces $K[A]$ es un
+	dominio tal que solamente tiene unidades triviales y $J(K[A])=0$. 
+\end{corollary}
+
+\begin{proof}
+	Es consecuencia del teorema de Levi y del teorema~\ref{thm:BO}.
+\end{proof}
+
+\begin{definition}
+	\index{Grupo!ordenable a derecha}
+	Un grupo $G$ se dice \textbf{ordenable a derecha} si existe un orden total
+	$<$ en $G$ tal que si $x<y$ entonces $xz<yz$ para todo $x,y,z\in G$.
+\end{definition}
+
+%\begin{corollary}
+%	Sea $G$ un grupo abeliano. 
+%	\begin{enumerate}
+%		\item Si $K$ es de característica cero, entonces $J(K[G])=0$.
+%		\item Si $K$ es de característica $p$, entonces $J(K[G])=0$ si y sólo si $G$ no tiene elementos de orden $p$.
+%	\end{enumerate}
+%\end{corollary}
+%
+%\begin{proof}
+%	
+%\end{proof}
+
+Si $G$ es un grupo ordenable a derecha, se define el cono positivo de $G$ como
+el subconjunto $P(G)=\{x\in G:1<x\}$. 
+
+\begin{exercise}
+	\index{Cono positivo!de un grupo ordenable a derecha}
+	Sea $G$ un grupo ordenable a derecha con cono positivo $P$. Demuestre las
+	siguientes afirmaciones:
+	\begin{enumerate}
+		\item $P$ es cerrado por multiplicación.
+		\item $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta).
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Sea $G$ un grupo y sea $P$ un subconjunto cerrado por multiplicación y tal
+	que $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta). Demuestre que si se define $x<y$ si y
+	sólo si $yx^{-1}\in P$, entonces $G$ es ordenable a derecha con cono
+	positivo $P$.
+\end{exercise}
+
+\begin{lemma}
+	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $N$ y $G/N$ son
+	ordenables a derecha, entonces $G$ también lo es. 
+%		\item Si $N$ y $G/N$ son biordenables y $N$ es central, entonces $G$ es
+%	biordenable.
+%	\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+	Como $N$ y $G/N$ son ordenables a derecha, existen los conos positivos
+	$P(N)$ y $P(G/N)$. Sea $\pi\colon G\to G/N$ el morfismo canónico y sea
+	\[
+		P(G)=\{x\in G:\pi(x)\in P(G/N)\text{ o bien }x\in N\}.
+	\]	
+	Dejamos como ejercicio demostrar que $P(G)$ es cerrado por la
+	multiplicación y que $G=P(G)\cup P(G)^{-1}\cup \{1\}$ (unión disjunta).
+	Luego $G$ es ordenable a derecha. 
+\end{proof}
+%
+%\begin{theorem}
+%	\label{theorem:}
+%	Si $G$ tiene una serie finita subnormal $1=G_0\triangleleft
+%	G_1\triangleleft\cdots\triangleleft G_n=G$ y cada cociente $G_{i+1}/G_i$ es
+%	abeliano libre de torsión, entonces $G$ es ordenable a derecha. Si además
+%	$G$ es libre de torsión y nilpotente, entonces $G$ es biordenable.
+%\end{theorem}
+
+Para dar un criterio de ordenabilidad necesitamos un lema:
+
+\begin{lemma}
+	\label{lemma:fg}
+	Sea $G$ un grupo finitamente generado y sea $H$ un subgrupo de índice
+	finito. Entonces $H$ es finitamente generado.
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$ y supongamos que
+	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. Sea $t_1,\dots,t_n$ un
+	conjunto de representantes de $G/H$. Para $i\in\{1,\dots,n\}$,
+	$j\in\{1,\dots,m\}$, escribimos
+	\[
+		t_ig_j=h(i,j)t_{k(i,j)}.
+	\]
+	Vamos a demostrar que $H$ está generado por los $h(i,j)$. Sea $x\in H$.
+	Escribamos 
+	\begin{align*}
+	x &=g_{i_1}\cdots g_{i_s}\\
+	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
+	&= h(1,i_1)t_{k_1}g_{i_2}\cdots g_{i_s}\\
+	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
+	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},g_{i_s})t_{k_s},
+	\end{align*}
+	donde $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Como $t_{k_s}\in H$,
+	$t_{k_s}=t_1\in H$ y luego $x\in H$.
+\end{proof}
+
+El siguiente teorema nos da un criterio de ordenabilidad a derecha:
+
+\begin{theorem}
+	Sea $G$ un grupo libre de torsión y finitamente generado. Si $A$ es un
+	subgrupo normal abeliano tal que $G/A$ es finito y cíclico, entonces $G$ es
+	ordenable a derecha.
+\end{theorem}
+
+\begin{proof}
+	Primero observemos que si $A$ es trivial, entonces $G$ también es trivial.
+Supongamos entonces que $A\ne 1$.  Como $A$ tiene índice finito, es finitamente
+generado. Procederemos por inducción en la cantidad de generadores de $A$. Como
+$G/A$ es cíclico, existe $x\in G$ tal que $G=\langle A,x\rangle$. Luego
+$[x,A]=\langle [x,a]:a\in A\rangle$ es un subgrupo normal de $G$ tal que
+$A/C_A(x)\simeq [x,A]$ (pues $a\mapsto [x,a]$ es un morfismo de grupos $A\to A$
+con imagen $[x,A]$ y núcleo $C_A(x)$). Si $\pi\colon G\to G/[x,A]$, entonces
+$G/[x,A]=\langle \pi(A),\pi(x)\rangle$ y luego $G/[x,A]$ es abeliano pues
+$[\pi(x),\pi(A)]=\pi[x,A]=1$. Además $G/[x,A]$ es finitamente generado pues $G$
+es finitamente generado. Como $(G:A)=n$ y $G$ no tiene torsión, $1\ne x^n\in
+A$.  Luego $x^n\in C_A(x)$ y entonces $1\leq \rank C_A(x)<\rank A$ (si $\rank
+C_A(x)=\rank A$, entonces $[x,A]$ sería un subgrupo de torsión de $A$, una
+contradicción pues $x\not\in A$).  Luego 
+\[
+\rank[x,A]=\rank (A/C_A(x))\leq\rank A-1
+\]
+y entonces $\rank (A/[x,A])\geq 1$. Demostramos así que $A/[x,A]$ es infinito y
+luego $G/[x,A]$ es también infinito. 
+
+Como $G/[x,A]$ es un grupo abeliano finitamente generado e infinito, existe un
+un subgrupo normal $H$ de $G$ tal que $[x,A]\subseteq H$ y $G/H\simeq\Z$. El
+subgrupo $B=A\cap H$ es abeliano, normal en $H$ y cumple que $H/B$ es cíclico
+(pues puede identificarse con un subgrupo de $G/A$). Como $\rank B<\rank A$, la
+hipótesis inductiva implica que $H$ es ordenable a derecha y luego $G$ también
+es ordenable a derecha.
+\end{proof}
+
+\begin{exercise}[Malcev--Neumann]
+	\index{Teorema!de Malcev--Neumann}
+	Sea $G$ un grupo ordenable a derecha. Demuestre que $K[G]$ no tiene divisores de
+	cero ni unidades no triviales.	
+\end{exercise}
+
+%\begin{proof}
+%	Recordemos que si $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ y
+%	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$ entonces
+%	\begin{equation}
+%		\label{eq:producto}
+%		\alpha\beta=\sum_{i=1}^n\sum_{j=1}^ma_ib_j(g_ih_j).
+%	\end{equation}
+%	Sin pérdida de generalidad podemos suponer que los $a_i$ y los $b_j$ son no
+%	nulos y que además $g_1<g_2<\cdots<g_n$. Sean $i,j$ tales que 
+%	\[
+%		g_ih_j=\min\{g_ih_j:1\leq i\leq n,1\leq j\leq m\}.
+%	\]
+%	Afirmamos que entonces $i=1$ (pues si $i>1$ entonces tendríamos que
+%	$g_1h_j<g_ih_j$, una contradicción). Además, como $g_1h_j\ne g_1h_k$ si
+%	$k\ne j$, existe un único elemento minimal en el miembro derecho de la
+%	ecuación~\eqref{eq:producto}. El mismo argumento muestra que existe un
+%	único elemento maximal en la ecuación~\eqref{eq:producto}. Luego
+%	$\alpha\beta\ne 0$ (pues $a_1b_j\ne 0$) y entonces $K[G]$ no tiene
+%	divisores de cero. Si además $n>1$ o $m>1$ entonces en la
+%	expresión~\eqref{eq:producto} hay al menos dos términos que no se cancelan
+%	y luego $\alpha\beta\ne1$. Luego las unidades de $K[G]$ son triviales.
+%\end{proof}
+
+En 1973 Formanek demostró que la conjetura de los divisores de cero es
+verdadera para grupos super resolubles sin torsión. En 1976 Brown e independientemente
+Farkas y Snider demostraron que la conjetura es verdadera para grupos policíclicos-por-finitos sin torsión.
+
+\section{Grupos con la propiedad del producto único}
+
+Sea $G$ un grupo y sean $A,B\subseteq G$ subconjuntos no vacíos. Diremos que un
+elemento $g\in G$ es un producto único en $AB$ si $g=ab=a_1b_1$ con $a,a_1\in
+A$ y $b,b_1\in B$ implica que $a=a_1$ y $b=b_1$.
+
+\begin{definition}
+	\index{Grupo!con la propiedad del producto único}
+	Se dice que un grupo $G$ tiene la \textbf{propiedad del producto único} si
+	dados dos subconjuntos $A,B\subseteq G$ finitos y no vacíos existe al menos
+	un producto único en $AB$.
+\end{definition}
+
+\begin{proposition}
+	Si un grupo $G$ es ordenable a derecha, entonces $G$ tiene la propiedad del
+	producto único.
+\end{proposition}
+
+\begin{proof}
+	Sean $A=\{a_1,\dots,a_n\}\subseteq G$ y $B\subseteq G$ ambos finitos y no
+	vacíos. Supongamos que $a_1<a_2<\cdots<a_n$. Sea $c\in B$ tal que $a_1c$ es
+	el mínimo del conjunto $a_1B=\{a_1b:b\in B\}$. Veamos que $a_1c$ admite una
+	única representación de la forma $\alpha\beta$ con $\alpha\in A$ y
+	$\beta\in B$. Si $a_1c=ab$, entonces, como $ab=a_1c\leq a_1b$, se tiene que
+	$a\leq a_1$ y luego $a=a_1$ y $b=c$. 
+\end{proof}
+
+\begin{exercise}
+	Demuestre que un grupo que satisface la propiedad del producto único es
+	libre de torsión.
+\end{exercise}
+
+\begin{definition}
+	Se dice que un grupo $G$ tiene la \textbf{propiedad del doble producto
+	único} si dados dos subconjuntos $A,B\subseteq G$ finitos y no vacíos tales
+	que $|A|+|B|>2$ existen al menos dos productos únicos en $AB$.
+\end{definition}
+
+\begin{theorem}[Strojnowski]
+	\label{theorem:Strojnowski}
+	\index{Teorema!de Strojonowski}
+	Sea $G$ un grupo. Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $G$ tiene la propiedad del doble producto único.
+		\item Para todo subconjunto $A\subseteq G$ finito y no vacío, existe al
+			menos un producto único en $AA=\{a_1a_2:a_1,a_2\in A\}$.
+		\item $G$ tiene la propiedad del producto único.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	La implicación $(1)\implies(2)$ es trivial.  Demostremos que vale
+	$(2)\implies(3)$. Si $G$ no tiene la propiedad del producto único, existen
+	subconjuntos $A,B\subseteq G$ finitos y no vacíos tales que todo elemento
+	de $AB$ admite al menos dos representaciones. Sea $C=AB$. Todo $c\in C$ es
+	de la forma $c=(a_1b_1)(a_2b_2)$ con $a_1,a_2\in A$ y $b_1,b_2\in B$. Como
+	$a_2^{-1}b_1^{-1}\in AB$, existen $a_3\in A\setminus\{a_2\}$ y $b_3\in B\setminus\{b_1\}$ tales que
+	$a_2^{-1}b_1^{-1}=a_3^{-1}b_3^{-1}$. Luego $b_1a_2=b_3a_3$ y entonces
+	\[
+	c=(a_1b_1)(a_2b_2)=(a_1b_3)(a_3b_2)
+	\]
+	son dos representaciones distintas de $c$ en $AB$.
+	pues $a_2\ne a_3$ y $b_1\ne b_3$.
+
+	Demostremos ahora que $(3)\implies(1)$. Si $G$ tiene la propiedad del
+	producto único pero no tiene la propiedad del doble producto único, existen
+	subconjuntos $A,B\subseteq G$ finitos y no vacíos con $|A|+|B|>2$ tales que
+	en $AB$ existe un único elemento $ab$ con una única representación en $AB$.
+	Sean $C=a^{-1}A$ y $D=Bb^{-1}$. Entonces $1\in C\cap D$ y el elemento
+	neutro $1$ admite una única representación en $CD$ (pues si $1=cd$ con
+	$c=a^{-1}a_1\ne 1$ y $d=b_1b^{-1}\ne 1$, entonces $ab=a_1b_1$ con $a\ne
+	a_1$ y $b\ne b_1)$. Sean $E=D^{-1}C$ y $F=DC^{-1}$. Todo elemento de $EF$
+	se escribe como $(d_1^{-1}c_1)(d_2c_2^{-1})$. Si $c_1\ne 1$ o $d_2\ne 1$
+	entonces $c_1d_2=c_3d_3$ para algún $c_3\in C\setminus\{c_1\}$ y algún
+	$d_3\in D\setminus\{d_2\}$. Entonces
+	$(d_1^{-1}c_1)(d_2c_2^{-1})=(d_1^{-1}c_3)(d_3c_2^{-1})$ son dos
+	representaciones distintas para $(d_1^{-1}c_1)(d_2c_2^{-1})$. Si $c_2\ne 1$
+	o $d_1\ne 1$ entonces $c_2d_1=c_4d_4$ para algún $d_4\in D\setminus\{d_1\}$
+	y algún $c_4\in C\setminus\{c_2\}$ y entonces, como
+	$d_1^{-1}c_2^{-1}=d_4^{-1}c_4^{-1}$,
+	$(d_1^{-1}1)(1c_2^{-1})=(d_4^{-1}1)(1c_4^{-1})$.  Como $|C|+|D|>2$, $C$ o
+	$D$ contienen algún $c\ne1$, y entonces $(1\cdot 1)(1\cdot 1)=(1\cdot
+	c)(1\cdot c^{-1})$. Demostramos entonces que todo elemento de $EF$ tiene al
+	menos dos representaciones. 
+\end{proof}
+
+% passman lema 1.9 pag 589
+\begin{exercise}
+	Demuestre que si $G$ es un grupo que satisface la propiedad del producto
+	único, entonces $K[G]$ tiene solamente unidades triviales.
+\end{exercise}
+
+En general es muy difícil verificar si un grupo posee la propiedad del producto
+único. Una propiedad similar es la de ser un grupo difuso. Si $G$ es un grupo
+libre de torsión y $A\subseteq G$ es un subconjunto, diremos que $A$ es
+antisimétrico si $A\cap A^{-1}\subseteq\{1\}$, donde $A^{-1}=\{a^{-1}:a\in
+A\}$. El conjunto de \textbf{elementos extremales} de $A$ se define como
+$\Delta(A)=\{a\in A:Aa^{-1}\text{ es antisimétrico}\}$. Luego
+\[
+	a\in A\setminus\Delta(A)
+	\Longleftrightarrow
+	\text{existe $g\in G\setminus\{1\}$ tal que $ga\in A$ y $g^{-1}a\in A$}.
+\]
+
+\begin{definition}
+	\index{Grupo!difuso}
+	Un grupo $G$ se dice \textbf{difuso} si para todo subconjunto $A\subseteq
+	G$ tal que $2\leq |A|<\infty$ se tiene $|\Delta(A)|\geq2$.
+\end{definition}
+
+\begin{lemma}
+	Si $G$ es ordenable a derecha, entonces $G$ es difuso.	
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $A=\{a_1,\dots,a_n\}$ y $a_1<a_2<\cdots<a_n$. Vamos a
+	demostrar que $\{a_1,a_n\}\subseteq\Delta(A)$. Si $a_1\in
+	A\setminus\Delta(A)$, existe $g\in G\setminus\{1\}$ tal que $ga_1\in A$ y
+	$g^{-1}a_1\in A$. Esto implica que $a_1\leq ga_1$ y $a_1\leq g^{-1}a_1$, de
+	donde se concluye que $1\leq g$ y $1\leq g^{-1}$, una contradicción. De la
+	misma forma se demuestra que $a_n\in \Delta(A)$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma:difuso=>2up}
+	Si $G$ es difuso, entonces $G$ tiene la propiedad del doble producto único.	
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $G$ no tiene la propiedad del doble producto único. Existen
+	entonces subconjuntos finitos $A,B\subseteq G$ con $|A|+|B|>2$ tales que
+	$C=AB$ tiene a lo sumo un producto único. Luego $|C|\geq2$. Como $G$ es
+	difuso, $|\Delta(C)|\geq2$. Si $c\in\Delta(C)$, entonces $c$ tiene una
+	única expresión como $c=ab$ con $a\in A$ y $b\in B$ (de lo contrario, si
+	$c=a_0b_0=a_1b_1$ con $a_0\ne a_1$ y $b_0\ne b_1$. Si $g=a_0a_1^{-1}$,
+	entonces $g\ne 1$, $gc=a_0a_1^{-1}a_1b_1=a_0b_1\in C$ y además
+	$g^{-1}c=a_1a_0^{-1}a_0b_0=a_1b_0\in C$. Luego $c\not\in\Delta(c)$, una
+	contradicción.
+\end{proof}
+
+\begin{problem}
+	Find a non-diffuse group with the unique product property.
+\end{problem}
+
+%Un grupo $G$ se dice \textbf{débilmente difuso} si para todo subconjunto
+%finito $A\subseteq G$ no vacío se tiene $\Delta(A)\ne\emptyset$. La técnica
+%usada para demostrar el lema~\ref{lemma:difuso=>2up} puede usarse para
+%demostrar que un grupo débilmente difuso posee la propiedad del producto
+%único. El teorema~\ref{theorem:Strojnowski} sugiere entonces la siguiente
+%pregunta: 
+%
+%\begin{problem}
+%	¿Existe un grupo débilmente difuso que no sea difuso?
+%\end{problem}
+%
+%\section{El grupo de Promislow}
+%
+%Veremos un ejemplo concreto de un grupo sin torsión que no es ordenable, no es
+%difuso y no tiene la propiedad del producto único.
+%
+%\begin{exercise}
+%	\label{exercise:Dinfty}
+%	Demuestre que $G=\langle x,y:x^2=y^2=1\rangle$ es isomorfo al grupo diedral infinito.
+%\end{exercise}
+%
+%\begin{definition}
+%	Se define el grupo de Promislow como 
+%	\[
+%		G=\langle x,y:x^{-1}y^2x=y^{-2},\,y^{-1}x^2y=x^{-2}\rangle.
+%	\]
+%\end{definition}
+%
+%\begin{proposition}
+%	\label{proposition:Promislow}
+%	El grupo de Promislow es libre de torsión y no satisface la propiedad del
+%	producto único. 
+%\end{proposition}
+%
+%\begin{proof}
+%	
+%\end{proof}
+
+\topic{Connel's theorem}
+
+When $K[G]$ is prime? Connel's theorem gives a full answer to this natural
+question in the case where $K$ is of characteristic zero. 
+
+%\begin{lemma}
+%	\label{lemma:Dfg}
+%	Sea $H$ un subgrupo finitamente generado de $\Delta(G)$.
+%	\begin{enumerate}
+%		\item $(G:C_G(H))$ es finito.
+%		\item $(H:Z(H))$ es finito.
+%		\item $[H,H]$ es finito.
+%		\item Si $H_0$ es el conjunto de elementos de torsión de $H$, $H_0$ es
+%			un subgrupo normal finito de $H$ y $H/H_0$ es finitamente generado,
+%			abeliano y libre de torsión.
+%	\end{enumerate}
+%\end{lemma}
+%
+%\begin{proof}
+%	Veamos la primera afirmación: Si $H=\langle
+%	h_1,\dots,h_n\rangle\subseteq\Delta(G)$, entonces $(G:C_G(h_i))$ es finito
+%	para todo $i\in\{1,\dots,n\}$. Como $C_G(H)=\cap_{i=1}^nC_G(h_i)$, se
+%	concluye que $(G:C_G(H))$ es finito.
+%
+%	Para demostrar la segunda afirmación basta observar que $Z(H)=H\cap C_G(H)$
+%	y luego $(H:Z(H))\leq(G:C_G(H)<\infty$. % necesito dos lemas
+%
+%	La tercera afirmación es consecuencia de la segunda gracias a un teorema de
+%	Schur.
+%
+%	Por último, demostremos la cuarta afirmación.  El grupo $H/[H,H]$ es
+%	abeliano y finitamente generado y luego, sus elementos de torsión forman un
+%	grupo finito. Como $[H,H]$ es finito, $[H,H]$ es un subgrupo normal de
+%	$H_0$. Vamos a demostrar que la torsión de $H/[H,H]$ es igual a
+%	$H_0/[H,H]$. La inclusión $\supseteq$ es trivial. Veamos entonces que vale
+%	$\subseteq$: so $(x[H,H])^k=1$, entonces $x^k\in[H,H]$. Luego $(x^k)^m=1$ y
+%	luego $x\in H_0$. Tenemos entonces que 
+%	\[
+%		H/[H,H]\simeq\Z^r\times\operatorname{tor}(H/[H,H])\simeq\Z^r\times H_0/[H,H]
+%	\]
+%	y luego $H/H_0$ es finitamente generado, abeliano y libre de torsión.
+%
+%\end{proof}
+%
+%\begin{lemma}
+%	\label{lemma:K[abelian]}
+%	Si $G$ un grupo abeliano finitamente generado y sin torsión, entonces
+%	$K[G]$ es un dominio. 
+%\end{lemma}
+%
+%\begin{proof}
+%	Por el teorema
+%	de estructura de grupos abelianos finitamente generados podemos escribir
+%	$G=\langle x_1\rangle\times\cdots\langle x_n\rangle$, donde
+%	$\langle x_j\rangle\simeq\Z$ para todo $j\in\{1,\dots,n\}$. Todo elemento
+%	de $G$ se escribe unívocamente como $x_1^{m_1}\cdots x_n^{m_n}$ y
+%	luego la función 
+%	\[
+%		\iota\colon K[X_1,\dots,X_n]\to K[G],\quad
+%		X_j\mapsto x_j,
+%	\]
+%	es un
+%	morfismo de anillos inyectivo. Si $\alpha\in K[G]$, entonces existe
+%	$m\in\N$ suficientemente grande tal que $\iota((X_1\cdots X_n)^m)\alpha\in
+%	\iota(K[X_1,\dots,X_n])\simeq K[X_1,\dots,X_n]$. Luego $K[G]\subseteq
+%	K(X_1,\dots,X_n)$ y $K[G]$ es un dominio.
+%\end{proof}
+
+%\begin{lemma}
+%	Si $G$ es un grupo, entonces
+%	$\Delta(G)/\Delta^+(G)$ es abeliano y libre de torsión.
+%%	Valen las siguientes afirmaciones:
+%%	\begin{enumerate}
+%%		%\item $\Delta^+(G)$ está generado por los subgrupos normales finitos de $G$.
+%%		\item 
+%%		\item Si $\Delta^+(G)=1$, entonces $K[\Delta(G)]$ es un dominio.
+%%	\end{enumerate}
+%\end{lemma}
+%
+%\begin{proof}
+%%	Demostremos la primera afirmación. 
+%	Sean $y_1,\dots,y_n\in\Delta(G)$ y sea $L=\langle y_1,\dots,y_n\rangle$.
+%	Como $[L,L]$ es finito por el lema~\ref{lemma:Dfg}, $[L,L]\subseteq\Delta^+(G)$. Luego
+%	$\Delta(G)/\Delta^+(G)$ es abeliano y libre de torsión.
+%%
+%%	Para demostrar la segunda afirmación basta observar que si $\Delta^+(G)=1$
+%%	entonces, por el primer ítem, $\Delta(G)$ es abeliano, finitamente generado
+%%	y libre de torsión. Luego $K[\Delta(G)]$ es un dominio por el
+%%	lema~\ref{lemma:K[abelian]}. 
+%\end{proof}
+
+If $S$ is a finite subset of a group $G$, then we define 
+$\widehat{S}=\sum_{x\in S}x$. 
+
+\begin{lemma}
+	\label{lemma:sumN}
+	Let $N$ be a finite normal subgroup of $G$. Then $\widehat{N}=\sum_{x\in N}x$ is central
+	in $K[G]$ and $\widehat{N}(\widehat{N}-|N|1)=0$.
+\end{lemma}
+
+\begin{proof}
+	Assume that $N=\{n_1,\dots,n_k\}$. Let 
+	$g\in G$. Since $N\to N$, $n\mapsto gng^{-1}$, is bijective, 
+	\[
+		g\widehat{N}g^{-1}=g(n_1+\cdots+n_k)g^{-1}=gn_1g^{-1}+\cdots+gn_kg^{-1}=\widehat{N}.
+	\]
+	Since $nN=N$ if $n\in N$, it follows that $n\widehat{N}=\widehat{N}$. Thus 
+	$\widehat{N}\widehat{N}=\sum_{j=1}^k n_j\widehat{N}=|N|\widehat{N}$.
+\end{proof}
+
+Before proving Connel's theorem we need to prove two group theoretical results.
+The first one goes to Dietzman: 
+
+\begin{theorem}[Dietzmann]
+	\index{Dietzmann's theorem}
+	\label{theorem:Dietzmann} 
+	Let $G$ be a group and $X\subseteq G$ be a finite subset of $G$ closed by
+	conjugation. If there exists $n$ such that $x^n=1$ for all $x\in X$, then
+	$\langle X\rangle$ is a finite subgroup of $G$.
+\end{theorem}
+
+\begin{proof}
+	Let $S=\langle X\rangle$. Since $x^{-1}=x^{n-1}$, every element of $S$ can be 
+	written as a finite product of elements of $X$. 
+	Fix $x\in X$. We claim that if $x\in X$ appears $k\geq 1$ times 
+	in the word $s$, then we can write $s$ as a product of $m$
+	elements of $X$, where the first $k$ elements are equal to $x$. Suppose that 
+	\[
+	s=x_1x_2\cdots x_{t-1}xx_{t+1}\cdots x_m,
+	\]
+	where $x_j\ne x$ for all $j\in\{1,\dots,t-1\}$. Then 
+	\[
+		s=x(x^{-1}x_1x)(x^{-1}x_2x)\cdots (x^{-1}x_{t-1}x)x_{t+1}\cdots x_m
+	\]
+	is a product of $m$ elements of $X$ since $X$ is closed under conjugation and 
+	the first element is $x$. The same argument implies that $s$
+	can be written as 
+	\[
+		s=x^ky_{k+1}\cdots y_m,
+	\]
+	where each $y_j$ belongs to $X\setminus\{x\}$.
+
+	Let $s\in S$ and write $s$ as a product of $m$ elements of 
+	$X$, where $m$ is minimal. We need to show that 
+	$m\leq (n-1)|X|$. 
+	If $m>(n-1)|X|$, 
+	then at least $x\in X$ appear $n$ times in the representation of 
+	$s$. Without loss of generality, we write 
+	\[
+		s=x^nx_{n+1}\cdots x_m=x_{n+1}\cdots x_m,
+	\]
+	a contradiction to the minimality of $m$. 
+\end{proof}
+
+The second result goes back to Schur:
+
+\begin{theorem}[Schur]
+\index{Schur's theorem}
+\label{thm:Schur}
+	Let $G$ be a group. 
+	If $Z(G)$ has finite index in $G$, then $[G,G]$ is finite.
+\end{theorem}
+
+\begin{proof}
+	Let $n=(G:Z(G))$ and  
+	$X$ be the set of commutators of $G$. We claim that $X$ is finite, in fact
+	$|X|\leq n^2$.
+	The map 
+	\[
+		\varphi\colon X\to G/Z(G)\times G/Z(G),\quad [x,y]\mapsto (xZ(G),yZ(G)),
+	\]
+	is injective: if $(xZ(G),yZ(G))=(uZ(G),vZ(G))$, then $u^{-1}x\in Z(G)$, 
+	$v^{-1}y\in Z(G)$. Thus 
+	\begin{align*}
+		[u,v]&=uvu^{-1}v^{-1}=uv(u^{-1}x)x^{-1}v^{-1}=xvx^{-1}(v^{-1}y)y^{-1}=xyx^{-1}y^{-1}=[x,y].
+	\end{align*}
+	Moreover, $X$ is closed under conjugation, as 
+	\[
+		g[x,y]g^{-1}=[gxg^{-1},gyg^{-1}]
+	\]
+	for all $g,x,y\in G$. Since $G\to Z(G)$, $g\mapsto g^n$ is a group
+	homomorphism, Lemma~\ref{lem:center} implies that $[x,y]^n=[x^n,y^n]=1$ for
+	all $[x,y]\in X$.  The theorem follows from applying Dietzmann's theorem. 
+\end{proof}
+
+
+Si $G$ es un grupo, consideramos el subconjunto %los siguientes subconjuntos:
+\begin{align*}
+%	&\Delta(G)=\{x\in G:(G:C_G(x))<\infty\},\\
+	&\Delta^+(G)=\{x\in \Delta(G):\text{$x$ tiene orden finito}\}.
+\end{align*}
+
+\begin{lemma}
+	\label{lem:DcharG}
+	Si $G$ es un grupo, entonces $\Delta^+(G)$ es un subgrupo
+	característico de $G$.
+\end{lemma}
+
+\begin{proof}
+	Claramente $1\in\Delta^+(G)$. 
+	Sean $x,y\in\Delta^+(G)$ y sea $H$ el subgrupo de $G$ generado por el
+	conjunto $C$ formado por los finitos conjugados de $x$ e $y$. Si $|x|=n$ y
+	$|y|=m$, entonces $c^{nm}=1$ para todo $c\in C$. Como $C$ es 
+	finito y cerrado por conjugación, el teorema de Dietzmann implica que $H$ es
+	finito. Luego $H\subseteq\Delta^+(G)$ y en particular $xy^{-1}\in\Delta^+(G)$.  Es
+	evidente que $\Delta^+(G)$ es un subgrupo característico pues para todo
+	$f\in\Aut(G)$ se tiene que $f(x)\in\Delta^+(G)$ si $x\in\Delta^+(G)$.
+%	Primero veamos que $\Delta(G)$ es un subgrupo de $G$. Si $x,y\in\Delta(G)$
+%	y $g\in G$, entonces $g(xy^{-1})g^{-1}=(gxg^{-1})(gyg^{-1})^{-1}$. Además
+%	$1\in\Delta(G)$. Veamos ahora que $\Delta(G)$ es característico en $G$. Si
+%	$f\in\Aut(G)$ y $x\in G$, entonces, como $f(gxg^{-1})=f(g)f(x)f(g)^{-1}$,
+%	se concluye que $f(x)\in\Delta(G)$.
+%	Para ver que $\Delta^+(G)$ es un subgrupo, 
+%	Sean
+%	$x_1,\dots,x_n\in\Delta^+(G)$ y $H=\langle x_1,\dots,x_n\rangle$. Como
+%	$H$ es finito, $H\subseteq\Delta^+(G)$ y luego $\Delta^+(G)$ es un
+%	subgrupo. Es evidente que es un subgrupo característico pues para todo
+%	$f\in\Aut(G)$ se tiene que $f(x)\in\Delta^+(G)$ si $x\in\Delta^+(G)$.
+\end{proof}
+
+La segunda aplicación del teorema de Dietzmann es el siguiente resultado:
+
+\begin{lemma}
+	\label{lem:Connel}
+	Sea $G$ un grupo y sea  $x\in\Delta^+(G)$.  Existe entonces un subgrupo
+	finito $H$ normal en $G$ tal que $x\in H$.
+\end{lemma}
+
+Dejamos la demostración como ejercicio ya que el muy similar a lo que hicimos
+en la demostración del lema~\ref{lem:DcharG}.
+
+%\begin{proof}
+%	Sea $H$ el subgrupo generado por los conjugados de $x$. Como $x$ tiene
+%	finitos conjugados, $H$ es finitamente generado. Además $H$ es claramente
+%	normal en $G$ y está generado por elementos de torsión. Todos los finitos
+%	generadores de $H$ tienen el mismo orden, digamos $n$. Por el teorema de
+%	Dietzmann, $H$ resulta ser un grupo finito.
+%\end{proof}
+
+\begin{theorem}[Connell]
+	\label{thm:Connel}
+	\index{Teorema!de Connel}
+	Supongamos que el cuerpo $K$ es de característica cero. 
+	Sea $G$ un grupo. Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $K[G]$ es primo.
+		\item $Z(K[G])$ es primo.
+		\item $G$ no tiene subgrupos finitos normales no triviales.
+		\item $\Delta^+(G)=1$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Demostremos que $(1)\implies(2)$. Como $Z(K[G])$ es un anillo conmutativo,
+	probar que es primo es equivalente a probar que no existen divisores de
+	cero no triviales. Sean $\alpha,\beta\in Z(K[G])$ tales que
+	$\alpha\beta=0$. Sean $A=\alpha K[G]$ y $B=\beta K[G]$. Como $\alpha$ y
+	$\beta$ son centrales, $A$ y $B$ son ideales de $K[G]$. Como $AB=0$,
+	entonces $A=\{0\}$ o $B=\{0\}$ pues $K[G]$ es primo.  Luego $\alpha=0$ o
+	$\beta=0$.
+
+	Demostremos ahora que $(2)\implies(3)$. Sea $N$ un subgrupo normal finito.
+	Por el lema~\ref{lemma:sumN}, $\widehat{N}=\sum_{x\in N}x$ es central en
+	$K[G]$ y $\widehat{N}(\widehat{N}-|N|1)=0$. Como $\widehat{N}\ne 0$ (pues
+	$K$ tiene característica cero) y $Z(K[G])$ es un dominio,
+	$\widehat{N}=|N|1$, es decir: $N=\{1\}$.
+
+	Demostremos que $(3)\implies(4)$. Sea $x\in\Delta^+(G)$. Por el
+	lema~\ref{lem:Connel} sabemos que existe un subgrupo finito $H$ normal en
+	$G$ que contiene a $x$. Como por hipótesis $H$ es trivial, se concluye que
+	$x=1$.
+
+	Finalmente demostramos que $(4)\implies(1)$. Sean $A$ y $B$ ideales de
+	$K[G]$ tales que $AB=0$. Supongamos que $B\ne 0$ y sea $\beta\in
+	B\setminus\{0\}$.  Si $\alpha\in A$, entonces, como $\alpha
+	K[G]\beta\subseteq \alpha B\subseteq AB=0$, el lema~\ref{lem:Passman} de
+	Passman implica que $\pi_{\Delta(G)}(\alpha)\pi_{\Delta(G)}(\beta)=0$.
+	Como por hipótesis $\Delta^+(G)$ es trivial, sabemos que $\Delta(G)$ es 
+	libre de torsión y luego $\Delta(G)$ es abeliano por el
+	lema~\ref{lem:FCabeliano}. Esto nos dice que $K[\Delta(G)]$ no tiene
+	divisores de cero y luego $\alpha=0$. Demostramos entonces que $B\ne0$
+	implica que $A=0$.
+\end{proof}
+
+% necesito: 
+% pag 376 del Hungerford: un módulo no nulo admite una serie de composición
+% si y sólo si es noetheriano y artiniano
+% agregar además el teorema de Hopkins--Levitzky que dice
+
+
+\begin{theorem}[Connel]
+	Sea $K$ un cuerpo de característica cero y sea $G$ un grupo. Entonces
+	$K[G]$ es artiniano a izquierda si y sólo si $G$ es finito.
+\end{theorem}
+
+\begin{proof}
+	Si $G$ es finito, $K[G]$ es un álgebra de dimensión finita y luego
+	es artiniano a izquierda. Supongamos entonces que $K[G]$ es artiniano
+	a izquierda. 
+	
+	Primero observemos que si $K[G]$ es un álgebra prima, entonces por el
+	teorema de Wedderburn $K[G]$ es simple y luego
+	$G$ es el grupo trivial (pues si $G$ no es trivial, $K[G]$ no es simple ya
+	que el ideal de aumentación es un ideal no nulo de $K[G]$).
+
+	Como $K[G]$ es artiniano a izquierda, es noetheriano a izquierda por
+	Hopkins--Levitzky y entonces, $K[G]$ admite una serie de composición por el
+	teorema~\ref{thm:serie_de_composicion}.  Para demostrar el teorema
+	procederemos por inducción en la longitud de la serie de composición de
+	$K[G]$. Si la longitud es uno, $\{0\}$ es el único ideal de $K[G]$ y luego
+	$K[G]$ es prima y el resultado está demostrado. Si suponemos que el
+	resultado vale para longitud $n$ y además $K[G]$ no es prima, entonces, por
+	el teorema de Connel, $G$ posee un subgrupo normal $H$ finito y no trivial. Al
+	considerar el morfismo canónico $K[G]\to K[G/H]$ vemos que $K[G/H]$ es
+	artiniano a izquierda y tiene longitud $<n$. Por hipótesis inductiva, $G/H$
+	es un grupo finito y luego, como $H$ también es finito, $G$ es finito.
+\end{proof}
