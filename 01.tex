@@ -19,14 +19,14 @@ For $n\in\Z_{>1}$
 let $C_n$ be the cyclic group of order $n$.
     
 \begin{exercise}
-    Let $n\in\Z_{>1}$. Prove that $\C[C_n]\simeq\C[X]/(X^n)$. 
+    Let $n\in\Z_{>1}$. Prove that $\C[C_n]\simeq\C[X]/(X^n-1)$. 
 \end{exercise}
 
 \begin{exercise}
     Prove that if $G$ and $H$ are isomorphic groups, then $K[G]\simeq K[H]$. 
 \end{exercise}
 
-In a similar way, if $R$ is a ring (with 1) 
+In a similar way, if $R$ is a commutative ring (with 1) 
 and $G$ is a group, then one defines the group ring $R[G]$. More precisely,
 $R[G]$ is the set of finite linear combinations
 \[
@@ -79,7 +79,7 @@ of characteristic two.
 \topic{Kapanskly's problems}
 
 Let $G$ be a group and $K$ be a field. If  
-$x\in G$ is such that $x^n=1$, then, since 
+$x\in G\setminus\{1\}$ is such that $x^n=1$, then, since 
 \[
 (1-x)(1+x+x^2+\cdots+x^{n-1})=0, 
 \] 
@@ -107,6 +107,13 @@ $g\in G$.
 \begin{exercise}
 	Prove that $\C[C_5]$ has non-trivial units. 
 \end{exercise}
+
+\begin{problem}[Zero divisors]
+	\label{prob:dominio}
+	Let $G$ be a torsion-free group. Is it true that 
+	$K[G]$ is a domain?
+\end{problem}
+
 
 % Si $g$ tiene orden cinco, entonces 1-g+g^2-g^3+g^4$ es una unidad no trivial con
 % inverso $\frac12+\frac12g$. 
@@ -170,23 +177,24 @@ gap> AbelianInvariants(N);
     Let us prove that $G$ is torsion-free. Let 
     $x=a^2$, $y=b^2$ and $z=(ab)^2$. 
     Since $(G:N)=4$, the group $G$ decomposes as a disjoint union
-    $G=N\cup xN\cup yN\cup zN$. Let $g\in G$ be a non-trivial element of finite order. 
-    Since $N$ is torsion-free, $g\in xN\cup yN\cup zN$. Without loss of generality 
-    we may assume that $g\in xN$, so $g=xn$ for some $n\in N$. Let $\pi\colon G\to G/N$ be the canonical map. 
+    $G=N\cup aN\cup bN\cup (ab)N$. Let $g\in G$ be a non-trivial element of finite order. 
+    Since $N$ is torsion-free, $g\in aN\cup bN\cup (ab)N$. Without loss of generality 
+    we may assume that $g\in aN$, so $g=an$ for some $n\in N$. 
+    Let $\pi\colon G\to G/N$ be the canonical map. 
     Since $g\not\in N$ and $\pi(g)\in G/N\simeq C_2\times C_2$, 
     \[
     \pi(g^2)=\pi(g)^2=1
     \]
     so $g^2\in N$ and hence $g^2=1$, as $N$ is torsion-free.  Thus
     \[
-    1=g^2=(xn)^2=(xn)(xn)=x^2(x^{-1}nx)n.
+    1=g^2=(an)^2=(an)(an)=a^2(a^{-1}na)n=x(a^{-1}na)n.
     \]
     Write $n=x^iy^jz^k$ for some $i,j,k\in\Z$. Then
     \[
-    x^{-1}nx=(x^{-1}x^ix)(x^{-1}y^jx)(x^{-1}z^kx)=x^iy^{-j}z^{-k}
+    a^{-1}na=(a^{-1}x^ia)(a^{-1}y^ja)(a^{-1}z^ka)=x^it^{-j}z^{-k}
     \]
-    and hence $(x^{-1}nx)n=x^{2i}$. Then it follows that 
-    $1=g^2=x^2(x^{-1}nx)n=x^{2i+1}$, a contradiction. 
+    and hence $(a^{-1}na)n=x^{2i}$. Then it follows that 
+    $1=g^2=x(a^{-1}na)n=x^{2i+1}$, a contradiction. 
 \end{proof}
 
 Let $P$ be the group
@@ -308,12 +316,6 @@ $r^2=0$ one has $r=0$.
 	\label{prob:reducido}
 	Let $G$ be a torsion-free group. Is it true that 
 	$K[G]$ is reduced? 
-\end{problem}
-
-\begin{problem}[Zero divisors]
-	\label{prob:dominio}
-	Let $G$ be a torsion-free group. Is it true that 
-	$K[G]$ is a domain?
 \end{problem}
 
 \begin{problem}[Semisimplicity]
