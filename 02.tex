@@ -1,316 +1,342 @@
 \chapter{}
 
-\topic{Group rings}
+\index{Ring!reduced}
+A ring $R$ is \textbf{reduced} if for all $r\in R$ such that 
+$r^2=0$ one has $r=0$. 
 
-Let $K$ be a field and $G$ be a group (written multiplicatively). Let $K[G]$ be the 
-vector space with basis $\{g:g\in G\}$. Then $\dim K[G]<\infty$ if and only if $G$ 
-is finite. The vector space $K[G]$ is an algebra
-with multiplication
-\[
-\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
-=\sum_{g,h\in G}\lambda_g\mu_h(gh).
-\]
-
-\begin{exercise}
-    Prove that $\C[\Z]\simeq\C[X,X^{-1}]$. 
-\end{exercise}
-
-For $n\in\Z_{>1}$
-let $C_n$ be the cyclic group of order $n$.
-    
-\begin{exercise}
-    Let $n\in\Z_{>1}$. Prove that $\C[C_n]\simeq\C[X]/(X^n-1)$. 
-\end{exercise}
-
-\begin{exercise}
-    Prove that if $G$ and $H$ are isomorphic groups, then $K[G]\simeq K[H]$. 
-\end{exercise}
-
-In a similar way, if $R$ is a commutative ring (with 1) 
-and $G$ is a group, then one defines the group ring $R[G]$. More precisely,
-$R[G]$ is the set of finite linear combinations
-\[
-    \sum_{g\in G}\lambda_gg
-\]
-where $\lambda_g\in R$ and $\lambda_g=0$ for all but finitely many $g\in G$. 
-One easily proves that $R[G]$ is a ring with 
-addition
-\[
-\left(\sum_{g\in G}\lambda_gg\right)+\left(\sum_{g\in G}\mu_gg\right)
-=\sum_{g\in G}(\lambda_g+\mu_g)(g)
-\]
-and multiplication 
-\[
-\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
-=\sum_{g,h\in G}\lambda_g\mu_h(gh).
-\]
-Moreover, $R[G]$ is a left $R$-module with
-$\lambda(\sum_{g\in G}\lambda_gg)=\sum_{g\in G}(\lambda\lambda_g)g$. 
-
-\begin{exercise}
-    Let $G$ be a group. Prove that if 
-    $\Z[G]\simeq\Z[H]$, then $R[G]\simeq R[H]$ for any commutative ring $R$.      
-\end{exercise}
-
-\begin{question}[Isomorphism problem]
-\label{question:IP}
-    Let $G$ and $H$ be groups. Does $\Z[G]\simeq\Z[H]$ imply $G\simeq H$?
-\end{question}   
-
-Despite the fact that there are several cases were 
-the isomorphism problem has an affirmative answer (e.g. abelian groups, 
-metabelian groups, nilpotent groups, nilpotent-by-abelian groups, simple groups, 
-abelian-by-nilpotent groups), it is false in general. In 2001  
-Hertweck found a counterexample of order $2^{21}97^{28}$, see \cite{MR1847590}.  
-
-\begin{question}[Modular isomorphism problem]
-\label{question:MIP}
-    Let $p$ be a prime number. Let 
-    $G$ and $H$ be finite $p$-groups and let $K$ be a field of characteristic $p$. 
-    Does $K[G]\simeq K[H]$ imply $G\simeq H$?
-\end{question}   
-
-Question \ref{question:MIP} has an affirmative answer in several cases. However, 
-it is not true in general. This question recently answered by Garc\'ia, Margolis and
-del R\'io. They found two non-isomorphic groups $G$ and $H$ both of order $512$ 
-such that $K[G]\simeq K[H]$ for all field $K$ 
-of characteristic two. 
-
-\topic{Kapanskly's problems}
-
-Let $G$ be a group and $K$ be a field. If  
-$x\in G\setminus\{1\}$ is such that $x^n=1$, then, since 
-\[
-(1-x)(1+x+x^2+\cdots+x^{n-1})=0, 
-\] 
-it follows that $K[G]$ has non-trivial zero divisors. What happens in the case
-where $G$ is torsion-free?
-
-\begin{example}
-	\label{example:k[Z]}
-	Let $G=\langle x\rangle\simeq\Z$. Then $K[G]$ has no zero divisors. 
-	Let $\alpha,\beta\in K[G]\setminus\{0\}$ and write 
-	$\alpha=\sum_{i\leq n}a_ix^i$ with $a_n\ne 0$ and $\beta=\sum_{j\leq m}b_jx^j$
-	with $b_m\ne 0$. Since the coefficient of $x^{n+m}$ of $\alpha\beta$ is non-zero,
-	it follows that 
-	$\alpha\beta\ne 0$.
-\end{example}
-
-A similar problem concerns units of group algebras.  A unit $u\in K[G]$ is said
-to be \textbf{trivial} if $u=\lambda g$ for some $\lambda\in K\setminus\{0\}$ and
-$g\in G$.	
-
-\begin{exercise}
-	Prove that units of $\C[C_2]$ are trivial. 
-\end{exercise}
-
-\begin{exercise}
-	Prove that $\C[C_5]$ has non-trivial units. 
-\end{exercise}
-
-\begin{problem}[Zero divisors]
-	\label{prob:dominio}
+\begin{problem}
+	\label{prob:reducido}
 	Let $G$ be a torsion-free group. Is it true that 
-	$K[G]$ is a domain?
+	$K[G]$ is reduced? 
 \end{problem}
 
-
-% Si $g$ tiene orden cinco, entonces 1-g+g^2-g^3+g^4$ es una unidad no trivial con
-% inverso $\frac12+\frac12g$. 
-
-We mention some intriguing problems, generally known as Kaplansky's problems. 
-%En general, no es fácil determinar si $K[G]$ tiene divisores de cero. Los
-%siguientes problemas abiertos fueron formulados por Kaplansky:
-
-\begin{problem}[Units]
-	\label{prob:units}
-	Let $G$ be a torsion-free group. Is it true that all units of $K[G]$ are
-	trivial?
+\begin{problem}[Semisimplicity]
+	\label{prob:J}
+	Let $G$ be a torsion-free group. It is true that 
+	$J(K[G])=0$ if $G$ is non-trivial?
 \end{problem}
 
-\index{Promislow's group}
-The unit problem is still open for fields of characteristic zero. 
-However, it was recently solved by Gardam \cite{MR4334981} 
-in the case of 
-$K$ the field of two elements. We will present Gardam's theorem 
-as a computer calculation. We will use \textsf{GAP} \cite{GAP4}.  
+\begin{problem}[Idempotents]
+	\label{pro:idempotente}
+	Let $G$ be a torsion-free group and $\alpha\in K[G]$ be an idempotent. 
+	Is it true that $\alpha\in\{0,1\}$?
+\end{problem}
 
-\begin{lemma}
-    The group $G=\langle a,b:a^{-1}b^2a=b^{-2},b^{-1}a^2b=a^{-2}\rangle$
-    is torsion-free. Moreover, the subgroup $N=\langle a^2,b^2,(ab)^2\rangle$ is normal in $G$, 
-    free-abelian of rank three and $G/N\simeq C_2\times C_2$.
-\end{lemma}
+\begin{exercise}
+	Prove that if $K[G]$ has no zero-divisors and $\alpha\in K[G]$ is an
+	idempotent, then $\alpha\in\{0,1\}$.
+\end{exercise}
 
-\begin{proof}
-    We first construct the group.
-\begin{lstlisting}
-gap> F := FreeGroup(2);;
-gap> A := F.1;;
-gap> B := F.2;;
-gap> rels := [(B^2)^A*B^2,(A^2)^B*A^2];;
-gap> G := F/rels;;
-gap> a := G.1;;
-gap> b := G.2;;
-\end{lstlisting}
-    Now we construct the subgroup $N$ generated by $a^2$, $b^2$ and $(ab)^2$. 
-    It is easy to check that $N$ is normal 
-    in $G$ and that $G/N\simeq C_2\times C_2$. It is even easier 
-    to do this with the computer.
-\begin{lstlisting}
-gap> N := Subgroup(G, [a^2,b^2,(a*b)^2]);;
-gap> IsNormal(G,N);
-true
-gap> StructureDescription(G/N);
-"C2 x C2"
-\end{lstlisting}
-    It is easy to check by hand that $N$ is abelian, and not so easy to do it with
-    the computer. For example, 
-    \[
-    b^{-2}a^2b^{-2}=b^{-1}a^{-2}b=(b^{-1}a^2b)^{-1}=(a^{-2})^{-1}=a^2.
-    \]
-    We use the computer to show that
-    $N$ is free abelian of rank three. 
-\begin{lstlisting}
-gap> AbelianInvariants(N);
-[ 0, 0, 0 ]
-\end{lstlisting}
-    Let us prove that $G$ is torsion-free. Let 
-    $x=a^2$, $y=b^2$ and $z=(ab)^2$. 
-    Since $(G:N)=4$, the group $G$ decomposes as a disjoint union
-    $G=N\cup aN\cup bN\cup (ab)N$. Let $g\in G$ be a non-trivial element of finite order. 
-    Since $N$ is torsion-free, $g\in aN\cup bN\cup (ab)N$. Without loss of generality 
-    we may assume that $g\in aN$, so $g=an$ for some $n\in N$. 
-    Let $\pi\colon G\to G/N$ be the canonical map. 
-    Since $g\not\in N$ and $\pi(g)\in G/N\simeq C_2\times C_2$, 
-    \[
-    \pi(g^2)=\pi(g)^2=1
-    \]
-    so $g^2\in N$ and hence $g^2=1$, as $N$ is torsion-free.  Thus
-    \[
-    1=g^2=(an)^2=(an)(an)=a^2(a^{-1}na)n=x(a^{-1}na)n.
-    \]
-    Write $n=x^iy^jz^k$ for some $i,j,k\in\Z$. Then
-    \[
-    a^{-1}na=(a^{-1}x^ia)(a^{-1}y^ja)(a^{-1}z^ka)=x^it^{-j}z^{-k}
-    \]
-    and hence $(a^{-1}na)n=x^{2i}$. Then it follows that 
-    $1=g^2=x(a^{-1}na)n=x^{2i+1}$, a contradiction. 
-\end{proof}
+\begin{exercise}
+	Prove that $K[C_4]$ contains non-trivial zero divisors and every
+	idempotent of $K[C_4]$ is trivial. 
+\end{exercise}
 
-Let $P$ be the group
-generated by
+The problems mentioned are all related. Our goal is the prove
+the following implications:
 \[
-a=\begin{pmatrix}
-1 & 0 & 0 & 1/2\\
-0 & -1 & 0 & 1/2\\
-0 & 0 & -1 & 0\\
-0 & 0 & 0 & 1
-\end{pmatrix},
-\quad
-b=\begin{pmatrix}
--1 & 0 & 0 & 0\\
-0 & 1 & 0 & 1/2\\
-0 & 0 & -1 & 1/2\\
-0 & 0 & 0 & 1
-\end{pmatrix}. 
+	\ref{prob:J}\Longleftarrow\ref{prob:units}\Longrightarrow\ref{prob:reducido}\Longleftrightarrow\ref{prob:dominio}
 \]
-The group $P$ appears in the literature with various names. 
-For us $P$ will be the Promislow group. It is easy to check
-that there exists a surjective group homomorphism $G\to P$. 
-Prove that $G\simeq P$. 
 
-\begin{theorem}[Gardam]
-\label{thm:Gardam}
-\index{Gardam's theorem}
-    Let $\F_2$ be the field of two elements. Consider the elements 
-    $x=a^2$, $y=b^2$ and $z=(ab)^2$ of $P$ and let 
-    \begin{align*}
-        &p=(1+x)(1+y)(1+z^{-1}), 
-        &&q = x^{-1}y^{-1}+x+y^{-1}z+z,\\
-        &r = 1+x+y^{-1}z+xyz,
-        &&s=1+(x+x^{-1}+y+y^{-1})z^{-1}.
-    \end{align*}
-    Then $u=p+qa+rb+sab$ is a non-trivial unit in $\F_2[P]$. 
+We first prove that an affirmative solution to the Units
+Problem~\ref{prob:units} yields a solution to Problem~\ref{prob:reducido}
+about the reducibility of group algebras.
+
+\begin{theorem}
+	Let $G$ be a non-trivial group. Assume that $K[G]$ has only trivial units.
+	Then $K[G]$ is reduced. 
 \end{theorem}
 
 \begin{proof}
-    We claim that the inverse of $u$ 
-    is the element $v=p_1+q_1a+r_1b+s_1ab$, where
-    \begin{align*}
-        p_1=x^{-1}(a^{-1}pa), 
-        && q_1=-x^{-1}q,
-        && r_1=-y^{-1}r,
-        && s_1=z^{-1}(a^{-1}sa).
-    \end{align*}
-    We only need to show that $uv=vu=1$. We will perform this
-    calculation with \textsf{GAP}. 
-    We first need to create the group $P=\langle a,b\rangle$. 
-\begin{lstlisting} 
-gap> a := [[1,0,0,1/2],[0,-1,0,1/2],[0,0,-1,0],[0,0,0,1]];;
-gap> b := [[-1,0,0,0],[0,1,0,1/2],[0,0,-1,1/2],[0,0,0,1]];;
-gap> P := Group([a,b]);
-\end{lstlisting}
-    Now we create the group algebra $F[P]$ and 
-    the embedding $P\hookrightarrow F[P]$.  
-    The field $\F_2$ will be \lstinline{GF(2)} 
-    and the embedding will be denoted by \lstinline{f}. 
-\begin{lstlisting}
-gap> R := GroupRing(GF(2),P);;
-gap> f := Embedding(P, R);;
-\end{lstlisting}
-    We first need the elements $x$, $y$ and $z$ that were defined in the
-    statement.
-\begin{lstlisting}
-gap> x := Image(f, a^2);;
-gap> y := Image(f, b^2);;
-gap> z := Image(f, (a*b)^2);;
-\end{lstlisting}
-    Now we define the elements $p$, $q$, $r$ and $s$. Note that
-    the identity of the group algebra \lstinline{R} 
-    is \lstinline{One(R)}. 
-\begin{lstlisting}
-gap> p := (One(R)+x)*(One(R)+y)*(One(R)+Inverse(z));;
-gap> r := One(R)+x+Inverse(y)*z+x*y*z;;
-gap> q := Inverse(x)*Inverse(y)+x+Inverse(y)*z+z;;
-gap> s := One(R)+(x+Inverse(x)+y+Inverse(y))*Inverse(z);
-\end{lstlisting}
-    Rather than trying 
-    to compute the inverse of $u$ we will show that 
-    $uv=vu=1$. For that purpose we need to define
-    $p_1$, $q_1$, $r_1$ and $s_1$.
-\begin{lstlisting}
-gap> p1 := Inverse(x)*p^Image(f, a);;
-gap> q1 := -Inverse(x)*q;;
-gap> r1 := -Inverse(y)*r;;
-gap> s1 := Inverse(z)*s^Image(f, a);;
-\end{lstlisting}
-Now it is time to prove the theorem. 
-\begin{lstlisting}
-gap> u := p+q*a+r*b+s*a*b;;
-gap> v := p1+q1*a+r1*b+s1*a*b;;
-gap> IsOne(u*v);
-true
-gap> IsOne(v*u);
-true
-\end{lstlisting}
-This completes the proof of the theorem. 
+	Let $\alpha\in K[G]$ be such that $\alpha^2=0$. We claim that 
+	$\alpha=0$. Since $\alpha^2=0$, 
+	\[
+		(1-\alpha)(1+\alpha)=1-\alpha^2=1, 
+	\]
+	it follows that $1-\alpha$ is a unit of $K[G]$. Since units of $K[G]$ are 
+	trivial, there exist $\lambda\in K\setminus\{0\}$ and $g\in G$ such that 
+	$1-\alpha=\lambda g$. If $g\ne 1$, then 
+	\[
+		0=\alpha^2=(1-\lambda g)^2=1-2\lambda g+\lambda^2g^2,
+	\]
+	a contradiction. Therefore $g=1$ and hence $\alpha=1-\lambda\in K$. Since
+	$K$ is a field, one concludes that $\alpha=0$.
 \end{proof}
 
-Our proof of Theorem \ref{thm:Gardam} is exactly 
-as that of \cite{MR4334981}. 
+We now prove that an affirmative solution to the Units Problem
+~\ref{prob:units} also yields a solution to the Jacobson Semisimplicity Problem
+~\ref{prob:J}. 
+
+\begin{theorem}
+	Let $G$ be a non-trivial group. Assume that $K[G]$ has only trivial units. 
+	If $|K|>2$ or $|G|>2$, then $J(K[G])=\{0\}$.
+\end{theorem}
+
+\begin{proof}
+	Let $\alpha\in J(K[G])$. There exist $\lambda\in K\setminus\{0\}$ and $g\in
+	G$ such that $1-\alpha=\lambda g$. Assume that $g\ne 1$.  If $|K|\geq3$,
+	then there exist $\mu\in K\setminus\{0,1\}$ such that
+	\[
+		1-\alpha\mu=1-\mu+\lambda\mu g 
+	\]
+	is a non-trivial unit, a contradiction.
+	If $|G|\geq3$, there exists $h\in G\setminus\{1,g^{-1}\}$ such that
+	$1-\alpha h=1-h+\lambda gh$ is a non-trivial unit, a contradiction.  Thus
+	$g=1$ and hence $\alpha=1-\lambda\in K$. Therefore $1+\alpha h$ is a
+	trivial unit for all $h\ne 1$ and hence 	$\alpha=0$.
+\end{proof}
 
 \begin{exercise}
-     Let $p$ be a prime number and $\F_p$ be the field of size $p$. 
-     Use the technique 
-     for proving Gardam's theorem to prove Murray's theorem
-     on the existence 
-     on non-trivial units in $\F_p[P]$. 
-     Reference: \href{https://arxiv.org/abs/2106.02147}{arXiv:2106.02147}. 
+	Prove that if $G=\langle g\rangle\simeq\Z/2$, then 
+	$J(\F_2[G])=\{0,g-1\}\ne\{0\}$. 
 \end{exercise}
 
+\topic{Passman's theorem}
 
+Now we prove that an affirmative solution 
+to the Units Problem 
+(Open Problem~\ref{prob:units}) 
+yields a solution to 
+Open Problem~\ref{prob:dominio} about zero divisors in group algebras.
+The proof is hard and requires some preliminaries. We first need
+to discuss a group theoretical tool known as the \emph{transfer map}. 
 
+If $H$ is a subgroup of $G$, a \textbf{transversal} of $H$ in $G$ is a complete
+set of coset representatives of $G/H$. 
 
+\begin{theorem}
+	\label{thm:transfer}
+	Let $G$ be a group and $H$ be a finite-index subgroup of $G$. The map 	
+	\[
+		\nu\colon G\to H/[H,H],\quad
+		g\mapsto d(Rg,R),
+	\]
+	does not depend on the transversal $R$ of $H$ in $G$ and it is a group
+	homomorphism. 
+\end{theorem}
+
+To prove the theorem we first need a lemma. 
+
+\begin{lemma}
+	\label{lem:d}
+	Let $G$ be a group and $H$ be a subgroup of $G$ of finite index.  Let $R$
+	and $S$ be transversals of $H$ in $G$ and let $\alpha\colon H\to H/[H,H]$
+	be the canonical map. Then 
+	\[
+		d(R,S)=\prod \alpha(rs^{-1}),
+	\]
+	where the product is taken over all pairs 
+	$(r,s)\in R\times S$ such that $Hr=Hs$,
+	is well-defined and satisfies the following properties:
+	\begin{enumerate}
+		\item $d(R,S)^{-1}=d(S,R)$.
+		\item $d(R,S)d(S,T)=d(R,T)$ for all transversal $T$ of $H$ in $G$.
+		\item $d(Rg,Sg)=d(R,S)$.
+		\item $d(Rg,R)=d(Sg,S)$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	The product that defines $d(R,S)$ is well-defined since $H/[H,H]$ is 
+	an abelian group. The first three claim are trivial. Let us prove
+	4). By 2), 
+	\[
+		d(Rg,Sg)d(Sg,S)d(S,R)=d(Rg,S)d(S,R)=d(Rg,R).
+	\]
+	Since $H/[H,H]$ is abelian, 1) and 3) imply that 	
+	\[
+		d(Rg,Sg)d(Sg,S)d(S,R)=d(R,S)d(S,R)d(Sg,S)=d(Sg,S).\qedhere
+	\]
+\end{proof}
+
+We are know ready to prove the theorem: 
+
+\begin{proof}[Proof of Theorem \ref{thm:transfer}]
+	The lemma implies that the map does not depend on the transversal used. 
+	Moreover, $\nu$ is a group homomorphism, as 
+	\begin{align*}
+		\nu(gh)&=d(R(gh),R)
+		=d(R(gh),Rh)d(Rh,R)
+		=d(Rg,R)d(Rh,R)=\nu(g)\nu(h).\qedhere
+	\end{align*}
+\end{proof}
+
+The theorem justifies the following definition: 
+
+\begin{definition}
+	Let $G$ be a group and $H$ be a finite-index subgroup of $G$. The
+	\textbf{transfer map} of $G$ in $H$ is the group homomorphism 
+	\[
+		\nu\colon G\to H/[H,H],
+		\quad
+		g\mapsto d(Rg,R),
+	\]
+	of Theorem~\ref{thm:transfer}, where $R$ is some transversal of $H$ in $G$.
+\end{definition}
+
+We need methods for computing the transfer map. If $H$ is a subgroup of 
+$G$
+and $(G:H)=n$, let $T=\{x_1,\dots,x_n\}$ be a transversal of $H$. For $g\in G$ let  
+\[
+	\nu(g)=\prod \alpha(xy^{-1}),
+\]
+where the product is taken over all pairs $(x,y)\in (Tg,T)$ such that $Hx=Hy$
+and $\alpha\colon H\to H/[H,H]$ is the canonical map. 
+If we write 
+$x=x_ig$ for some $i\in\{1,\dots,n\}$, then  
+$Hx_ig=Hx_{\sigma(i)}$ for some permutation $\sigma\in\Sym_n$. Thus 
+\[
+	\nu(g)=\prod_{i=1}^n\alpha(x_igx_{\sigma(i)}^{-1}).
+\]
+
+\begin{lemma}
+	\label{lem:transfer}
+	Let $G$ be a group and $H$ be a subgroup such that $(G:H)=n$. Let 
+	$T$ be a transversal of $H$ in $G$. 
+	For each $g\in G$ there exist $k$ and 
+	positive integers 
+	$n_1,\dots,n_k$ such that $n_1+\cdots+n_k=n$ and elements 
+	$t_1,\dots,t_k\in T$ such that  
+	\[
+		\nu(g)=\prod_{i=1}^k \alpha(t_ig^{n_i}t_i^{-1}),
+	\]
+	where $\alpha\colon H\to H/[H,H]$ is the canonical map.
+\end{lemma}
+
+\begin{proof}
+	There exists $\sigma\in\Sym_n$ such that 
+	\[
+	\nu(g)=\prod_{i=1}^n t_igt_{\sigma(i)}^{-1}. 
+	\]
+	Write $\sigma$ as a product of $k$ disjoint cycles
+	$\sigma=\alpha_1\cdots\alpha_k$, where each $\alpha_j$ is a cycle of length 
+	$n_j$. For every cycle of the form $(i_1\cdots i_{n_j})$
+	we reorder the product in such a way that 
+	\[
+		\alpha(x_{i_1}gx_{i_2}^{-1})\alpha(x_{i_2}gx_{i_3}^{-1})\cdots \alpha(x_{i_{n_j}}gx_{i_1}^{-1})=\alpha(x_{i_1}g^{n_1}x_{i_1}^{-1}).
+	\]
+	There exist $t_1,\dots,t_k\in T$ such that 
+	$\nu(g)=\prod_{j=1}^k t_ig^{n_i}t_i^{-1}$. 
+\end{proof}
+
+El morfismo de transferencia nos permite demostrar el siguiente
+lema:
+
+\begin{lemma}
+	\label{lem:center}
+	Si $G$ es un grupo tal que su centro $Z(G)$ tiene índice finito $n$, entonces
+	$(gh)^n=g^nh^n$ para todo $g,h\in G$.	
+\end{lemma}
+
+\begin{proof}
+	Sea $g\in G$.  Por el lema~\ref{lem:transfer} sabemos que existen enteros
+	positivos $n_1,\dots,n_k$ tales que $n_1+\cdots+n_k=n$ y elementos
+	$t_1,\dots,t_k$ de un transversal de $Z(G)$ en $G$ tales que 
+	\[
+		\nu(g)=\prod_{i=1}^k \alpha(t_ig^{n_1}t_i^{-1}),
+	\]
+	donde $\alpha\colon G\to H/[H,H]$ es el morfismo canónico.  Como
+	$g^{n_i}\in Z(G)$ para todo $i\in\{1,\dots,k\}$ (pues $t_ig^{n_i}t_i^{-1}\in Z(G)$), se sigue que
+	$\nu(g)=g^{n_1+\cdots+n_k}=g^n$.  Como $\nu$ es un morfismo de
+	grupos por el teorema~\ref{thm:transfer}, se concluye que
+	\[
+		(gh)^n=\nu(gh)=\nu(g)\nu(h)=g^nh^n. 
+	\]
+\end{proof}
+
+Dado un grupo $G$ consideramos 
+el subconjunto
+\[
+	\Delta(G)=\{g\in G:(G:C_G(g))<\infty\}.
+\]
+
+\begin{exercise}
+	Demuestre que $\Delta(\Delta(G))=\Delta(G)$.
+\end{exercise}
+
+\begin{lemma}
+	Si $G$ es un grupo, entonces $\Delta(G)$ es un subgrupo característico de
+	$G$.
+\end{lemma}
+
+\begin{proof}
+	Primero veamos que $\Delta(G)$ es un subgrupo de $G$. Si $x,y\in\Delta(G)$
+	y $g\in G$, entonces $g(xy^{-1})g^{-1}=(gxg^{-1})(gyg^{-1})^{-1}$. Además
+	$1\in\Delta(G)$. Veamos ahora que $\Delta(G)$ es característico en $G$. Si
+	$f\in\Aut(G)$ y $x\in G$, entonces, como $f(gxg^{-1})=f(g)f(x)f(g)^{-1}$,
+	se concluye que $f(x)\in\Delta(G)$.
+\end{proof}
+
+\begin{exercise}
+	Demuestre que si $G=\langle r,s:s^2=1,srs=r^{-1}\rangle$ es el grupo
+	diedral infinito, entonces $\Delta(G)=\langle r\rangle$.
+\end{exercise}
+
+\begin{exercise}
+	Sean $H$ y $K$ subgrupos de $G$ de índice finito. Demuestre que 
+	\[
+	(G:H\cap K)\leq (G:H)(G:K). 
+	\]
+\end{exercise}
+
+\begin{lemma}
+	\label{lem:FCabeliano}
+	Si $G$ es un grupo sin torsión tal que $\Delta(G)=G$, entonces $G$ es
+	abeliano.
+\end{lemma}
+
+\begin{proof}
+	Sean $x,y\in G$ y sea $S=\langle x,y\rangle$. El grupo $Z(S)=C_S(x)\cap C_S(y)$ tiene
+	índice finito, digamos $n$, en $S$. Como por el lema~\ref{lem:center} la
+	función $S\to Z(S)$, $s\mapsto s^n$, es un morfismo de grupos, se tiene que 
+	\[
+		[x,y]^n=(xyx^{-1}y^{-1})^n=x^ny^nx^{-n}y^{-n}=1
+	\]
+	pues $x^n\in Z(S)$. Como $G$ es libre de torsión, $[x,y]=1$.
+\end{proof}
+
+\begin{lemma}[Neumann]
+	\index{Lema!de Neumann}
+	\label{lem:Neumann}
+	Sean $H_1,\dots,H_m$ subgrupos de $G$. Supongamos que existen finitos elementos 
+	$a_{ij}\in G$, $1\leq i\leq m$, $1\leq j\leq n$, tales que 
+	\[
+		G=\bigcup_{i=1}^m\bigcup_{j=1}^n H_ia_{ij}.
+	\]
+	Entonces algún $H_i$ tiene índice finito en $G$.
+\end{lemma}
+
+\begin{proof}
+	Procederemos por inducción en $m$. El caso $m=1$ es trivial. Supongamos
+	entonces que $m\geq2$. Si $(G:H_1)=\infty$, existe $b\in G$ tal que 
+	\[
+		Hb\cap\left(
+	\bigcup_{j=1}^nH_1a_{1j}\right)=\emptyset.
+	\]
+	Como entonces $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, se concluye que
+	\[
+		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n Ha_{ij}b^{-1}a_{1k}.
+	\]
+	Luego $G$ puede cubrirse con finitas coclases de $H_2,\dots,H_m$ y por hipótesis inductiva 
+	alguno de estos $H_j$ tiene índice finito en $G$.
+\end{proof}
+
+Veremos ahora un operador de proyección del álgebra de grupo. Si $G$ es un
+grupo y $H$ es un subgrupo de $G$, se define
+\[
+	\pi_H\colon K[G]\to K[H],\quad
+	\pi_H\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in H}\lambda_gg.
+\]
+
+\begin{exercise}
+	Sea $G$ un grupo y sea $H$ un subgrupo de $G$. Demuestre que si $\alpha\in
+	K[G]$, entonces $\pi_H$ es un morfismo de $(K[H],K[H])$-bimódulos con las
+	multiplicaciones a izquierda y a derecha, es decir:
+	\[
+		\pi_H(\beta\alpha\gamma)=\beta\pi_H(\alpha)\gamma
+	\]
+	para todo 
+	$\beta,\gamma\in K[H]$.
 \end{exercise}
 
 %\begin{proof}
