@@ -219,124 +219,140 @@ $Hx_ig=Hx_{\sigma(i)}$ for some permutation $\sigma\in\Sym_n$. Thus
 	$\nu(g)=\prod_{j=1}^k t_ig^{n_i}t_i^{-1}$. 
 \end{proof}
 
-El morfismo de transferencia nos permite demostrar el siguiente
-lema:
+An application:
 
-\begin{lemma}
-	\label{lem:center}
-	Si $G$ es un grupo tal que su centro $Z(G)$ tiene índice finito $n$, entonces
-	$(gh)^n=g^nh^n$ para todo $g,h\in G$.	
-\end{lemma}
+\begin{proposition}
+	\label{pro:center}
+	If $G$ is a group such that $Z(G)$ has finite index $n$, then
+	$(gh)^n=g^nh^n$ for all $g,h\in G$.	
+\end{proposition}
 
 \begin{proof}
-	Sea $g\in G$.  Por el lema~\ref{lem:transfer} sabemos que existen enteros
-	positivos $n_1,\dots,n_k$ tales que $n_1+\cdots+n_k=n$ y elementos
-	$t_1,\dots,t_k$ de un transversal de $Z(G)$ en $G$ tales que 
+	Let $g\in G$. By Lemma~\ref{lem:transfer} there are positive integers 
+    $n_1,\dots,n_k$ such that $n_1+\cdots+n_k=n$ and elements 
+	$t_1,\dots,t_k$ of a transversal of $Z(G)$ in $G$ such that 
 	\[
 		\nu(g)=\prod_{i=1}^k \alpha(t_ig^{n_1}t_i^{-1}),
 	\]
-	donde $\alpha\colon G\to H/[H,H]$ es el morfismo canónico.  Como
-	$g^{n_i}\in Z(G)$ para todo $i\in\{1,\dots,k\}$ (pues $t_ig^{n_i}t_i^{-1}\in Z(G)$), se sigue que
-	$\nu(g)=g^{n_1+\cdots+n_k}=g^n$.  Como $\nu$ es un morfismo de
-	grupos por el teorema~\ref{thm:transfer}, se concluye que
+	where $\alpha\colon G\to H/[H,H]$ is the canonical map. Since
+	$g^{n_i}\in Z(G)$ for all $i\in\{1,\dots,k\}$ (as $t_ig^{n_i}t_i^{-1}\in Z(G)$), 
+	it follows that 
+	$\nu(g)=g^{n_1+\cdots+n_k}=g^n$.  Since $\nu$ is a group homomorphism by 
+	Theorem~\ref{thm:transfer}, we conclude that 
 	\[
-		(gh)^n=\nu(gh)=\nu(g)\nu(h)=g^nh^n. 
+		(gh)^n=\nu(gh)=\nu(g)\nu(h)=g^nh^n. \qedhere 
 	\]
 \end{proof}
 
-Dado un grupo $G$ consideramos 
-el subconjunto
+For a group $G$ we consider 
 \[
 	\Delta(G)=\{g\in G:(G:C_G(g))<\infty\}.
 \]
 
 \begin{exercise}
-	Demuestre que $\Delta(\Delta(G))=\Delta(G)$.
+	Prove that $\Delta(\Delta(G))=\Delta(G)$.
 \end{exercise}
 
 \begin{lemma}
-	Si $G$ es un grupo, entonces $\Delta(G)$ es un subgrupo característico de
-	$G$.
+	If $G$ is a group, then $\Delta(G)$ 
+	is a characteristic subgroup of $G$.
 \end{lemma}
 
 \begin{proof}
-	Primero veamos que $\Delta(G)$ es un subgrupo de $G$. Si $x,y\in\Delta(G)$
-	y $g\in G$, entonces $g(xy^{-1})g^{-1}=(gxg^{-1})(gyg^{-1})^{-1}$. Además
-	$1\in\Delta(G)$. Veamos ahora que $\Delta(G)$ es característico en $G$. Si
-	$f\in\Aut(G)$ y $x\in G$, entonces, como $f(gxg^{-1})=f(g)f(x)f(g)^{-1}$,
-	se concluye que $f(x)\in\Delta(G)$.
+	We first prove that $\Delta(G)$ is a subgroup of $G$. If $x,y\in\Delta(G)$
+	and $g\in G$, then $g(xy^{-1})g^{-1}=(gxg^{-1})(gyg^{-1})^{-1}$. Moreover, 
+	$1\in\Delta(G)$. Let us show now that $\Delta(G)$ is characteristic in $G$. If 
+	$f\in\Aut(G)$ and $x\in G$, then, since 
+	\[
+	f(gxg^{-1})=f(g)f(x)f(g)^{-1},
+	\]
+	it follows that $f(x)\in\Delta(G)$.
 \end{proof}
 
 \begin{exercise}
-	Demuestre que si $G=\langle r,s:s^2=1,srs=r^{-1}\rangle$ es el grupo
-	diedral infinito, entonces $\Delta(G)=\langle r\rangle$.
+	Prove that if $G=\langle r,s:s^2=1,srs=r^{-1}\rangle$ is the
+	infinite dihedral group, then $\Delta(G)=\langle r\rangle$.
 \end{exercise}
 
 \begin{exercise}
-	Sean $H$ y $K$ subgrupos de $G$ de índice finito. Demuestre que 
+	Let $H$ and $K$ be finite-index subgroups of $G$. Prove that
 	\[
 	(G:H\cap K)\leq (G:H)(G:K). 
 	\]
 \end{exercise}
 
-\begin{lemma}
-	\label{lem:FCabeliano}
-	Si $G$ es un grupo sin torsión tal que $\Delta(G)=G$, entonces $G$ es
-	abeliano.
-\end{lemma}
+An application: 
+
+\begin{proposition}
+	\label{pro:FCabeliano}
+	If $G$ is a torsion-free group such 
+	that $\Delta(G)=G$, then $G$ is abelian.
+\end{proposition}
 
 \begin{proof}
-	Sean $x,y\in G$ y sea $S=\langle x,y\rangle$. El grupo $Z(S)=C_S(x)\cap C_S(y)$ tiene
-	índice finito, digamos $n$, en $S$. Como por el lema~\ref{lem:center} la
-	función $S\to Z(S)$, $s\mapsto s^n$, es un morfismo de grupos, se tiene que 
+	Let $x,y\in G$ and $S=\langle x,y\rangle$. The group $Z(S)=C_S(x)\cap C_S(y)$ has 
+	finite index, say $n$, in $S$. By Proposition~\ref{pro:center}, 
+	the map $S\to Z(S)$, $s\mapsto s^n$, is a group homomorphism. Thus  
 	\[
 		[x,y]^n=(xyx^{-1}y^{-1})^n=x^ny^nx^{-n}y^{-n}=1
 	\]
-	pues $x^n\in Z(S)$. Como $G$ es libre de torsión, $[x,y]=1$.
+	as $x^n\in Z(S)$. Since $G$ is torsion-free, $[x,y]=1$.
 \end{proof}
 
 \begin{lemma}[Neumann]
 	\index{Lema!de Neumann}
 	\label{lem:Neumann}
-	Sean $H_1,\dots,H_m$ subgrupos de $G$. Supongamos que existen finitos elementos 
-	$a_{ij}\in G$, $1\leq i\leq m$, $1\leq j\leq n$, tales que 
+	Let $H_1,\dots,H_m$ be subgroups of $G$. 
+	Assume there are finitely many elements
+	$a_{ij}\in G$, $1\leq i\leq m$, $1\leq j\leq n$, such that 
 	\[
 		G=\bigcup_{i=1}^m\bigcup_{j=1}^n H_ia_{ij}.
 	\]
-	Entonces algún $H_i$ tiene índice finito en $G$.
+	Then some $H_i$ has finite index in $G$.
 \end{lemma}
 
 \begin{proof}
-	Procederemos por inducción en $m$. El caso $m=1$ es trivial. Supongamos
-	entonces que $m\geq2$. Si $(G:H_1)=\infty$, existe $b\in G$ tal que 
+	We proceed by induction on $m$. The case $m=1$ is trivial. 
+	Let us assume that $m\geq2$. If $(G:H_1)=\infty$, there exists $b\in G$
+	such that 
 	\[
 		Hb\cap\left(
 	\bigcup_{j=1}^nH_1a_{1j}\right)=\emptyset.
 	\]
-	Como entonces $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, se concluye que
+	Since $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, 
+	it follows that 
 	\[
 		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n Ha_{ij}b^{-1}a_{1k}.
 	\]
-	Luego $G$ puede cubrirse con finitas coclases de $H_2,\dots,H_m$ y por hipótesis inductiva 
-	alguno de estos $H_j$ tiene índice finito en $G$.
+	Hence $G$ can be covered by finitely many cosets of $H_2,\dots,H_m$. By the inductive hypothesis, 
+	some of these $H_j$ has finite index in $G$.
 \end{proof}
 
-Veremos ahora un operador de proyección del álgebra de grupo. Si $G$ es un
-grupo y $H$ es un subgrupo de $G$, se define
+We now consider a projection operator of group algebras. If $G$ 
+is a group and $H$ is a subgroup of $G$, let 
 \[
 	\pi_H\colon K[G]\to K[H],\quad
 	\pi_H\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in H}\lambda_gg.
 \]
 
+If $R$ and $S$ are rings, a $(R,S)$-bimodule is an abelian group
+$M$ that is both a left $R$-module and a right $S$-module 
+and the compatibility condition 
+\[
+(rm)s = r(ms)
+\]
+holds for all $r\in R$, $s\in S$ and $m\in M$.
+
+
 \begin{exercise}
-	Sea $G$ un grupo y sea $H$ un subgrupo de $G$. Demuestre que si $\alpha\in
-	K[G]$, entonces $\pi_H$ es un morfismo de $(K[H],K[H])$-bimódulos con las
-	multiplicaciones a izquierda y a derecha, es decir:
+	Let $G$ be a group and $H$ be a subgroup of $G$. Prove that
+	if $\alpha\in
+	K[G]$, then $\pi_H$ is a $(K[H],K[H])$-bimodule homomorphism
+	with usual left and right multiplications,
 	\[
 		\pi_H(\beta\alpha\gamma)=\beta\pi_H(\alpha)\gamma
 	\]
-	para todo 
-	$\beta,\gamma\in K[H]$.
+	for all $\beta,\gamma\in K[H]$.
 \end{exercise}
 
 %\begin{proof}
@@ -349,36 +365,36 @@ grupo y $H$ es un subgrupo de $G$, se define
 
 \begin{lemma}
 	\label{lem:escritura}
-	Sea $X$ un transversal a izquierda de $H$ en $G$. Todo $\alpha\in K[G]$ se
-	escribe unívocamente como 
+	Let $X$ be a left transversal of $H$ in $G$. Every $\alpha\in K[G]$ can be written
+	uniquely as 
 	\[
 	\alpha=\sum_{x\in X}x\alpha_x,
 	\]
-	donde $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$.
+	where $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$.
 \end{lemma}
 
 \begin{proof}
-	Sea $\alpha\in K[G]$. Como $\supp\alpha$ es finito, $\supp\alpha$ está
-	contenido en finitas coclases de $H$, digamos $x_1H,\dots,x_nH$, donde los
-	$x_j$ son elementos de $X$. Escribimos $\alpha=\alpha_1+\cdots+\alpha_n$,
-	donde $\alpha_i=\sum_{g\in x_iH}\lambda_gg$. Si $g\in x_iH$, entonces
-	$x_i^{-1}g\in H$ y luego podemos escribir
+	Let $\alpha\in K[G]$. Since $\supp\alpha$ is finite, $\supp\alpha$ is contained 
+    in finitely many cosets of $H$, say $x_1H,\dots,x_nH$, where each 
+	$x_j$ belongs to $X$. Write $\alpha=\alpha_1+\cdots+\alpha_n$,
+	where $\alpha_i=\sum_{g\in x_iH}\lambda_gg$. If $g\in x_iH$, then 
+	$x_i^{-1}g\in H$ and hence 
 	\[
 		\alpha=\sum_{i=1}^n x_i(x_i^{-1}\alpha_i)=\sum_{x\in X}x\alpha_x
 	\]
-	con $\alpha_x\in K[H]$ para todo $x\in X$. Para la unicidad observemos que
-	para cada $x\in X$ gracias al ejercicio anterior se tiene 
+	with $\alpha_x\in K[H]$ for all $x\in X$. For the uniqueness, note that 
+	for each  $x\in X$ the previous exercise implies that  
 	\[
 		\pi_H(x^{-1}\alpha)
 		=\pi_H\left(\sum_{y\in X}x^{-1}y\alpha_y\right)
-		=\sum_{y\in X}\pi_H(x^{-1}y)\alpha_y=\alpha_x
+		=\sum_{y\in X}\pi_H(x^{-1}y)\alpha_y=\alpha_x, 
 	\]
-	pues 
+	as  
 	\[
 		\pi_H(x^{-1}y)=\begin{cases}
 		1 & \text{si $x=y$},\\
 		0 & \text{si $x\ne y$}.
-	\end{cases}
+	\end{cases}\qedhere 
 	\]
 \end{proof}
 
