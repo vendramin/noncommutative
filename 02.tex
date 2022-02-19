@@ -896,6 +896,120 @@ A$ y $b,b_1\in B$ implica que $a=a_1$ y $b=b_1$.
 	libre de torsión.
 \end{exercise}
 
+The converse does not hold. 
+Promislow's group is a celebrated counterexample.
+
+\begin{theorem}[Promislow]
+    The 
+    group $G=\langle a,b:a^{-1}b^2a=b^{-2},b^{-1}a^2b=a^{-2}\rangle$
+    does not have the unique product property.
+\end{theorem}
+
+\begin{proof}
+    Let 
+    \begin{multline}
+    \label{eq:Promislow}
+    S=\{ a^2b,
+    b^2a,
+    aba^{-1},
+    (b^2a)^{-1},
+    (ab)^{-2},
+    b,
+    (ab)^2x,
+    (ab)^2,
+    (aba)^{-1},\\
+    bab,
+    b^{-1},
+    a,
+    aba,
+    a^{-1}
+    \}.
+    \end{multline}
+    We use \textsf{GAP} and the representation $G\to\GL(4,\Q)$ given by 
+    \[
+a\mapsto\begin{pmatrix}
+1 & 0 & 0 & 1/2\\
+0 & -1 & 0 & 1/2\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix},
+\quad
+b\mapsto\begin{pmatrix}
+-1 & 0 & 0 & 0\\
+0 & 1 & 0 & 1/2\\
+0 & 0 & -1 & 1/2\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+    to check that 
+    $G$ does not have
+    unique product property, as each 
+    \[
+    s\in S^2=\{s_1s_2:s_1,s_2\in S\}
+    \]
+    admits at least two different decompositions of the 
+    form $s=xy=uv$ for $x,y,u,v\in S$. 
+    We first create the matrix representations of $a$ and $b$.
+\begin{lstlisting}
+gap> a := [[1,0,0,1/2],[0,-1,0,1/2],[0,0,-1,0],[0,0,0,1]];;
+gap> b := [[-1,0,0,0],[0,1,0,1/2],[0,0,-1,1/2],[0,0,0,1]];;
+\end{lstlisting}
+    Now we create
+    a function that produces the set $S$.
+\begin{lstlisting}
+gap> Promislow := function(x, y)
+> return Set([
+> x^2*y,
+> y^2*x,
+  x*y*Inverse(x),
+  (y^2*x)^(-1),
+  (x*y)^(-2),
+  y,
+  (x*y)^2*x,
+  (x*y)^2,
+  (x*y*x)^(-1),
+  y*x*y,
+  y^(-1),
+  x,
+  x*y*x,
+  x^(-1)
+]);
+end;;
+\end{lstlisting}
+So the set $S$ of \eqref{eq:Promislow} 
+will be \lstinline{Promislow(a,b)}. We now
+create a function that checks whether
+every element of a Promislow subset 
+admits more than one representation.
+\begin{lstlisting}
+gap> is_UPP := function(S)
+> local l,x,y;
+> l := [];
+> for x in S do
+> for y in S do
+> Add(l,x*y);
+> od;
+> od;
+> if ForAll(Collected(l), x->x[2] <> 1) then
+> return false;
+> else
+> return fail;
+> fi;
+> end;;
+\end{lstlisting}
+Finally, we check whether every element of 
+$S$ admits more than one representation.
+\begin{lstlisting}
+gap> S := Promislow(a,b);;
+gap> is_UPP(S);
+false
+\end{lstlisting}
+This completes the proof. 
+\end{proof}
+
+There are other examples. 
+
+
 \begin{definition}
 	Se dice que un grupo $G$ tiene la \textbf{propiedad del doble producto
 	único} si dados dos subconjuntos $A,B\subseteq G$ finitos y no vacíos tales
