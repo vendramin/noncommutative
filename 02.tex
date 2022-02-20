@@ -403,28 +403,29 @@ holds for all $r\in R$, $s\in S$ and $m\in M$.
 
 \begin{lemma}
 	\label{lem:ideal_pi}
-	Sea $G$ un grupo y $H$ un subgrupo de $G$.  Si $I$ es un ideal a izquierda
-	no nulo de $K[G]$, entonces $\pi_H(I)\ne 0$.
+	Let $G$ be a group and $H$ be a subgroup of $G$. If $I$ is a non-zero 
+	left ideal
+	of $K[G]$, then  $\pi_H(I)\ne 0$.
 \end{lemma}
 
 \begin{proof}
-	Sea $X$ un transversal a izquierda de $H$ en $G$ y sea $\alpha\in I\setminus\{0\}$. Por
-	el lema~\ref{lem:escritura} podemos escribir $\alpha=\sum_{x\in
-	X}x\alpha_x$ con $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$ para todo $x\in X$.
-	Como $\alpha\ne0$, existe $y\in X$ tal que $0\ne
-	\alpha_y=\pi_H(y^{-1}\alpha)\in\pi_H(I)$ ($y^{-1}\alpha\in I$ pues $I$ es
-	un ideal a izquierda).
+	Let $X$ be a left transversal of $H$ in $G$ and $\alpha\in I\setminus\{0\}$. By Lemma
+	\ref{lem:escritura} we can write $\alpha=\sum_{x\in
+	X}x\alpha_x$ with $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$ for all $x\in X$.
+	Since $\alpha\ne0$, there exists $y\in X$ such that $0\ne
+	\alpha_y=\pi_H(y^{-1}\alpha)\in\pi_H(I)$ ($y^{-1}\alpha\in I$ since $I$ is 
+    a left ideal).
 \end{proof}
 
-Antes de avanzar, veamos una aplicación del operador de proyección:
+Another application:
 
 \begin{proposition}
-	Sean $G$ un grupo, $H$ un subgrupo de $G$ y $\alpha\in K[H]$. Valen las siguientes afirmaciones:
+	Let $G$ be a group, $H$ be a subgroup of $G$ and $\alpha\in K[H]$. The following statements hold:
 	\begin{enumerate}
-		\item $\alpha$ es inversible en $K[H]$ si y sólo si $\alpha$ es
-			inversible en $K[G]$.
-		\item $\alpha$ es un divisor de cero en $K[H]$ si y sólo si $\alpha$ es
-			un divisor de cero en $K[G]$.
+		\item $\alpha$ is invertible in $K[H]$ if and only if $\alpha$ is
+			invertible in $K[G]$.
+		\item $\alpha$ is a zero divisor of $K[H]$ if and only if $\alpha$ is  
+			a zero divisor of $K[G]$.
 	\end{enumerate}
 \end{proposition}
 
@@ -1009,6 +1010,57 @@ This completes the proof.
 
 There are other examples. 
 
+% Let $G=\langle x,y:x^{-1}y^2xy^2=x^{-2}yx^{-2}y^3=1\rangle$. 
+% We first construct the group and a certain normal
+% subgroup $N$ of index eight. 
+
+% \begin{lstlisting}
+% gap> f := FreeGroup(2);;
+% gap> x := f.1;;
+% gap> y := f.2;;
+% gap> rels := [Inverse(x)*y^2*x*y^2, Inverse(x^2)*y*Inverse(x^2)*y^3];;
+% gap> G := f/rels;;
+% gap> x := G.1;;
+% gap> y := G.2;;
+% gap> N := Subgroup(G, [y*x*Inverse(x*y), y^2, x^4]);
+% gap> IsNormal(N,G);
+% true
+% gap> StructureDescription(G/N);
+% "C4 x C2"
+% \end{lstlisting}
+% The subgroup $N$ has a nice presentation. It can be presented
+% as the group 
+% \[
+% N=\langle x_1,x_2,x_3:[x_1,x_2]=[x_1,x_3]=1,\,x_3x_2=x_2x_3x_1^8\rangle.
+% \]
+% \begin{lstlisting}
+% gap> g := IsomorphismFpGroup(N);
+% gap> RelatorsOfFpGroup(Image(g));
+% [ F3*F1*F3^-1*F1^-1, F2*F1*F2^-1*F1^-1, F1*F3^-1*F1^5*F2*F1^2*F3*F2^-1 ]
+% \end{lstlisting}
+% From these relations
+% one proves by induction that 
+% \begin{align}
+%     x_3^bx_2^a=x_2^ax_3^bx_1^{8ab}
+% \end{align}
+% for all $a,b\in\Z$. 
+% % First induction in $n_1$, then induction in $n_2$. 
+% It follows that every element of $N$ 
+% is of the form $x_1^{n_1}x_2^{n_2}x_3^{n_3}$ 
+% for $n_1,n_2,n_3\in\Z$. Moreover, 
+% \[
+% (x_1^{n_1}x_2^{n_2}x_3^{n_3})^k=x_1^{kn_1+(k-1)8n_2n_3}x_2^{kn_2}x_3^{kn_3}
+% \]
+% for all $k\in\Z$. Note that $x_1^8$ is a commutator. Moreover, 
+% $N/[N,N]\simeq\Z\times\Z\times\Z/8$. This implies that
+% $N$ is torsion-free. Let us prove that $G$ is torsion-free. 
+% Let $\pi\colon G\to G/N$ be the canonical map. Let 
+% $g\in G$ be a torsion element, in particular $g\not\in N$
+% and hence $\pi(g)\ne 1$. So $\pi(g)$ has order two 
+% or four. Without loss of generality we may assume that
+% $\pi(g)$ has order two.  
+% Then $\pi(g^2)=\pi(g)^2=y^2=1$ and hence 
+% $g^2\in N$. Since $N$ is torsion free, it follows that $g=1$. 
 
 \begin{definition}
 	Se dice que un grupo $G$ tiene la \textbf{propiedad del doble producto
