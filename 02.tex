@@ -430,97 +430,105 @@ Another application:
 \end{proposition}
 
 \begin{proof}
-	Si $\alpha$ es inversible en $K[G]$, existe $\beta\in K[G]$ tal que
-	$\alpha\beta=\beta\alpha=1$. Al aplicar $\pi_H$ y usar que $\pi_H$ es un
-	morfismo de $(K[H],K[H])$-bimódulos, 
+	If $\alpha$ is invertible in $K[G]$, there exists $\beta\in K[G]$ such that 
+	$\alpha\beta=\beta\alpha=1$. Apply $\pi_H$ and use that $\pi_H$ 
+	is a $(K[H],K[H])$-bimodule homomorphism to obtain  
 	\[
 		\alpha\pi_H(\beta)=\pi_H(\alpha\beta)=\pi_H(1)=1=\pi_H(1)=\pi_H(\beta\alpha)=\pi_H(\beta)\alpha.
 	\]
-	Si $\alpha\beta=0$ para algún $\beta\in K[G]\setminus\{0\}$, sea $g\in G$
-	tal que $1\in\supp(\beta g)$. Como $\alpha(\beta g)=0$, 
+	
+	Assume now that $\alpha\beta=0$ for some $\beta\in K[G]\setminus\{0\}$. Let $g\in G$
+	be such that $1\in\supp(\beta g)$. Since $\alpha(\beta g)=0$, 
 	\[
 		0=\pi_H(0)=\pi_H(\alpha(\beta g))=\alpha\pi_H(\beta g),
 	\]
-	donde $\pi_H(\beta g)\in K[H]\setminus\{0\}$ pues $1\in\supp(\beta g)$. 
+	where $\pi_H(\beta g)\in K[H]\setminus\{0\}$, as $1\in\supp(\beta g)$. 
 \end{proof}
 
 \begin{lemma}[Passman]
 	\index{Lema!de Passman}
 	\label{lem:Passman}
-	Sea $G$ un grupo y sean  
-	$\gamma_1,\gamma_2\in K[G]$ con $\gamma_1K[G]\gamma_2=0$.
-	Entonces $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=0$.
+	Let $G$ be a group and 
+	$\gamma_1,\gamma_2\in K[G]$ be such that $\gamma_1K[G]\gamma_2=0$.
+	Then $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=0$.
 \end{lemma}
 
 \begin{proof}
-	Basta ver que $\pi_{\Delta(G)}(\gamma_1)\gamma_2=0$ pues en este caso 
+	It is enough to show that $\pi_{\Delta(G)}(\gamma_1)\gamma_2=0$, 
+	as in this case
 	\[
 		0=\pi_{\Delta(G)}(\pi_{\Delta(G)}(\gamma_1)\gamma_2)=\pi_{\Delta}(\gamma_1)\pi_{\Delta(G)}(\gamma_2).
 	\]
-	Escribimos $\gamma_1=\alpha_1+\beta_1$, donde 
+	Write $\gamma_1=\alpha_1+\beta_1$, where 
 	\begin{align*}
 		&\alpha_1=a_1u_1+\cdots+a_ru_r, && u_1,\dots,u_r\in\Delta(G),\\
 		&\beta_1=b_1v_1+\cdots+b_sv_s, && v_1,\dots,v_s\not\in\Delta(G),\\
 		&\gamma_2=c_1w_1+\cdots+c_tw_t,&& w_1,\dots,w_t\in G.
 	\end{align*}
-	El subgrupo $C=\bigcap_{i=1}^rC_G(u_i)$ tiene índice finito en $G$.
-	Supongamos que 
+	The subgroup $C=\bigcap_{i=1}^rC_G(u_i)$ has finite index in $G$.
+	Assume that 
 	\[
-		0\ne \pi_{\Delta}(\gamma_1)\gamma_2=\alpha_1\gamma_2
+		0\ne \pi_{\Delta}(\gamma_1)\gamma_2=\alpha_1\gamma_2. 
 	\]
-	y sea $g\in\supp(\alpha_1\gamma_2)$. 
-	Si $v_i$ es conjugado de algún
-	$gw_j^{-1}$ en $G$, sea $g_{ij}\in G$ tal que
-	$g_{ij}^{-1}v_ig_{ij}=gw_j^{-1}$. Si $v_i$ y $gw_j^{-1}$ no son conjugados
-	tomamos $g_{ij}=1$. 
+	Let $g\in\supp(\alpha_1\gamma_2)$. 
+	If $v_i$ is a conjugate in $G$ of some 
+	$gw_j^{-1}$, let $g_{ij}\in G$ be such that
+	$g_{ij}^{-1}v_ig_{ij}=gw_j^{-1}$. If $v_i$ and $gw_j^{-1}$ 
+	are not conjugate, 
+	we take $g_{ij}=1$. 
 
-	Para cada $x\in C$ se tiene $\alpha_1\gamma_2=(x^{-1}\alpha_1x)\gamma_2$. Como además 
+	For every $x\in C$ it follows that
+	$\alpha_1\gamma_2=(x^{-1}\alpha_1x)\gamma_2$. Since  
 	\[
 		x^{-1}\gamma_1x\gamma_2\in x^{-1}\gamma_1K[G]\gamma_2=0,
 	\]
-	tenemos 
+	it follows that
 	\begin{align*}
 		(a_1u_1+\cdots+a_ru_r)\gamma_2&=
 		\alpha_1\gamma_2=x^{-1}\alpha_1x\gamma_2=-x^{-1}\beta_1x\gamma_2\\
 		&=-x^{-1}(b_1v_1+\cdots+b_sv_r)x(c_1w_1+\cdots+c_tw_t).
 	\end{align*}
-	Como $g\in\supp(\alpha_1\gamma_2)$, existen $i,j$ tales que $g=x^{-1}v_ixw_j$.
-	Luego $v_i$ y $gw_j^{-1}$ son conjugados y entonces 
-	$x^{-1}v_ix=gw_j^{-1}=g_{ij}^{-1}v_ig_{ij}$, es decir $x\in C_G(v_i)g_{ij}$. Esto demuestra que
+	Now $g\in\supp(\alpha_1\gamma_2)$ implies that there exist $i,j$ such that
+	$g=x^{-1}v_ixw_j$.
+	Thus $v_i$ and $gw_j^{-1}$ are conjugate and hence
+	$x^{-1}v_ix=gw_j^{-1}=g_{ij}^{-1}v_ig_{ij}$, that is
+	$x\in C_G(v_i)g_{ij}$. This proves that 
 	\[
-		C\subseteq\bigcup_{i,j}C_G(v_i)g_{ij}
+		C\subseteq\bigcup_{i,j}C_G(v_i)g_{ij}. 
 	\]
-	y como $C$ tiene índice finito en $G$, esto implica que $G$ puede cubrirse
-	con finitas coclases de los $C_G(v_i)$. Pero como $v_i\not\in\Delta(G)$, cada
-	uno de los $C_G(v_i)$ tiene índice infinito en $G$, una contradicción al lema
-	de Neumann.
+	Since $C$ has finite index in $G$, it follows that 
+	$G$ can be covered by finitely many cosets of 
+	the $C_G(v_i)$. Every $v_i\not\in\Delta(G)$, so 
+	each $C_G(v_i)$ has infinite index in $G$, a contradiction 
+	to Neumann's lemma.
 \end{proof}
 
 \begin{theorem}
-	Sea $G$ un grupo sin torsión. Si $K[G]$ es reducido, entonces $K[G]$ es un
-	dominio.	
+	Let $G$ be a torsion-free group. If 
+	$K[G]$ is reduced, then $K[G]$ is a domain.
 \end{theorem}
 
 \begin{proof}
-	Supongamos que $K[G]$ no es un dominio y sean $\gamma_1,\gamma_2\in K[G]\setminus\{0\}$
-	tales que $\gamma_2\gamma_1=0$. Si $\alpha\in K[G]$, entonces
+	Assume that $K[G]$ is not a domain. Let $\gamma_1,\gamma_2\in K[G]\setminus\{0\}$
+	be such that $\gamma_2\gamma_1=0$. If $\alpha\in K[G]$, then
 	\[
 		(\gamma_1\alpha\gamma_2)^2=\gamma_1\alpha\gamma_2\gamma_1\alpha\gamma_2=0
 	\]
-	y luego $\gamma_1\alpha\gamma_2=0$ pues $K[G]$ es reducido. En particular,
-	$\gamma_1K[G]\gamma_2=0$. Sea $I$ el ideal a izquierda de $K[G]$ generado
-	por $\gamma_2$. Como $I\ne 0$, $\pi_{\Delta(G)}(I)\ne 0$ por el lema~\ref{lem:ideal_pi}
-	y luego $\pi_{\Delta(G)}(\beta\gamma_2)\ne 0$ para algún $\beta\in K[G]$. Similarmente se demuestra que
-	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne 0$ para algún $\alpha\in K[G]$. Como
+	and thus $\gamma_1\alpha\gamma_2=0$, as $K[G]$ is reduced. In particular, 
+	$\gamma_1K[G]\gamma_2=0$. Let $I$ be the left ideal of $K[G]$ generated 
+	by $\gamma_2$. Since $I\ne 0$, $\pi_{\Delta(G)}(I)\ne 0$ by Lemma~\ref{lem:ideal_pi}
+	and hence  $\pi_{\Delta(G)}(\beta\gamma_2)\ne 0$ for some $\beta\in K[G]$. 
+	Similarly, 
+	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne 0$ for some $\alpha\in K[G]$. Since 
 	\[
 		\gamma_1\alpha K[G]\beta\gamma_2\subseteq \gamma_1 K[G]\gamma_2=0,
 	\]
-	se tiene que $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=0$ por
-	el lema de Passman. Luego $K[\Delta(G)]$ tiene divisores de cero, una contradicción 
-	pues $\Delta(G)$ es un grupo abeliano.
+    it follows that $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=0$
+    by Passman's lemma. Hence $K[\Delta(G)]$ has zero divisors, a contradictions
+    since $\Delta(G)$ is an abelian group.
 \end{proof}
 
-\section{Grupos (bi)ordenables}
+\section{Biordered groups}
 
 En esta sección estudiaremos algunas propiedades del grupo $G$ motivadas por el
 análisis que se hizo en el ejemplo~\ref{example:k[Z]}.
