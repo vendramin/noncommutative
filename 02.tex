@@ -528,120 +528,164 @@ Another application:
     since $\Delta(G)$ is an abelian group.
 \end{proof}
 
-\section{Biordered groups}
+\section{Bi-ordered groups}
 
-En esta sección estudiaremos algunas propiedades del grupo $G$ motivadas por el
-análisis que se hizo en el ejemplo~\ref{example:k[Z]}.
+Based on Example~\ref{example:k[Z]} we will study 
+some properties of groups. 
+
+Recall that a \textbf{total order} is a partial order in which any two elements are comparable. This
+means that a total order is a binary relation $\leq$ on some set $X$ 
+such that for all $x,y,z\in X$ one has 
+\begin{enumerate}
+    \item $x\leq x$.
+    \item $x\leq y$ and $y\leq z$ imply $x\leq z$.
+    \item $x\leq y$ and $y\leq x$ imply $x=y$.
+    \item $x\leq y$ or $y\leq x$. 
+\end{enumerate}
+A set equipped with a total order is a \textbf{totally ordered set}. 
 
 \begin{definition}
-	\index{Grupo!biordenable}
-	Un grupo $G$ se dice \textbf{biordenable} si existe un orden total $<$ en $G$
-	tal que $x<y$ implica que $xz<yz$ y $zx<zy$ para todo $x,y,z\in G$.
+	\index{Group!bi-ordered}
+	A group $G$ is \textbf{bi-ordered} if there exists a total order 
+	$<$ in $G$
+	such that $x<y$ implies that $xz<yz$ and $zx<zy$ for all $x,y,z\in G$.
 \end{definition}
 
 \begin{example}
-	El grupo $\R_{>0}$ de números reales positivos es biordenable.
+	The group $\R_{>0}$ of positive real numbers is bi-ordered. 
 \end{example}
 
 \begin{exercise}
-	Sea $G$ un grupo biordenable y sean $x,x',y,y'\in G$. Demuestre que si
-	$x<y$ y $x'<y'$, entonces $xx'<yy'$.
+	Let $G$ be a bi-ordered group and $x,x_1,y,y_1\in G$. Prove that
+	$x<y$ and $x_1<y_1$ imply $xx_1<yy_1$.
 \end{exercise}
 
 \begin{exercise}
-	Sea $G$ un grupo biordenable y sean $g,h\in G$. Demuestre que si $g^n=h^n$
-	para algún $n>0$ entonces $g=h$.
+	Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n=h^n$
+	for some $n>0$ implies $g=h$.
 \end{exercise}
 
 \begin{definition}
-	Sea $G$ un grupo biordenable. El cono positivo es el conjunto $P(G)=\{x\in
+	Let $G$ be a bi-ordered group. The \textbf{positive cone} of $G$  
+	is the set $P(G)=\{x\in
 	G:1<x\}$.
 \end{definition}
 
-\begin{lemma}
-	\label{lemma:biordenableP1}
-	Sea $G$ un grupo biordenable con cono positivo $P$. Entonces
-	\begin{enumerate}
-		\item $P$ es cerrado para la multiplicación.
-		\item $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta).
-		\item $xPx^{-1}=P$ para todo $x\in G$.
-	\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-	Si $x,y\in P$ y $z\in G$, entonces, como $1<x$ y además $1<y$, se tiene que
-	$1<xy$.  Luego $1=z1z^{-1}<zxz^{-1}$. Queda demostrar entonces la segunda
-	afirmación: Si $g\in G$, entonces $g=1$ o $g>1$ o $g<1$. Como $g<1$ y si
-	sólo si $1<g^{-1}$. 
-\end{proof}
-
-\begin{lemma}
-	\label{lem:biordenableP2}
-	Sea $G$ un grupo y sea $P$ un subconjunto de $G$ cerrado para la
-	multiplicación y tal que $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta) y
-	$xPx^{-1}=P$ para todo $x\in G$. Si definimos $x<y$ si y sólo si
-	$yx^{-1}\in P$, entonces $G$ resulta biordenable con cono positivo $P$.
-\end{lemma}
-
-\begin{proof}
-	Sean $x,y\in G$. Como $yx^{-1}\in G$ y sabemos que $G=P\cup
-	P^{-1}\cup\{1\}$ (unión disjunta), se tiene exactamente alguna de las
-	siguientes tres posibilidades: $yx^{-1}\in P$, $xy^{-1}=(yx^{-1})^{-1}\in
-	P$ o bien $yx^{-1}=1$. Luego $x<y$, $y<x$ o bien $x=y$. Si $x<y$ y $z\in
-	G$, entonces $zx<zy$ pues $(zy)(zx)^{-1}=z(yx^{-1})z^{-1}\in P$ ya que
-	$zPz^{-1}=P$. Además $xz<yz$ pues $(yz)(xz)^{-1}=yx^{-1}\in P$. Para demostrar que 
-	que $P$ es el cono positivo de este biorden en $G$ basta observar que
-	$x1^{-1}=x\in P$ si y sólo si $1<x$. 
-\end{proof}
+Let us state some properties of positive cones. 
 
 \begin{proposition}
-	\label{pro:BOsintorsion}
-	Todo grupo biordenable es libre de torsión.
+	\label{pro:biordenableP1}
+	Let $G$ be a bi-ordered group and let $P$ be its positive cone. 
+	\begin{enumerate}
+		\item $P$ is closed under multiplication, i.e. $PP\subseteq P$. 
+		\item $G=P\cup P^{-1}\cup \{1\}$ (disjoint union).
+		\item $xPx^{-1}=P$ for all $x\in G$.
+	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-	Sea $G$ un grupo biordenable y sea $g\in G\setminus\{1\}$. 
-	Si $g>1$, entonces 
-	$1<g<g^2<\cdots$. Si $g<1$, entonces $1>g>g^2>\cdots$. Luego $g^n\ne 1$ para todo $n\ne 0$. 
+	If $x,y\in P$ and $z\in G$, then, since $1<x$ and $1<y$, it follows that 
+	$1<xy$.  Thus $1=z1z^{-1}<zxz^{-1}$. It remains to prove the second claim.  
+	If $g\in G$, then $g=1$ or $g>1$ or $g<1$. Note that $g<1$ if and only if 
+	$1<g^{-1}$, so the claim follows. 
 \end{proof}
 
+The previous proposition admits a converse statement. 
+
+\begin{proposition}
+	\label{pro:biordenableP2}
+	Let $G$ be a group and $P$ be a subset of $G$ such that 
+	$P$ is closed under multiplication, $G=P\cup P^{-1}\cup \{1\}$ (disjoint union) and
+	$xPx^{-1}=P$ for all $x\in G$. Let $x<y$ whenever  
+	$yx^{-1}\in P$. Then $G$ is bi-ordered with positive
+	cone is $P$.
+\end{proposition}
+
+\begin{proof}
+	Let $x,y\in G$. Since $yx^{-1}\in G$ and $G=P\cup
+	P^{-1}\cup\{1\}$ (disjoint union), 
+	either $yx^{-1}\in P$ or $xy^{-1}=(yx^{-1})^{-1}\in
+	P$ or $yx^{-1}=1$. Thus either $x<y$ or $y<x$ or $x=y$. If $x<y$ and $z\in
+	G$, then $zx<zy$, as $(zy)(zx)^{-1}=z(yx^{-1})z^{-1}\in P$ and  
+	$zPz^{-1}=P$. Moreover, $xz<yz$ since $(yz)(xz)^{-1}=yx^{-1}\in P$. To prove
+	that $P$ is the positive cone of $G$ note that 
+	$x1^{-1}=x\in P$ if and only if $1<x$. 
+\end{proof}
+
+An important property:
+
+\begin{proposition}
+	\label{pro:BOsintorsion}
+	Bi-ordered groups are torsion-free.
+\end{proposition}
+
+\begin{proof}
+	Let $G$ be a bi-ordered group and $g\in G\setminus\{1\}$. 
+	If $g>1$, then
+	$1<g<g^2<\cdots$. If $g<1$, then $1>g>g^2>\cdots$. Hence $g^n\ne 1$ 
+	for all $n\ne 0$. 
+\end{proof}
+
+The converse of the previous proposition does not hold. 
+
+\begin{exercise}
+Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$. 
+\begin{enumerate}
+    \item Prove that $x$ and $y$ are torsion-free. 
+    \item Prove that $G$ is torsion-free. 
+    \item Prove that $G\simeq \langle a,b:a^2=b^2\rangle$.
+\end{enumerate}
+\end{exercise}
+
+% To prove that $x$ is torsion-free, use the group homomorphism $G\to\Z$
+% given by $x\mapsto 1$, $y\mapsto 0$. To prove that $y$ is torsion-free
+% use the group homomorphism $x\mapsto\begin{pmatrix}-1&0\\0&1\end{pmatrix}$,
+% $y\mapsto\begin{pmatrix}1&1\\0&1\end{pmatrix}$. 
+
+% 	We first show that $G\simeq\langle a,b:a^2=b^2\rangle$. For that purpose, 
+% 	it is enough to check that 
+% 	the map $G\to \langle a,b:a^2=b^2\rangle$, $x\mapsto a$, $y\mapsto ab^{-1}$, 
+% 	is a well-defined group homomorphism with inverse
+% 	$\langle a,b:a^2=b^2\rangle\to G$, $a\mapsto x$, $b\mapsto y^{-1}x$. 
+
 \begin{example}
-	El grupo $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$ no es biordenable y es libre de torsión. 
-	Supongamos que $G$ es biordenable y sea $P$ su cono positivo. Si $x\in P$
-	entonces $yxy^{-1}=x^{-1}\in P$, una contradicción. Entonces $x^{-1}\in P$
-	y luego $x=y^{-1}x^{-1}y\in P$, una contradicción.
+	The torsion-free group $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$ is not bi-ordered. 
+	If not, let $P$ 
+	be the positive cone. If $x\in P$, 
+	then $yxy^{-1}=x^{-1}\in P$, a contradiction. Hence $x^{-1}\in P$
+	and $x=y^{-1}x^{-1}y\in P$, a contradiction.
 \end{example}
 
 \begin{theorem}
 	\label{thm:BO}
-	Sea $G$ un grupo biordenable. Entonces $K[G]$ es un dominio tal que
-	solamente tiene unidades triviales. Más aún, si $G$ es no trivial,
-	$J(K[G])=0$. 
+	Let $G$ be a bi-ordered group. Then $K[G]$ is a domain such that
+	only has trivial units. Moreover, if $G$ is non-trivial, 
+	then $J(K[G])=\{0\}$. 
 \end{theorem}
 
 \begin{proof}
-	Sean $\alpha,\beta\in K[G]$ tales que 
+	Let $\alpha,\beta\in K[G]$ be such that  
 	\begin{align*}
 		\alpha&=\sum_{i=1}^m a_ig_i, && g_1<g_2<\cdots<g_m,&& a_i\ne 0 && \forall i\in\{1,\dots,m\},\\
 		\beta&=\sum_{j=1}^n b_jh_j, && h_1<h_2<\cdots<h_n, && b_j\ne 0 && \forall j\in\{1,\dots,n\}.
 	\end{align*}
-	Entonces 
+	Then 
 	\[
 		g_1h_1\leq g_ih_j\leq g_mh_n
 	\]
-	para todo $i,j$. Además $g_1h_1=g_ih_j$ si y sólo si $i=j=1$. El
-	coeficiente de $g_1h_1$ en $\alpha\beta$ es $a_1b_1\ne 0$ y en particular
-	$\alpha\beta\ne0$. Si $\alpha\beta=\beta\alpha=1$, entonces el coefciente
-	de $g_mh_n$ en $\alpha\beta$ es $a_mb_n$ y luego $m=n=1$ y por lo tanto
-	$\alpha=a_1g_1$ y $\beta=b_1h_1$ con $a_1b_1=b_1a_1=1$ en $K$ y $g_1h_1=1$
-	en $G$.
+	for all $i,j$. Moreover, $g_1h_1=g_ih_j$ if and only if $i=j=1$. The
+	coefficient of $g_1h_1$ in $\alpha\beta$ is $a_1b_1\ne 0$. In particular, 
+	$\alpha\beta\ne0$. If $\alpha\beta=\beta\alpha=1$, then the coefficient of
+	$g_mh_n$ in $\alpha\beta$ is $a_mb_n$. Hence $m=n=1$ and therefore 
+	$\alpha=a_1g_1$ and $\beta=b_1h_1$ with $a_1b_1=b_1a_1=1$ in $K$ and $g_1h_1=1$
+	in $G$.
 \end{proof}
 
 \begin{theorem}[Levi]
 	\label{thm:Levi}
-	\index{Teorema!de Levi}
-	Sea $A$ un grupo abeliano. Entonces $A$ es biordenable si y sólo si $A$ es
-	libre de torsión.
+	\index{Levi's theorem}
+	Let $A$ be an abeliang roup. Then $A$ is bi-ordered if and only
+	if $A$ is torsion-free.
 \end{theorem}
 
 \begin{proof}
@@ -709,6 +753,8 @@ análisis que se hizo en el ejemplo~\ref{example:k[Z]}.
 \begin{proof}
 	Es consecuencia del teorema de Levi y del teorema~\ref{thm:BO}.
 \end{proof}
+
+\topic{Left-ordered groups}
 
 \begin{definition}
 	\index{Grupo!ordenable a derecha}
