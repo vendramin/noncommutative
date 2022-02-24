@@ -1,8 +1,99 @@
 \chapter{}
 
+We now describe some very-well known open problems
+in the theory of group rings and the connection between 
+them. 
+
+\begin{definition}
 \index{Ring!reduced}
 A ring $R$ is \textbf{reduced} if for all $r\in R$ such that 
-$r^2=0$ one has $r=0$. 
+$r^2=0$ one has $r=0$.
+\end{definition}
+
+% \topic{Andrunakevic--Rjabuhin's theorem}
+%https://ysharifi.wordpress.com/2010/06/04/about-reduced-rings-1/
+% \begin{exercise}
+% \label{xca:reduced}
+%     Let $R$ be a ring and $I$ be an ideal of $R$.
+%     Prove that $I$ is prime if and only if $xRy\subseteq I$ implies
+%     either $x\in I$ or $y\in I$. 
+% \end{exercise}
+
+% \begin{sol}{xca:reduced}
+%     Let $A$ and $B$ be ideals such that $AB\subseteq I$. If 
+%     $A\not\subseteq I$ and $B\not\subseteq J$, let 
+%     $x\in A\setminus P$ and $y\in B\setminus P$. Then
+%     $xRy\subseteq AB\subseteq I$, a contradiction. 
+%     Conversely, if $xRy\subseteq I$ and $x\not I$ and $y\not\in I$, 
+%     then $A=(x)\not\subseteq I$ and $B=(y)\not\subseteq P$.
+% \end{sol}
+
+Integral domains and boolean rings are reduced. $\Z/8$ 
+and $M_2(\R)$ are not reduced. 
+
+\begin{example}
+    $\Z^n$ with $(a_1,\dots,a_n)(b_1,\dots,b_n)=(a_1b_1,\dots,a_nb_n)$
+    is reduced. 
+\end{example}
+
+The structure of 
+reduced rings is described by
+Andrunakevic--Rjabuhin's theorem. It states
+that a ring is reduced if and only if
+it is a subdirect products of domains. See
+\cite[3.20.5]{MR2015465} for a proof. 
+
+% \begin{theorem}[Andrunakevic--Rjabuhin]
+% \index{Andrunakevic--Rjabuhin's theorem}
+% 	Let $R$ be a non-zero ring. Then $R$ is reduced if and only 
+% 	if $R$ is a subdirect product of domains.
+% \end{theorem}
+
+% We shall need some lemmas. 
+
+% \begin{lemma}
+%     Let $P$ be a minimal prime ideal of $R$. Then 
+%     $S=R\setminus P$ is multiplicatively closed if and only if
+%     $s_1\cdots s_k\ne 0$ for all $k\geq 1$ and $s_1,\dots,s_k\in S$. 
+% \end{lemma}
+
+% \begin{proof}
+%     Let $T=\{s_1\cdots s_k:k\geq 1,s_1,\dots,s_k\in S\}$. Clearly $T$ 
+%     is multiplicatively closed and $S\subseteq T$. We claim that 
+%     $T\subseteq S$. Let $X=\{I:\text{$I$ is an ideal of $R$ such that $I\cap T=\emptyset$}\}$. 
+%     Then $X\ne\emptyset$, as $\{0\}\in X$. If $C$ is a chain in $X$, then
+%     $\cup_{I\in C}I$ is an upper bound, so there exists a maximal element $Q\in X$ 
+%     by Zorn's lemma. It is an exercise to show that $Q$ is prime. Since 
+%     $Q\cap T=\emptyset$, it follows that $Q\cap S=\emptyset$, that is $Q\subseteq P$. 
+%     Since $P$ is minimal, $P=Q\in X$. In particular, $T\subseteq S$. 
+% \end{proof}
+
+% \begin{lemma}
+%     Let $P$ be a minimal prime ideal of $R$. 
+%     Then $R/P$ is a domain.
+% \end{lemma}
+
+% \begin{proof}
+    
+% \end{proof}
+
+
+% \begin{proof}
+% 	If $R$ is reduced, then every prime ideal contains a minimal prime ideal. 
+% 	Thus $\cap_{i\in I}P'_i=\{0\}$, where $\{P'_i:\in I\}$ is the collection
+% 	of minimal prime ideals. Then each $R/P'_i$ is a domain and 
+% 	there is an injective map $R\to\prod_{i\in I}R/P'_i$. 
+	
+% 	Supongamos ahora que $R$ es producto subdirecto de la familia $\{R_i:i\in I\}$ de dominios. Sea 
+% 	$f\colon R\to \prod_{i\in I}R_i$, $f(x)=(x_i)_{i\in I}$, el morfismo inyectivo. 
+% 	Si $x\in R$ es tal que $x^2=0$ entonces 
+% 	\[
+% 		(0)_{i\in I}=f(0)=f(x^2)=f(x)^2=(x_i^2)_{i\in I}
+% 	\]
+% 	y luego, como cada $R_i$ es un dominio, se concluye que $x_i=0$ para todo
+% 	$i\in I$.
+% \end{proof}
+
 
 \begin{problem}
 	\label{prob:reducido}
@@ -13,7 +104,7 @@ $r^2=0$ one has $r=0$.
 \begin{problem}[Semisimplicity]
 	\label{prob:J}
 	Let $G$ be a torsion-free group. It is true that 
-	$J(K[G])=0$ if $G$ is non-trivial?
+	$J(K[G])=\{0\}$ if $G$ is non-trivial?
 \end{problem}
 
 \begin{problem}[Idempotents]
@@ -684,75 +775,99 @@ Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$.
 \begin{theorem}[Levi]
 	\label{thm:Levi}
 	\index{Levi's theorem}
-	Let $A$ be an abeliang roup. Then $A$ is bi-ordered if and only
+	Let $A$ be an abelian group. Then $A$ is bi-ordered if and only
 	if $A$ is torsion-free.
 \end{theorem}
 
 \begin{proof}
-	Si $A$ es biordenable, entonces $A$ no tiene torsión por la
-	proposición~\ref{pro:BOsintorsion}. Supongamos entonces que $A$ es un grupo
-	abeliano sin torsión y veamos que es biordenable.  Sea $\mathcal{S}$ la
-	clase de subconjuntos $P$ de $A$ tales que $0\in P$, $P$ es cerrado para la
-	suma de $A$ y cumplen con la siguiente propiedad: si $x\in P$ y $-x\in P$,
-	entonces $x=0$.
-	Claramente $\mathcal{S}$ es no vacía pues
-	$\{0\}\in\mathcal{S}$.  Si ordenamos parcialmente a $\mathcal{S}$ con la
-	inclusión, vemos que el elemento $\bigcup_{i\in I}P_i$ es una cota superior
-	para la cadena $P_1\subseteq P_2\subseteq\cdots$ de $\mathcal{S}$. Por el
-	lema de Zorn, $\mathcal{S}$ tiene un elemento maximal $P\in\mathcal{S}$.
+	If $A$ is bi-ordered, then $A$ is torsion-free. Let us prove the non-trivial implication, 
+	so assume that
+	$A$ is torsion-free abelian. Let $\mathcal{S}$ be the class 
+	of subsets $P$ of $A$ such that $0\in P$, are closed under 
+	the addition of
+	$A$ and satisfy the following property: if $x\in P$ and $-x\in P$,
+	then $x=0$.
+	Clearly, $\mathcal{S}\ne\emptyset$, as 
+	$\{0\}\in\mathcal{S}$.  The inclusion turns $\mathcal{S}$ into a partially ordered set  
+	and $\bigcup_{i\in I}P_i$ is an upper bound for the chain 
+	$\{P_i:i\in I\}$. By Zorn's lemma, 
+	$\mathcal{S}$ admits a maximal element $P\in\mathcal{S}$.
 
 	\begin{claim}
-		Si $x\in A$ es tal que $kx\in P$ para algún $k>0$, entonces $x\in P$.		
+		If $x\in A$ is such that $kx\in P$ for some $k>0$, then  $x\in P$.		
 	\end{claim}
 
-	Para demostrar la afirmación sea $Q=\{x\in A:kx\in P\text{ para algún
-	$k>0$}\}$. Veamos que $Q\in\mathcal{S}$.  Trivialmente $0\in Q$. Además $Q$
-	es cerrado por la adición: si $k_1x_1\in P$ y $k_2x_2\in P$ entonces
-	$k_1k_2(x_1+x_2)\in P$. Sea $x\in A$ tal que $x\in Q$ y $-x\in Q$. Entonces
-	$kx\in P$ y $l(-x)\in P$ para algún $l>0$. Como entonces $klx\in P$ y
-	$kl(-x)\in P$, se concluye que $klx=0$, una contradicción pues $A$ no tiene
-	torsión. Luego $x\in Q\subseteq P$. 
+	Let $Q=\{x\in A:kx\in P\text{ for some 
+	$k>0$}\}$. We will show that $Q\in\mathcal{S}$.  Clearly, $0\in Q$. Moreover, $Q$
+	is closed under addition, as $k_1x_1\in P$ and $k_2x_2\in P$ imply 
+	$k_1k_2(x_1+x_2)\in P$. Let $x\in A$ be such that $x\in Q$ and $-x\in Q$. Thus 
+	$kx\in P$ and $l(-x)\in P$ for some $l>0$. Since $klx\in P$ and 
+	$kl(-x)\in P$, it follows that $klx=0$, a contradiction since $A$ is torsion-free. 
+	Hence $x\in Q\subseteq P$. 
 
 	\begin{claim}
-		Si $x\in A$ es tal que $x\not\in P$ entonces $-x\in P$. 	
+		If $x\in A$ is such that $x\not\in P$, then $-x\in P$. 	
 	\end{claim}
 
-	Supongamos que $-x\not\in P$ y sea $P_1=\{y+nx:y\in P,\,n\geq0\}$. Vamos a
-	ver que $P_1\in\mathcal{S}$.  Claramente $0\in P_1$ y $P_1$ es cerrado para
-	la suma. Si $P_1\not\in S$ 
-	existe 
+	Assume that $-x\not\in P$ and let $P_1=\{y+nx:y\in P,\,n\geq0\}$. We will
+	show that  $P_1\in\mathcal{S}$.  Clearly, $0\in P_1$ and $P_1$ is closed under
+	addition. If $P_1\not\in S$, there exists 
 	\[
 		0\ne y_1+n_1x=-(y_2+n_2x),
 	\]
-	donde $y_1,y_2\in P$ y $n_1,n_2\geq0$. Entonces $y_1+y_2=-(n_1+n_2)x$. Si
-	$n_1=n_2=0$, entonces $y_1=-y_2\in P$ y luego $y_1=y_2=0$ y se concluye que
-	$y_1+n_1x=0$, una contradicción. Si $n_1+n_2>0$, entonces, como 
+	where $y_1,y_2\in P$ and $n_1,n_2\geq0$. Thus $y_1+y_2=-(n_1+n_2)x$. If 
+	$n_1=n_2=0$, then $y_1=-y_2\in P$ and $y_1=y_2=0$, so it follows that
+	$y_1+n_1x=0$, a contradiction. If $n_1+n_2>0$, then, since 
 	\[
 		(n_1+n_2)(-x)=y_1+y_2\in P,
 	\]
-	la primera afirmación que hicimos implica que $-x\in P$, una contradicción. 
-	Demostramos entonces que $P_1\in\mathcal{S}$. 
-	Como $P\subseteq P_1$, la maximalidad de $P$ implica que 
+	it follows from the first claim that $-x\in P$, a contradiction. 
+	Let us show that $P_1\in\mathcal{S}$. 
+	Since $P\subseteq P_1$, the maximality of $P$ implies that 
 	$x\in P=P_1$.
 
 	\medskip
-	Gracias al lema~\ref{lem:biordenableP2} sabemos que el conjunto
-	$P^*=P\setminus\{0\}$ que construimos es en realidad el cono positivo de un
-	biorden en $A$. En efecto, $P^*$ es cerrado para la suma pues si $x,y\in
-	P^*$, entonces $x+y\in P$ y si $x+y=0$ entonces, como $x=-y\in P$, se
-	concluye que $x=y=0$. Además $G=P^*\cup -P^*\cup\{0\}$ (unión disjunta)
-	pues demostramos en la segunda afirmación que si $x\not\in P^*$ entonces
+	By Proposition~\ref{pro:biordenableP2}, 
+	$P^*=P\setminus\{0\}$ is the positive cone of a bi-order in $A$. 
+	In fact, $P^*$ is closed under addition, as $x,y\in
+	P^*$ implies that $x+y\in P$ and $x+y=0$ implies $x=y=0$, as $x=-y\in P$. Moreover,
+	$G=P^*\cup -P^*\cup\{0\}$ (disjoint union), as 
+	the second claim states that $x\not\in P^*$ implies 
 	$-x\in P$. 
 \end{proof}
 
 \begin{corollary}
-	Sea $A$ un grupo abeliano no trivial y sin torsión. Entonces $K[A]$ es un
-	dominio tal que solamente tiene unidades triviales y $J(K[A])=0$. 
+	Let $A$ be a non-trivial torsion-free abelian group. Then $K[A]$ 
+	is a domain that only admits trivial units and $J(K[A])=\{0\}$. 
 \end{corollary}
 
 \begin{proof}
-	Es consecuencia del teorema de Levi y del teorema~\ref{thm:BO}.
+	Apply Levi's theorem and Theorem~\ref{thm:BO}.
 \end{proof}
+
+Some exercises.
+
+\begin{exercise}
+    Let $N$ be a central subgroup of $G$. If $N$ and $G/N$ are bi-ordered, 
+    then $G$ is bi-ordered. Prove with an example that $N$ needs to be central, normal 
+    is not enough. 
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group that admits 
+    a sequence 
+    \[
+    \{1\}=G_0\subseteq G_1\subseteq\cdots\subseteq G_n=G
+    \]
+    such that
+    each $G_k$ is normal in $G_{k+1}$ and each quotient $G_{k+1}/G_k$ is 
+    torsion-free abelian. Prove that $G$ is bi-ordered.  
+\end{exercise}
+
+\begin{exercise}
+    Prove that torsion-free nilpotent groups are bi-ordered. 
+\end{exercise}
+
 
 \topic{Left-ordered groups}
 
@@ -1016,18 +1131,18 @@ gap> Promislow := function(x, y)
 > return Set([
 > x^2*y,
 > y^2*x,
-  x*y*Inverse(x),
-  (y^2*x)^(-1),
-  (x*y)^(-2),
-  y,
-  (x*y)^2*x,
-  (x*y)^2,
-  (x*y*x)^(-1),
-  y*x*y,
-  y^(-1),
-  x,
-  x*y*x,
-  x^(-1)
+> x*y*Inverse(x),
+> (y^2*x)^(-1),
+> (x*y)^(-2),
+> y,
+> (x*y)^2*x,
+> (x*y)^2,
+> (x*y*x)^(-1),
+> y*x*y,
+> y^(-1),
+> x,
+> x*y*x,
+> x^(-1)
 ]);
 end;;
 \end{lstlisting}
