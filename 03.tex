@@ -1,0 +1,248 @@
+\chapter{}
+
+\begin{proposition}
+	\label{pro:FCabeliano}
+	If $G$ is a torsion-free group such 
+	that $\Delta(G)=G$, then $G$ is abelian.
+\end{proposition}
+
+\begin{proof}
+	Let $x,y\in G$ and $S=\langle x,y\rangle$. The group $Z(S)=C_S(x)\cap C_S(y)$ has 
+	finite index, say $n$, in $S$. By Proposition~\ref{pro:center}, 
+	the map $S\to Z(S)$, $s\mapsto s^n$, is a group homomorphism. Thus  
+	\[
+		[x,y]^n=(xyx^{-1}y^{-1})^n=x^ny^nx^{-n}y^{-n}=1
+	\]
+	as $x^n\in Z(S)$. Since $G$ is torsion-free, $[x,y]=1$.
+\end{proof}
+
+\begin{lemma}[Neumann]
+	\index{Lema!de Neumann}
+	\label{lem:Neumann}
+	Let $H_1,\dots,H_m$ be subgroups of $G$. 
+	Assume there are finitely many elements
+	$a_{ij}\in G$, $1\leq i\leq m$, $1\leq j\leq n$, such that 
+	\[
+		G=\bigcup_{i=1}^m\bigcup_{j=1}^n H_ia_{ij}.
+	\]
+	Then some $H_i$ has finite index in $G$.
+\end{lemma}
+
+\begin{proof}
+	We proceed by induction on $m$. The case $m=1$ is trivial. 
+	Let us assume that $m\geq2$. If $(G:H_1)=\infty$, there exists $b\in G$
+	such that 
+	\[
+		Hb\cap\left(
+	\bigcup_{j=1}^nH_1a_{1j}\right)=\emptyset.
+	\]
+	Since $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, 
+	it follows that 
+	\[
+		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n Ha_{ij}b^{-1}a_{1k}.
+	\]
+	Hence $G$ can be covered by finitely many cosets of $H_2,\dots,H_m$. By the inductive hypothesis, 
+	some of these $H_j$ has finite index in $G$.
+\end{proof}
+
+We now consider a projection operator of group algebras. If $G$ 
+is a group and $H$ is a subgroup of $G$, let 
+\[
+	\pi_H\colon K[G]\to K[H],\quad
+	\pi_H\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in H}\lambda_gg.
+\]
+
+If $R$ and $S$ are rings, a $(R,S)$-bimodule is an abelian group
+$M$ that is both a left $R$-module and a right $S$-module 
+and the compatibility condition 
+\[
+(rm)s = r(ms)
+\]
+holds for all $r\in R$, $s\in S$ and $m\in M$.
+
+
+\begin{exercise}
+	Let $G$ be a group and $H$ be a subgroup of $G$. Prove that
+	if $\alpha\in
+	K[G]$, then $\pi_H$ is a $(K[H],K[H])$-bimodule homomorphism
+	with usual left and right multiplications,
+	\[
+		\pi_H(\beta\alpha\gamma)=\beta\pi_H(\alpha)\gamma
+	\]
+	for all $\beta,\gamma\in K[H]$.
+\end{exercise}
+
+%\begin{proof}
+%	Supongamos que $\alpha=\sum_{g\in G}\lambda_gg=\alpha_1+\alpha_2$, donde
+%	$\alpha_1=\sum_{g\not\in H}\lambda_gg$ y $\alpha_2=\sum_{g\in
+%	H}\lambda_gg=\pi_H(\alpha)$. Entonces
+%	$\beta\alpha\gamma=\beta\alpha_1\gamma+\beta\alpha_2\gamma$, donde
+%	$\beta\alpha_1\gamma\not\in K[H]$ y $\beta\alpha_2\gamma\in K[H]$.
+%\end{proof}
+
+\begin{lemma}
+	\label{lem:escritura}
+	Let $X$ be a left transversal of $H$ in $G$. Every $\alpha\in K[G]$ can be written
+	uniquely as 
+	\[
+	\alpha=\sum_{x\in X}x\alpha_x,
+	\]
+	where $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$.
+\end{lemma}
+
+\begin{proof}
+	Let $\alpha\in K[G]$. Since $\supp\alpha$ is finite, $\supp\alpha$ is contained 
+    in finitely many cosets of $H$, say $x_1H,\dots,x_nH$, where each 
+	$x_j$ belongs to $X$. Write $\alpha=\alpha_1+\cdots+\alpha_n$,
+	where $\alpha_i=\sum_{g\in x_iH}\lambda_gg$. If $g\in x_iH$, then 
+	$x_i^{-1}g\in H$ and hence 
+	\[
+		\alpha=\sum_{i=1}^n x_i(x_i^{-1}\alpha_i)=\sum_{x\in X}x\alpha_x
+	\]
+	with $\alpha_x\in K[H]$ for all $x\in X$. For the uniqueness, note that 
+	for each  $x\in X$ the previous exercise implies that  
+	\[
+		\pi_H(x^{-1}\alpha)
+		=\pi_H\left(\sum_{y\in X}x^{-1}y\alpha_y\right)
+		=\sum_{y\in X}\pi_H(x^{-1}y)\alpha_y=\alpha_x, 
+	\]
+	as  
+	\[
+		\pi_H(x^{-1}y)=\begin{cases}
+		1 & \text{si $x=y$},\\
+		0 & \text{si $x\ne y$}.
+	\end{cases}\qedhere 
+	\]
+\end{proof}
+
+%De la misma forma puede obtenerse un análogo al lema~\ref{lem:escritura} en el
+%caso en que se tenga un transversal a derecha. 
+
+\begin{lemma}
+	\label{lem:ideal_pi}
+	Let $G$ be a group and $H$ be a subgroup of $G$. If $I$ is a non-zero 
+	left ideal
+	of $K[G]$, then  $\pi_H(I)\ne 0$.
+\end{lemma}
+
+\begin{proof}
+	Let $X$ be a left transversal of $H$ in $G$ and $\alpha\in I\setminus\{0\}$. By Lemma
+	\ref{lem:escritura} we can write $\alpha=\sum_{x\in
+	X}x\alpha_x$ with $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$ for all $x\in X$.
+	Since $\alpha\ne0$, there exists $y\in X$ such that $0\ne
+	\alpha_y=\pi_H(y^{-1}\alpha)\in\pi_H(I)$ ($y^{-1}\alpha\in I$ since $I$ is 
+    a left ideal).
+\end{proof}
+
+Another application:
+
+\begin{proposition}
+	Let $G$ be a group, $H$ be a subgroup of $G$ and $\alpha\in K[H]$. The following statements hold:
+	\begin{enumerate}
+		\item $\alpha$ is invertible in $K[H]$ if and only if $\alpha$ is
+			invertible in $K[G]$.
+		\item $\alpha$ is a zero divisor of $K[H]$ if and only if $\alpha$ is  
+			a zero divisor of $K[G]$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	If $\alpha$ is invertible in $K[G]$, there exists $\beta\in K[G]$ such that 
+	$\alpha\beta=\beta\alpha=1$. Apply $\pi_H$ and use that $\pi_H$ 
+	is a $(K[H],K[H])$-bimodule homomorphism to obtain  
+	\[
+		\alpha\pi_H(\beta)=\pi_H(\alpha\beta)=\pi_H(1)=1=\pi_H(1)=\pi_H(\beta\alpha)=\pi_H(\beta)\alpha.
+	\]
+	
+	Assume now that $\alpha\beta=0$ for some $\beta\in K[G]\setminus\{0\}$. Let $g\in G$
+	be such that $1\in\supp(\beta g)$. Since $\alpha(\beta g)=0$, 
+	\[
+		0=\pi_H(0)=\pi_H(\alpha(\beta g))=\alpha\pi_H(\beta g),
+	\]
+	where $\pi_H(\beta g)\in K[H]\setminus\{0\}$, as $1\in\supp(\beta g)$. 
+\end{proof}
+
+\begin{lemma}[Passman]
+	\index{Passman's lemma}
+	\label{lem:Passman}
+	Let $G$ be a group and 
+	$\gamma_1,\gamma_2\in K[G]$ be such that $\gamma_1K[G]\gamma_2=0$.
+	Then $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=0$.
+\end{lemma}
+
+\begin{proof}
+	It is enough to show that $\pi_{\Delta(G)}(\gamma_1)\gamma_2=0$, 
+	as in this case
+	\[
+		0=\pi_{\Delta(G)}(\pi_{\Delta(G)}(\gamma_1)\gamma_2)=\pi_{\Delta}(\gamma_1)\pi_{\Delta(G)}(\gamma_2).
+	\]
+	Write $\gamma_1=\alpha_1+\beta_1$, where 
+	\begin{align*}
+		&\alpha_1=a_1u_1+\cdots+a_ru_r, && u_1,\dots,u_r\in\Delta(G),\\
+		&\beta_1=b_1v_1+\cdots+b_sv_s, && v_1,\dots,v_s\not\in\Delta(G),\\
+		&\gamma_2=c_1w_1+\cdots+c_tw_t,&& w_1,\dots,w_t\in G.
+	\end{align*}
+	The subgroup $C=\bigcap_{i=1}^rC_G(u_i)$ has finite index in $G$.
+	Assume that 
+	\[
+		0\ne \pi_{\Delta}(\gamma_1)\gamma_2=\alpha_1\gamma_2. 
+	\]
+	Let $g\in\supp(\alpha_1\gamma_2)$. 
+	If $v_i$ is a conjugate in $G$ of some 
+	$gw_j^{-1}$, let $g_{ij}\in G$ be such that
+	$g_{ij}^{-1}v_ig_{ij}=gw_j^{-1}$. If $v_i$ and $gw_j^{-1}$ 
+	are not conjugate, 
+	we take $g_{ij}=1$. 
+
+	For every $x\in C$ it follows that
+	$\alpha_1\gamma_2=(x^{-1}\alpha_1x)\gamma_2$. Since  
+	\[
+		x^{-1}\gamma_1x\gamma_2\in x^{-1}\gamma_1K[G]\gamma_2=0,
+	\]
+	it follows that
+	\begin{align*}
+		(a_1u_1+\cdots+a_ru_r)\gamma_2&=
+		\alpha_1\gamma_2=x^{-1}\alpha_1x\gamma_2=-x^{-1}\beta_1x\gamma_2\\
+		&=-x^{-1}(b_1v_1+\cdots+b_sv_r)x(c_1w_1+\cdots+c_tw_t).
+	\end{align*}
+	Now $g\in\supp(\alpha_1\gamma_2)$ implies that there exist $i,j$ such that
+	$g=x^{-1}v_ixw_j$.
+	Thus $v_i$ and $gw_j^{-1}$ are conjugate and hence
+	$x^{-1}v_ix=gw_j^{-1}=g_{ij}^{-1}v_ig_{ij}$, that is
+	$x\in C_G(v_i)g_{ij}$. This proves that 
+	\[
+		C\subseteq\bigcup_{i,j}C_G(v_i)g_{ij}. 
+	\]
+	Since $C$ has finite index in $G$, it follows that 
+	$G$ can be covered by finitely many cosets of 
+	the $C_G(v_i)$. Every $v_i\not\in\Delta(G)$, so 
+	each $C_G(v_i)$ has infinite index in $G$, a contradiction 
+	to Neumann's lemma.
+\end{proof}
+
+\begin{theorem}[Passman]
+\index{Passman's theorem}
+	Let $G$ be a torsion-free group. If 
+	$K[G]$ is reduced, then $K[G]$ is a domain.
+\end{theorem}
+
+\begin{proof}
+	Assume that $K[G]$ is not a domain. Let $\gamma_1,\gamma_2\in K[G]\setminus\{0\}$
+	be such that $\gamma_2\gamma_1=0$. If $\alpha\in K[G]$, then
+	\[
+		(\gamma_1\alpha\gamma_2)^2=\gamma_1\alpha\gamma_2\gamma_1\alpha\gamma_2=0
+	\]
+	and thus $\gamma_1\alpha\gamma_2=0$, as $K[G]$ is reduced. In particular, 
+	$\gamma_1K[G]\gamma_2=0$. Let $I$ be the left ideal of $K[G]$ generated 
+	by $\gamma_2$. Since $I\ne 0$, $\pi_{\Delta(G)}(I)\ne 0$ by Lemma~\ref{lem:ideal_pi}
+	and hence  $\pi_{\Delta(G)}(\beta\gamma_2)\ne 0$ for some $\beta\in K[G]$. 
+	Similarly, 
+	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne 0$ for some $\alpha\in K[G]$. Since 
+	\[
+		\gamma_1\alpha K[G]\beta\gamma_2\subseteq \gamma_1 K[G]\gamma_2=0,
+	\]
+    it follows that $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=0$
+    by Passman's lemma. Hence $K[\Delta(G)]$ has zero divisors, a contradictions
+    since $\Delta(G)$ is an abelian group.
+\end{proof}
+
