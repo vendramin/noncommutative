@@ -292,6 +292,15 @@ $Hx_ig=Hx_{\sigma(i)}$ for some permutation $\sigma\in\Sym_n$. Thus
 \[
 	\nu(g)=\prod_{i=1}^n\alpha(x_igx_{\sigma(i)}^{-1}).
 \]
+The cycle structure of $\sigma$ turns out to be important. 
+For example, if $\sigma=(12)(345)$, then a direct calculation shows that 
+\[
+\prod_{i=1}^n\alpha\left(x_igx_{\sigma(i)}^{-1}\right)
+=\alpha(x_1g^2x_1^{-1})\alpha(x_3g^3x_3^{-1}).
+\]
+This is precisely the content of the following lemma. 
+
+
 
 % \begin{lemma}
 % 	\label{lem:transfer}
@@ -308,7 +317,7 @@ $Hx_ig=Hx_{\sigma(i)}$ for some permutation $\sigma\in\Sym_n$. Thus
 % \end{lemma}
 
 \begin{lemma}
-	\label{lemma:transfer}
+	\label{lem:transfer}
 	Let $G$ be a group and $H$ be a subgroup of index $n$. Let 
 	$T=\{t_1,\dots,t_n\}$ be a transversal of $H$ in $G$.  For each $g\in G$ there exist 
 	$m\in\Z_{>0}$ and elements 
