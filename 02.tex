@@ -159,7 +159,7 @@ about the reducibility of group algebras.
 	\]
 	it follows that $1-\alpha$ is a unit of $K[G]$. Since units of $K[G]$ are 
 	trivial, there exist $\lambda\in K\setminus\{0\}$ and $g\in G$ such that 
-	$1-\alpha=\lambda g$. If $g\ne 1$, then 
+	$1-\alpha=\lambda g$. We claim that $g=1$. If not, 
 	\[
 		0=\alpha^2=(1-\lambda g)^2=1-2\lambda g+\lambda^2g^2,
 	\]
@@ -167,6 +167,9 @@ about the reducibility of group algebras.
 	$K$ is a field, one concludes that $\alpha=0$.
 \end{proof}
 
+\begin{exercise}
+    What happens if $K$ is a field of characteristic two?
+\end{exercise}
 
 We now prove that an affirmative solution to the Units Problem
 ~\ref{prob:units} also yields a solution to the Jacobson Semisimplicity Problem
@@ -179,7 +182,8 @@ We now prove that an affirmative solution to the Units Problem
 
 \begin{proof}
 	Let $\alpha\in J(K[G])$. There exist $\lambda\in K\setminus\{0\}$ and $g\in
-	G$ such that $1-\alpha=\lambda g$. Assume that $g\ne 1$.  If $|K|\geq3$,
+	G$ such that $1-\alpha=\lambda g$. We claim that $g=1$. Assume $g\ne 1$. 
+	If $|K|\geq3$,
 	then there exist $\mu\in K\setminus\{0,1\}$ such that
 	\[
 		1-\alpha\mu=1-\mu+\lambda\mu g 
@@ -284,7 +288,7 @@ and $(G:H)=n$, let $T=\{x_1,\dots,x_n\}$ be a transversal of $H$. For $g\in G$ l
 \[
 	\nu(g)=\prod \alpha(xy^{-1}),
 \]
-where the product is taken over all pairs $(x,y)\in (Tg,T)$ such that $Hx=Hy$
+where the product is taken over all pairs $(x,y)\in (Tg)\times T$ such that $Hx=Hy$
 and $\alpha\colon H\to H/[H,H]$ is the canonical map. 
 If we write 
 $x=x_ig$ for some $i\in\{1,\dots,n\}$, then  
@@ -293,9 +297,9 @@ $Hx_ig=Hx_{\sigma(i)}$ for some permutation $\sigma\in\Sym_n$. Thus
 	\nu(g)=\prod_{i=1}^n\alpha(x_igx_{\sigma(i)}^{-1}).
 \]
 The cycle structure of $\sigma$ turns out to be important. 
-For example, if $\sigma=(12)(345)$, then a direct calculation shows that 
+For example, if $\sigma=(12)(345)$ and $n=5$, then a direct calculation shows that 
 \[
-\prod_{i=1}^n\alpha\left(x_igx_{\sigma(i)}^{-1}\right)
+\prod_{i=1}^5\alpha\left(x_igx_{\sigma(i)}^{-1}\right)
 =\alpha(x_1g^2x_1^{-1})\alpha(x_3g^3x_3^{-1}).
 \]
 This is precisely the content of the following lemma. 
@@ -384,20 +388,19 @@ An application:
 \end{proposition}
 
 \begin{proof}
-	Let $g\in G$. By Lemma~\ref{lem:transfer} there are positive integers 
+	Note that we may assume that $\alpha=\id$, as $Z(G)$ is
+	abelian. Let $g\in G$. By Lemma~\ref{lem:transfer} there are positive integers 
     $n_1,\dots,n_k$ such that $n_1+\cdots+n_k=n$ and elements 
 	$t_1,\dots,t_k$ of a transversal of $Z(G)$ in $G$ such that 
 	\[
-		\nu(g)=\prod_{i=1}^k \alpha(t_ig^{n_1}t_i^{-1}),
+		\nu(g)=\prod_{i=1}^k t_ig^{n_1}t_i^{-1}.
 	\]
-	where $\alpha\colon G\to H/[H,H]$ is the canonical map. Since
-	$g^{n_i}\in Z(G)$ for all $i\in\{1,\dots,k\}$ (as $t_ig^{n_i}t_i^{-1}\in Z(G)$), 
+	Since $g^{n_i}\in Z(G)$ for all $i\in\{1,\dots,k\}$ (as $t_ig^{n_i}t_i^{-1}\in Z(G)$), 
 	it follows that 
-	$\nu(g)=g^{n_1+\cdots+n_k}=g^n$.  Since $\nu$ is a group homomorphism by 
-	Theorem~\ref{thm:transfer}, we conclude that 
 	\[
-		(gh)^n=\nu(gh)=\nu(g)\nu(h)=g^nh^n. \qedhere 
+	\nu(g)=g^{n_1+\cdots+n_k}=g^n.
 	\]
+	Now Theorem~\ref{thm:transfer} implies the claim.
 \end{proof}
 
 For a group $G$ we consider 
@@ -409,10 +412,21 @@ For a group $G$ we consider
 	Prove that $\Delta(\Delta(G))=\Delta(G)$.
 \end{exercise}
 
-\begin{lemma}
+\index{Subgroup!characteristic}
+A subgroup $H$ of $G$ is a \textbf{characteristic} subgroup of $G$ 
+if $f(H)\subseteq H$ for all $f\in\Aut(G)$. The center 
+and the commutator subgroup of a group are characteristic subgroups. 
+Every characteristic subgroup is a normal subgroup. 
+
+\begin{exercise}
+    Prove that if $H$ is characteristic in $K$ and $K$ is normal in $G$, then 
+    $H$ is normal in $G$.
+\end{exercise}
+
+\begin{proposition}
 	If $G$ is a group, then $\Delta(G)$ 
 	is a characteristic subgroup of $G$.
-\end{lemma}
+\end{proposition}
 
 \begin{proof}
 	We first prove that $\Delta(G)$ is a subgroup of $G$. If $x,y\in\Delta(G)$
