@@ -3,7 +3,8 @@
 \topic{More applications of the transfer}
 
 Let us start with a group-theoretic application
-of the transfer map. 
+of the transfer map. We start with some applications to the theory 
+of finite groups. 
 
 \begin{proposition}
 	\label{prop:semidirecto}
@@ -52,7 +53,8 @@ of the transfer map.
 % TODO: Transitivity of the transfer
 
 % serre, 7.12
-An application to infinite groups. 
+An application to infinite groups, see
+\cite[7.12]{MR3469786}. 
 
 \begin{theorem}
 	Let $G$ be a torsion-free group that contains a finite-index subgroup isomorphic to  
@@ -165,7 +167,7 @@ The second result goes back to Schur:
 		g[x,y]g^{-1}=[gxg^{-1},gyg^{-1}]
 	\]
 	for all $g,x,y\in G$. Since $G\to Z(G)$, $g\mapsto g^n$ is a group
-	homomorphism, Lemma~\ref{lem:center} implies that $[x,y]^n=[x^n,y^n]=1$ for
+	homomorphism, Proposition~\ref{pro:center} implies that $[x,y]^n=[x^n,y^n]=1$ for
 	all $[x,y]\in X$.  The theorem follows from applying Dietzmann's theorem. 
 \end{proof}
 
@@ -464,6 +466,7 @@ Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$.
 \end{proof}
 
 \begin{corollary}
+\label{cor:domain_G_abelian}
 	Let $A$ be a non-trivial torsion-free abelian group. Then $K[A]$ 
 	is a domain that only admits trivial units and $J(K[A])=\{0\}$. 
 \end{corollary}
