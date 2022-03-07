@@ -457,80 +457,8 @@ $\widehat{S}=\sum_{x\in S}x$.
 	$\widehat{N}\widehat{N}=\sum_{j=1}^k n_j\widehat{N}=|N|\widehat{N}$.
 \end{proof}
 
-Before proving Connel's theorem we need to prove two group theoretical results.
-The first one goes to Dietzman: 
+%Before proving Connel's theorem we need to prove two group theoretical results.
 
-\begin{theorem}[Dietzmann]
-	\index{Dietzmann's theorem}
-	\label{theorem:Dietzmann} 
-	Let $G$ be a group and $X\subseteq G$ be a finite subset of $G$ closed by
-	conjugation. If there exists $n$ such that $x^n=1$ for all $x\in X$, then
-	$\langle X\rangle$ is a finite subgroup of $G$.
-\end{theorem}
-
-\begin{proof}
-	Let $S=\langle X\rangle$. Since $x^{-1}=x^{n-1}$, every element of $S$ can be 
-	written as a finite product of elements of $X$. 
-	Fix $x\in X$. We claim that if $x\in X$ appears $k\geq 1$ times 
-	in the word $s$, then we can write $s$ as a product of $m$
-	elements of $X$, where the first $k$ elements are equal to $x$. Suppose that 
-	\[
-	s=x_1x_2\cdots x_{t-1}xx_{t+1}\cdots x_m,
-	\]
-	where $x_j\ne x$ for all $j\in\{1,\dots,t-1\}$. Then 
-	\[
-		s=x(x^{-1}x_1x)(x^{-1}x_2x)\cdots (x^{-1}x_{t-1}x)x_{t+1}\cdots x_m
-	\]
-	is a product of $m$ elements of $X$ since $X$ is closed under conjugation and 
-	the first element is $x$. The same argument implies that $s$
-	can be written as 
-	\[
-		s=x^ky_{k+1}\cdots y_m,
-	\]
-	where each $y_j$ belongs to $X\setminus\{x\}$.
-
-	Let $s\in S$ and write $s$ as a product of $m$ elements of 
-	$X$, where $m$ is minimal. We need to show that 
-	$m\leq (n-1)|X|$. 
-	If $m>(n-1)|X|$, 
-	then at least $x\in X$ appear $n$ times in the representation of 
-	$s$. Without loss of generality, we write 
-	\[
-		s=x^nx_{n+1}\cdots x_m=x_{n+1}\cdots x_m,
-	\]
-	a contradiction to the minimality of $m$. 
-\end{proof}
-
-The second result goes back to Schur:
-
-\begin{theorem}[Schur]
-\index{Schur's theorem}
-\label{thm:Schur}
-	Let $G$ be a group. 
-	If $Z(G)$ has finite index in $G$, then $[G,G]$ is finite.
-\end{theorem}
-
-\begin{proof}
-	Let $n=(G:Z(G))$ and  
-	$X$ be the set of commutators of $G$. We claim that $X$ is finite, in fact
-	$|X|\leq n^2$.
-	The map 
-	\[
-		\varphi\colon X\to G/Z(G)\times G/Z(G),\quad [x,y]\mapsto (xZ(G),yZ(G)),
-	\]
-	is injective: if $(xZ(G),yZ(G))=(uZ(G),vZ(G))$, then $u^{-1}x\in Z(G)$, 
-	$v^{-1}y\in Z(G)$. Thus 
-	\begin{align*}
-		[u,v]&=uvu^{-1}v^{-1}=uv(u^{-1}x)x^{-1}v^{-1}=xvx^{-1}(v^{-1}y)y^{-1}=xyx^{-1}y^{-1}=[x,y].
-	\end{align*}
-	Moreover, $X$ is closed under conjugation, as 
-	\[
-		g[x,y]g^{-1}=[gxg^{-1},gyg^{-1}]
-	\]
-	for all $g,x,y\in G$. Since $G\to Z(G)$, $g\mapsto g^n$ is a group
-	homomorphism, Lemma~\ref{lem:center} implies that $[x,y]^n=[x^n,y^n]=1$ for
-	all $[x,y]\in X$.  The theorem follows from applying Dietzmann's theorem. 
-\end{proof}
 
 
 Si $G$ es un grupo, consideramos el subconjunto %los siguientes subconjuntos:

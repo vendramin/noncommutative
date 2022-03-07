@@ -2,6 +2,249 @@
 
 \topic{More applications of the transfer}
 
+Let us start with a group-theoretic application
+of the transfer map. 
+
+\begin{proposition}
+	\label{prop:semidirecto}
+	Let $G$ be a finite group and $H$ a central subgroup of index $n$, where 
+	$n$ is coprime with $|H|$. Then
+	$G\simeq N\rtimes H$.
+\end{proposition}
+
+\begin{proof}
+	Since $H$ is abelian, $H=H/[H,H]$ and the transfer map is 
+	$\nu\colon G\to H$. By Lemma~\ref{lem:transfer}, 
+	\[
+		\nu(h)
+		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i,
+	\]
+	where each $s_i^{-1}h^{n_i}s_i\in H$. Since 
+	$h^{n_i}\in H\subseteq Z(G)$ for all $i$, it follows that 
+	$s_i^{-1}h^{n_i}s_i=h^{n_i}$ for all $i$. Thus 
+	\[
+		\nu(h)
+		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i
+		=\prod_{i=1}^mh^{n_i}
+		=h^{\sum_{i=1}^m n_i}=h^n.
+	\] 
+	The composition $H\hookrightarrow G\xrightarrow{\nu} H$ is a group homomorphism. 
+	We claim that it is an isomorphism. It is injective: If $h^n=1$, then 
+	$|h|$ divides $|H|$ and divides $n$. Since $n$ and $|H|$ are
+	coprime, $h=1$. It is surjectice: Since $n$ and $|H|$ are coprime, there exists 
+	$m\in\Z$ such that $nm\equiv 1\bmod |H|$. If $h\in H$, then $h^m\in
+	H$ and $\nu(h^m)=h^{nm}=h$. 
+
+	Therefore $G\simeq N\rtimes H$, as $N$ is normal in $G$, $N\cap
+	H=\{1\}$ and $G=NH$ (because $|NH|=|N||H|$ and $G/N\simeq H$).
+\end{proof}
+
+\begin{exercise}
+	Let $H$ be a central subgroup of a finite group $G$. If $|H|$
+	and $|G/H|$ are coprime, then $G\simeq H\times G/H$.
+\end{exercise}
+
+%\begin{proof}
+%	Es consecuencia inmediata del corolario~\ref{corollary:semidirecto} pues
+%	$H$ es normal por ser un subgrupo central.
+%\end{proof}
+
+% TODO: Transitivity of the transfer
+
+% serre, 7.12
+An application to infinite groups. 
+
+\begin{theorem}
+	Let $G$ be a torsion-free group that contains a finite-index subgroup isomorphic to  
+	$\Z$. Then $G\simeq\Z$.
+\end{theorem}
+
+\begin{proof}
+	We may assume that $G$ contains a finite-index normal subgroup isomorphic to $\Z$. Indeed, 
+	if $H$ is a finite-index subgroup of $G$ such that $H\simeq\Z$, then 
+	$K=\cap_{x\in G}xHx^{-1}$ is a non-trivial normal subgroup of $G$ (because $K=\Core_G(H)$ and 
+	$G$ has no torsion) and hence $K\simeq\Z$ (because  
+	$K\subseteq H$) and $(G:K)=(G:H)(H:K)$ is finite.
+	The action of $G$ on $K$ by conjugation induces a group homomorphism  
+	$\epsilon\colon G\to\Aut(K)$. Since $\Aut(K)\simeq\Aut(\Z)=\{-1,1\}$, 
+	there are two cases to consider.
+	
+	Assume first that $\epsilon=\id$. Since $K\subseteq Z(G)$, let
+	$\nu\colon G\to K$ be the transfer homomorphism. By
+	Proposition~\ref{pro:center} (more precisely, 
+	by Exercise \ref{xca:K_central}), $\nu(g)=g^n$, where $n=(G:K)$. Since
+	$G$ has no torsion, $\nu$ is injective. Thus
+	$G\simeq\Z$ because it is isomorphic to a subgroup of $K$.
+
+	Assume now that $\epsilon\ne\id$. Let $N=\ker\epsilon\ne G$. Since
+	$K\simeq\Z$ is abelian, $K\subseteq N$. The result proved in the previous paragraph 
+	applied to $\epsilon|_N=1$ implies that $N\simeq\Z$, as 
+	$N$ contains a finite-index subgroup isomorphic to $\Z$. Let $g\in G\setminus N$. 
+	Since $N$ is normal in $G$, $G$ acts by conjugation on $N$ and hence 
+	there exists a group homomorphism $c_g\in\Aut(N)\simeq\{-1,1\}$. Since
+	$K\subseteq N$ y $g$ acts non-trivially on $K$, 
+	\[
+	c_g(n)=gng^{-1}=n^{-1}
+	\]
+	for all $n\in N$.  Since 
+	$g^2\in N$, 
+	\[
+		g^2=gg^2g^{-1}=g^{-2}.
+	\]
+	Therefore $g^4=1$, a contradiction since $g\ne1$ and $G$ has no torsion.
+\end{proof}
+
+Before giving another application of the transfer map, we 
+prove Dietzman's theorem: 
+
+\begin{theorem}[Dietzmann]
+	\index{Dietzmann's theorem}
+	\label{theorem:Dietzmann} 
+	Let $G$ be a group and $X\subseteq G$ be a finite subset of $G$ closed by
+	conjugation. If there exists $n$ such that $x^n=1$ for all $x\in X$, then
+	$\langle X\rangle$ is a finite subgroup of $G$.
+\end{theorem}
+
+\begin{proof}
+	Let $S=\langle X\rangle$. Since $x^{-1}=x^{n-1}$, every element of $S$ can be 
+	written as a finite product of elements of $X$. 
+	Fix $x\in X$. We claim that if $x\in X$ appears $k\geq 1$ times 
+	in the word $s$, then we can write $s$ as a product of $m$
+	elements of $X$, where the first $k$ elements are equal to $x$. Suppose that 
+	\[
+	s=x_1x_2\cdots x_{t-1}xx_{t+1}\cdots x_m,
+	\]
+	where $x_j\ne x$ for all $j\in\{1,\dots,t-1\}$. Then 
+	\[
+		s=x(x^{-1}x_1x)(x^{-1}x_2x)\cdots (x^{-1}x_{t-1}x)x_{t+1}\cdots x_m
+	\]
+	is a product of $m$ elements of $X$ since $X$ is closed under conjugation and 
+	the first element is $x$. The same argument implies that $s$
+	can be written as 
+	\[
+		s=x^ky_{k+1}\cdots y_m,
+	\]
+	where each $y_j$ belongs to $X\setminus\{x\}$.
+
+	Let $s\in S$ and write $s$ as a product of $m$ elements of 
+	$X$, where $m$ is minimal. We need to show that 
+	$m\leq (n-1)|X|$. 
+	If $m>(n-1)|X|$, 
+	then at least $x\in X$ appear $n$ times in the representation of 
+	$s$. Without loss of generality, we write 
+	\[
+		s=x^nx_{n+1}\cdots x_m=x_{n+1}\cdots x_m,
+	\]
+	a contradiction to the minimality of $m$. 
+\end{proof}
+
+The second result goes back to Schur:
+
+\begin{theorem}[Schur]
+\index{Schur's theorem}
+\label{thm:Schur}
+	Let $G$ be a group. 
+	If $Z(G)$ has finite index in $G$, then $[G,G]$ is finite.
+\end{theorem}
+
+\begin{proof}
+	Let $n=(G:Z(G))$ and  
+	$X$ be the set of commutators of $G$. We claim that $X$ is finite, in fact
+	$|X|\leq n^2$.
+	The map 
+	\[
+		\varphi\colon X\to G/Z(G)\times G/Z(G),\quad [x,y]\mapsto (xZ(G),yZ(G)),
+	\]
+	is injective: if $(xZ(G),yZ(G))=(uZ(G),vZ(G))$, then $u^{-1}x\in Z(G)$, 
+	$v^{-1}y\in Z(G)$. Thus 
+	\begin{align*}
+		[u,v]&=uvu^{-1}v^{-1}=uv(u^{-1}x)x^{-1}v^{-1}=xvx^{-1}(v^{-1}y)y^{-1}=xyx^{-1}y^{-1}=[x,y].
+	\end{align*}
+	Moreover, $X$ is closed under conjugation, as 
+	\[
+		g[x,y]g^{-1}=[gxg^{-1},gyg^{-1}]
+	\]
+	for all $g,x,y\in G$. Since $G\to Z(G)$, $g\mapsto g^n$ is a group
+	homomorphism, Lemma~\ref{lem:center} implies that $[x,y]^n=[x^n,y^n]=1$ for
+	all $[x,y]\in X$.  The theorem follows from applying Dietzmann's theorem. 
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be the group with generators $a,b,c$ and 
+    relations $ab=ca$, $ac=ba$ and $bc=ab$. Prove that $G$ 
+    is non-abelian, 
+    $Z(G)$ has finite index in $G$, every conjugacy class
+    of $G$ is finite and that $[G,G]$ is finite. 
+\end{exercise}
+
+Some applications. 
+
+\begin{theorem}[Niroomand]
+\index{Niroomand´s theorem}
+\label{thm:Niroomand}
+	If the set of commutators of a group $G$ is finite, then 
+	$[G,G]$ is finite.
+\end{theorem}
+
+\begin{proof}
+ 	Let $C=\{[x_1,y_1],\dots,[x_k,y_k]\}$ be the (finite) set of commutators of $G$ and  
+	$H=\langle x_1,x_2,\dots,x_k,y_1,y_2,\dots,y_k\rangle$. Since $C$ is a set of commutators of $H$, 
+	it follows that 
+	$[G,G]=\langle C\rangle\subseteq [H,H]$. To simplify the notation we write 
+	$H=\langle h_1,\dots,h_{2k}\rangle$. 	
+ 	Since $h\in Z(H)$ if and only if $h\in C_H(h_i)$ for all 
+	$i\in\{1,\dots,2k\}$, we conclude that $Z(H)=C_H(h_1)\cap\cdots\cap C_H(h_{2k})$. Moreover, if 
+	$h\in H$, then $hh_ih^{-1}=ch_i$ for some $c\in C$. Thus the conjugacy class of each 
+	$h_i$ contains at most as many elements as $C$. This implies that 
+	\[
+		|H/Z(H)|=|H/\cap_{i=1}^n C_H(h_i)|\leq\prod_{i=1}^n (H:C_H(h_i))\leq |C|^n.
+	\]
+	Since $H/Z(H)$ is finite, $[H,H]$ is finite. Hence  
+	$[G,G]=\langle C\rangle\subseteq [H,H]$ 
+	is a finite group. 
+\end{proof}
+
+\begin{theorem}[Hilton--Niroomand]
+	\index{Hilton--Niroomand´s theorem}
+	\label{thm:HiltonNiroomand}
+	Let $G$ be a finitely generated group. If $[G,G]$ is finite and $G/Z(G)$ is generated by
+	$n$ elements, then  
+	\[
+	|G/Z(G)|\leq |[G,G]|^n. 
+	\]
+\end{theorem}
+
+\begin{proof}
+	Assume that $G/Z(G)=\langle x_1Z(G),\dots,x_nZ(G)\rangle$. Let 
+	\[
+		f\colon G/Z(G)\to [G,G]\times\cdots\times [G,G],
+		\quad
+		y\mapsto ([x_1,y],\dots,[x_n,y]).
+	\]
+	Note that $f$ is well-defined: If $y\in G$ y $z\in Z(G)$, then $[x_i,y]=[x_i,yz]$ for all $i$. 
+	Then $f(yz)=f(y)$.
+	 
+	The map $f$ is injective. Assume that $f(xZ(G))=f(yZ(G))$. Then 
+	$[x_i,x]=[x_i,y]$ for all $i\in\{1,\dots,n\}$. For each $i$ we compute  
+	\begin{align*}
+		[x^{-1}y,x_i] &= x^{-1}[y,x_i]x[x^{-1},x_i]\\
+		&=x^{-1}[y,x_i][x_i,x]x=x^{-1}[x_i,y]^{-1}[x_i,x]x=x^{-1}[x_i,y]^{-1}[x_i,y]x=1.
+	\end{align*}
+	This implies that $x^{-1}y\in Z(G)$. Indeed, since  
+	every $g\in G$ can be written as $g=x_kz$ for some $k\in\{1,\dots,n\}$ and some $z\in Z(G)$, 
+	it follows that 
+    \[
+    [x^{-1}y,g]=[x^{-1}y,x_kz]=[x^{-1}y,x_k]=1.
+    \]
+    Since $f$ is injective, 
+	$|G/Z(G)|\leq |[G,G]|^n$. 
+\end{proof}
+
+\begin{exercise}
+Prove Theorem~\ref{thm:HiltonNiroomand} from Theorem~\ref{thm:Niroomand}. 
+\end{exercise}
+
+
 
 \section{Bi-ordered groups}
 
