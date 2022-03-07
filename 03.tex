@@ -9,7 +9,7 @@
 \end{proposition}
 
 \begin{proof}
-	Let $x,y\in G$ and $S=\langle x,y\rangle$. The group $Z(S)=C_S(x)\cap C_S(y)$ has 
+	Let $x,y\in G=\Delta(G)$ and $S=\langle x,y\rangle$. The group $Z(S)=C_S(x)\cap C_S(y)$ has 
 	finite index, say $n$, in $S$. By Proposition~\ref{pro:center}, 
 	the map $S\to Z(S)$, $s\mapsto s^n$, is a group homomorphism. Thus  
 	\[
@@ -35,13 +35,13 @@
 	Let us assume that $m\geq2$. If $(G:H_1)=\infty$, there exists $b\in G$
 	such that 
 	\[
-		Hb\cap\left(
+		H_1b\cap\left(
 	\bigcup_{j=1}^nH_1a_{1j}\right)=\emptyset.
 	\]
 	Since $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, 
 	it follows that 
 	\[
-		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n Ha_{ij}b^{-1}a_{1k}.
+		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n H_1a_{ij}b^{-1}a_{1k}.
 	\]
 	Hence $G$ can be covered by finitely many cosets of $H_2,\dots,H_m$. By the inductive hypothesis, 
 	some of these $H_j$ has finite index in $G$.
@@ -124,7 +124,7 @@ holds for all $r\in R$, $s\in S$ and $m\in M$.
 	\label{lem:ideal_pi}
 	Let $G$ be a group and $H$ be a subgroup of $G$. If $I$ is a non-zero 
 	left ideal
-	of $K[G]$, then  $\pi_H(I)\ne 0$.
+	of $K[G]$, then  $\pi_H(I)\ne\{0\}$.
 \end{lemma}
 
 \begin{proof}
@@ -168,15 +168,15 @@ Another application:
 	\index{Passman's lemma}
 	\label{lem:Passman}
 	Let $G$ be a group and 
-	$\gamma_1,\gamma_2\in K[G]$ be such that $\gamma_1K[G]\gamma_2=0$.
-	Then $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=0$.
+	$\gamma_1,\gamma_2\in K[G]$ be such that $\gamma_1K[G]\gamma_2=\{0\}$.
+	Then $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=\{0\}$.
 \end{lemma}
 
 \begin{proof}
-	It is enough to show that $\pi_{\Delta(G)}(\gamma_1)\gamma_2=0$, 
+	It is enough to show that $\pi_{\Delta(G)}(\gamma_1)\gamma_2=\{0\}$, 
 	as in this case
 	\[
-		0=\pi_{\Delta(G)}(\pi_{\Delta(G)}(\gamma_1)\gamma_2)=\pi_{\Delta}(\gamma_1)\pi_{\Delta(G)}(\gamma_2).
+		\{0\}=\pi_{\Delta(G)}(\pi_{\Delta(G)}(\gamma_1)\gamma_2)=\pi_{\Delta}(\gamma_1)\pi_{\Delta(G)}(\gamma_2).
 	\]
 	Write $\gamma_1=\alpha_1+\beta_1$, where 
 	\begin{align*}
@@ -235,15 +235,15 @@ Another application:
 		(\gamma_1\alpha\gamma_2)^2=\gamma_1\alpha\gamma_2\gamma_1\alpha\gamma_2=0
 	\]
 	and thus $\gamma_1\alpha\gamma_2=0$, as $K[G]$ is reduced. In particular, 
-	$\gamma_1K[G]\gamma_2=0$. Let $I$ be the left ideal of $K[G]$ generated 
-	by $\gamma_2$. Since $I\ne 0$, $\pi_{\Delta(G)}(I)\ne 0$ by Lemma~\ref{lem:ideal_pi}
-	and hence  $\pi_{\Delta(G)}(\beta\gamma_2)\ne 0$ for some $\beta\in K[G]$. 
+	$\gamma_1K[G]\gamma_2=\{0\}$. Let $I$ be the left ideal of $K[G]$ generated 
+	by $\gamma_2$. Since $I\ne 0$, $\pi_{\Delta(G)}(I)\ne\{0\}$ by Lemma~\ref{lem:ideal_pi}
+	and hence  $\pi_{\Delta(G)}(\beta\gamma_2)\ne\{ 0\}$ for some $\beta\in K[G]$. 
 	Similarly, 
-	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne 0$ for some $\alpha\in K[G]$. Since 
+	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne\{ 0\}$ for some $\alpha\in K[G]$. Since 
 	\[
-		\gamma_1\alpha K[G]\beta\gamma_2\subseteq \gamma_1 K[G]\gamma_2=0,
+		\gamma_1\alpha K[G]\beta\gamma_2\subseteq \gamma_1 K[G]\gamma_2=\{0\},
 	\]
-    it follows that $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=0$
+    it follows that $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=\{0\}$
     by Passman's lemma. Hence $K[\Delta(G)]$ has zero divisors, a contradictions
     since $\Delta(G)$ is an abelian group.
 \end{proof}
