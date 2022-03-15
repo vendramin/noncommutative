@@ -402,33 +402,35 @@ Now the theorem.
 \end{theorem}
 
 \begin{proof}
-	Recordemos que si $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ y
-	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$ entonces
+	If $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ and
+	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$, then 
 	\begin{equation}
 		\label{eq:producto}
 		\alpha\beta=\sum_{i=1}^n\sum_{j=1}^ma_ib_j(g_ih_j).
 	\end{equation}
-	Sin pérdida de generalidad podemos suponer que los $a_i$ y los $b_j$ son no
-	nulos y que además $g_1<g_2<\cdots<g_n$. Sean $i,j$ tales que 
+	Without loss of generality we may assume that $a_i\ne 0$ for
+	all $i$ and $b_j\ne 0$ for all $j$. Moreover, we may assume that 
+	$g_1<g_2<\cdots<g_n$. Let $i,j$ be such that 
 	\[
 		g_ih_j=\min\{g_ih_j:1\leq i\leq n,1\leq j\leq m\}.
 	\]
-	Afirmamos que entonces $i=1$ (pues si $i>1$ entonces tendríamos que
-	$g_1h_j<g_ih_j$, una contradicción). Además, como $g_1h_j\ne g_1h_k$ si
-	$k\ne j$, existe un único elemento minimal en el miembro derecho de la
-	ecuación~\eqref{eq:producto}. El mismo argumento muestra que existe un
-	único elemento maximal en la ecuación~\eqref{eq:producto}. Luego
-	$\alpha\beta\ne 0$ (pues $a_1b_j\ne 0$) y entonces $K[G]$ no tiene
-	divisores de cero. Si además $n>1$ o $m>1$ entonces en la
-	expresión~\eqref{eq:producto} hay al menos dos términos que no se cancelan
-	y luego $\alpha\beta\ne1$. Luego las unidades de $K[G]$ son triviales.
+	Then $i=1$, as $i>1$ implies
+	$g_1h_j<g_ih_j$, a contradiction. Since $g_1h_j\ne g_1h_k$ whenever 
+	$k\ne j$, there exists a unique minimal element in the left hand side of Equality~\eqref{eq:producto}. The same argument shows that there is a unique
+	maximal element in~\eqref{eq:producto}. Thus 
+	$\alpha\beta\ne 0$, as $a_1b_j\ne 0$, and therefore $K[G]$ has no zero divisors. 
+	If, moreover, $n>1$ or $m>1$, then~\eqref{eq:producto} contains at least two
+	terms than cancel out and thus  
+	$\alpha\beta\ne1$. It follows that units of $K[G]$ are trivial. 
 \end{proof}
 
-En 1973 Formanek demostró que la conjetura de los divisores de cero es
-verdadera para grupos super resolubles sin torsión. En 1976 Brown e independientemente
-Farkas y Snider demostraron que la conjetura es verdadera para grupos policíclicos-por-finitos sin torsión.
-
-
+Formanek proved that the zero divisors conjecture is true 
+in the case of torsion-free super solvable. Brown and, independently, 
+Farkas and Snider proved that the conjecture is true 
+in the case of groups algebras (over fields of characteristic zero) of 
+polycyclic-by-finite torsion-free groups. These results
+can be found in Chapter 13 of
+Passman's book \cite{MR798076}. 
 
 \section{Unique product groups}
 
