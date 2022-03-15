@@ -27,14 +27,34 @@ A set equipped with a total order is a \textbf{totally ordered set}.
 	The group $\R_{>0}$ of positive real numbers is bi-ordered. 
 \end{example}
 
+The multiplicative group $\R\setminus\{0\}$ is not bi-ordered. Why?
+
 \begin{exercise}
 	Let $G$ be a bi-ordered group and $x,x_1,y,y_1\in G$. Prove that
 	$x<y$ and $x_1<y_1$ imply $xx_1<yy_1$.
 \end{exercise}
 
+Clearly, bi-orderability is preserved under taking subgroups. 
+
 \begin{exercise}
 	Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n=h^n$
 	for some $n>0$ implies $g=h$.
+\end{exercise}
+
+The following result goes back to Neumann.
+
+\begin{exercise}
+    Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n\in C_G(h)$ if 
+    and only if $g\in C_G(h)$.
+\end{exercise}
+
+Bi-ordered groups do not behave nicely under extensions:
+
+\begin{exercise}
+\label{xca:BO_sequence}
+    Let $1\to K\to G\to Q\to 1$ be an exact sequence of groups. Assume that $K$ and $Q$ 
+    are bi-ordered. Prove that $G$ is bi-ordered if and only if 
+    $x<y$ implies $gxg^{-1}<gyg^{-1}$ for all $x,y\in K$ and $g\in G$. 
 \end{exercise}
 
 \begin{definition}
@@ -217,6 +237,11 @@ Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$.
 	$-x\in P$. 
 \end{proof}
 
+Our proof of Passman's theorem (Theorem \ref{thm:Passman}) 
+used the fact that the group algebra $K[G]$ of
+a torsion-free abelian group $G$ has no non-zero divisors. 
+We now present a proof of this fact. 
+
 \begin{corollary}
 \label{cor:domain_G_abelian}
 	Let $A$ be a non-trivial torsion-free abelian group. Then $K[A]$ 
@@ -227,7 +252,7 @@ Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$.
 	Apply Levi's theorem and Theorem~\ref{thm:BO}.
 \end{proof}
 
-Some exercises.
+Some exercises. The first one is a variation on Exercise \ref{xca:BO_sequence}.
 
 \begin{exercise}
     Let $N$ be a central subgroup of $G$. If $N$ and $G/N$ are bi-ordered, 
@@ -254,61 +279,51 @@ Some exercises.
 \topic{Left-ordered groups}
 
 \begin{definition}
-	\index{Grupo!ordenable a derecha}
-	Un grupo $G$ se dice \textbf{ordenable a derecha} si existe un orden total
-	$<$ en $G$ tal que si $x<y$ entonces $xz<yz$ para todo $x,y,z\in G$.
+	\index{Group!left-ordered}
+	A group $G$ is \textbf{left-ordered} if there is a total order 
+	$<$ in $G$ such that $x<y$ implies $xz<yz$ for all $x,y,z\in G$.
 \end{definition}
 
-%\begin{corollary}
-%	Sea $G$ un grupo abeliano. 
-%	\begin{enumerate}
-%		\item Si $K$ es de característica cero, entonces $J(K[G])=0$.
-%		\item Si $K$ es de característica $p$, entonces $J(K[G])=0$ si y sólo si $G$ no tiene elementos de orden $p$.
-%	\end{enumerate}
-%\end{corollary}
-%
-%\begin{proof}
-%	
-%\end{proof}
-
-Si $G$ es un grupo ordenable a derecha, se define el cono positivo de $G$ como
-el subconjunto $P(G)=\{x\in G:1<x\}$. 
+If $G$ is left-ordered, the positive cone of $G$ is defined as $P(G)=\{x\in G:1<x\}$. 
 
 \begin{exercise}
-	\index{Cono positivo!de un grupo ordenable a derecha}
-	Sea $G$ un grupo ordenable a derecha con cono positivo $P$. Demuestre las
-	siguientes afirmaciones:
-	\begin{enumerate}
-		\item $P$ es cerrado por multiplicación.
-		\item $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta).
-	\end{enumerate}
+	Let $G$ be left-ordered with positive cone $P$. Prove that 
+	$P$ is closed under multiplication and that 
+	$G=P\cup P^{-1}\cup \{1\}$ (disjoint union).
 \end{exercise}
 
 \begin{exercise}
-	Sea $G$ un grupo y sea $P$ un subconjunto cerrado por multiplicación y tal
-	que $G=P\cup P^{-1}\cup \{1\}$ (unión disjunta). Demuestre que si se define $x<y$ si y
-	sólo si $yx^{-1}\in P$, entonces $G$ es ordenable a derecha con cono
-	positivo $P$.
+\label{xca:LO_cone}
+	Let $G$ be a group and $P$ be a subset closed under multiplication. Assume that 
+	$G=P\cup P^{-1}\cup \{1\}$ (disjoint union). Prove that $x<y$ if and only if
+	$x^{-1}y\in P$ turns $G$ into a left-ordered group with positive cone $P$.
 \end{exercise}
 
-\begin{lemma}
-	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $N$ y $G/N$ son
-	ordenables a derecha, entonces $G$ también lo es. 
-%		\item Si $N$ y $G/N$ son biordenables y $N$ es central, entonces $G$ es
-%	biordenable.
-%	\end{enumerate}
-\end{lemma}
-%
+Left-ordered groups behave nicely with respect to extensions. Let $G$ be a group
+and $N$ be a left-ordered normal subgroup of $G$. If $\pi\colon G\to G/N$ is the 
+canonical map and $G/N$ is left-ordered, then
+$G$ is left-ordered with
+$x<y$ if and only if either $\pi(x)<\pi(y)$ or $\pi(x)=\pi(y)$ and $1<x^{-1}y$. 
+
+
+\begin{proposition}
+	Let $G$ be a group and $N$ be a normal subgroup of $G$. 
+	If $N$ and $G/N$ are left-ordered, then so is $G$.
+\end{proposition}
+
 \begin{proof}
-	Como $N$ y $G/N$ son ordenables a derecha, existen los conos positivos
-	$P(N)$ y $P(G/N)$. Sea $\pi\colon G\to G/N$ el morfismo canónico y sea
+	Since $N$ and $G/N$ are both left-ordered, there exist positive cones 
+	$P(N)$ and $P(G/N)$. Let $\pi\colon G\to G/N$ be the canonical map and 
 	\[
-		P(G)=\{x\in G:\pi(x)\in P(G/N)\text{ o bien }x\in N\}.
+		P(G)=\{x\in G:\pi(x)\in P(G/N)\text{ or }x\in N\}.
 	\]	
-	Dejamos como ejercicio demostrar que $P(G)$ es cerrado por la
-	multiplicación y que $G=P(G)\cup P(G)^{-1}\cup \{1\}$ (unión disjunta).
-	Luego $G$ es ordenable a derecha. 
+	A routine calculation shows that $P(G)$ is closed under multiplication 
+	and that $G$ decomposes as $G=P(G)\cup P(G)^{-1}\cup \{1\}$ (disjoint union). It follows
+	from Exercise \ref{xca:LO_cone} that 
+	$G$ is left-ordered. 
 \end{proof}
+
+
 %
 %\begin{theorem}
 %	\label{theorem:}
@@ -318,24 +333,24 @@ el subconjunto $P(G)=\{x\in G:1<x\}$.
 %	$G$ es libre de torsión y nilpotente, entonces $G$ es biordenable.
 %\end{theorem}
 
-Para dar un criterio de ordenabilidad necesitamos un lema:
+We now present a criterion for detecting left-ordered groups. We shall need 
+a lemma. 
 
 \begin{lemma}
-	\label{lemma:fg}
-	Sea $G$ un grupo finitamente generado y sea $H$ un subgrupo de índice
-	finito. Entonces $H$ es finitamente generado.
+	\label{lem:fg}
+	Let $G$ be a finitely generated group. If $H$ is a finite-index subgroup, 
+	then $H$ is finitely generated. 
 \end{lemma}
 
 \begin{proof}
-	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$ y supongamos que
-	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. Sea $t_1,\dots,t_n$ un
-	conjunto de representantes de $G/H$. Para $i\in\{1,\dots,n\}$,
-	$j\in\{1,\dots,m\}$, escribimos
+	Assume that $G$ is generated by $\{g_1,\dots,g_m\}$. Assume that
+	for each $i$ there exists $k$ such that $g_i^{-1}=g_k$. Let $\{t_1,\dots,t_n\}$ be
+	a transversal of $H$ in $G$. For $i\in\{1,\dots,n\}$ and 
+	$j\in\{1,\dots,m\}$ write 
 	\[
 		t_ig_j=h(i,j)t_{k(i,j)}.
 	\]
-	Vamos a demostrar que $H$ está generado por los $h(i,j)$. Sea $x\in H$.
-	Escribamos 
+	We claim that $H$ is generated by the $h(i,j)$. For $x\in H$, write 
 	\begin{align*}
 	x &=g_{i_1}\cdots g_{i_s}\\
 	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
@@ -343,74 +358,73 @@ Para dar un criterio de ordenabilidad necesitamos un lema:
 	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
 	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},g_{i_s})t_{k_s},
 	\end{align*}
-	donde $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Como $t_{k_s}\in H$,
-	$t_{k_s}=t_1\in H$ y luego $x\in H$.
+	where $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Since $t_{k_s}\in H$, it follows that 
+	$t_{k_s}=t_1\in H$ and therefore $x\in H$.
 \end{proof}
 
-El siguiente teorema nos da un criterio de ordenabilidad a derecha:
+Now the theorem.
 
 \begin{theorem}
-	Sea $G$ un grupo libre de torsión y finitamente generado. Si $A$ es un
-	subgrupo normal abeliano tal que $G/A$ es finito y cíclico, entonces $G$ es
-	ordenable a derecha.
+	Let $G$ be a finitely generated torsion-free group. If $A$ is an abelian normal
+	subgroup such that $G/A$ is finite and cyclic, then $G$ is left-ordered. 
 \end{theorem}
 
 \begin{proof}
-	Primero observemos que si $A$ es trivial, entonces $G$ también es trivial.
-Supongamos entonces que $A\ne 1$.  Como $A$ tiene índice finito, es finitamente
-generado. Procederemos por inducción en la cantidad de generadores de $A$. Como
-$G/A$ es cíclico, existe $x\in G$ tal que $G=\langle A,x\rangle$. Luego
-$[x,A]=\langle [x,a]:a\in A\rangle$ es un subgrupo normal de $G$ tal que
-$A/C_A(x)\simeq [x,A]$ (pues $a\mapsto [x,a]$ es un morfismo de grupos $A\to A$
-con imagen $[x,A]$ y núcleo $C_A(x)$). Si $\pi\colon G\to G/[x,A]$, entonces
-$G/[x,A]=\langle \pi(A),\pi(x)\rangle$ y luego $G/[x,A]$ es abeliano pues
-$[\pi(x),\pi(A)]=\pi[x,A]=1$. Además $G/[x,A]$ es finitamente generado pues $G$
-es finitamente generado. Como $(G:A)=n$ y $G$ no tiene torsión, $1\ne x^n\in
-A$.  Luego $x^n\in C_A(x)$ y entonces $1\leq \rank C_A(x)<\rank A$ (si $\rank
-C_A(x)=\rank A$, entonces $[x,A]$ sería un subgrupo de torsión de $A$, una
-contradicción pues $x\not\in A$).  Luego 
-\[
-\rank[x,A]=\rank (A/C_A(x))\leq\rank A-1
-\]
-y entonces $\rank (A/[x,A])\geq 1$. Demostramos así que $A/[x,A]$ es infinito y
-luego $G/[x,A]$ es también infinito. 
+	Note that if $A$ is trivial, then so is $G$. Let us assume that $A\ne\{1\}$. 
+    Since $(G:A)$ is finite, $A$ is finitely generated by the previous lemma. 
+    We proceed by induction on the number of generators of $A$. Since 
+    $G/A$ is cyclic, there exists $x\in G$ such that $G=\langle A,x\rangle$. Then
+    $[x,A]=\langle [x,a]:a\in A\rangle$ is a normal subgroup of $G$ such that 
+    $A/C_A(x)\simeq [x,A]$ (because $a\mapsto [x,a]$ is a group homomorphism $A\to A$
+    with image $[x,A]$ and kernel $C_A(x)$). If $\pi\colon G\to G/[x,A]$ is the canonical map, then
+    $G/[x,A]=\langle \pi(A),\pi(x)\rangle$ and thus $G/[x,A]$ is abelian, as 
+    $[\pi(x),\pi(A)]=\pi[x,A]=1$. Moreover, $G/[x,A]$ is finitely generated, as $G$
+    is finitely generated. Since $(G:A)=n$ and $G$ is torsion-free, it follows that 
+    $1\ne x^n\in A$. Hence $x^n\in C_A(x)$ and therefore $1\leq \rank C_A(x)<\rank A$ (if $\rank
+    C_A(x)=\rank A$, then $[x,A]$ would be a torsion subgroup of $A$, a contradiction
+    since $x\not\in A$). So 
+    \[
+    \rank[x,A]=\rank (A/C_A(x))\leq\rank A-1
+    \]
+    and hence $\rank (A/[x,A])\geq 1$. We proved that $A/[x,A]$ is infinite and hence 
+    $G/[x,A]$ is infinite. 
 
-Como $G/[x,A]$ es un grupo abeliano finitamente generado e infinito, existe un
-un subgrupo normal $H$ de $G$ tal que $[x,A]\subseteq H$ y $G/H\simeq\Z$. El
+    Since $G/[x,A]$ is infinite, abelian and finitely generated, there exists a normal subgroup
+    $H$ of $G$ such that $[x,A]\subseteq H$ y $G/H\simeq\Z$. El
 subgrupo $B=A\cap H$ es abeliano, normal en $H$ y cumple que $H/B$ es cíclico
 (pues puede identificarse con un subgrupo de $G/A$). Como $\rank B<\rank A$, la
 hipótesis inductiva implica que $H$ es ordenable a derecha y luego $G$ también
 es ordenable a derecha.
 \end{proof}
 
-\begin{exercise}[Malcev--Neumann]
-	\index{Teorema!de Malcev--Neumann}
-	Sea $G$ un grupo ordenable a derecha. Demuestre que $K[G]$ no tiene divisores de
-	cero ni unidades no triviales.	
-\end{exercise}
+\begin{theorem}[Malcev--Neumann]
+	\index{Malcev--Neumann's theorem}
+	Let $G$ be left-ordered group. Then $K[G]$ has no zero divisors 
+	and no non-trivial units. 
+\end{theorem}
 
-%\begin{proof}
-%	Recordemos que si $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ y
-%	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$ entonces
-%	\begin{equation}
-%		\label{eq:producto}
-%		\alpha\beta=\sum_{i=1}^n\sum_{j=1}^ma_ib_j(g_ih_j).
-%	\end{equation}
-%	Sin pérdida de generalidad podemos suponer que los $a_i$ y los $b_j$ son no
-%	nulos y que además $g_1<g_2<\cdots<g_n$. Sean $i,j$ tales que 
-%	\[
-%		g_ih_j=\min\{g_ih_j:1\leq i\leq n,1\leq j\leq m\}.
-%	\]
-%	Afirmamos que entonces $i=1$ (pues si $i>1$ entonces tendríamos que
-%	$g_1h_j<g_ih_j$, una contradicción). Además, como $g_1h_j\ne g_1h_k$ si
-%	$k\ne j$, existe un único elemento minimal en el miembro derecho de la
-%	ecuación~\eqref{eq:producto}. El mismo argumento muestra que existe un
-%	único elemento maximal en la ecuación~\eqref{eq:producto}. Luego
-%	$\alpha\beta\ne 0$ (pues $a_1b_j\ne 0$) y entonces $K[G]$ no tiene
-%	divisores de cero. Si además $n>1$ o $m>1$ entonces en la
-%	expresión~\eqref{eq:producto} hay al menos dos términos que no se cancelan
-%	y luego $\alpha\beta\ne1$. Luego las unidades de $K[G]$ son triviales.
-%\end{proof}
+\begin{proof}
+	Recordemos que si $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ y
+	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$ entonces
+	\begin{equation}
+		\label{eq:producto}
+		\alpha\beta=\sum_{i=1}^n\sum_{j=1}^ma_ib_j(g_ih_j).
+	\end{equation}
+	Sin pérdida de generalidad podemos suponer que los $a_i$ y los $b_j$ son no
+	nulos y que además $g_1<g_2<\cdots<g_n$. Sean $i,j$ tales que 
+	\[
+		g_ih_j=\min\{g_ih_j:1\leq i\leq n,1\leq j\leq m\}.
+	\]
+	Afirmamos que entonces $i=1$ (pues si $i>1$ entonces tendríamos que
+	$g_1h_j<g_ih_j$, una contradicción). Además, como $g_1h_j\ne g_1h_k$ si
+	$k\ne j$, existe un único elemento minimal en el miembro derecho de la
+	ecuación~\eqref{eq:producto}. El mismo argumento muestra que existe un
+	único elemento maximal en la ecuación~\eqref{eq:producto}. Luego
+	$\alpha\beta\ne 0$ (pues $a_1b_j\ne 0$) y entonces $K[G]$ no tiene
+	divisores de cero. Si además $n>1$ o $m>1$ entonces en la
+	expresión~\eqref{eq:producto} hay al menos dos términos que no se cancelan
+	y luego $\alpha\beta\ne1$. Luego las unidades de $K[G]$ son triviales.
+\end{proof}
 
 En 1973 Formanek demostró que la conjetura de los divisores de cero es
 verdadera para grupos super resolubles sin torsión. En 1976 Brown e independientemente
