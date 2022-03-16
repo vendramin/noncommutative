@@ -50,17 +50,6 @@ The solution $(X,r)$ is said to be \emph{finite} if $X$ is a finite set.
 \label{fig:braid}
 \end{figure}
 
-\index{Braid group}
-For $n\geq2$, the \emph{braid group} $\B_n$ is defined as the group with generators $\sigma_1,\dots,\sigma_{n-1}$ and relations
-\begin{align*}
-    &\sigma_i\sigma_{i+1}\sigma_i=\sigma_{i+1}\sigma_i\sigma_{i+1} && \text{if }1\leq i\leq n-2,\\
-    &\sigma_i\sigma_j=\sigma_j\sigma_i && \text{if }|i-j|> 1.
-\end{align*}
-Let $(X,r)$ be a set-theoretic solution to the YBE. Write $X^n=X\times\cdots\times X$ ($n$-times).  
-For $i<n$ let 
-$r_{i,i+1}=\id_{X^{i-1}}\times r\times\id_{X^{n-i-1}}\colon X^n\to X^n$.
-Then the map $\sigma_i\mapsto r_{i,i+1}$ extends 
-to an action of $\B_n$ on $X^n$.
 
 \begin{example}
 Let $X$ be a non-empty set. Then $(X,\id)$ is a set-theoretic 
