@@ -705,42 +705,43 @@ the abelianization of $\langle\beta_1,\dots,\beta_5\rangle$.
 
 \topic{Unique product groups}
 
-Sea $G$ un grupo y sean $A,B\subseteq G$ subconjuntos no vacíos. Diremos que un
-elemento $g\in G$ es un producto único en $AB$ si $g=ab=a_1b_1$ con $a,a_1\in
-A$ y $b,b_1\in B$ implica que $a=a_1$ y $b=b_1$.
+Let $G$ be a group and $A,B\subseteq G$ be non-empty subsets. 
+An element $g\in G$ is a \textbf{unique product} in $AB$ if $g=ab=a_1b_1$ for some
+$a,a_1\in
+A$ and $b,b_1\in B$ implies that $a=a_1$ and $b=b_1$.
 
 \begin{definition}
-	\index{Grupo!con la propiedad del producto único}
-	Se dice que un grupo $G$ tiene la \textbf{propiedad del producto único} si
-	dados dos subconjuntos $A,B\subseteq G$ finitos y no vacíos existe al menos
-	un producto único en $AB$.
+	\index{Group!unique product}
+	A group $G$ has the \textbf{unique product property} if 
+	for every finite non-empty subsets $A,B\subseteq G$ there exists at least one
+	unique product in $AB$.
 \end{definition}
 
 \begin{proposition}
-	Si un grupo $G$ es ordenable a derecha, entonces $G$ tiene la propiedad del
-	producto único.
+    Left-ordered groups have the unique product property.
 \end{proposition}
 
 \begin{proof}
-	Sean $A=\{a_1,\dots,a_n\}\subseteq G$ y $B\subseteq G$ ambos finitos y no
-	vacíos. Supongamos que $a_1<a_2<\cdots<a_n$. Sea $c\in B$ tal que $a_1c$ es
-	el mínimo del conjunto $a_1B=\{a_1b:b\in B\}$. Veamos que $a_1c$ admite una
-	única representación de la forma $\alpha\beta$ con $\alpha\in A$ y
-	$\beta\in B$. Si $a_1c=ab$, entonces, como $ab=a_1c\leq a_1b$, se tiene que
-	$a\leq a_1$ y luego $a=a_1$ y $b=c$. 
+    Let $G$ be a left-ordered group. 
+	Let $A=\{a_1,\dots,a_n\}\subseteq G$ and $B\subseteq G$ non-empty and finite. 
+	Assume that $a_1<a_2<\cdots<a_n$. Let $c\in B$ be such that $a_1c$ is the 
+	minimum of $a_1B=\{a_1b:b\in B\}$. We claim that $a_1c$ admits a unique
+	representation of the form $\alpha\beta$ with $\alpha\in A$ and 
+	$\beta\in B$. If $a_1c=ab$, then, since $ab=a_1c\leq a_1b$, it follows that 
+	$a\leq a_1$. Hence $a=a_1$ and $b=c$. 
 \end{proof}
 
 \begin{exercise}
-	Demuestre que un grupo que satisface la propiedad del producto único es
-	libre de torsión.
+	Prove that groups with the unique product property are
+	torsion-free.
 \end{exercise}
 
 The converse does not hold. 
 Promislow's group is a celebrated counterexample.
 
 \begin{theorem}[Promislow]
-    The 
-    group $G=\langle a,b:a^{-1}b^2a=b^{-2},b^{-1}a^2b=a^{-2}\rangle$
+\index{Promislow's theorem}
+    The group $G=\langle a,b:a^{-1}b^2a=b^{-2},b^{-1}a^2b=a^{-2}\rangle$
     does not have the unique product property.
 \end{theorem}
 
