@@ -902,111 +902,129 @@ There are other examples.
 % $g^2\in N$. Since $N$ is torsion free, it follows that $g=1$. 
 
 \begin{definition}
-	Se dice que un grupo $G$ tiene la \textbf{propiedad del doble producto
-	único} si dados dos subconjuntos $A,B\subseteq G$ finitos y no vacíos tales
-	que $|A|+|B|>2$ existen al menos dos productos únicos en $AB$.
+\index{Group!double unique product}
+	A group $G$ has the \textbf{double property of unique products} 
+	if for every finite non-empty subsets $A,B\subseteq G$ such that 
+	$|A|+|B|>2$ there are at least two unique products in $AB$.
 \end{definition}
 
 \begin{theorem}[Strojnowski]
 	\label{theorem:Strojnowski}
-	\index{Teorema!de Strojonowski}
-	Sea $G$ un grupo. Las siguientes afirmaciones son equivalentes:
+	\index{Strojonowski's theorem}
+	Let $G$ be a group. The following statements are equivalent:
 	\begin{enumerate}
-		\item $G$ tiene la propiedad del doble producto único.
-		\item Para todo subconjunto $A\subseteq G$ finito y no vacío, existe al
-			menos un producto único en $AA=\{a_1a_2:a_1,a_2\in A\}$.
-		\item $G$ tiene la propiedad del producto único.
+		\item $G$ has the double property of unique products. 
+		\item For every non-empty finite subset $A\subseteq G$ contains at least one unique product 
+			in $AA=\{a_1a_2:a_1,a_2\in A\}$.
+		\item $G$ has the unique product property.
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	La implicación $(1)\implies(2)$ es trivial.  Demostremos que vale
-	$(2)\implies(3)$. Si $G$ no tiene la propiedad del producto único, existen
-	subconjuntos $A,B\subseteq G$ finitos y no vacíos tales que todo elemento
-	de $AB$ admite al menos dos representaciones. Sea $C=AB$. Todo $c\in C$ es
-	de la forma $c=(a_1b_1)(a_2b_2)$ con $a_1,a_2\in A$ y $b_1,b_2\in B$. Como
-	$a_2^{-1}b_1^{-1}\in AB$, existen $a_3\in A\setminus\{a_2\}$ y $b_3\in B\setminus\{b_1\}$ tales que
-	$a_2^{-1}b_1^{-1}=a_3^{-1}b_3^{-1}$. Luego $b_1a_2=b_3a_3$ y entonces
+	It is trivial that $1)\implies2)$ es trivial.  Let us prove that 
+	$2)\implies3)$. If $G$ does not have the unique product property, 
+	there exist finite non-empty subsets 
+	$A,B\subseteq G$ such that every element of 
+	$AB$ admists at least two representations. Let $C=AB$. Every element $c\in C$ is 
+	of the form $c=(a_1b_1)(a_2b_2)$ for some $a_1,a_2\in A$ and $b_1,b_2\in B$. Since 
+	$a_2^{-1}b_1^{-1}\in AB$, there exist $a_3\in A\setminus\{a_2\}$ and
+	$b_3\in B\setminus\{b_1\}$ such that 
+	$a_2^{-1}b_1^{-1}=a_3^{-1}b_3^{-1}$. Thus $b_1a_2=b_3a_3$ and hence 
 	\[
 	c=(a_1b_1)(a_2b_2)=(a_1b_3)(a_3b_2)
 	\]
-	son dos representaciones distintas de $c$ en $AB$.
-	pues $a_2\ne a_3$ y $b_1\ne b_3$.
+	has two different representations in $AB$, 
+	as $a_2\ne a_3$ and $b_1\ne b_3$.
 
-	Demostremos ahora que $(3)\implies(1)$. Si $G$ tiene la propiedad del
-	producto único pero no tiene la propiedad del doble producto único, existen
-	subconjuntos $A,B\subseteq G$ finitos y no vacíos con $|A|+|B|>2$ tales que
-	en $AB$ existe un único elemento $ab$ con una única representación en $AB$.
-	Sean $C=a^{-1}A$ y $D=Bb^{-1}$. Entonces $1\in C\cap D$ y el elemento
-	neutro $1$ admite una única representación en $CD$ (pues si $1=cd$ con
-	$c=a^{-1}a_1\ne 1$ y $d=b_1b^{-1}\ne 1$, entonces $ab=a_1b_1$ con $a\ne
-	a_1$ y $b\ne b_1)$. Sean $E=D^{-1}C$ y $F=DC^{-1}$. Todo elemento de $EF$
-	se escribe como $(d_1^{-1}c_1)(d_2c_2^{-1})$. Si $c_1\ne 1$ o $d_2\ne 1$
-	entonces $c_1d_2=c_3d_3$ para algún $c_3\in C\setminus\{c_1\}$ y algún
-	$d_3\in D\setminus\{d_2\}$. Entonces
-	$(d_1^{-1}c_1)(d_2c_2^{-1})=(d_1^{-1}c_3)(d_3c_2^{-1})$ son dos
-	representaciones distintas para $(d_1^{-1}c_1)(d_2c_2^{-1})$. Si $c_2\ne 1$
-	o $d_1\ne 1$ entonces $c_2d_1=c_4d_4$ para algún $d_4\in D\setminus\{d_1\}$
-	y algún $c_4\in C\setminus\{c_2\}$ y entonces, como
-	$d_1^{-1}c_2^{-1}=d_4^{-1}c_4^{-1}$,
-	$(d_1^{-1}1)(1c_2^{-1})=(d_4^{-1}1)(1c_4^{-1})$.  Como $|C|+|D|>2$, $C$ o
-	$D$ contienen algún $c\ne1$, y entonces $(1\cdot 1)(1\cdot 1)=(1\cdot
-	c)(1\cdot c^{-1})$. Demostramos entonces que todo elemento de $EF$ tiene al
-	menos dos representaciones. 
+	We now prove that $3)\implies1)$. Let us assume that $G$ has the unique product property 
+	but it is not a group with double unique products. Then there exist 
+	finite non-empty subsets 
+	$A,B\subseteq G$ with $|A|+|B|>2$ such that 
+	in $AB$ there exists a unique element $ab$ with a unique representation in $AB$.
+	Let $C=a^{-1}A$ and $D=Bb^{-1}$. Then $1\in C\cap D$ and the identity 
+	$1$ admits a unique representation in $CD$ (because $1=cd$ with 
+	$c=a^{-1}a_1\ne 1$ and $d=b_1b^{-1}\ne 1$ imply that $ab=a_1b_1$ with $a\ne
+	a_1$ and $b\ne b_1)$. Let $E=D^{-1}C$ and $F=DC^{-1}$. Every element of the set $EF$
+	can be written as $(d_1^{-1}c_1)(d_2c_2^{-1})$. If either $c_1\ne 1$ or $d_2\ne 1$, 
+	then $c_1d_2=c_3d_3$ for some elements $c_3\in C\setminus\{c_1\}$ and  
+	$d_3\in D\setminus\{d_2\}$. Thus 
+	$(d_1^{-1}c_1)(d_2c_2^{-1})=(d_1^{-1}c_3)(d_3c_2^{-1})$ are two different representations 
+    for $(d_1^{-1}c_1)(d_2c_2^{-1})$. If either $c_2\ne 1$
+	or $d_1\ne 1$, then $c_2d_1=c_4d_4$ for some $d_4\in D\setminus\{d_1\}$
+	and some $c_4\in C\setminus\{c_2\}$. Since 
+	$d_1^{-1}c_2^{-1}=d_4^{-1}c_4^{-1}$, it follows that 
+	\[
+	(d_1^{-1}1)(1c_2^{-1})=(d_4^{-1}1)(1c_4^{-1}).
+	\]
+	Since $|C|+|D|>2$, either $C$ or 
+	$D$ contains $c\ne1$. Thus $(1\cdot 1)(1\cdot 1)=(1\cdot
+	c)(1\cdot c^{-1})$. Therefore every element of $EF$ 
+	admits at least two representations. 
 \end{proof}
 
 % passman lema 1.9 pag 589
 \begin{exercise}
-	Demuestre que si $G$ es un grupo que satisface la propiedad del producto
-	único, entonces $K[G]$ tiene solamente unidades triviales.
+	Prove that if a group $G$ satisfies the unique product property, then 
+    $K[G]$ contains only trivial units.
 \end{exercise}
 
-En general es muy difícil verificar si un grupo posee la propiedad del producto
-único. Una propiedad similar es la de ser un grupo difuso. Si $G$ es un grupo
-libre de torsión y $A\subseteq G$ es un subconjunto, diremos que $A$ es
-antisimétrico si $A\cap A^{-1}\subseteq\{1\}$, donde $A^{-1}=\{a^{-1}:a\in
-A\}$. El conjunto de \textbf{elementos extremales} de $A$ se define como
-$\Delta(A)=\{a\in A:Aa^{-1}\text{ es antisimétrico}\}$. Luego
+In general it is extremely hard to check whether a given group
+has the unique product property. As a geometrical way to 
+attack this problem, Bowditch introduced \emph{diffuse groups}. If
+$G$ is a torsion-free group and 
+$A\subseteq G$ is a subset, we say that $A$ is antisymmetric 
+if $A\cap A^{-1}\subseteq\{1\}$, where $A^{-1}=\{a^{-1}:a\in
+A\}$. The set of \textbf{extremal elements} of $A$ is defined as 
+$\Delta(A)=\{a\in A:Aa^{-1}\text{ is antisymmetric}\}$. 
+Thus 
 \[
 	a\in A\setminus\Delta(A)
 	\Longleftrightarrow
-	\text{existe $g\in G\setminus\{1\}$ tal que $ga\in A$ y $g^{-1}a\in A$}.
+	\text{there existes $g\in G\setminus\{1\}$ such that $ga\in A$ and $g^{-1}a\in A$}.
 \]
 
 \begin{definition}
-	\index{Grupo!difuso}
-	Un grupo $G$ se dice \textbf{difuso} si para todo subconjunto $A\subseteq
-	G$ tal que $2\leq |A|<\infty$ se tiene $|\Delta(A)|\geq2$.
+	\index{Group!diffuse}
+	A group $G$ is \textbf{diffuse} if for every subset $A\subseteq
+	G$ such that $2\leq |A|<\infty$ one has $|\Delta(A)|\geq2$.
 \end{definition}
 
-\begin{lemma}
-	Si $G$ es ordenable a derecha, entonces $G$ es difuso.	
-\end{lemma}
+\begin{proposition}
+	Left-ordered groups are diffuse.	
+\end{proposition}
 
 \begin{proof}
-	Supongamos que $A=\{a_1,\dots,a_n\}$ y $a_1<a_2<\cdots<a_n$. Vamos a
-	demostrar que $\{a_1,a_n\}\subseteq\Delta(A)$. Si $a_1\in
-	A\setminus\Delta(A)$, existe $g\in G\setminus\{1\}$ tal que $ga_1\in A$ y
-	$g^{-1}a_1\in A$. Esto implica que $a_1\leq ga_1$ y $a_1\leq g^{-1}a_1$, de
-	donde se concluye que $1\leq g$ y $1\leq g^{-1}$, una contradicción. De la
-	misma forma se demuestra que $a_n\in \Delta(A)$.
+    Let $G$ be a left-ordered group and $A=\{a_1,\dots,a_n\}$ be such that
+    \[
+    a_1<a_2<\cdots<a_n.
+    \]
+    We claim that 
+	$\{a_1,a_n\}\subseteq\Delta(A)$. If $a_1\in
+	A\setminus\Delta(A)$, there exists $g\in G\setminus\{1\}$ such that $ga_1\in A$ and
+	$g^{-1}a_1\in A$. Thus  $a_1\leq ga_1$ and $a_1\leq g^{-1}a_1$. It follows that
+	$1\leq a^{-1}ga_1$ and $1\leq a_1^{-1}g^{-1}a_1=(a_1^{-1}ga_1)^{-1}$, 
+	a contradiction. Similarly, $a_n\in \Delta(A)$.
 \end{proof}
 
-\begin{lemma}
-	\label{lemma:difuso=>2up}
-	Si $G$ es difuso, entonces $G$ tiene la propiedad del doble producto único.	
-\end{lemma}
+\begin{proposition}
+	\label{pro:difuso=>2up}
+    Diffuse groups have the double unique products.  
+%	Si $G$ es difuso, entonces $G$ tiene la propiedad del doble producto único.	
+\end{proposition}
 
 \begin{proof}
-	Supongamos que $G$ no tiene la propiedad del doble producto único. Existen
-	entonces subconjuntos finitos $A,B\subseteq G$ con $|A|+|B|>2$ tales que
-	$C=AB$ tiene a lo sumo un producto único. Luego $|C|\geq2$. Como $G$ es
-	difuso, $|\Delta(C)|\geq2$. Si $c\in\Delta(C)$, entonces $c$ tiene una
-	única expresión como $c=ab$ con $a\in A$ y $b\in B$ (de lo contrario, si
-	$c=a_0b_0=a_1b_1$ con $a_0\ne a_1$ y $b_0\ne b_1$. Si $g=a_0a_1^{-1}$,
-	entonces $g\ne 1$, $gc=a_0a_1^{-1}a_1b_1=a_0b_1\in C$ y además
-	$g^{-1}c=a_1a_0^{-1}a_0b_0=a_1b_0\in C$. Luego $c\not\in\Delta(c)$, una
-	contradicción.
+    Let $G$ be a diffuse group that does not have double unique products. 
+    There exist non-empty subsets $A,B\subseteq G$ with $|A|+|B|>2$ such that 
+	$C=AB$ admits at most one unique product. Then $|C|\geq2$. Since $G$ is diffse, 
+	$|\Delta(C)|\geq2$. If $c\in\Delta(C)$, then $c$ admits a unique 
+	expression of the form $c=ab$ with $a\in A$ and $b\in B$ (otherwise, if 
+	$c=a_0b_0=a_1b_1$ with $a_0\ne a_1$ and $b_0\ne b_1$). If $g=a_0a_1^{-1}$,
+	then $g\ne 1$, 
+	\[
+	gc=a_0a_1^{-1}a_1b_1=a_0b_1\in C.
+	\]
+	Moreover, 
+	$g^{-1}c=a_1a_0^{-1}a_0b_0=a_1b_0\in C$. Hence $c\not\in\Delta(c)$, a contradiction.
 \end{proof}
 
 \begin{problem}
