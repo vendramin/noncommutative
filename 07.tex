@@ -1,5 +1,721 @@
 \chapter{}
 
+\topic{Locally indicable groups}
+
+\begin{definition}
+\index{Group!indicable}
+    A group $G$ is \textbf{indicable} if
+    there exists a non-trivial group homomorphism $G\to\Z$.
+\end{definition}
+
+We know that braid groups are indicable.
+The free group $F_n$ in $n$ letters is indicable. 
+
+\begin{definition}
+\index{Group!locally indicable}
+    A group $G$ is \textbf{locally indicable} if every 
+    non-trivial finitely generated subgroup is indicable.
+\end{definition}
+
+\index{Burns--Hale's theorem}
+Burns--Hale's theorem (see \cite[Theorem 1.50]{MR3560661}) states that a group $G$ is left-ordered if and only if
+for every non-trivial finitely generated subgroup $H$ of $G$ there exists 
+a left-ordered group $L$ and a non-trivial group homomorphism $H\to L$. As a consequence, 
+locally indicable groups are left-ordered. 
+
+\begin{example}
+    Since subgroups of free groups are free, 
+    it follows that $F_n$ is locally indicable. 
+\end{example}
+
+\begin{proposition}
+\label{pro:LI_exact}
+    Let $1\to K\to G\to Q\to 1$ be an exact sequence of groups. 
+    If $K$ and $Q$ are
+    locally indicable, then $G$ is locally indicable.
+\end{proposition}
+
+\begin{proof}
+    Let $g_1,\dots,g_n\in G$ and $L=\langle g_1,\dots,g_n\rangle$. 
+    Assume that $\beta(L)\ne\{1\}$. Since $Q$ is locally indicable, 
+    there exists a non-trivial group homomorphism $\beta(L)\to\Z$. Then the 
+    composition $L\to Q\to\Z$ is then a non-trivial group homomorphism. Assume now
+    that $\beta(L)=\{1\}$. Then there exist $k_1,\dots,k_n\in K$ 
+    such that $\alpha(k_i)=g_i$ for all $i\in\{1,\dots,n\}$. Note that
+    $\alpha\colon \langle k_1,\dots,k_n\rangle\to L$ is a group isomorphism. Since
+    $K$ is locally indicable, there exits a non-trivial group 
+    homomorphism $\langle k_1,\dots,k_n\rangle\to\Z$. 
+    Thus the composition $L\to\langle k_1,\dots,k_n\rangle\to\Z$ is a non-trivial
+    group homomorphism 
+    and hence $G$ is locally indicable. 
+\end{proof}
+
+As a consequence of the previous proposition, 
+if $G$ and $H$ are locally indicable groups and 
+$\sigma\colon G\to\Aut(H)$ is a group homomorphism, then 
+$G\rtimes_\sigma H$ is locally indicable. In particular, the 
+direct product of locally indicable groups is locally indicable.
+
+\begin{example}
+    The group $G=\langle x,y:x^{-1}yx=y^{-1}\rangle$ is
+    locally indicable. We know that $G$ is torsion-free. Let 
+    $K=\langle y\rangle\simeq\Z$. Then $G/K\simeq\Z$ and 
+    then, since there is an exact sequence
+    $1\to\Z\to G\to\Z\to1$ 
+    it follows from Proposition \ref{pro:LI_exact} 
+    that $G$ is locally indicable.
+\end{example}
+
+% $(x,y)\mapsto(x+1,y)$, $(x,y)\mapsto(-x,y+1)$
+% A=2312, B=200-2
+% Let $K=\langle y\rangle$. Then $G/K\simeq\Z$ and 
+% the second result follows from the previous proposition. 
+
+\begin{exercise}
+\label{xca:B3_LI}
+    Prove that $\B_3$ is locally indicable. 
+\end{exercise}
+
+The previous exercise uses the fact that $[\B_3,\B_3]$ is isomorphic to the free group in two letters, see
+Exercise \ref{xca:derivedB3}.
+An alternative solution to the previous fact goes as follows: $\B_3$ is the fundamental group
+of the trefoil knot and fundamental groups of knots are locally indicable. 
+
+\begin{exercise}
+    Prove that $\B_4$ is locally indicable.
+\end{exercise}
+
+The previous exercise might be harder than Exercise \ref{xca:B3_LI}. One possible solution
+is based on using the Reidemeister--Schreier method to prove that 
+$[\B_4,\B_4]$ is a certain semidirect product 
+between free groups in two generators. Another solution: Let 
+$f\colon\B_4\to\B_3$ be the group homomorphism given by $f(\sigma_1)=f(\sigma_3)=\sigma_1$ 
+and $f(\sigma_2)=\sigma_2$. Then $\ker f=\langle \sigma_1\sigma_3^{-1},\sigma_2\sigma_1\sigma_3^{-1}\sigma_2^{-1}\rangle$ 
+is isomorphic to the free group in two letters. Now use the exact sequence
+$1\to \ker f\to\B_4\to\B_3\to1$. 
+
+\begin{exercise}
+\label{xca:relations}
+    Let $n\geq5$. Consider the elements of $\B_n$ given by 
+    \begin{align*}
+        &\beta_1=\sigma_1^{-1}\sigma_2,
+        &&\beta_2=\sigma_2\sigma_1^{-1}, 
+        &&\beta_3=\sigma_1\sigma_2\sigma_1^{-2},
+        &&\beta_4=\sigma_3\sigma_1^{-1}, 
+        &&\beta_5=\sigma_4\sigma_1^{-1}.
+    \end{align*}
+    Prove the following relations:
+    \begin{enumerate}
+        \item $\beta_1\beta_5=\beta_5\beta_2$.
+        \item $\beta_2\beta_5=\beta_5\beta_3$.
+        \item $\beta_1\beta_3=\beta_2$.
+        \item $\beta_1\beta_4\beta_3=\beta_4\beta_2\beta_4$.
+        \item $\beta_4\beta_5\beta_4=\beta_5\beta_4\beta_5$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $n\geq 5$. 
+    Prove that $\B_n$ is not locally indicable.
+\end{exercise}
+
+For the previous exercise one needs to show that
+every group homomorphism $f\colon \langle\beta_1,\dots,\beta_5\rangle\to\Z$ is trivial. Hint: consider
+the abelianization of $\langle\beta_1,\dots,\beta_5\rangle$. 
+
+\topic{Unique product groups}
+
+Let $G$ be a group and $A,B\subseteq G$ be non-empty subsets. 
+An element $g\in G$ is a \textbf{unique product} in $AB$ if $g=ab=a_1b_1$ for some
+$a,a_1\in
+A$ and $b,b_1\in B$ implies that $a=a_1$ and $b=b_1$.
+
+\begin{definition}
+	\index{Group!unique product}
+	A group $G$ has the \textbf{unique product property} if 
+	for every finite non-empty subsets $A,B\subseteq G$ there exists at least one
+	unique product in $AB$.
+\end{definition}
+
+\begin{proposition}
+    Left-ordered groups have the unique product property.
+\end{proposition}
+
+\begin{proof}
+    Let $G$ be a left-ordered group. 
+	Let $A=\{a_1,\dots,a_n\}\subseteq G$ and $B\subseteq G$ non-empty and finite. 
+	Assume that $a_1<a_2<\cdots<a_n$. Let $c\in B$ be such that $a_1c$ is the 
+	minimum of $a_1B=\{a_1b:b\in B\}$. We claim that $a_1c$ admits a unique
+	representation of the form $\alpha\beta$ with $\alpha\in A$ and 
+	$\beta\in B$. If $a_1c=ab$, then, since $ab=a_1c\leq a_1b$, it follows that 
+	$a\leq a_1$. Hence $a=a_1$ and $b=c$. 
+\end{proof}
+
+\begin{exercise}
+	Prove that groups with the unique product property are
+	torsion-free.
+\end{exercise}
+
+The converse does not hold. 
+Promislow's group is a celebrated counterexample.
+
+\begin{theorem}[Promislow]
+\index{Promislow's theorem}
+    The group $G=\langle a,b:a^{-1}b^2a=b^{-2},b^{-1}a^2b=a^{-2}\rangle$
+    does not have the unique product property.
+\end{theorem}
+
+\begin{proof}
+    Let 
+    \begin{multline}
+    \label{eq:Promislow}
+    S=\{ a^2b,
+    b^2a,
+    aba^{-1},
+    (b^2a)^{-1},
+    (ab)^{-2},
+    b,
+    (ab)^2x,
+    (ab)^2,
+    (aba)^{-1},\\
+    bab,
+    b^{-1},
+    a,
+    aba,
+    a^{-1}
+    \}.
+    \end{multline}
+    We use \textsf{GAP} and the representation $G\to\GL(4,\Q)$ given by 
+    \[
+a\mapsto\begin{pmatrix}
+1 & 0 & 0 & 1/2\\
+0 & -1 & 0 & 1/2\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix},
+\quad
+b\mapsto\begin{pmatrix}
+-1 & 0 & 0 & 0\\
+0 & 1 & 0 & 1/2\\
+0 & 0 & -1 & 1/2\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+    to check that 
+    $G$ does not have
+    unique product property, as each 
+    \[
+    s\in S^2=\{s_1s_2:s_1,s_2\in S\}
+    \]
+    admits at least two different decompositions of the 
+    form $s=xy=uv$ for $x,y,u,v\in S$. 
+    We first create the matrix representations of $a$ and $b$.
+\begin{lstlisting}
+gap> a := [[1,0,0,1/2],[0,-1,0,1/2],[0,0,-1,0],[0,0,0,1]];;
+gap> b := [[-1,0,0,0],[0,1,0,1/2],[0,0,-1,1/2],[0,0,0,1]];;
+\end{lstlisting}
+    Now we create
+    a function that produces the set $S$.
+\begin{lstlisting}
+gap> Promislow := function(x, y)
+> return Set([
+> x^2*y,
+> y^2*x,
+> x*y*Inverse(x),
+> (y^2*x)^(-1),
+> (x*y)^(-2),
+> y,
+> (x*y)^2*x,
+> (x*y)^2,
+> (x*y*x)^(-1),
+> y*x*y,
+> y^(-1),
+> x,
+> x*y*x,
+> x^(-1)
+]);
+end;;
+\end{lstlisting}
+So the set $S$ of \eqref{eq:Promislow} 
+will be \lstinline{Promislow(a,b)}. We now
+create a function that checks whether
+every element of a Promislow subset 
+admits more than one representation.
+\begin{lstlisting}
+gap> is_UPP := function(S)
+> local l,x,y;
+> l := [];
+> for x in S do
+> for y in S do
+> Add(l,x*y);
+> od;
+> od;
+> if ForAll(Collected(l), x->x[2] <> 1) then
+> return false;
+> else
+> return fail;
+> fi;
+> end;;
+\end{lstlisting}
+Finally, we check whether every element of 
+$S$ admits more than one representation.
+\begin{lstlisting}
+gap> S := Promislow(a,b);;
+gap> is_UPP(S);
+false
+\end{lstlisting}
+This completes the proof. 
+\end{proof}
+
+There are other examples. 
+
+% Let $G=\langle x,y:x^{-1}y^2xy^2=x^{-2}yx^{-2}y^3=1\rangle$. 
+% We first construct the group and a certain normal
+% subgroup $N$ of index eight. 
+
+% \begin{lstlisting}
+% gap> f := FreeGroup(2);;
+% gap> x := f.1;;
+% gap> y := f.2;;
+% gap> rels := [Inverse(x)*y^2*x*y^2, Inverse(x^2)*y*Inverse(x^2)*y^3];;
+% gap> G := f/rels;;
+% gap> x := G.1;;
+% gap> y := G.2;;
+% gap> N := Subgroup(G, [y*x*Inverse(x*y), y^2, x^4]);
+% gap> IsNormal(N,G);
+% true
+% gap> StructureDescription(G/N);
+% "C4 x C2"
+% \end{lstlisting}
+% The subgroup $N$ has a nice presentation. It can be presented
+% as the group 
+% \[
+% N=\langle x_1,x_2,x_3:[x_1,x_2]=[x_1,x_3]=1,\,x_3x_2=x_2x_3x_1^8\rangle.
+% \]
+% \begin{lstlisting}
+% gap> g := IsomorphismFpGroup(N);
+% gap> RelatorsOfFpGroup(Image(g));
+% [ F3*F1*F3^-1*F1^-1, F2*F1*F2^-1*F1^-1, F1*F3^-1*F1^5*F2*F1^2*F3*F2^-1 ]
+% \end{lstlisting}
+% From these relations
+% one proves by induction that 
+% \begin{align}
+%     x_3^bx_2^a=x_2^ax_3^bx_1^{8ab}
+% \end{align}
+% for all $a,b\in\Z$. 
+% % First induction in $n_1$, then induction in $n_2$. 
+% It follows that every element of $N$ 
+% is of the form $x_1^{n_1}x_2^{n_2}x_3^{n_3}$ 
+% for $n_1,n_2,n_3\in\Z$. Moreover, 
+% \[
+% (x_1^{n_1}x_2^{n_2}x_3^{n_3})^k=x_1^{kn_1+(k-1)8n_2n_3}x_2^{kn_2}x_3^{kn_3}
+% \]
+% for all $k\in\Z$. Note that $x_1^8$ is a commutator. Moreover, 
+% $N/[N,N]\simeq\Z\times\Z\times\Z/8$. This implies that
+% $N$ is torsion-free. Let us prove that $G$ is torsion-free. 
+% Let $\pi\colon G\to G/N$ be the canonical map. Let 
+% $g\in G$ be a torsion element, in particular $g\not\in N$
+% and hence $\pi(g)\ne 1$. So $\pi(g)$ has order two 
+% or four. Without loss of generality we may assume that
+% $\pi(g)$ has order two.  
+% Then $\pi(g^2)=\pi(g)^2=y^2=1$ and hence 
+% $g^2\in N$. Since $N$ is torsion free, it follows that $g=1$. 
+
+\begin{definition}
+\index{Group!double unique product}
+	A group $G$ has the \textbf{double property of unique products} 
+	if for every finite non-empty subsets $A,B\subseteq G$ such that 
+	$|A|+|B|>2$ there are at least two unique products in $AB$.
+\end{definition}
+
+\begin{theorem}[Strojnowski]
+	\label{theorem:Strojnowski}
+	\index{Strojonowski's theorem}
+	Let $G$ be a group. The following statements are equivalent:
+	\begin{enumerate}
+		\item $G$ has the double property of unique products. 
+		\item For every non-empty finite subset $A\subseteq G$ contains at least one unique product 
+			in $AA=\{a_1a_2:a_1,a_2\in A\}$.
+		\item $G$ has the unique product property.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	It is trivial that $1)\implies2)$ es trivial.  Let us prove that 
+	$2)\implies3)$. If $G$ does not have the unique product property, 
+	there exist finite non-empty subsets 
+	$A,B\subseteq G$ such that every element of 
+	$AB$ admists at least two representations. Let $C=AB$. Every element $c\in C$ is 
+	of the form $c=(a_1b_1)(a_2b_2)$ for some $a_1,a_2\in A$ and $b_1,b_2\in B$. Since 
+	$a_2^{-1}b_1^{-1}\in AB$, there exist $a_3\in A\setminus\{a_2\}$ and
+	$b_3\in B\setminus\{b_1\}$ such that 
+	$a_2^{-1}b_1^{-1}=a_3^{-1}b_3^{-1}$. Thus $b_1a_2=b_3a_3$ and hence 
+	\[
+	c=(a_1b_1)(a_2b_2)=(a_1b_3)(a_3b_2)
+	\]
+	has two different representations in $AB$, 
+	as $a_2\ne a_3$ and $b_1\ne b_3$.
+
+	We now prove that $3)\implies1)$. Let us assume that $G$ has the unique product property 
+	but it is not a group with double unique products. Then there exist 
+	finite non-empty subsets 
+	$A,B\subseteq G$ with $|A|+|B|>2$ such that 
+	in $AB$ there exists a unique element $ab$ with a unique representation in $AB$.
+	Let $C=a^{-1}A$ and $D=Bb^{-1}$. Then $1\in C\cap D$ and the identity 
+	$1$ admits a unique representation in $CD$ (because $1=cd$ with 
+	$c=a^{-1}a_1\ne 1$ and $d=b_1b^{-1}\ne 1$ imply that $ab=a_1b_1$ with $a\ne
+	a_1$ and $b\ne b_1)$. Let $E=D^{-1}C$ and $F=DC^{-1}$. Every element of the set $EF$
+	can be written as $(d_1^{-1}c_1)(d_2c_2^{-1})$. If either $c_1\ne 1$ or $d_2\ne 1$, 
+	then $c_1d_2=c_3d_3$ for some elements $c_3\in C\setminus\{c_1\}$ and  
+	$d_3\in D\setminus\{d_2\}$. Thus 
+	$(d_1^{-1}c_1)(d_2c_2^{-1})=(d_1^{-1}c_3)(d_3c_2^{-1})$ are two different representations 
+    for $(d_1^{-1}c_1)(d_2c_2^{-1})$. If either $c_2\ne 1$
+	or $d_1\ne 1$, then $c_2d_1=c_4d_4$ for some $d_4\in D\setminus\{d_1\}$
+	and some $c_4\in C\setminus\{c_2\}$. Since 
+	$d_1^{-1}c_2^{-1}=d_4^{-1}c_4^{-1}$, it follows that 
+	\[
+	(d_1^{-1}1)(1c_2^{-1})=(d_4^{-1}1)(1c_4^{-1}).
+	\]
+	Since $|C|+|D|>2$, either $C$ or 
+	$D$ contains $c\ne1$. Thus $(1\cdot 1)(1\cdot 1)=(1\cdot
+	c)(1\cdot c^{-1})$. Therefore every element of $EF$ 
+	admits at least two representations. 
+\end{proof}
+
+% passman lema 1.9 pag 589
+\begin{exercise}
+	Prove that if a group $G$ satisfies the unique product property, then 
+    $K[G]$ contains only trivial units.
+\end{exercise}
+
+In general it is extremely hard to check whether a given group
+has the unique product property. As a geometrical way to 
+attack this problem, Bowditch introduced \emph{diffuse groups}. If
+$G$ is a torsion-free group and 
+$A\subseteq G$ is a subset, we say that $A$ is antisymmetric 
+if $A\cap A^{-1}\subseteq\{1\}$, where $A^{-1}=\{a^{-1}:a\in
+A\}$. The set of \textbf{extremal elements} of $A$ is defined as 
+$\Delta(A)=\{a\in A:Aa^{-1}\text{ is antisymmetric}\}$. 
+Thus 
+\[
+	a\in A\setminus\Delta(A)
+	\Longleftrightarrow
+	\text{there existes $g\in G\setminus\{1\}$ such that $ga\in A$ and $g^{-1}a\in A$}.
+\]
+
+\begin{definition}
+	\index{Group!diffuse}
+	A group $G$ is \textbf{diffuse} if for every subset $A\subseteq
+	G$ such that $2\leq |A|<\infty$ one has $|\Delta(A)|\geq2$.
+\end{definition}
+
+\begin{proposition}
+	Left-ordered groups are diffuse.	
+\end{proposition}
+
+\begin{proof}
+    Let $G$ be a left-ordered group and $A=\{a_1,\dots,a_n\}$ be such that
+    \[
+    a_1<a_2<\cdots<a_n.
+    \]
+    We claim that 
+	$\{a_1,a_n\}\subseteq\Delta(A)$. If $a_1\in
+	A\setminus\Delta(A)$, there exists $g\in G\setminus\{1\}$ such that $ga_1\in A$ and
+	$g^{-1}a_1\in A$. Thus  $a_1\leq ga_1$ and $a_1\leq g^{-1}a_1$. It follows that
+	$1\leq a^{-1}ga_1$ and $1\leq a_1^{-1}g^{-1}a_1=(a_1^{-1}ga_1)^{-1}$, 
+	a contradiction. Similarly, $a_n\in \Delta(A)$.
+\end{proof}
+
+\begin{proposition}
+	\label{pro:difuso=>2up}
+    Diffuse groups have double unique products.  
+\end{proposition}
+
+\begin{proof}
+    Let $G$ be a diffuse group that does not have double unique products. 
+    There exist non-empty subsets $A,B\subseteq G$ with $|A|+|B|>2$ such that 
+	$C=AB$ admits at most one unique product. Then $|C|\geq2$. Since $G$ is diffse, 
+	$|\Delta(C)|\geq2$. If $c\in\Delta(C)$, then $c$ admits a unique 
+	expression of the form $c=ab$ with $a\in A$ and $b\in B$ (otherwise, if 
+	$c=a_0b_0=a_1b_1$ with $a_0\ne a_1$ and $b_0\ne b_1$). If $g=a_0a_1^{-1}$,
+	then $g\ne 1$, 
+	\[
+	gc=a_0a_1^{-1}a_1b_1=a_0b_1\in C.
+	\]
+	Moreover, 
+	$g^{-1}c=a_1a_0^{-1}a_0b_0=a_1b_0\in C$. Hence $c\not\in\Delta(c)$, a contradiction.
+\end{proof}
+
+\begin{problem}
+	Find a non-diffuse group with the unique product property.
+\end{problem}
+
+%Un grupo $G$ se dice \textbf{débilmente difuso} si para todo subconjunto
+%finito $A\subseteq G$ no vacío se tiene $\Delta(A)\ne\emptyset$. La técnica
+%usada para demostrar el lema~\ref{lemma:difuso=>2up} puede usarse para
+%demostrar que un grupo débilmente difuso posee la propiedad del producto
+%único. El teorema~\ref{theorem:Strojnowski} sugiere entonces la siguiente
+%pregunta: 
+%
+%\begin{problem}
+%	¿Existe un grupo débilmente difuso que no sea difuso?
+%\end{problem}
+%
+%\section{El grupo de Promislow}
+%
+%Veremos un ejemplo concreto de un grupo sin torsión que no es ordenable, no es
+%difuso y no tiene la propiedad del producto único.
+%
+%\begin{exercise}
+%	\label{exercise:Dinfty}
+%	Demuestre que $G=\langle x,y:x^2=y^2=1\rangle$ es isomorfo al grupo diedral infinito.
+%\end{exercise}
+%
+%\begin{definition}
+%	Se define el grupo de Promislow como 
+%	\[
+%		G=\langle x,y:x^{-1}y^2x=y^{-2},\,y^{-1}x^2y=x^{-2}\rangle.
+%	\]
+%\end{definition}
+%
+%\begin{proposition}
+%	\label{proposition:Promislow}
+%	El grupo de Promislow es libre de torsión y no satisface la propiedad del
+%	producto único. 
+%\end{proposition}
+%
+%\begin{proof}
+%	
+%\end{proof}
+
+\topic{Connel's theorem}
+
+When $K[G]$ is prime? Connel's theorem gives a full answer to this natural
+question in the case where $K$ is of characteristic zero. 
+
+%\begin{lemma}
+%	\label{lemma:Dfg}
+%	Sea $H$ un subgrupo finitamente generado de $\Delta(G)$.
+%	\begin{enumerate}
+%		\item $(G:C_G(H))$ es finito.
+%		\item $(H:Z(H))$ es finito.
+%		\item $[H,H]$ es finito.
+%		\item Si $H_0$ es el conjunto de elementos de torsión de $H$, $H_0$ es
+%			un subgrupo normal finito de $H$ y $H/H_0$ es finitamente generado,
+%			abeliano y libre de torsión.
+%	\end{enumerate}
+%\end{lemma}
+%
+%\begin{proof}
+%	Veamos la primera afirmación: Si $H=\langle
+%	h_1,\dots,h_n\rangle\subseteq\Delta(G)$, entonces $(G:C_G(h_i))$ es finito
+%	para todo $i\in\{1,\dots,n\}$. Como $C_G(H)=\cap_{i=1}^nC_G(h_i)$, se
+%	concluye que $(G:C_G(H))$ es finito.
+%
+%	Para demostrar la segunda afirmación basta observar que $Z(H)=H\cap C_G(H)$
+%	y luego $(H:Z(H))\leq(G:C_G(H)<\infty$. % necesito dos lemas
+%
+%	La tercera afirmación es consecuencia de la segunda gracias a un teorema de
+%	Schur.
+%
+%	Por último, demostremos la cuarta afirmación.  El grupo $H/[H,H]$ es
+%	abeliano y finitamente generado y luego, sus elementos de torsión forman un
+%	grupo finito. Como $[H,H]$ es finito, $[H,H]$ es un subgrupo normal de
+%	$H_0$. Vamos a demostrar que la torsión de $H/[H,H]$ es igual a
+%	$H_0/[H,H]$. La inclusión $\supseteq$ es trivial. Veamos entonces que vale
+%	$\subseteq$: so $(x[H,H])^k=1$, entonces $x^k\in[H,H]$. Luego $(x^k)^m=1$ y
+%	luego $x\in H_0$. Tenemos entonces que 
+%	\[
+%		H/[H,H]\simeq\Z^r\times\operatorname{tor}(H/[H,H])\simeq\Z^r\times H_0/[H,H]
+%	\]
+%	y luego $H/H_0$ es finitamente generado, abeliano y libre de torsión.
+%
+%\end{proof}
+%
+%\begin{lemma}
+%	\label{lemma:K[abelian]}
+%	Si $G$ un grupo abeliano finitamente generado y sin torsión, entonces
+%	$K[G]$ es un dominio. 
+%\end{lemma}
+%
+%\begin{proof}
+%	Por el teorema
+%	de estructura de grupos abelianos finitamente generados podemos escribir
+%	$G=\langle x_1\rangle\times\cdots\langle x_n\rangle$, donde
+%	$\langle x_j\rangle\simeq\Z$ para todo $j\in\{1,\dots,n\}$. Todo elemento
+%	de $G$ se escribe unívocamente como $x_1^{m_1}\cdots x_n^{m_n}$ y
+%	luego la función 
+%	\[
+%		\iota\colon K[X_1,\dots,X_n]\to K[G],\quad
+%		X_j\mapsto x_j,
+%	\]
+%	es un
+%	morfismo de anillos inyectivo. Si $\alpha\in K[G]$, entonces existe
+%	$m\in\N$ suficientemente grande tal que $\iota((X_1\cdots X_n)^m)\alpha\in
+%	\iota(K[X_1,\dots,X_n])\simeq K[X_1,\dots,X_n]$. Luego $K[G]\subseteq
+%	K(X_1,\dots,X_n)$ y $K[G]$ es un dominio.
+%\end{proof}
+
+%\begin{lemma}
+%	Si $G$ es un grupo, entonces
+%	$\Delta(G)/\Delta^+(G)$ es abeliano y libre de torsión.
+%%	Valen las siguientes afirmaciones:
+%%	\begin{enumerate}
+%%		%\item $\Delta^+(G)$ está generado por los subgrupos normales finitos de $G$.
+%%		\item 
+%%		\item Si $\Delta^+(G)=1$, entonces $K[\Delta(G)]$ es un dominio.
+%%	\end{enumerate}
+%\end{lemma}
+%
+%\begin{proof}
+%%	Demostremos la primera afirmación. 
+%	Sean $y_1,\dots,y_n\in\Delta(G)$ y sea $L=\langle y_1,\dots,y_n\rangle$.
+%	Como $[L,L]$ es finito por el lema~\ref{lemma:Dfg}, $[L,L]\subseteq\Delta^+(G)$. Luego
+%	$\Delta(G)/\Delta^+(G)$ es abeliano y libre de torsión.
+%%
+%%	Para demostrar la segunda afirmación basta observar que si $\Delta^+(G)=1$
+%%	entonces, por el primer ítem, $\Delta(G)$ es abeliano, finitamente generado
+%%	y libre de torsión. Luego $K[\Delta(G)]$ es un dominio por el
+%%	lema~\ref{lemma:K[abelian]}. 
+%\end{proof}
+
+If $S$ is a finite subset of a group $G$, then we define 
+$\widehat{S}=\sum_{x\in S}x$. 
+
+\begin{lemma}
+	\label{lemma:sumN}
+	Let $N$ be a finite normal subgroup of $G$. Then $\widehat{N}=\sum_{x\in N}x$ is central
+	in $K[G]$ and $\widehat{N}(\widehat{N}-|N|1)=0$.
+\end{lemma}
+
+\begin{proof}
+	Assume that $N=\{n_1,\dots,n_k\}$. Let 
+	$g\in G$. Since $N\to N$, $n\mapsto gng^{-1}$, is bijective, 
+	\[
+		g\widehat{N}g^{-1}=g(n_1+\cdots+n_k)g^{-1}=gn_1g^{-1}+\cdots+gn_kg^{-1}=\widehat{N}.
+	\]
+	Since $nN=N$ if $n\in N$, it follows that $n\widehat{N}=\widehat{N}$. Thus 
+	$\widehat{N}\widehat{N}=\sum_{j=1}^k n_j\widehat{N}=|N|\widehat{N}$.
+\end{proof}
+
+If $G$ is a group, let 
+\begin{align*}
+	&\Delta^+(G)=\{x\in \Delta(G):\text{$x$ has finite order}\}.
+\end{align*}
+An application of Dietzmann's theorem:
+
+\begin{proposition}
+	\label{lem:DcharG}
+	If $G$ is a group, then $\Delta^+(G)$ is a characteristic subgroup of $G$.
+\end{proposition}
+
+\begin{proof}
+	Clearly, $1\in\Delta^+(G)$. 
+	Let $x,y\in\Delta^+(G)$ and $H$ be the subgroup of $G$ generated by the set 
+	$C$ formed by all finite conjugates of $x$ and $y$. If $|x|=n$ and 
+	$|y|=m$, then $c^{nm}=1$ for all $c\in C$. 
+	Since $C$ is finite and closed under conjugation, Dietzmann's theorem 
+	implies that $H$ is finite and hence 
+	$H\subseteq\Delta^+(G)$. In particular, $xy^{-1}\in\Delta^+(G)$. It is now clear
+	that $\Delta^+(G)$ is a characteristic subgroup, as for 
+	every $f\in\Aut(G)$ and $x\in\Delta^+(G)$ it follows that $f(x)\in\Delta^+(G)$. 
+\end{proof}
+
+To prove Connel's theorem we need a lemma. 
+
+\begin{lemma}
+	\label{lem:Connel}
+	Let $G$ be a group and  $x\in\Delta^+(G)$. There exists a finite normal subgroup
+	$H$ of $G$ such that $x\in H$.
+\end{lemma}
+
+\begin{proof}
+	Let $H$ be the subgroup generated by the conjugates of $x$. Since $x$ has finitely many conjugates, 
+	$H$ is finitely generated. Moreover, $H$ is normal in $G$ and it is generated by torsion elements. 
+	All these generators of $H$ have the same order, say $n$. By Dietzmann's theorem, 
+	$H$ is finite. 
+\end{proof}
+
+\index{Ring!prime}
+Recall that a ring $R$ is said to be \textbf{prime} 
+if for $x,y\in R$ such that $xRy=\{0\}$ it follows that $x=0$ or $y=0$. Prime rings
+are non-commutative analogs of domains. 
+
+\begin{theorem}[Connell]
+	\label{thm:Connel}
+	\index{Connel's theorem}
+	Let $K$ be a field of characteristic zero. Let 
+	$G$ be a group. The following statements are equivalent: 
+	\begin{enumerate}
+		\item $K[G]$ is prime.
+		\item $Z(K[G])$ is prime.
+		\item $G$ does not contain non-trivial finite normal subgroups. 
+		\item $\Delta^+(G)=\{1\}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	We first prove that $1)\implies2)$. Since $Z(K[G])$ is commutative, we need to prove that 
+	there are no non-trivial zero divisors. Let $\alpha,\beta\in Z(K[G])$ be such that 
+	$\alpha\beta=0$. Let $A=\alpha K[G]$ and $B=\beta K[G]$. Since both $\alpha$ and 
+	$\beta$ are central, both $A$ and $B$ are ideals of $K[G]$. Since $AB=\{0\}$,
+	it follows that either $A=\{0\}$ or $B=\{0\}$, as $K[G]$ is prime by assumption. 
+	Thus either $\alpha=0$ or 
+	$\beta=0$.
+
+	We now prove that $2)\implies3)$. Let $N$ be a normal finite subgroup of $G$. 
+	By Lemma~\ref{lemma:sumN}, $\widehat{N}=\sum_{x\in N}x$ is central in 
+	$K[G]$ and $\widehat{N}(\widehat{N}-|N|1)=0$. Since $\widehat{N}\ne 0$ (recall that 
+	$K$ has characteristic zero) and $Z(K[G])$ is a domain,
+	$\widehat{N}=|N|1$, that is $N=\{1\}$.
+
+	Let us prove that $3)\implies4)$. Let $x\in\Delta^+(G)$. By Lemma~\ref{lem:Connel},
+	there exists a finite normal subgroup $H$ of $G$ that contains $x$. By assumption, $H$ is trivial. 
+	Hence $x=1$.
+
+	Finally, let us prove that $4)\implies1)$. Let $A$ and $B$ be ideals of 
+	$K[G]$ such that $AB=\{0\}$. Assume that $B\ne\{ 0\}$ and let $\beta\in
+	B\setminus\{0\}$.  If $\alpha\in A$, then, since 
+	\[
+	\alpha K[G]\beta\subseteq \alpha B\subseteq AB=\{0\},
+	\]
+	Passman's lemma ~\ref{lem:Passman}
+	implies that $\pi_{\Delta(G)}(\alpha)\pi_{\Delta(G)}(\beta)=\{0\}$.
+	By assumption, $\Delta^+(G)$ is trivial. Thus $\Delta(G)$ is torsion-free 
+	and hence $\Delta(G)$ is abelian by Proposition~\ref{pro:FCabeliano}. It follows that
+	$K[\Delta(G)]$ has no zero divisors and therefore $\alpha=0$. 
+\end{proof}
+
+\index{Hopkins--Levitzky's theorem}
+We now need to recall Hopkins--Levitzky's theorem. The theorem
+states that unitary left artinian rings are left noetherian.
+
+\begin{theorem}[Connel]
+\index{Connel's theorem}
+	Let $K$ be a field of characteristic zero. If $G$ is a group, then 
+	$K[G]$ is left artinian if and only if $G$ is finite.
+\end{theorem}
+
+\begin{proof}
+	If $G$ is finite, $K[G]$ is left artinian, as it is a finite-dimensional algebra.
+	
+	Let us assume that $K[G]$ is left artinian. 
+	If $K[G]$ is prime, Wedderburn's theorem implies that 
+	$K[G]$ is simple and hence 
+	$G$ is trivial (otherwise, $K[G]$ is not simple as the augmentation ideal 
+	is a non-zero ideal of $K[G]$).
+
+	Since $K[G]$ is left artinian, it is left noetherian by Hopkins--Levitzky's theorem. Thus $K[G]$
+	admits a composition series. We proceed by induction on the length of this composition series of 
+	$K[G]$. If the length is one, $\{0\}$ is the only ideal of $K[G]$ and hence the result follows as 
+	$K[G]$ is prime. If we assume the result holds for length $n$ and $K[G]$ is not prime, then, 
+	Connel's theorem implies that $G$ contains a finite non-trivial normal subgroup $H$. The canonical map
+	$K[G]\to K[G/H]$ implies that $K[G/H]$ is left artinian and has length 
+	$<n$. By using the inductive hypothesis, $G/H$
+	is a finite group. Since $H$ is also finite, it follows that $G$ is finite. 
+\end{proof}
+
+
 \topic{The Yang--Baxter equation}
 
 We now briefly discuss set-theoretic solutions to the Yang--Baxter equation. 
