@@ -30,16 +30,25 @@ locally indicable groups are left-ordered.
 
 \begin{proposition}
 \label{pro:LI_exact}
-    Let $1\to K\to G\to Q\to 1$ be an exact sequence of groups. 
+    Let
+    \[\begin{tikzcd}
+	1 & K & G & Q & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow["\alpha", from=1-2, to=1-3]
+	\arrow["\beta", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}
+\]
+    be an exact sequence of groups. 
     If $K$ and $Q$ are
     locally indicable, then $G$ is locally indicable.
 \end{proposition}
 
 \begin{proof}
     Let $g_1,\dots,g_n\in G$ and $L=\langle g_1,\dots,g_n\rangle$. 
-    Assume that $\beta(L)\ne\{1\}$. Since $Q$ is locally indicable, 
+    Assume first that $\beta(L)\ne\{1\}$. Since $Q$ is locally indicable, 
     there exists a non-trivial group homomorphism $\beta(L)\to\Z$. Then the 
-    composition $L\to Q\to\Z$ is then a non-trivial group homomorphism. Assume now
+    composition $L\to\beta(Q)\to\Z$ is then a non-trivial group homomorphism. Assume now
     that $\beta(L)=\{1\}$. Then there exist $k_1,\dots,k_n\in K$ 
     such that $\alpha(k_i)=g_i$ for all $i\in\{1,\dots,n\}$. Note that
     $\alpha\colon \langle k_1,\dots,k_n\rangle\to L$ is a group isomorphism. Since
@@ -143,12 +152,12 @@ A$ and $b,b_1\in B$ implies that $a=a_1$ and $b=b_1$.
 
 \begin{proof}
     Let $G$ be a left-ordered group. 
-	Let $A=\{a_1,\dots,a_n\}\subseteq G$ and $B\subseteq G$ non-empty and finite. 
-	Assume that $a_1<a_2<\cdots<a_n$. Let $c\in B$ be such that $a_1c$ is the 
-	minimum of $a_1B=\{a_1b:b\in B\}$. We claim that $a_1c$ admits a unique
+	Let $A$ be a non-empty finite subset of $G$ and $B=\{b_1,\dots,b_n\}\subseteq G$. 
+	Assume that $b_1<b_2<\cdots<b_n$. Let $c\in A$ be such that $cb_1$ is the 
+	minimum of $Ab_1=\{ab_1:a\in A\}$. We claim that $cb_1$ admits a unique
 	representation of the form $\alpha\beta$ with $\alpha\in A$ and 
-	$\beta\in B$. If $a_1c=ab$, then, since $ab=a_1c\leq a_1b$, it follows that 
-	$a\leq a_1$. Hence $a=a_1$ and $b=c$. 
+	$\beta\in B$. If $cb_1=ab$, then, since $ab=cb_1\leq ab_1$, it follows that 
+	$b\leq b_1$. Hence $b=b_1$ and $a=c$. 
 \end{proof}
 
 \begin{exercise}
@@ -175,7 +184,7 @@ Promislow's group is a celebrated counterexample.
     (b^2a)^{-1},
     (ab)^{-2},
     b,
-    (ab)^2x,
+    (ab)^2a,
     (ab)^2,
     (aba)^{-1},\\
     bab,
@@ -334,14 +343,14 @@ There are other examples.
 	Let $G$ be a group. The following statements are equivalent:
 	\begin{enumerate}
 		\item $G$ has the double property of unique products. 
-		\item For every non-empty finite subset $A\subseteq G$ contains at least one unique product 
+		\item Every non-empty finite subset $A\subseteq G$ contains at least one unique product 
 			in $AA=\{a_1a_2:a_1,a_2\in A\}$.
 		\item $G$ has the unique product property.
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	It is trivial that $1)\implies2)$ es trivial.  Let us prove that 
+	It is trivial that $1)\implies2)$.  Let us prove that 
 	$2)\implies3)$. If $G$ does not have the unique product property, 
 	there exist finite non-empty subsets 
 	$A,B\subseteq G$ such that every element of 
@@ -486,606 +495,5 @@ Thus
 %
 %\begin{proof}
 %	
-%\end{proof}
-
-\topic{Connel's theorem}
-
-When $K[G]$ is prime? Connel's theorem gives a full answer to this natural
-question in the case where $K$ is of characteristic zero. 
-
-%\begin{lemma}
-%	\label{lemma:Dfg}
-%	Sea $H$ un subgrupo finitamente generado de $\Delta(G)$.
-%	\begin{enumerate}
-%		\item $(G:C_G(H))$ es finito.
-%		\item $(H:Z(H))$ es finito.
-%		\item $[H,H]$ es finito.
-%		\item Si $H_0$ es el conjunto de elementos de torsión de $H$, $H_0$ es
-%			un subgrupo normal finito de $H$ y $H/H_0$ es finitamente generado,
-%			abeliano y libre de torsión.
-%	\end{enumerate}
-%\end{lemma}
-%
-%\begin{proof}
-%	Veamos la primera afirmación: Si $H=\langle
-%	h_1,\dots,h_n\rangle\subseteq\Delta(G)$, entonces $(G:C_G(h_i))$ es finito
-%	para todo $i\in\{1,\dots,n\}$. Como $C_G(H)=\cap_{i=1}^nC_G(h_i)$, se
-%	concluye que $(G:C_G(H))$ es finito.
-%
-%	Para demostrar la segunda afirmación basta observar que $Z(H)=H\cap C_G(H)$
-%	y luego $(H:Z(H))\leq(G:C_G(H)<\infty$. % necesito dos lemas
-%
-%	La tercera afirmación es consecuencia de la segunda gracias a un teorema de
-%	Schur.
-%
-%	Por último, demostremos la cuarta afirmación.  El grupo $H/[H,H]$ es
-%	abeliano y finitamente generado y luego, sus elementos de torsión forman un
-%	grupo finito. Como $[H,H]$ es finito, $[H,H]$ es un subgrupo normal de
-%	$H_0$. Vamos a demostrar que la torsión de $H/[H,H]$ es igual a
-%	$H_0/[H,H]$. La inclusión $\supseteq$ es trivial. Veamos entonces que vale
-%	$\subseteq$: so $(x[H,H])^k=1$, entonces $x^k\in[H,H]$. Luego $(x^k)^m=1$ y
-%	luego $x\in H_0$. Tenemos entonces que 
-%	\[
-%		H/[H,H]\simeq\Z^r\times\operatorname{tor}(H/[H,H])\simeq\Z^r\times H_0/[H,H]
-%	\]
-%	y luego $H/H_0$ es finitamente generado, abeliano y libre de torsión.
-%
-%\end{proof}
-%
-%\begin{lemma}
-%	\label{lemma:K[abelian]}
-%	Si $G$ un grupo abeliano finitamente generado y sin torsión, entonces
-%	$K[G]$ es un dominio. 
-%\end{lemma}
-%
-%\begin{proof}
-%	Por el teorema
-%	de estructura de grupos abelianos finitamente generados podemos escribir
-%	$G=\langle x_1\rangle\times\cdots\langle x_n\rangle$, donde
-%	$\langle x_j\rangle\simeq\Z$ para todo $j\in\{1,\dots,n\}$. Todo elemento
-%	de $G$ se escribe unívocamente como $x_1^{m_1}\cdots x_n^{m_n}$ y
-%	luego la función 
-%	\[
-%		\iota\colon K[X_1,\dots,X_n]\to K[G],\quad
-%		X_j\mapsto x_j,
-%	\]
-%	es un
-%	morfismo de anillos inyectivo. Si $\alpha\in K[G]$, entonces existe
-%	$m\in\N$ suficientemente grande tal que $\iota((X_1\cdots X_n)^m)\alpha\in
-%	\iota(K[X_1,\dots,X_n])\simeq K[X_1,\dots,X_n]$. Luego $K[G]\subseteq
-%	K(X_1,\dots,X_n)$ y $K[G]$ es un dominio.
-%\end{proof}
-
-%\begin{lemma}
-%	Si $G$ es un grupo, entonces
-%	$\Delta(G)/\Delta^+(G)$ es abeliano y libre de torsión.
-%%	Valen las siguientes afirmaciones:
-%%	\begin{enumerate}
-%%		%\item $\Delta^+(G)$ está generado por los subgrupos normales finitos de $G$.
-%%		\item 
-%%		\item Si $\Delta^+(G)=1$, entonces $K[\Delta(G)]$ es un dominio.
-%%	\end{enumerate}
-%\end{lemma}
-%
-%\begin{proof}
-%%	Demostremos la primera afirmación. 
-%	Sean $y_1,\dots,y_n\in\Delta(G)$ y sea $L=\langle y_1,\dots,y_n\rangle$.
-%	Como $[L,L]$ es finito por el lema~\ref{lemma:Dfg}, $[L,L]\subseteq\Delta^+(G)$. Luego
-%	$\Delta(G)/\Delta^+(G)$ es abeliano y libre de torsión.
-%%
-%%	Para demostrar la segunda afirmación basta observar que si $\Delta^+(G)=1$
-%%	entonces, por el primer ítem, $\Delta(G)$ es abeliano, finitamente generado
-%%	y libre de torsión. Luego $K[\Delta(G)]$ es un dominio por el
-%%	lema~\ref{lemma:K[abelian]}. 
-%\end{proof}
-
-If $S$ is a finite subset of a group $G$, then we define 
-$\widehat{S}=\sum_{x\in S}x$. 
-
-\begin{lemma}
-	\label{lemma:sumN}
-	Let $N$ be a finite normal subgroup of $G$. Then $\widehat{N}=\sum_{x\in N}x$ is central
-	in $K[G]$ and $\widehat{N}(\widehat{N}-|N|1)=0$.
-\end{lemma}
-
-\begin{proof}
-	Assume that $N=\{n_1,\dots,n_k\}$. Let 
-	$g\in G$. Since $N\to N$, $n\mapsto gng^{-1}$, is bijective, 
-	\[
-		g\widehat{N}g^{-1}=g(n_1+\cdots+n_k)g^{-1}=gn_1g^{-1}+\cdots+gn_kg^{-1}=\widehat{N}.
-	\]
-	Since $nN=N$ if $n\in N$, it follows that $n\widehat{N}=\widehat{N}$. Thus 
-	$\widehat{N}\widehat{N}=\sum_{j=1}^k n_j\widehat{N}=|N|\widehat{N}$.
-\end{proof}
-
-If $G$ is a group, let 
-\begin{align*}
-	&\Delta^+(G)=\{x\in \Delta(G):\text{$x$ has finite order}\}.
-\end{align*}
-An application of Dietzmann's theorem:
-
-\begin{proposition}
-	\label{lem:DcharG}
-	If $G$ is a group, then $\Delta^+(G)$ is a characteristic subgroup of $G$.
-\end{proposition}
-
-\begin{proof}
-	Clearly, $1\in\Delta^+(G)$. 
-	Let $x,y\in\Delta^+(G)$ and $H$ be the subgroup of $G$ generated by the set 
-	$C$ formed by all finite conjugates of $x$ and $y$. If $|x|=n$ and 
-	$|y|=m$, then $c^{nm}=1$ for all $c\in C$. 
-	Since $C$ is finite and closed under conjugation, Dietzmann's theorem 
-	implies that $H$ is finite and hence 
-	$H\subseteq\Delta^+(G)$. In particular, $xy^{-1}\in\Delta^+(G)$. It is now clear
-	that $\Delta^+(G)$ is a characteristic subgroup, as for 
-	every $f\in\Aut(G)$ and $x\in\Delta^+(G)$ it follows that $f(x)\in\Delta^+(G)$. 
-\end{proof}
-
-To prove Connel's theorem we need a lemma. 
-
-\begin{lemma}
-	\label{lem:Connel}
-	Let $G$ be a group and  $x\in\Delta^+(G)$. There exists a finite normal subgroup
-	$H$ of $G$ such that $x\in H$.
-\end{lemma}
-
-\begin{proof}
-	Let $H$ be the subgroup generated by the conjugates of $x$. Since $x$ has finitely many conjugates, 
-	$H$ is finitely generated. Moreover, $H$ is normal in $G$ and it is generated by torsion elements. 
-	All these generators of $H$ have the same order, say $n$. By Dietzmann's theorem, 
-	$H$ is finite. 
-\end{proof}
-
-\index{Ring!prime}
-Recall that a ring $R$ is said to be \textbf{prime} 
-if for $x,y\in R$ such that $xRy=\{0\}$ it follows that $x=0$ or $y=0$. Prime rings
-are non-commutative analogs of domains. 
-
-\begin{theorem}[Connell]
-	\label{thm:Connel}
-	\index{Connel's theorem}
-	Let $K$ be a field of characteristic zero. Let 
-	$G$ be a group. The following statements are equivalent: 
-	\begin{enumerate}
-		\item $K[G]$ is prime.
-		\item $Z(K[G])$ is prime.
-		\item $G$ does not contain non-trivial finite normal subgroups. 
-		\item $\Delta^+(G)=\{1\}$.
-	\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-	We first prove that $1)\implies2)$. Since $Z(K[G])$ is commutative, we need to prove that 
-	there are no non-trivial zero divisors. Let $\alpha,\beta\in Z(K[G])$ be such that 
-	$\alpha\beta=0$. Let $A=\alpha K[G]$ and $B=\beta K[G]$. Since both $\alpha$ and 
-	$\beta$ are central, both $A$ and $B$ are ideals of $K[G]$. Since $AB=\{0\}$,
-	it follows that either $A=\{0\}$ or $B=\{0\}$, as $K[G]$ is prime by assumption. 
-	Thus either $\alpha=0$ or 
-	$\beta=0$.
-
-	We now prove that $2)\implies3)$. Let $N$ be a normal finite subgroup of $G$. 
-	By Lemma~\ref{lemma:sumN}, $\widehat{N}=\sum_{x\in N}x$ is central in 
-	$K[G]$ and $\widehat{N}(\widehat{N}-|N|1)=0$. Since $\widehat{N}\ne 0$ (recall that 
-	$K$ has characteristic zero) and $Z(K[G])$ is a domain,
-	$\widehat{N}=|N|1$, that is $N=\{1\}$.
-
-	Let us prove that $3)\implies4)$. Let $x\in\Delta^+(G)$. By Lemma~\ref{lem:Connel},
-	there exists a finite normal subgroup $H$ of $G$ that contains $x$. By assumption, $H$ is trivial. 
-	Hence $x=1$.
-
-	Finally, let us prove that $4)\implies1)$. Let $A$ and $B$ be ideals of 
-	$K[G]$ such that $AB=\{0\}$. Assume that $B\ne\{ 0\}$ and let $\beta\in
-	B\setminus\{0\}$.  If $\alpha\in A$, then, since 
-	\[
-	\alpha K[G]\beta\subseteq \alpha B\subseteq AB=\{0\},
-	\]
-	Passman's lemma ~\ref{lem:Passman}
-	implies that $\pi_{\Delta(G)}(\alpha)\pi_{\Delta(G)}(\beta)=\{0\}$.
-	By assumption, $\Delta^+(G)$ is trivial. Thus $\Delta(G)$ is torsion-free 
-	and hence $\Delta(G)$ is abelian by Proposition~\ref{pro:FCabeliano}. It follows that
-	$K[\Delta(G)]$ has no zero divisors and therefore $\alpha=0$. 
-\end{proof}
-
-\index{Hopkins--Levitzky's theorem}
-We now need to recall Hopkins--Levitzky's theorem. The theorem
-states that unitary left artinian rings are left noetherian.
-
-\begin{theorem}[Connel]
-\index{Connel's theorem}
-	Let $K$ be a field of characteristic zero. If $G$ is a group, then 
-	$K[G]$ is left artinian if and only if $G$ is finite.
-\end{theorem}
-
-\begin{proof}
-	If $G$ is finite, $K[G]$ is left artinian, as it is a finite-dimensional algebra.
-	
-	Let us assume that $K[G]$ is left artinian. 
-	If $K[G]$ is prime, Wedderburn's theorem implies that 
-	$K[G]$ is simple and hence 
-	$G$ is trivial (otherwise, $K[G]$ is not simple as the augmentation ideal 
-	is a non-zero ideal of $K[G]$).
-
-	Since $K[G]$ is left artinian, it is left noetherian by Hopkins--Levitzky's theorem. Thus $K[G]$
-	admits a composition series. We proceed by induction on the length of this composition series of 
-	$K[G]$. If the length is one, $\{0\}$ is the only ideal of $K[G]$ and hence the result follows as 
-	$K[G]$ is prime. If we assume the result holds for length $n$ and $K[G]$ is not prime, then, 
-	Connel's theorem implies that $G$ contains a finite non-trivial normal subgroup $H$. The canonical map
-	$K[G]\to K[G/H]$ implies that $K[G/H]$ is left artinian and has length 
-	$<n$. By using the inductive hypothesis, $G/H$
-	is a finite group. Since $H$ is also finite, it follows that $G$ is finite. 
-\end{proof}
-
-
-\topic{The Yang--Baxter equation}
-
-We now briefly discuss set-theoretic solutions to the Yang--Baxter equation. 
-
-\begin{definition}
-\index{Solution}
-\index{Solution!finite}
-A \emph{set-theoretic solution} to the Yang--Baxter equation (YBE) is a pair $(X,r)$, 
-where $X$ is a non-empty set and $r\colon X\times X\to X\times X$ is a bijective map that satisfies 
-\[
-(r\times\id)(\id\times r)(r\times\id)=
-(\id\times r)(r\times\id)(\id\times r),
-\]
-where, if $r(x,y)=(\sigma_x(y),\tau_y(x))$, then 
-\begin{align*}
-& r\times\id\colon X\times X\times X\to X\times X\times X, &&(r\times\id)(x,y,z)=(\sigma_x(y),\tau_y(x),z),\\
-& \id\times r\colon X\times X\times X\to X\times X\times X, &&(\id\times r)(x,y,z)=(x,\sigma_y(z),\tau_z(y)).
-\end{align*}
-The solution $(X,r)$ is said to be \emph{finite} if $X$ is a finite set. 
-\end{definition}
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\pic[
-  braid/.cd,
-  number of strands=3,
-  height=.5cm,
-  width=.5cm,
-  ultra thick,
-  gap=0.1,
-  name prefix=braid,
-] {braid={a_{1}a_2a_1}};
-\end{tikzpicture}
-\hspace{1cm}
-\begin{tikzpicture}
-\pic[
-  braid/.cd,
-  number of strands=3,
-  height=.5cm,
-  width=.5cm,
-  ultra thick,
-  gap=0.1,
-  name prefix=braid,
-] {braid={a_{2}a_1a_2}};
-\end{tikzpicture}
-\caption{The Yang--Baxter equation.}
-\label{fig:braid}
-\end{figure}
-
-
-\begin{example}
-Let $X$ be a non-empty set. Then $(X,\id)$ is a set-theoretic 
-solution to the YBE. 	
-\end{example}
-
-\begin{example}
-\index{Solution!trivial}
-Let $X$ be a non-empty set. Then $(X,r)$, where $r(x,y)=(y,x)$, is a  set-theoretic solution to the YBE. This solution 
-is known as the \emph{trivial solution} over the set $X$. 
-\end{example}
-
-By convention, we write
-\[
-r(x,y)=(\sigma_x(y),\tau_y(x)).
-\]
-
-\begin{lemma}
-    \label{lem:YB}
-    Let $X$ be a non-empty set and $r\colon X\times X\to X\times X$ be a bijective map.
-    Then $(X,r)$ is a set-theoretic solution to the YBE if and only if 
-    \begin{align*}
-        &\sigma_x\sigma_y = \sigma_{\sigma_x(y)}\sigma_{\tau_y(x)},&
-        &\sigma_{\tau_{\sigma_y(z)}(x)}\tau_z(y)=\tau_{\sigma_{\tau_y(x)}(z)}\sigma_x(y),&
-        &\tau_z\tau_y=\tau_{\tau_z(y)}\tau_{\sigma_y(z)}
-    \end{align*}
-    for all $x,y,z\in X$. 
-\end{lemma}
-
-\begin{proof}
-    We write $r_1=r\times\id$ and $r_2=\id\times r$. We first compute
-    \begin{align*}
-        r_1r_2r_1(x,y,z)&=r_1r_2(\sigma_x(y),\tau_y(x),z)
-        =r_1(\sigma_x(y),\sigma_{\tau_y(x)}(z),\tau_z\tau_y(x))\\
-        &=\left(\sigma_{\sigma_x(y)}\sigma_{\tau_y(x)}(z),\tau_{\sigma_{\tau_y(x)}(z)}\sigma_x(y),\tau_z\tau_y(x)\right).
-    \end{align*}
-    Then we compute
-    \begin{align*}
-        r_2r_1r_2(x,y,z)&=r_2r_1(x,\sigma_y(z),\tau_z(y))
-        =r_2(\sigma_x\sigma_y(z),\tau_{\sigma_y(z)}(x),\tau_z(y))\\
-        &=\left(\sigma_x\sigma_y(z),\sigma_{\tau_{\sigma_y(z)}(x)}\tau_z(y),\tau_{\tau_z(y)}\tau_{\sigma_y(z)}(x)\right)
-    \end{align*}
-    and the claim follows.    
-\end{proof}
-
-If $(X,r)$ is a set-theoretic solution, by definition the map $r\colon X\times X\to X\times X$ is 
-invertible. By convention, we write 
- \[
- r^{-1}(x,y)=(\widehat{\sigma}_x(y),\widehat{\tau}_y(x)).
- \]
- Note that this implies that
- \[
- x=\widehat{\sigma}_{\sigma_x(y)}\tau_y(x),\quad
- y=\widehat{\tau}_{\tau_y(x)}\sigma_x(y).
- \]
- It is easy to check that $(X,r^{-1})$ is a set-theoretic solution to the YBE. Thus Lemma~\ref{lem:YB} implies that 
- the following formulas hold:
- \[
- \widehat{\tau}_y\widehat{\tau_x}=\widehat{\tau}_{\tau_y(x)}\widehat{\tau}_{\sigma_x(y)},
- \quad
- \widehat{\sigma}_x\widehat{\sigma_y}=\widehat{\sigma}_{\sigma_x(y)}\widehat{\sigma}_{\tau_y(x)}.
- \]
-% Since $r(\tau^{-1}_y(x),y)=(\sigma_{\tau^{-1}_y(x)}(y),x)$, 
-% it follows that 
-% \[
-% \widehat{\tau}_x\sigma_{\tau^{-1}_y(x)}(y)=y.
-% \]
-% for all $x,y\in X$. Moreover, 
-% \[
-% x\triangleright y=\tau_x\sigma_{\tau^{-1}_y(x)}(y)=\tau_x\widehat{\tau}^{-1}_x(y)
-% \]
-% for all $x,y\in X$. 
-
-\begin{example}
-Let $X=\{1,2,3,4\}$ and $r(x,y)=(\sigma_x(y),\tau_y(x))$, where
-\begin{align*}
-&\sigma_1=(132),&&
-\sigma_2=(124),&&
-\sigma_3=(143),&&
-\sigma_4=(234),\\
-&\tau_1=(12)(34),&&
-\tau_2=(12)(34),&&
-\tau_3=(12)(34),&&
-\tau_4=(12)(34).
-\end{align*}
-Then $r$ is invertible with $r^{-1}(x,y)=(\widehat{\sigma}_x(y),\widehat{\tau}_y(x))$ given by
-\begin{align*}
-&\widehat{\sigma}_1=(12)(34), &&
-\widehat{\sigma}_2=(12)(34), &&
-\widehat{\sigma}_3=(12)(34), &&
-\widehat{\sigma}_4=(12)(34),\\
-&\widehat{\tau}_1=(142),&&
-\widehat{\tau}_2=(123),&&
-\widehat{\tau}_3=(243),&&
-\widehat{\tau}_4=(134).
-\end{align*}
-\end{example}
-
-\begin{definition}
-A \emph{homomorphism} between the set-theoretic solutions $(X,r)$ and
-$(Y,s)$ is a map $f\colon X\to Y$ such that the diagram 
-\[\begin{tikzcd}
-	{X\times X} & {X\times X} \\
-	{Y\times Y} & {Y\times Y}
-	\arrow["r", from=1-1, to=1-2]
-	\arrow["{f\times f}"', from=1-1, to=2-1]
-	\arrow["{f\times f}", from=1-2, to=2-2]
-	\arrow["s"', from=2-1, to=2-2]
-\end{tikzcd}
-\]
-is commutative, that is $s (f\times f)=(f\times f) r$. An \emph{isomorphism} of solutions is a bijective
-homomorphism of solutions.
-\end{definition}
-
-Since we are interested in studying the combinatorics behind set-theoretic solutions to the YBE,
-it makes sense to study the following family of solutions. 
-
-\begin{definition}
-\index{Solution!non-degenerate}
-We say that a set-theoretic solution $(X,r)$ to the YBE 
-is \emph{non-degenerate} if the maps $\sigma_x$ and $\tau_x$ are 
-permutations of $X$. 
-\end{definition}
-
-By convention, a \emph{solution} we will mean a non-degenerate {\bf set-theoretic} solution to the YBE.
-
-\begin{lemma}
-\label{lem:LYZ}
-Let $(X,r)$ be a solution. 
-\begin{enumerate}
-    \item Given $x,u\in X$, there exist unique $y,v\in X$ such that $r(x,y)=(u,v)$. 
-    \item Given $y,v\in X$, there exist unique $x,u\in X$ such that $r(x,y)=(u,v)$. 
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-    For the first claim take $y=\sigma_x^{-1}(u)$ and $v=\tau_y(x)$. 
-    For the second, $x=\tau_y^{-1}(v)$ and $u=\sigma_x(y)$. 
-\end{proof}
-
-The bijectivity of $r$ means that any row determines the whole square. Lemma~\ref{lem:LYZ}
-means that any column also determines the whole square, see Figure~\ref{fig:braid}.
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\pic[
-  braid/.cd,
-  number of strands=2,
-  ultra thick,
-  gap=0.1,
-  name prefix=braid,
-] {braid={a_{1}^{-1}}};
-\node[] at (-.25,-.12) {$x$};
-\node[] at (1.25,-.12) {$y$};
-\node[] at (-.25,-1.4) {$u$};
-\node[] at (1.25,-1.4) {$v$};
-\node[] at (-.25,-.75) {$r$};
-\end{tikzpicture}
-\begin{tikzpicture}
-\pic[
-  braid/.cd,
-  number of strands=2,
-  ultra thick,
-  gap=0.1,
-  name prefix=braid,
-] {braid={a_{1}}};
-\node[] at (-.25,-.12) {$x$};
-\node[] at (1.25,-.12) {$y$};
-\node[] at (-.25,-1.4) {$u$};
-\node[] at (1.25,-1.4) {$v$};
-\node[] at (-.25,-.75) {$r^{-1}$};
-\end{tikzpicture}
-\caption{Any row or column determines the whole square.}
-\label{fig:braid}
-\end{figure}
-
-\begin{example}
-If the map $(x,y)\mapsto(\sigma_x(y),\tau_y(x))$ satisfies the Yang--Baxter equation, then 
-so does $(x,y)\mapsto (\tau_x(y),\sigma_y(x))$. 
-\end{example}
-
-\begin{example}
-\label{exa:Lyubashenko}
-Let $X$ be a non-empty set and $\sigma$ and $\tau$ be 
-bijections on $X$ such that $\sigma\circ\tau=\tau\circ\sigma$. Then 
-$(X,r)$, where $r(x,y)=(\sigma(y),\tau(x))$, is a non-degenerate solution. 
-This is known as the \emph{permutation solution} associated
-with permutations $\sigma$ and $\tau$. 
-%The solution $(X,r)$ is involutive 
-%if and only if $\tau^{-1}=\sigma$. 
-\end{example}
-%
-%\begin{example}
-%\label{exa:Wada}
-%Let $G$ be a group. Then $(G,r)$, where $r(x,y)=(xy^{-1}x^{-1},xy^2)$, is a solution. 
-%\end{example}
-
-\begin{example}
-\label{exa:Venkov}
-Let $G$ be a group. Then $(G,r)$, where $r(x,y)=(xyx^{-1},x)$, is a solution. 
-\end{example}
-
-\begin{example}
-Let $n\geq2$ and $X=\Z/(n)$ be the ring of integers modulo $n$. Prove that
-the map $r(x,y)=(2x-y,x)$ satisfies the the set-theoretic YBE.  
-\end{example}
-
-The following result
-was proved by Lu, Yan and Zhu. 
-
-\begin{theorem}[Lu--Yan--Zhu]
-\label{thm:LYZ}
-Let $G$ be a group, $\xi\colon G\times G\to G$, $\xi(x,y)=x\rhd y$,
-be a left action of the group $G$ on itself as a set and 
-$\eta\colon G\times G\to G$, $\eta(x,y)=x\lhd y$, 
-be a right action of the group $G$ on itself as a set. If the compatibility condition
-\[
-uv=(u\rhd v)(u\lhd v)
-\]
-holds for all $u,v\in G$, then the pair $(G,r)$, where 
-\[
-r\colon G\times G\to G\times G,\quad
-r(u,v)=(u\rhd v,u\lhd v)
-\]
-is a solution. Moreover, 
-if $r(x,y)=(u,v)$, then 
-\[
-r(x^{-1},y^{-1})=(u^{-1},v^{-1}),
-\quad
-r(x^{-1},u)=(y,v^{-1}),
-\quad
-r(v,y^{-1})=(u^{-1},x).
-\]
-\end{theorem}
-
-\begin{proof}
-We write $r_1=r\times\id$ and $r_2=\id\times r$. Let
-\[
-r_1r_2r_1(u,v,w)=(u_1,v_1,w_1),\quad
-r_2r_1r_2(u,v,w)=(u_2,v_2,w_2).
-\]
-The compatibility condition implies that $u_1v_1w_1=u_2v_2w_2$. 
-So we need to prove that $u_1=u_2$ and $w_1=w_2$. We note that
-\begin{align*}
-&u_1=(u\rhd v)\rhd ( (u\lhd v)\rhd w),
-&&w_1=(u\lhd v)\lhd w,\\
-&u_2=u\rhd (v\rhd w),
-&&w_2=(u\lhd (v\rhd w))\lhd (v\lhd w).
-\end{align*}
-Using the compatibility condition and the fact that $\xi$ is a left action, 
-\begin{align*}
-    &u_1=((u\rhd v)(u\lhd v))\rhd w=(uv)\rhd w=u\rhd (v\rhd w)=u_2.
-\end{align*}
-Similarly, since $\eta$ is a right action, 
-\[
-w_2=u\lhd ((v\rhd w)(v\lhd w))=u\lhd (vw)=(u\lhd v)\lhd w=w_1.
-\]
-
-To prove that $r$ is invertible we proceed as follows. 
-Write $r(u,v)=(x,y)$, thus $u\rhd v=x$, $u\lhd v=y$ and $uv=xy$. Since 
-\begin{align*}
-& (y\rhd v^{-1})u=(y\rhd v^{-1})(y\lhd v^{-1})=yv^{-1}=x^{-1}u,
-\end{align*}
-it follows that $y\rhd v^{-1}=x^{-1}$, i.e. $v^{-1}=y^{-1}\rhd x^{-1}$. Similarly, 
-\[
-v(u^{-1}\lhd x)=(u^{-1}\rhd x)(u^{-1}\lhd x)=u^{-1}x=vy^{-1}
-\]
-implies that $u^{-1}=y^{-1}\lhd x^{-1}$. Clearly 
-$r^{-1}=\zeta (i\times i) r (i\times i) \zeta$,
-is the inverse of $r$, where $\zeta(x,y)=(y,x)$ and $i(x)=x^{-1}$. 
-\end{proof}
-
-\begin{proposition}
-Under the assumptions of Theorem~\ref{thm:LYZ}, 
-if $r(x,y)=(u,v)$, then 
-\[
-r(v^{-1},u^{-1})=(y^{-1},x^{-1}),
-\quad
-r(x^{-1},u)=(y,v^{-1}),
-\quad
-r(v,y^{-1})=(u^{-1},x).
-\]
-\end{proposition}
-
-\begin{proof}
-In the proof of Theorem~\ref{thm:LYZ} we found that 
-the inverse of the map $r$ is given by $r^{-1}=\zeta (i\times i) r (i\times i) \zeta$,
-where $\zeta(x,y)=(y,x)$ and $i(x)=x^{-1}$. Hence 
-\[
-r^{-1}(y^{-1},x^{-1})=\zeta (i\times i) r (i\times i) \zeta(y^{-1},x^{-1})=\zeta (i\times i) r (x,y)=(v^{-1},u^{-1}).
-\]
-It follows that $r(v^{-1},u^{-1})=(y^{-1},x^{-1})$.  
-To prove the equality $r(x^{-1},u)=(y,v^{-1})$ we proceed as follows. Since $r(x,y)=(u,v)$, it 
-follows that $x\triangleright y=u$. Then $x^{-1}\triangleright u=y$ and
-hence $r(x^{-1},u)=(y,z)$ for some $z\in G$. 
-Since $xy=uv$ and $x^{-1}u=yz$, it immediately follows that $yt=yv^{-1}$. Then 
-$z=v^{-1}$. Similarly one proves $r(v,y^{-1})=(u^{-1},x)$.
-\end{proof}
-%
-%\begin{proposition}
-%Under the assumptions of Theorem~\ref{thm:LYZ}, 
-%if $r(x,y)=(u,v)$, then 
-%\[
-%r(x^{-1},y^{-1})=(u^{-1},v^{-1}),
-%\quad
-%r(x^{-1},u)=(y,v^{-1}),
-%\quad
-%r(v,y^{-1})=(u^{-1},x).
-%\]
-%\end{proposition}
-%
-%\begin{proof}
-%In the proof of Theorem~\ref{thm:LYZ} we found that 
-%the inverse of the map $r$ is given by $r^{-1}=\zeta (i\times i) r (i\times i) \zeta$,
-%where $\zeta(x,y)=(y,x)$ and $i(x)=x^{-1}$. It follows that $r(x^{-1},y^{-1})=(u^{-1},v^{-1})$.  
-%To prove the equality $r(x^{-1},u)=(y,v^{-1})$ we proceed as follows. Since $r(x,y)=(u,v)$, it 
-%follows that $x\triangleright y=u$. Then $x^{-1}\triangleright u=y$ and
-%hence $r(x^{-1},u)=(y,z)$ for some $z\in G$. 
-%Since $xy=uv$ and $x^{-1}u=yz$, it follows that $yt=yv^{-1}$. Then 
-%$z=v^{-1}$. Similarly one proves $r(v,y^{-1})=(u^{-1},x).$
 %\end{proof}
 
