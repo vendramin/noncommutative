@@ -1,0 +1,31 @@
+\chapter*{Some solutions}
+
+\pagestyle{plain}
+\fancyhf{}
+\fancyhead[LE,RO]{Rings and modules}
+\fancyhead[RE,LO]{Some solutions}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\addcontentsline{toc}{chapter}{Some solutions}
+
+\begin{sol}{xca:A1Bm}
+    Let $A=\{a\}$ and $B=\{b_1,\dots,b_m\}$. 
+    If $AB$ admits a non-unique product, say $x=ab_i=ab_j$ with $i\ne j$, 
+    then $b_i=b_j$, a contradiction.
+\end{sol}
+
+\begin{sol}{xca:gABh}
+    If $AB$ admits a non-unique product $x=ab=a_1b_1$, then so does $(gA)(Bh)$, as
+    $(ga)(bh)=(ga_1)(b_1h)$ is a non-unique product of $(gA)(Bh)$. 
+    The converse is trivial. 
+\end{sol}
+
+\begin{sol}{xca:A2Bm}
+    Assume that $AB$ contains no unique products. 
+    By Exercise \ref{xca:gABh} we may assume that $A=\{1,a\}$ and $B=\{1,b_2,\dots,b_m\}$. 
+    We claim that $a^k\in B$ for all $k\geq0$. We proceed by induction on $k$. The case
+    $k=0$ is easy, as $a^0=1\in B$. Now if $a^k\in B$, then $a^{k+1}=aa^{k}\in AB$. Since $G$ has no torsion and 
+    $AB$ contains no unique products, 
+    $a^{k+1}=b_j$ for some $j$. It follows that $\{a^k:k\geq0\}\subseteq B$, a contradiction. 
+\end{sol}
