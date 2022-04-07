@@ -343,12 +343,11 @@ then the following identities are easily verified:
 &a*(b+c)=a*b+b+a*c-b,\\
 &(a\circ b)*c=(a*(b*c))+b*c+a*c.
 \end{align}
-These last two identities are similar to the usual
-\emph{commutator identities}.
 
  \begin{definition}
  	\index{Homomorphism!of skew braces}
- 	A map $f\colon A\to B$ between two skew braces $A$ and $B$ is a {\em homomorphism of skew braces} if $f(x\circ y)=f(x)\circ f(y)$ and $f(x+y)=f(x)+f(y)$, for all $x,y\in A$.  The \emph{kernel} of $f$ is
+ 	A map $f\colon A\to B$ between two skew braces $A$ and $B$ is a {\em homomorphism of skew braces} 
+ 	if $f(x\circ y)=f(x)\circ f(y)$ and $f(x+y)=f(x)+f(y)$ for all $x,y\in A$.  The \emph{kernel} of $f$ is
      \[
          \ker f=\{a\in A:f(a)=0\}.
      \]
@@ -766,7 +765,13 @@ We will use the following exercise several times.
 \begin{exercise}
 \label{xca:Bachiller2}
     Prove that the socle of a skew brace $A$ is the kernel of the 
-    group homomorphism $(A,\circ)\to\Aut(A,+)\times\Aut(A,+)$, $a\mapsto (\lambda_a,\xi_a)$, where
+    group homomorphism 
+    \[
+    (A,\circ)\to\Aut(A,+)\times\Aut(A,+),
+    \quad
+    a\mapsto (\lambda_a,\xi_a),
+    \]
+    where
     $\xi_a(b)=a+\lambda_a(b)-a$. 
 \end{exercise}
 
@@ -868,7 +873,7 @@ is the \textbf{quotient brace} of $A$ modulo $I$.
 
 \begin{exercise}
 \label{xca:iso1}
-    Let $f\colon A\to B$ be a homomorphism of skew braces. Prove that $A/\ker f\cong f(A)$. 
+    Let $f\colon A\to B$ be a homomorphism of skew braces. Prove that $A/\ker f\simeq f(A)$. 
 \end{exercise}
 
 \begin{exercise}
