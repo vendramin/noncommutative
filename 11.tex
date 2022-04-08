@@ -36,30 +36,12 @@ given $a,b\in A$ there exists a unique $(x,f)\in G$ such that
 	b=(x,f)\cdot a=x+f(a).
 \]
 
-\begin{lemma}
-    \label{lem:bijective}
-	If $G$ is a regular subgroup of $\Hol(A)$, then $\pi_1\colon G\to A$ is bijective. 
-\end{lemma}
-
-\begin{proof}
-	We first prove that restriction restriction $\pi_1|_G$ of $\pi_1$ onto $G$ is injective. Let $(a,f)\in G$ and $(b,g)\in G$
-	be such that 
-	$\pi_1(a,f)=\pi_1(b,g)$. Then $a=b$. Since $G$ is a
-	subgroup, 
-	\[
-		(-f^{-1}(a),f^{-1})=(a,f)^{-1}\in G,
-	    \quad
-		(-g^{-1}(a),g^{-1})=(a,g)^{-1}\in G,
-	\]
-	and hence $f=g$ since
-	\[
-	(-f^{-1}(a),f^{-1})\cdot a=0=(-g^{-1}(a),g^{-1})\cdot a 
-	\]
-	and $G$ is a regular subgroup.
-	Now we prove that $\pi_1|_G$ is surjective. Let $a\in A$. 
-	Since $G$ is regular, there exists $(x,f)\in G$ such that $x+f(a)=(x,f)\cdot a=0$, so $(-f(a),f)\in G$ for some $f\in\Aut(A)$. 
-	Then $(a,f^{-1})=(-f(a),f)^{-1}\in G$ and $\pi_2|_G(a,f^{-1})=a$. 
-\end{proof}
+\begin{exercise}
+    \label{xca:bijective}
+	Prove that 
+	if $G$ is a regular subgroup of $\Hol(A)$, then $\pi_1\colon G\to A$ is
+	bijective. 
+\end{exercise}
 
 Now we establish an important connection between braces and regular subgroups. 
 
@@ -88,7 +70,7 @@ Now we establish an important connection between braces and regular subgroups.
     implies that $c=b\circ a'$, as $(A,\circ)$ is a group. 
 
 	Assume now that $A$ is an additive group and that 
-	$G$ is a regular subgroup of $\Hol(A)$. By Lemma~\ref{lem:bijective}, the restriction 
+	$G$ is a regular subgroup of $\Hol(A)$. By Exercise~\ref{xca:bijective}, the restriction 
 	$\pi_1|_G$ is bijective.  Use the bijection $\pi_1|_G$ to transport the
 	operation of $G$ into $A$: 
 	\[
@@ -107,8 +89,8 @@ The following lemma is from~\cite{MR4113853}.
 
 \begin{lemma}
 \label{lem:BNY}
-    Let $A$ be a group. If $H$ and $K$ are conjugate regular subgroups of $\Hol(A)$, then $H$ and $K$ are conjugate 
-    by an automorphism of $A$. 
+	Let $A$ be a group. If $H$ and $K$ are conjugate regular subgroups of
+	$\Hol(A)$, then $H$ and $K$ are conjugate by an automorphism of $A$. 
 \end{lemma}
 
 \begin{proof}
@@ -166,50 +148,13 @@ The following lemma is from~\cite{MR4113853}.
 	\end{proof}
 \end{proposition}
 
-Now we present algorithm used to enumerate braces. It is based 
-on Theorem~\ref{thm:regular}. The use of Lemma~\ref{lem:BNY} 
-in Proposition~\ref{pro:regular} significantly improves the performance.  
-
-\begin{steps}
-	\label{alg:regular}
-	Let $A$ be a finite group.  To construct all braces with additive group  
-	$A$ we proceed as follows:
-	\begin{enumerate}
-		\item Compute the holomorph $\Hol(A)$ of $A$.
-		\item Compute the list of regular subgroups of $\Hol(A)$ of
-			order $|A|$ up to conjugation. 
-		\item For each representative $G$ of regular subgroups of
-			$\Hol(A)$ construct the map $p\colon A\to G$ given by $a\mapsto
-            (a,f)\in G$. Then the set $A$ is a brace with additive 
-			group $A$ and 
-			multiplication given by 
-			$a \circ b=p^{-1}(p(a)p(b))$ for all $a,b\in A$.
-	\end{enumerate}
-\end{steps}
-
-To enumerate all isomorphism classes of braces structures with a fixed additive group  
-the third step of Algorithm~\ref{alg:regular} is not needed. 
-Algorithm~\ref{alg:regular} can be used to compute
-the number $s(n)$ of non-isomorphic braces of size $n$. With small modifications
-it could be used to compute the number 
-$a(n)$ of non-isomorphic braces of abelian type of size $n$, or the number of non-isomorphic radical rings, or the 
-number of non-isomorphic braces of nilpotent type. Some
-values for $s(n)$ and $a(n)$ appear in Table~\ref{tab:braces}. 
-
-% \begin{remark}
-% 	Recall that a left brace is an abelian group $(A,+)$ 
-% 	with another group structure, defined via the multiplication
-% 	$(a,b)\mapsto ab$ such that $a(b+c)+a=ab+ac$ holds for all $a,b,c\in A$.
-% 	Left braces with additive group isomorphic to a given group $A$ can be
-% 	constructed applying Algorithm~\ref{alg:Bachiller} to the abelian group
-% 	$A$. In the second step of Algorithm~\ref{alg:Bachiller} it is enough to
-% 	compute the list of regular solvable subgroups of $\Hol(A)$, since the
-% 	multiplicative group of a left brace is solvable by~\cite[Proposition~2.5]{MR1722951}.
-% \end{remark} 
-
-%Algorithm~\ref{alg:Bachiller} was implemented both in $\GAP$ and $\MAGMA$ with
-%different performances and were run on a Intel(R) Core(TM) i5-4440 CPU @3.10GHz
-%with $16$gb of RAM, under Linux. 
+With Theorem~\ref{thm:regular}, Lemma~\ref{lem:BNY} and
+Proposition~\ref{pro:regular} one constructs small braces. In particular, the
+method can be used to compute the number $s(n)$ of non-isomorphic braces of
+size $n$. With small modifications, one computes the number $a(n)$ of
+non-isomorphic braces of abelian type of size $n$. 
+Some values for $s(n)$ and $a(n)$ appear in
+Table~\ref{tab:braces}. 
 
 \begin{table}[ht]
 \centering
@@ -285,49 +230,6 @@ values for $s(n)$ and $a(n)$ appear in Table~\ref{tab:braces}.
 	\label{tab:braces}
 \end{table}
 
-\section*{Open problems}
 
 
-\section*{Notes}
-
-Theorem~\ref{thm:regular} was first observed by Catino and Rizzo~\cite{MR2486886} and Bachiller~\cite{MR3465351}. 
-
-Algorithm~\ref{alg:regular} and most of the numbers of Table~\ref{tab:braces} appeared in~\cite{MR3647970}. 
-It should be noted that the number of braces of size 57 of~\cite{MR3647970} is incorrect;
-the correct value is $s(57)=8$, as Table~\ref{tab:braces} shows. 
-Lemma~\ref{lem:BNY} appears in~\cite{MR4113853} and it is needed to compute the number 
-$a(n)$ of isomorphism classes of braces of abelian type of size $n\in\{32,81,96,144,160,162\}$ and 
-the number 
-$s(n)$ of isomorphism classes of braces of size 
-$n\in\{32,54,80,81,108,112,120,136,144,147,150,152,162,168\}$. 
-
-\section*{Exercises}
-
-\begin{prob}
-\label{prob:decomposition}
-Let $(X,r)$ be a finite decomposable solution and $X=X_1\cup X_2$ be a decomposition. Prove that
-$r(X_1\times X_2)\subseteq X_2\times X_1$ and 
-$r(X_2\times X_1)\subseteq X_1\times X_2$. \framebox{Solution?}
-\end{prob}
-
-\begin{prob}
-Let $(X,r)$ be a finite \framebox{involutive} permutation solution. 
-Prove that $(X,r)$ is indecomposable if and only if $\sigma$ is a cycle of length $|X|$.
-\end{prob}
-
-
-\section*{Open problems}
-
-\begin{problem}
-Construct indecomposable (involutive) solutions of small size. 
-\end{problem}
-
-\section*{Notes}
-
-With some variations Theorem~\ref{thm:quandles} appears in several places, 
-see for example... Algorithms based on this theorem
-were used in ... and ... to construct and enumerate indecomposable 
-quandles of small size. 
-
-Indecomposable quandles are...
 

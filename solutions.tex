@@ -83,3 +83,25 @@ Note that $\lambda_a(b)=-a+a\circ b=a\circ (a'+b)$, for all $a,b\in A$. Hence
     a=\lambda_b(a).\qedhere
     \]
 \end{sol}
+
+\begin{sol}{xca:bijective}
+	We first prove that restriction restriction $\pi_1|_G$ of $\pi_1$ onto $G$ is injective. Let $(a,f)\in G$ and $(b,g)\in G$
+	be such that 
+	$\pi_1(a,f)=\pi_1(b,g)$. Then $a=b$. Since $G$ is a
+	subgroup, 
+	\[
+		(-f^{-1}(a),f^{-1})=(a,f)^{-1}\in G,
+	    \quad
+		(-g^{-1}(a),g^{-1})=(a,g)^{-1}\in G,
+	\]
+	and hence $f=g$ since
+	\[
+	(-f^{-1}(a),f^{-1})\cdot a=0=(-g^{-1}(a),g^{-1})\cdot a 
+	\]
+	and $G$ is a regular subgroup.
+	Now we prove that $\pi_1|_G$ is surjective. Let $a\in A$. 
+	Since $G$ is regular, there exists $(x,f)\in G$ such that $x+f(a)=(x,f)\cdot a=0$, so $(-f(a),f)\in G$ for some $f\in\Aut(A)$. 
+	Then $(a,f^{-1})=(-f(a),f)^{-1}\in G$ and $\pi_2|_G(a,f^{-1})=a$. 
+\end{sol}
+
+

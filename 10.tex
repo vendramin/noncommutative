@@ -2,11 +2,7 @@
 
 \topic{Braces and 1-cocycles}
 
-% explicar producto semidirecto.
-% equivalencia de complementos (Rotman)
-% demostrar Schur-Zassenhaus
-
-Let $K,Q$ be groups.
+Let $K$ and $Q$ be groups.
 An {\em extension} of $K$ by $Q$ is a
 short exact sequence of group homomorphisms 
 \[
@@ -18,7 +14,7 @@ short exact sequence of group homomorphisms
 	\arrow[from=1-4, to=1-5]
 \end{tikzcd}
 \]
-This means that $f$ is injective, $g$ is surjective and $\ker g=\im f$. Note that in this case, $K$ is isomorphic to $f(K)$, which is a normal subgroup of $G$ and $G/f(K)\cong Q$. We also say that $G$ is an extension of $K$ by $Q$.
+This means that $f$ is injective, $g$ is surjective and $\ker g=\im f$. Note that in this case, $K$ is isomorphic to $f(K)$, which is a normal subgroup of $G$ and $G/f(K)\simeq Q$. We also say that $G$ is an extension of $K$ by $Q$.
 
 \begin{example}
 	$C_6$ and $\Sym_3$ are both extensions of $C_3$ by $C_2$.
@@ -51,197 +47,9 @@ Let $E:
 be an extension of groups. A {\em lifting} of $E$ is a map $\ell\colon
 Q\to G$ such that $p(\ell(x))=x$, for all $x\in Q$. 
 
-
-%\begin{definition}
-%	\index{Acoplamiento}
-%	Un morfismo de grupos $\chi\colon Q\to\Out(K)$ se denomina un
-%	\textbf{acoplamiento} de $Q$ en $K$.
-%\end{definition}
-%
-%\begin{theorem}
-%	\label{theorem:coupling}
-%	Toda extensión $1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ determina
-%	un acoplamiento de $Q$ en $K$.
-%\end{theorem}
-%
-%\begin{proof}
-%	Sea $N=\ker p$. Como $N$ es normal en $G$, para cada $x\in Q$ se tiene un
-%	automorfismo $\gamma_{\ell(x)}$ dado por $n\mapsto \ell(x)n\ell(x)^{-1}$ de
-%	$N$. Como $\iota\colon K\to\iota(K)=N$ es un isomorfismo, tenemos un automorfismo
-%	$\lambda_x\in\Aut(K)$ que hace conmutar al diagrama
-%    \[
-%    \xymatrix{
-%    N
-%	\ar[r]^-{\gamma_{\ell(x)}}
-%    & N
-%	\ar[d]^{\iota^{-1}}
-%    \\
-%    K
-%	\ar[u]^{\iota}
-%	\ar[r]_{\lambda_x}
-%    & K
-%    }
-%    \]
-%	es decir:	
-%	\[
-%	\iota(\lambda_x(k))=\ell(x)\iota(k)\ell(x)^{-1},\quad
-%	k\in K.
-%	\]
-%	Estudiemos cómo depende 
-%	esta función del levantamiento elegido. Si $\ell_1\colon Q\to G$
-%	es un levantamiento, existe $n\in
-%	N$ tal que $\ell(x)=\ell_1(x)n$. Si $k\in K$ y $l\in K$ es tal
-%	que $\iota(l)=n$, entonces $\lambda_x$ y $(\lambda_1)_x$ pertenecen a la
-%	misma coclase módulo $\Inn(K)$ pues 
-%	\begin{align*}
-%		\iota(\lambda_x(k))&=\ell(x)\iota(k)\iota(x)^{-1}
-%		=\ell_1(x)n\iota(k)n^{-1}\ell_1(x)^{-1}\\
-%		&=\ell_1(x)\iota(lkl^{-1})\ell_1(x)^{-1}
-%		=\iota((\lambda_1)_x(lkl^{-1})).
-%	\end{align*}
-%	Queda bien definida entonces la función $\lambda\colon Q\to\Out(K)$,
-%	$x\mapsto\lambda_x$. 
-%	
-%	Veamos que $\lambda$ es morfismo de grupos. Por el ejercicio~\ref{exercise:lifting}  
-%	existe $n\in N$ tal que
-%	$\ell(xy)=\ell(x)\ell(y)n$. Si escribimos $n=\iota(l)$ para algún $l\in K$
-%	entonces vemos que $\lambda_x\lambda_y=\lambda_{xy}\gamma_l$ y luego
-%	$\lambda(x)\lambda(y)=\lambda(xy)$. 
-%\end{proof}
-%
-%\begin{exercise}
-%	Demuestre que extensiones equivalentes dan el mismo acoplamiento.
-%\end{exercise}
-%
-%\begin{svgraybox}
-%	Si las extensiones 
-%	\[
-%	E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1,
-%	\quad
-%	E_1\colon 1\to K_1\xrightarrow{\iota_1}G_1\xrightarrow{p_1} Q\to1,
-%	\]
-%	son equivalentes entonces el diagrama 
-%	\[
-%	\xymatrix{
-%	0\ar[r] 
-%	& K
-%	\ar@{=}[d]
-%	\ar[r]^-{\iota}
-%	& G
-%	\ar[r]^-{p}
-%	\ar[d]^\beta
-%	& Q\ar[r]
-%	\ar@{=}[d]
-%	& 0
-%	\\
-%	0\ar[r] 
-%	& K
-%	\ar[r]^-{\iota_{1}}
-%	& G_1
-%	\ar[r]^-{p_{1}}
-%	& Q\ar[r]
-%	& 0
-%	}
-%	\]
-%	es conmutativo. Si $\ell\colon Q\to G$ es un levantamiento para $E$
-%	entonces $\beta\ell$ es un levantamiento para $E_1$ pues
-%	$p_1(\beta\ell)=(p_1\beta)\ell=p\ell=\id$. 
-%
-%	Si $x\in Q$ y $k\in K$ entonces
-%	$\iota(\lambda_x(k))=\ell(x)\iota(k)\ell(x)^{-1}$. Al aplicar $\beta$ y
-%	usar la conmutatividad del diagrama:
-%	\begin{align*}
-%		\iota_1(\lambda_x(k))&=\beta\iota\lambda_x(k)
-%		=\beta(\ell(x))\beta\iota(k)\beta(\ell(x)^{-1})\\
-%		&=\beta\ell(x)\iota_1(k)(\beta\ell(x))^{-1}
-%		=\iota_1((\lambda_1)_x(k)).
-%	\end{align*}
-%	Como $\iota_1$ es inyectiva,
-%	$\chi(x)(k)=\lambda_x(k)=(\lambda_1)_x(k)=\chi_1(x)(k)$.
-%\end{svgraybox}
-
 \index{Split!extension}
-An extension $E$ {\em splits} if there is a lifting of $E$ that it is a group homomorphism. 
-
-%\begin{lemma}
-%	\label{lemma:split}
-%	Si una extensión $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$
-%	se parte entonces $N=\iota(K)$ admite un complemento en $G$.
-%\end{lemma}
-%
-%\begin{proof}
-%	
-%\end{proof}
-
-%\begin{definition}
-%	Sea $E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ una
-%	extensión. Diremos que un $\gamma\in\Aut(G)$ \textbf{estabiliza} a $E$ si 
-%	el diagrama 
-%	\[
-%	\xymatrix{
-%	0\ar[r] 
-%	& K
-%	\ar@{=}[d]
-%	\ar[r]^-{\iota}
-%	& G
-%	\ar[r]^-{p}
-%	\ar[d]^\gamma
-%	& Q\ar[r]
-%	\ar@{=}[d]
-%	& 0
-%	\\
-%	0\ar[r] 
-%	& K
-%	\ar[r]^-{\iota}
-%	& G
-%	\ar[r]^-{p}
-%	& Q\ar[r]
-%	& 0
-%	}
-%	\]
-%	es conmutativo. El \textbf{estabilizador} de la extensión $E$ es el
-%	conjunto de $\gamma\in\Aut(G)$ que estabilizan a $E$.
-%\end{definition}
-%
-%\begin{theorem}
-%	\label{theorem:estabilizador_abeliano}
-%	El estabilizador de una extensión 
-%	$E\colon 1\to K\xrightarrow{\iota}G\xrightarrow{p} Q\to1$ 
-%	es un grupo abeliano.
-%\end{theorem}
-%
-%\begin{proof}
-%	Sea $S$ el estabilizador de la extensión $E$ y sea $\gamma\in S$. 
-%	Sea $T$ un transversal a $N=\ker p$ en $G$. Si $g\in G$ existen $n,n_1\in N$ y
-%	$t,t_1\in T$ tales que $g=nt$ y $\gamma(g)=n_1t_1$. 
-%	Como entonces $tN=t_1N$ pues 
-%	\[
-%		p(t_1)=p(n_1t_1)=p(\gamma(g))=p(g)=p(nt)=p(n)p(t)=p(t),
-%	\]
-%	se concluye que $\gamma(g)=n_1t$. Luego 
-%	\[
-%	g\gamma(g)^{-1}=nt(n_1t)^{-1}=ntt^{-1}n_1=nn_1\in N.
-%	\]
-%
-%	Veamos ahora que $g\gamma(g)^{-1}\in Z(N)$. Si $n\in N$ entonces
-%	$\gamma(n)=n$ pues $n=\iota(k)$ para
-%	algún $k\in K$ y entonces $\gamma(n)=\gamma\iota(k)=\iota(k)=n$. Luego 
-%	\[
-%	[g\gamma(g)^{-1},n]=g\gamma(g)^{-1}n\gamma(g)g^{-1}n^{-1}=g\gamma(g^{-1}ng)g^{-1}n^{-1}=1.
-%	\]
-%
-%	Sea 
-%	\[
-%	\Psi\colon S\to\prod_{g\in G}Z(N),
-%	\quad
-%	\gamma\mapsto (g^{-1}\gamma(g))_{g\in G}. 
-%	\]
-%	
-%	
-%
-%\end{proof}
-%\section{Derivaciones y complementos}
-
+An extension $E$ {\em splits} if there is a lifting of $E$ that it is a group
+homomorphism. 
 
 \index{Derivation}
 \index{$1$-cocycle}
@@ -256,7 +64,7 @@ for all $x,y\in Q$.  The set of 1-cocycles $Q\to K$ is defined as
 \]
 
 \begin{example}
-	Let $Q,K$ be groups. Let $\alpha\colon Q\rightarrow \Aut(K)$ be a group homomorphism.  For each $k\in K$, the map 
+	Let $K$ and $Q$ be groups. Let $\alpha\colon Q\rightarrow \Aut(K)$ be a group homomorphism.  For each $k\in K$, the map 
 	$\delta_k\colon Q\to K$, $x\mapsto \delta_k(x)=[k,x]=k\alpha_x(k)^{-1}$, is a derivation. 
 \end{example}
 
@@ -276,17 +84,18 @@ through $K$ and $Q$, i.e. $G=KQ$ with $K\cap Q=\{1\}$.
 A classical example is the (inner) semidirect product $G=K\rtimes Q$, where $K$ is a normal subgroup of $G$ 
 and $Q$ is a subgroup of $G$ such that $K\cap Q=\{1\}$. 
 
-Let $K,Q$ be groups. Let $\alpha\colon Q\rightarrow \Aut(K),\,x\mapsto \alpha_x$ be a group homomorphism. Consider the set $K\times Q$. We define a multiplication on this set by
+Let $K$ and $Q$ be groups. Let $\alpha\colon Q\rightarrow \Aut(K),\,x\mapsto \alpha_x$ be a group homomorphism. Consider the set $K\times Q$. We define a multiplication on this set by
 \[(k_1,q_1)(k_2,q_2)=(k_1\alpha_{q_1}(k_2),q_1q_2),\]
-for all $k_1,k_2\in K$ and $q_1,q_2\in Q$. Then $K\times Q$ with this multiplication is a group, called the semidirect product of $K$ by $Q$ via $\alpha$, and denoted by $K\rtimes_{\alpha}Q$. Note that $K\times\{ 1\}$ is a normal subgroup of $K\rtimes_{\alpha}Q$, and $\{1\}\times Q$ is a subgroup of $K\rtimes_{\alpha}Q$. Thus $K\rtimes_{\alpha}Q$ is the inner semidirect product of $K\times\{ 1\}$ by $\{1\}\times Q$. Since $K\cong K\times\{ 1\}$ and $Q\cong \{1\}\times Q$, we identify these groups, i. e. $k=(k,1)$ and $q=(1,q)$, for all $k\in K$ and $q\in Q$. Note that
+for all $k_1,k_2\in K$ and $q_1,q_2\in Q$. Then $K\times Q$ with this multiplication is a group, called the semidirect product of $K$ by $Q$ via $\alpha$, and denoted by $K\rtimes_{\alpha}Q$. Note that $K\times\{ 1\}$ is a normal subgroup of $K\rtimes_{\alpha}Q$, and $\{1\}\times Q$ is a subgroup of $K\rtimes_{\alpha}Q$. Thus $K\rtimes_{\alpha}Q$ is the inner semidirect product of $K\times\{ 1\}$ by $\{1\}\times Q$. Since $K\simeq K\times\{ 1\}$ and $Q\simeq \{1\}\times Q$, we identify these groups, i. e. $k=(k,1)$ and $q=(1,q)$, for all $k\in K$ and $q\in Q$. Note that
 \[ qkq^{-1}=(1,q)(k,1)(1,q^{-1})=(\alpha_q(k),q)(1,q^{-1})=(\alpha_q(k),1)=\alpha_q(k),\]
 for all $k\in K$ and $q\in Q$.
 
 \begin{theorem}
 	\label{thm:complements}
-	Let $Q,K$ be groups and let $\alpha\colon Q\rightarrow \Aut (K)$ be a group homomorphism. Then there exists a bijective correspondence between
-	the set $\mathcal{C}$ of complements of $K$ in $K\rtimes Q$ and the set 
-    $\Der(Q,K)$ of 1-cocycles $Q\to K$.
+	Let $Q$ and $K$ be groups and let $\alpha\colon Q\rightarrow \Aut (K)$ be a
+	group homomorphism. Then there exists a bijective correspondence between
+	the set $\mathcal{C}$ of complements of $K$ in $K\rtimes Q$ and the set
+	$\Der(Q,K)$ of 1-cocycles $Q\to K$.
 \end{theorem}
 
 \begin{proof}
@@ -298,7 +107,7 @@ for all $k\in K$ and $q\in Q$.
 	Let 
 	$C\in\mathcal{C}$. If $x\in Q$, then there exist unique elements  
 	$k\in K$ and $c\in C$ such that $x=k^{-1}c$. Hence the  map 
-	$\delta_C\colon Q\to K$, $x\mapsto k$, is well-defined. Moreover, 
+	$\delta_C\colon Q\to K$, $x\mapsto k$, is well-defined and 
 	$\delta_C(x)x=c\in C$. 
 	
 	We claim that $\delta_C\in\Der(Q,K)$. If $x,x_1\in Q$, we write $x=k^{-1}c$
@@ -315,7 +124,9 @@ for all $k\in K$ and $q\in Q$.
 	$\Delta=\{\delta(x)x:x\in Q\}$. 
 	We claim that $\Delta$ is a subgroup of $K\rtimes Q$. Since $\delta(1)=1$,
 	$1\in \Delta$. If $x,y\in Q$, then 
-	$\delta(x)x\delta(y)y=\delta(x)x\delta(y)x^{-1}xy=\delta(xy)xy\in \Delta$.
+	\[
+	\delta(x)x\delta(y)y=\delta(x)x\delta(y)x^{-1}xy=\delta(xy)xy\in \Delta.
+	\]
 	Finally, if $x\in Q$, then 
 	\[
 	(\delta(x)x)^{-1}=x^{-1}\delta(x)^{-1}xx^{-1}=\delta(x^{-1})x^{-1}\in \Delta.
@@ -351,7 +162,7 @@ for all $k\in K$ and $q\in Q$.
 
 \index{Derivation!inner}
 \index{$1$-coboundary} 
-Let $K,Q$ be groups and let $\alpha\colon Q\rightarrow \Aut(K)$ be a group homomorphism.
+Let $K$ and $Q$ be groups and let $\alpha\colon Q\rightarrow \Aut(K)$ be a group homomorphism.
 A derivation $\delta\in\Der(Q,K)$ is said to be {\em inner} if there exists $k\in K$ 
 such that $\delta(x)=[k,x]$ for all $x\in Q$. The set of 
 {\em inner derivations} will be denoted by 
@@ -361,10 +172,9 @@ such that $\delta(x)=[k,x]$ for all $x\in Q$. The set of
 An inner derivation is also called a {\em $1$-coboundary}.
 
 \begin{theorem}[Sysak]
-	\index{Theorem! of Sysak}
-	\index{Sysak, Y.}
+	\index{Sysak's theorem}
 	\label{theorem:Sysak}
-	Let $K,Q$ be groups and let $\alpha\colon Q\rightarrow \Aut(K)$ be a group homomorphism. Let
+	Let $K$ and $Q$ be groups and let $\alpha\colon Q\rightarrow \Aut(K)$ be a group homomorphism. Let
 	$\delta\in\Der(Q,K)$.
 	\begin{enumerate}
 		\item $\Delta=\{\delta(x)x:x\in Q\}$ is a complement of $K$ in $K\rtimes Q$.
@@ -410,23 +220,10 @@ A group $G$ admits a {\em triple factorization} if there are subgroups
 $A$, $B$ and $M$ such that $G=MA=MB=AB$ and $A\cap M=B\cap M=\{1\}$.
 The following result is an immediate consequence of Sysak's theorem.
 
-%%% TODO:
-%%% ejemplos de factorizacion triple
-%%% caracterizacion de 1-cociclos biyectivos
-%%% ejemplo con anillo radical
-%%% braces?
-
-
 \begin{corollary}
-	If the group $Q$ acts by automorphisms on $K$ and 
-	$\delta\in\Der(Q,K)$ is surjective, then $G=K\rtimes Q$ admits a triple factorization. 
+	If the group $Q$ acts by automorphisms on $K$ and $\delta\in\Der(Q,K)$ is
+	surjective, then $G=K\rtimes Q$ admits a triple factorization. 
 \end{corollary}
-
-% \begin{proof}
-% 	Es consecuencia inmediata del teorema~\ref{theorem:Sysak}. 
-% \end{proof}
-%Another consequence: 
-
 
 % \begin{proof}
 % 	Sean $x,y\in Q$ tales que $\delta(x)=\delta(y)$. Como $\delta(x^{-1}y)=1$
@@ -507,17 +304,25 @@ $1$-cocyle} is a bijective map $\pi\colon G\to A$ such that
     \label{eq:1cocycle}
     \pi(gh)=\pi(g)+g\cdot \pi(h)
 \end{equation}
-for all $g,h\in G$. 
-We now prove the equivalence between skew braces and bijective 1-cocycles. 
+for all $g,h\in G$. To simplify the notation we 
+just say that the pair $(G,\pi)$ is a bijective 1-cocycle with values
+on $A$. 
 
 \begin{theorem}
 	\label{thm:1cocycle}
-    Over any additive group $A$ the following data are equivalent:
-    \begin{enumerate}
-        \item A group $G$ and a bijective
-            1-cocycle $\pi\colon G\to A$. 
-        \item A brace structure over $A$. 
-    \end{enumerate}
+	Let $A$ be an additive group. There exists a bijective
+	correspondence
+	\[
+		\{\text{bijective 1-cocycles with values on $A$}\}
+	\leftrightarrow
+	\{\text{braces with additive group $A$}\}
+	\]
+%    Over any additive group $A$ the following data are equivalent:
+%    \begin{enumerate}
+%        \item A group $G$ and a bijective
+%            1-cocycle $\pi\colon G\to A$. 
+%        \item A brace structure over $A$. 
+%    \end{enumerate}
 
     \begin{proof}
         Consider on $A$ a second group structure given by 
@@ -536,13 +341,32 @@ We now prove the equivalence between skew braces and bijective 1-cocycles.
         
         Conversely, assume that the additive group $A$ has a brace structure. Let $G$ be the multiplicative group of $A$
         and $\pi=\id$. By
-        Proposition~\ref{pro:lambda}, $a\mapsto\lambda_a$ is a group homomorphism from $G$ to $\Aut(A,+)$ and 
+        Exercise~\ref{xca:lambda}, $a\mapsto\lambda_a$ is a group homomorphism from $G$ to $\Aut(A,+)$ and 
         hence $G$ acts on $A$ by automorphisms. Then~\eqref{eq:1cocycle} holds
         and therefore $\pi\colon G\to A$ is a bijective 1-cocycle. 
     \end{proof}
 \end{theorem}
 
-%The construction of Theorem~\ref{thm:1cocycle} is functorial, see Exercise~\ref{prob:1cocycle}.
+The construction of the previous theorem is functorial.
+
+\begin{exercise}
+\label{xca:1cocycle}
+Let $\pi\colon G\to A$ and $\eta\colon H\to B$ be bijective 1-cocycles.  A
+\emph{homorphism} between these bijective 1-cocycles is a pair $(f,g)$ of group
+homomorphisms  $f\colon G\to H$, $g\colon A\to B$ such that
+\begin{align*}
+&\eta f=g\pi,\\
+&g(h\cdot a)=f(h)\cdot g(a),&&a\in A,\;h\in G.
+\end{align*}
+Bijective 1-cocycles and homomorphisms form a category. 
+For a given additive group $A$ 
+the full subcategory of the category of bijective 1-cocycles with objects
+$\pi\colon G\to A$ is equivalent to the full subcategory of the category of
+braces with additive group $A$. 
+\end{exercise}
+
+
+
 
 \begin{example}
 	\label{exa:d8q8}
@@ -566,7 +390,7 @@ We now prove the equivalence between skew braces and bijective 1-cocycles.
 	  x+y=xy,\quad 
 	  x\circ y=\pi(\pi^{-1}(x)\pi^{-1}(y))
 	\]
-	is a skew two-sided brace with additive group isomorphic to $D_4$ and multiplicative group
+	is a two-sided brace with additive group isomorphic to $D_4$ and multiplicative group
 	isomorphic to $Q_8$. 
 \end{example}
 
@@ -617,26 +441,4 @@ We now prove the equivalence between skew braces and bijective 1-cocycles.
 \end{prob}
 
 
-\begin{exercise}
-\label{xca:1cocycle}
-Let $\pi\colon G\to A$ and $\eta\colon H\to B$ be bijective 1-cocycles.  A
-\emph{homorphism} between these bijective 1-cocycles is a pair $(f,g)$ of
-group homomorphisms  $f\colon G\to H$, $g\colon A\to B$ such that
-\begin{align*}
-&\eta\circ f=g\circ \pi,\\
-&g(h\cdot a)=f(h)\cdot g(a),&&a\in A,\;h\in G.
-\end{align*}
-Bijective 1-cocycles and homomorphisms form a category. 
-For a given additive group $A$ 
-the full subcategory of the category of bijective 1-cocycles with objects
-$\pi\colon G\to A$ is equivalent to the full subcategory of the category of
-skew braces with additive group $A$. 
-\end{exercise}
 
-
-% \section*{Notes}
-
-% In the case of skew braces of abelian type, Theorem~\ref{thm:1cocycle} is implicit in the work of Rump, see \cite{MR2278047,MR3291816} or~\cite{MR3177933}. Similar results appear 
-% in the work of Etingof, Schedler and Soloviev~\cite{MR1722951}, Lu, Yan and Zhu~\cite{MR1769723} 
-% and Soloviev~\cite{MR1809284}.
-% In~\cite{MR1653340} Etingof and Gelaki give a method of constructing finite-dimensional complex semisimple triangular Hopf algebras. They show how any non-abelian group which admits a bijective 1-cocycle gives rise to a semisimple minimal triangular Hopf algebra which is not a group algebra.
