@@ -1,0 +1,333 @@
+\chapter{}
+
+\topic{Braces and regular subgroups}
+
+\index{Holomorph}
+For an additive group $A$, the \textbf{holomorph} of $A$ is the semidirect product 
+\[
+	\Hol(A)=A\rtimes\Aut(A).
+\]
+This means that the operation is 
+\[
+	(a,f)(b,g)=(a+f(b),f\circ g),\quad
+	a,b\in A,\quad
+	f,g\in\Aut(A).
+\]
+%Write $\pi_1\colon\Hol(A)\to A$, $\pi_1(a,f)=a$ and $\pi_2\colon\Hol(A)\to\Aut(A)$, $\pi_2(a,f)=f$. 
+Every subgroup $G$ of $\Hol(A)$ acts on $A$ by 
+\[
+	(x,f)\cdot a=\pi_1( (x,f)(a,\id) )=\pi_1(x+f(a),f)=x+f(a),\quad
+	a,x\in A,\quad 
+	f\in\Aut(A),
+\]
+where $\pi_1\colon \Hol(A)\to A$, $(a,f)\mapsto a$. 
+
+\begin{exercise}
+    The group $\Hol(A)$ acts transitively on $A$ 
+	and the stabilizer $a\in A$ 
+	is isomorphic to $\Aut(A)$. 
+\end{exercise}
+
+\index{Regular subgroup}
+A subgroup $G$ of $\Hol(A)$ is said to be \emph{regular} 
+if its acts regularly on $A$, this means that 
+given $a,b\in A$ there exists a unique $(x,f)\in G$ such that
+\[
+	b=(x,f)\cdot a=x+f(a).
+\]
+
+\begin{lemma}
+    \label{lem:bijective}
+	If $G$ is a regular subgroup of $\Hol(A)$, then $\pi_1\colon G\to A$ is bijective. 
+\end{lemma}
+
+\begin{proof}
+	We first prove that restriction restriction $\pi_1|_G$ of $\pi_1$ onto $G$ is injective. Let $(a,f)\in G$ and $(b,g)\in G$
+	be such that 
+	$\pi_1(a,f)=\pi_1(b,g)$. Then $a=b$. Since $G$ is a
+	subgroup, 
+	\[
+		(-f^{-1}(a),f^{-1})=(a,f)^{-1}\in G,
+	    \quad
+		(-g^{-1}(a),g^{-1})=(a,g)^{-1}\in G,
+	\]
+	and hence $f=g$ since
+	\[
+	(-f^{-1}(a),f^{-1})\cdot a=0=(-g^{-1}(a),g^{-1})\cdot a 
+	\]
+	and $G$ is a regular subgroup.
+	Now we prove that $\pi_1|_G$ is surjective. Let $a\in A$. 
+	Since $G$ is regular, there exists $(x,f)\in G$ such that $x+f(a)=(x,f)\cdot a=0$, so $(-f(a),f)\in G$ for some $f\in\Aut(A)$. 
+	Then $(a,f^{-1})=(-f(a),f)^{-1}\in G$ and $\pi_2|_G(a,f^{-1})=a$. 
+\end{proof}
+
+Now we establish an important connection between braces and regular subgroups. 
+
+\begin{theorem}
+\label{thm:regular}
+	If $A$ is a brace, then $\Delta=\{(a,\lambda_a):a\in A\}$ is a regular subgroup of 
+	$\Hol(A,+)$. Conversely, if $A$ is an additive group and 
+	$G$ is a regular subgroup of $\Hol(A)$, then $A$ is 
+	a brace with 
+	\[
+		a\circ b=a+f(b),
+	\]
+	where $(\pi_1|_G)^{-1}(a)=(a,f)\in G$. 
+\end{theorem}
+
+\begin{proof}
+    Assume first that $A$ is a brace. 
+    Using~\eqref{eq:formulas} and that 
+    $\lambda$ is a group homomorphism, it follows that
+    $\Delta=\{(a,\lambda_a):a\in A\}$ is a subgroup of $\Hol(A,+)$, as 
+    \begin{align*}
+    &(a,\lambda_a)^{-1}=(\lambda^{-1}_a(-a),\lambda^{-1}_a)=(a',\lambda_{a'})\in\Delta,\\
+    &(a,\lambda_a)(b,\lambda_b)=(a+\lambda_a(b),\lambda_a\circ\lambda_b)=(a\circ b,\lambda_{a\circ b})\in\Delta.    
+    \end{align*}
+    To see that $\Delta$ is a regular subgroup, note that $(c,\lambda_c)\cdot a=b$ 
+    implies that $c=b\circ a'$, as $(A,\circ)$ is a group. 
+
+	Assume now that $A$ is an additive group and that 
+	$G$ is a regular subgroup of $\Hol(A)$. By Lemma~\ref{lem:bijective}, the restriction 
+	$\pi_1|_G$ is bijective.  Use the bijection $\pi_1|_G$ to transport the
+	operation of $G$ into $A$: 
+	\[
+        a\circ b=\pi_1|_G\left((\pi_1|_G)^{-1}(a)(\pi_1|_G)^{-1}(b)\right)=a+f(b),
+	\]
+	where $a,b\in A$ and $(\pi_1|_G)^{-1}(a)=(a,f)\in G$. 
+	Then $(A,\circ)$ is a group isomorphic to $G$ and moreover $A$ is a brace, as 
+	\begin{align*}
+		a\circ (b+c)&=a+f(b+c)=a+f(b)+f(c)\\
+		&=a+f(b)-a+a+f(c)=a\circ b-a+a\circ c
+	\end{align*}
+	holds for all $a,b,c\in A$. 
+\end{proof}
+
+The following lemma is from~\cite{MR4113853}.
+
+\begin{lemma}
+\label{lem:BNY}
+    Let $A$ be a group. If $H$ and $K$ are conjugate regular subgroups of $\Hol(A)$, then $H$ and $K$ are conjugate 
+    by an automorphism of $A$. 
+\end{lemma}
+
+\begin{proof}
+    Assume that $H$ and $K$ are conjugate in $\Hol(A)$. Let $(b,g)\in\Hol(A)$ be such that $(b,g)^{-1}H(b,g)=K$. 
+    Since $b\in A$, the regularity of $H$ implies that
+    there exists $(a,f)\in H$ such that $a+f(b)=0$. Since $(a,f)\in H$, 
+    \begin{align*}
+    K=(b,g)^{-1}H(b,g)&=(b,g)^{-1}(a,f)^{-1}H(a,f)(b,g)\\
+    &=(0,f\circ g)^{-1}H(0,f\circ g)=(f\circ g)^{-1}H(f\circ g).\qedhere
+    \end{align*}
+    %Hence $H$ and $K$ are conjugate by an automorphism of $A$.
+\end{proof}
+
+\begin{proposition}
+\label{pro:regular}
+	Let $A$ be an additive group.  There exists a bijective correspondence between
+	isomorphism classes of 
+	brace structures with additive group $A$ and conjugacy classes of regular subgroups of
+	$\Hol(A)$. 
+
+	\begin{proof}
+        Assume that the additive group $A$ has two isomorphic brace structures given by
+		$(a,b)\mapsto a\circ b$ and $(a,b)\mapsto a\times b$. Let 
+		$f\colon A\to A$ be a bijective map such that $f(a+b)=f(a)+f(b)$ and $f(a\circ b)=f(a)\times f(b)$ for
+		all $a,b\in A$. 
+		We claim that the regular subgroups $\{(a,\lambda_a):a\in A$\} and
+		$\{(a,\mu_a):a\in A\}$, where $\lambda_a(b)=-a+a\circ b$ and
+		$\mu_a(b)=-a+a\times b$, are conjugate. 
+		Since $f$ is an isomorphism of braces, 
+		\[
+		f\circ\lambda_a\circ f^{-1}=\mu_{f(a)}
+		\]
+		for all $a\in A$. This implies that $(0,f)(a,\lambda_a)(0,f)^{-1}=(f(a),\mu_{f(a)})$ 
+		for all $a\in A$ and hence 
+		and the first claim follows. 
+		
+		Conversely, let $H$ and $K$ be conjugate regular subgroups of $\Hol(A)$. Since $H$ and $K$ are conjugate in $\Hol(A)$, by 
+		Lemma~\ref{lem:BNY} there exists $\varphi\in\Aut(A)$ such that $\varphi
+		H\varphi^{-1}=K$. The brace structure on $A$ corresponding to the subgroup $H$ is given by 
+		$a\circ b=a+f(b)$,
+		where
+		$(a,f)=(\pi_1|_H)^{-1}(a)\in H$, see Lemma~\ref{lem:bijective}. 
+		Since 
+        \[
+        \varphi(f,a)\varphi^{-1}=(\varphi(a),\varphi\circ f\circ \varphi^{-1})\in K,
+        \]
+        it follows that 
+        $(\pi_1|_K)^{-1}(\varphi(a))=(\varphi(a),\varphi\circ f\circ \varphi^{-1})$. Since $\varphi\in\Aut(A)$, 
+        \begin{align*}
+            \varphi(a)\times\varphi(b)&=\varphi(a)+(\varphi\circ f\circ\varphi^{-1})(\varphi(b))\\
+            &=\varphi(a)+\varphi(f(b))=\varphi(a+f(b))=\varphi(a\circ b)
+        \end{align*}
+        and hence the braces corresponding to $H$ and $K$ are
+		isomorphic.
+	\end{proof}
+\end{proposition}
+
+Now we present algorithm used to enumerate braces. It is based 
+on Theorem~\ref{thm:regular}. The use of Lemma~\ref{lem:BNY} 
+in Proposition~\ref{pro:regular} significantly improves the performance.  
+
+\begin{steps}
+	\label{alg:regular}
+	Let $A$ be a finite group.  To construct all braces with additive group  
+	$A$ we proceed as follows:
+	\begin{enumerate}
+		\item Compute the holomorph $\Hol(A)$ of $A$.
+		\item Compute the list of regular subgroups of $\Hol(A)$ of
+			order $|A|$ up to conjugation. 
+		\item For each representative $G$ of regular subgroups of
+			$\Hol(A)$ construct the map $p\colon A\to G$ given by $a\mapsto
+            (a,f)\in G$. Then the set $A$ is a brace with additive 
+			group $A$ and 
+			multiplication given by 
+			$a \circ b=p^{-1}(p(a)p(b))$ for all $a,b\in A$.
+	\end{enumerate}
+\end{steps}
+
+To enumerate all isomorphism classes of braces structures with a fixed additive group  
+the third step of Algorithm~\ref{alg:regular} is not needed. 
+Algorithm~\ref{alg:regular} can be used to compute
+the number $s(n)$ of non-isomorphic braces of size $n$. With small modifications
+it could be used to compute the number 
+$a(n)$ of non-isomorphic braces of abelian type of size $n$, or the number of non-isomorphic radical rings, or the 
+number of non-isomorphic braces of nilpotent type. Some
+values for $s(n)$ and $a(n)$ appear in Table~\ref{tab:braces}. 
+
+% \begin{remark}
+% 	Recall that a left brace is an abelian group $(A,+)$ 
+% 	with another group structure, defined via the multiplication
+% 	$(a,b)\mapsto ab$ such that $a(b+c)+a=ab+ac$ holds for all $a,b,c\in A$.
+% 	Left braces with additive group isomorphic to a given group $A$ can be
+% 	constructed applying Algorithm~\ref{alg:Bachiller} to the abelian group
+% 	$A$. In the second step of Algorithm~\ref{alg:Bachiller} it is enough to
+% 	compute the list of regular solvable subgroups of $\Hol(A)$, since the
+% 	multiplicative group of a left brace is solvable by~\cite[Proposition~2.5]{MR1722951}.
+% \end{remark} 
+
+%Algorithm~\ref{alg:Bachiller} was implemented both in $\GAP$ and $\MAGMA$ with
+%different performances and were run on a Intel(R) Core(TM) i5-4440 CPU @3.10GHz
+%with $16$gb of RAM, under Linux. 
+
+\begin{table}[ht]
+\centering
+	\caption{The number of non-isomorphic braces.}
+	\begin{tabular}{|c|cccccccccccc|}
+		\hline
+		$n$ & 1 & 2 & 3 & 4 & 5  & 6 & 7 & 8 & 9 & 10 & 11 & 12\tabularnewline
+		$a(n)$ & 1  & 1  & 1  & 4  & 1  & 2  & 1  & 27  & 4  & 2  & 1  & 10\tabularnewline
+		$s(n)$ & 1 & 1 & 1 & 4 & 1 & 6 & 1 & 47 & 4 & 6 & 1 & 38 \tabularnewline
+		\hline
+		$n$ & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24\tabularnewline
+		$a(n)$ & 1  & 2  & 1  & 357  & 1  & 8  & 1  & 11  & 2  & 2  & 1  & 96\tabularnewline
+		$s(n)$ & 1 & 6 & 1 & 1605 & 1 & 49 & 1 & 43 & 8 & 6 & 1 & 855 \tabularnewline
+		\hline
+		$n$ & 25 & 26 & 27 & 28 & 29 & 30 & 31 & 32 & 33 & 34 & 35 & 36\tabularnewline
+		$a(n)$ & 4  & 2  & 37  & 9  & 1  & 4 & 1  & 25281  & 1  & 2  & 1  & 46\tabularnewline
+		$s(n)$ & 4 & 6 & 101 & 29 & 1 & 36 & 1 & 1223061 &  1 & 6 & 1 & 400\tabularnewline
+		\hline
+		$n$ & 37 & 38 & 39 & 40 & 41 & 42 &  43 & 44 & 45 & 46 & 47 & 48\tabularnewline
+		$a(n)$  & 1  & 2  & 2  & 106  & 1  & 6  & 1  & 9  & 4 & 2  & 1  & 1708\tabularnewline
+		$s(n)$ & 1 & 6 & 8 & 944 & 1 & 78 & 1 & 29 & 4 & 6 & 1 & 66209 \tabularnewline
+		\hline
+		$n$    & 49 & 50 & 51 & 52 & 53 & 54 & 55 & 56 & 57 & 58 & 59 & 60\tabularnewline
+		$a(n)$ &  4 & 8 & 1 & 11 & 1 & 80 & 2 & 91 & 2 & 2 & 1 & 28\tabularnewline
+		$s(n)$ & 4 & 51 & 1 & 43 & 1 & 1028 &  12 & 815 & 8 & 6 & 1 & 418\tabularnewline
+
+		\hline
+		$n$ & 61 & 62 & 63 & 64 & 65 & 66 & 67 & 68 & 69 & 70 & 71 & 72\tabularnewline
+		$a(n)$ & 1 & 2 & 11 & ? & 1 & 4 & 1 & 11 & 1 & 4 & 1 & 489\tabularnewline
+		$s(n)$ & 1 & 6 & 11 & ? &  1 & 36 & 1 & 43 & 1 & 36 & 1 & 17790 \tabularnewline
+
+		\hline
+		$n$ & 73 & 74 & 75 & 76 & 77 & 78 & 79 & 80 & 81 & 82 & 83 & 84\tabularnewline
+		$a(n)$ & 1 & 2 & 5 & 9 & 1 & 6 & 1 & 1985 & 804 & 2 & 1 & 34\tabularnewline
+		$s(n)$ & 1 & 6 & 14 & 29 & 1 & 78 & 1 & 74120 & 8436 &  6 & 1 & 606\tabularnewline
+
+		\hline
+		$n$ & 85 & 86 & 87 & 88 & 89 & 90 & 91 & 92 & 93 & 94 & 95 & 96\tabularnewline
+		$a(n)$ & 1 & 2 & 1 & 90 & 1 & 16 & 1 & 9 & 2 & 2 & 1 & 195971\tabularnewline
+		$s(n)$ & 1 & 6 & 1 & 800 & 1 & 294 & 1 & 29 & 8 & 6 & 1 & ? \tabularnewline
+
+		\hline
+		$n$ & 97 & 98 & 99 & 100 & 101 & 102 & 103 & 104 & 105 & 106 & 107 & 108\tabularnewline
+		$a(n)$ & 1 & 8 & 4 & 51 & 1 & 4 & 1 & 106 & 2 & 2 & 1 & 494 \tabularnewline
+		$s(n)$ & 1 & 53 &  4 & 711 & 1 & 36 & 1 & 944 &  8 &  6 &  1 & 11223 \tabularnewline
+
+		\hline
+		$n$ & 109 & 110 & 111 & 112 & 113 & 114 & 115 & 116 & 117 & 118 & 119 & 120\tabularnewline
+		$a(n)$ & 1 & 6 & 2 & 1671 & 1 & 6 & 1 & 11 & 11 & 2 & 1 & 395\tabularnewline
+		$s(n)$ & 1 & 94 &  8 & 65485 &  1 & 78 &  1 & 43 &  47 &  6 &  1 & 22711 \tabularnewline
+		\hline
+
+		$n$ & 121 & 122 & 123 & 124 & 125 & 126 & 127 & 128 & 129 & 130 & 131 & 132\tabularnewline
+		$a(n)$ & 4 & 2 & 1 &  9  & 49 & 36 & 1 & ? & 2 &  4 & 1 & 24\tabularnewline
+		$s(n)$ & 4 & 6 & 1 & 29 & 213 & 990 & 1 & ? & 8 & 36 & 1 & 324 \tabularnewline
+		\hline
+
+		$n$  & 133 & 134 & 135 & 136 & 137 & 138 & 139 & 140 & 141 & 142 & 143 & 144\tabularnewline
+		$a(n)$ & 1 & 2 & 37 & 108 & 1 & 4 & 1 & 27 & 1 & 2 & 1 & 10215\tabularnewline
+		$s(n)$ & 1 & 6 & 101 & 986 & 1 & 36 & 1 & 395 & 1 & 6 & 1 & 3013486 \tabularnewline
+		\hline
+		
+		$n$ & 145 & 146 & 147 & 148 & 149 & 150 & 151 & 152 & 153 & 154 & 155 & 156\tabularnewline
+		$a(n)$ & 1 & 2 & 9 & 11 & 1 & 19 & 1 & 90 & 4 & 4 & 2 & 40\tabularnewline
+		$s(n)$ & 1 & 6 & 123 & 43 & 1 & 401 & 1 & 800 & 4 & 36 & 12 & 782 \tabularnewline
+		\hline
+
+		$n$ & 157 & 158 & 159 & 160 & 161 & 162 & 163 & 164 & 165 & 166 & 167 & 168\tabularnewline
+		$a(n)$ & 1 & 2 & 1 & 209513 & 1 & 1374 & 1 & 11 & 2 & 2 & 1 & 443\tabularnewline
+		$s(n)$ & 1 & 6 & 1 & ? & 1 & 45472 & 1 & 43 & 12 & 6 & 1 & 28505 \tabularnewline
+		\hline
+	\end{tabular}
+	\label{tab:braces}
+\end{table}
+
+\section*{Open problems}
+
+
+\section*{Notes}
+
+Theorem~\ref{thm:regular} was first observed by Catino and Rizzo~\cite{MR2486886} and Bachiller~\cite{MR3465351}. 
+
+Algorithm~\ref{alg:regular} and most of the numbers of Table~\ref{tab:braces} appeared in~\cite{MR3647970}. 
+It should be noted that the number of braces of size 57 of~\cite{MR3647970} is incorrect;
+the correct value is $s(57)=8$, as Table~\ref{tab:braces} shows. 
+Lemma~\ref{lem:BNY} appears in~\cite{MR4113853} and it is needed to compute the number 
+$a(n)$ of isomorphism classes of braces of abelian type of size $n\in\{32,81,96,144,160,162\}$ and 
+the number 
+$s(n)$ of isomorphism classes of braces of size 
+$n\in\{32,54,80,81,108,112,120,136,144,147,150,152,162,168\}$. 
+
+\section*{Exercises}
+
+\begin{prob}
+\label{prob:decomposition}
+Let $(X,r)$ be a finite decomposable solution and $X=X_1\cup X_2$ be a decomposition. Prove that
+$r(X_1\times X_2)\subseteq X_2\times X_1$ and 
+$r(X_2\times X_1)\subseteq X_1\times X_2$. \framebox{Solution?}
+\end{prob}
+
+\begin{prob}
+Let $(X,r)$ be a finite \framebox{involutive} permutation solution. 
+Prove that $(X,r)$ is indecomposable if and only if $\sigma$ is a cycle of length $|X|$.
+\end{prob}
+
+
+\section*{Open problems}
+
+\begin{problem}
+Construct indecomposable (involutive) solutions of small size. 
+\end{problem}
+
+\section*{Notes}
+
+With some variations Theorem~\ref{thm:quandles} appears in several places, 
+see for example... Algorithms based on this theorem
+were used in ... and ... to construct and enumerate indecomposable 
+quandles of small size. 
+
+Indecomposable quandles are...
+
