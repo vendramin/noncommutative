@@ -86,19 +86,26 @@ and $Q$ is a subgroup of $G$ such that $K\cap Q=\{1\}$.
 
 Let $K$ and $Q$ be groups. Let $\alpha\colon Q\rightarrow \Aut(K),\,x\mapsto \alpha_x$ be a group homomorphism. Consider the set $K\times Q$. We define a multiplication on this set by
 \[(k_1,q_1)(k_2,q_2)=(k_1\alpha_{q_1}(k_2),q_1q_2),\]
-for all $k_1,k_2\in K$ and $q_1,q_2\in Q$. Then $K\times Q$ with this multiplication is a group, called the semidirect product of $K$ by $Q$ via $\alpha$, and denoted by $K\rtimes_{\alpha}Q$. Note that $K\times\{ 1\}$ is a normal subgroup of $K\rtimes_{\alpha}Q$, and $\{1\}\times Q$ is a subgroup of $K\rtimes_{\alpha}Q$. Thus $K\rtimes_{\alpha}Q$ is the inner semidirect product of $K\times\{ 1\}$ by $\{1\}\times Q$. Since $K\simeq K\times\{ 1\}$ and $Q\simeq \{1\}\times Q$, we identify these groups, i. e. $k=(k,1)$ and $q=(1,q)$, for all $k\in K$ and $q\in Q$. Note that
-\[ qkq^{-1}=(1,q)(k,1)(1,q^{-1})=(\alpha_q(k),q)(1,q^{-1})=(\alpha_q(k),1)=\alpha_q(k),\]
+for all $k_1,k_2\in K$ and $q_1,q_2\in Q$. Then $K\times Q$ with this multiplication is a group, called the semidirect product of $K$ by $Q$ via $\alpha$, and denoted by $K\rtimes_{\alpha}Q$. Note that $K\times\{ 1\}$ is a normal subgroup of $K\rtimes_{\alpha}Q$, and $\{1\}\times Q$ is a subgroup of $K\rtimes_{\alpha}Q$. Thus $K\rtimes_{\alpha}Q$ is the inner semidirect product of $K\times\{ 1\}$ by $\{1\}\times Q$. Since $K\simeq K\times\{ 1\}$ and $Q\simeq \{1\}\times Q$, we identify these groups, i. e. $k\equiv (k,1)$ and $q\equiv (1,q)$ for all $k\in K$ and $q\in Q$. Note that
+\[ 
+qkq^{-1}\equiv (1,q)(k,1)(1,q^{-1})=(\alpha_q(k),q)(1,q^{-1})=(\alpha_q(k),1)=\alpha_q(k)
+\]
 for all $k\in K$ and $q\in Q$.
 
 \begin{theorem}
 	\label{thm:complements}
 	Let $Q$ and $K$ be groups and let $\alpha\colon Q\rightarrow \Aut (K)$ be a
-	group homomorphism. Then there exists a bijective correspondence between
-	the set $\mathcal{C}$ of complements of $K$ in $K\rtimes Q$ and the set
-	$\Der(Q,K)$ of 1-cocycles $Q\to K$.
+	group homomorphism. Then there exists a bijective correspondence
+	\[
+	\{\text{complements of $K$ in $K\rtimes Q$}\}\leftrightarrow\Der(Q,K).
+	\]
+	%between
+	%the set $\mathcal{C}$ of complements of $K$ in $K\rtimes Q$ and the set
+	%$\Der(Q,K)$ of 1-cocycles $Q\to K$.
 \end{theorem}
 
 \begin{proof}
+    Let $\mathcal{C}$ be the set of complements of $K$ in $K\rtimes Q$. 
 	Since $Q$ acts by conjugation on $K$, it follows that $\delta\in\Der(Q,K)$ if and only if 
 	$\delta(xy)=\delta(x)x\delta(y)x^{-1}$ for all $x,y\in Q$. In this case, 
 	one obtains that 
