@@ -194,8 +194,11 @@ are non-commutative analogs of domains.
 	\]
 	Passman's lemma ~\ref{lem:Passman}
 	implies that $\pi_{\Delta(G)}(\alpha)\pi_{\Delta(G)}(\beta)=\{0\}$.
-	By assumption, $\Delta^+(G)$ is trivial. Thus $\Delta(G)$ is torsion-free 
-	and hence $\Delta(G)$ is abelian by Proposition~\ref{pro:FCabeliano}. It follows that
+	By assumption, $\Delta^+(G)$ is trivial. 
+	Thus $\Delta(G)$ is torsion-free. 
+	As $\Delta(\Delta(G))=\Delta(G)$, it follows from 
+	Proposition~\ref{pro:FCabeliano} that  
+	$\Delta(G)$ is abelian. Therefore 
 	$K[\Delta(G)]$ has no zero divisors and therefore $\alpha=0$. 
 \end{proof}
 
@@ -601,3 +604,76 @@ $z=v^{-1}$. Similarly one proves $r(v,y^{-1})=(u^{-1},x)$.
 
 
 
+\topic{Radical rings and solutions}
+
+Let $S$ be a non-unitary ring. Consider $S_1=\Z\times S$ with the addition defined component-wise and  multiplication
+\[
+(k,a)(l,b)=(kl,kb+la+ab)
+\]
+for all $k,l\in\Z$ and $a,b\in S$. 
+Then $S_1$ is a ring and $(1,0)$ is its unit element. 
+Furthermore, $\{0\}\times S$ is an ideal of $S_1$. 
+Note that $\{0\}\times S\simeq S$ as non-unitary rings. Also 
+note that if $(k,x)\in S_1$ is invertible, 
+then $k\in\{-1,1\}$. 
+
+\begin{definition}
+    A non-unitary ring $S$ is a (Jacobson) \textbf{radical ring} 
+    if it is isomorphic to the Jacobson radical of a unitary ring.
+\end{definition}
+
+Let $R$ be a ring. The (Jacobson) \textbf{radical} $J(R)$ of $R$ is defined as the intersection
+of all maximal left ideals of $R$. One proves that $J(R)$ is an ideal of $R$. Moreover, 
+$x\in J(R)$ if and only if $1+rx$ is invertible for all $r\in R$.
+
+\begin{proposition}
+\label{pro:radical}
+	Let $S$ be a non-unitary ring. The following statements are equivalent.
+	\begin{enumerate}
+		\item $S$ is a radical ring.
+		\item For all $a\in S$ there exists a unique $b\in S$ such that $a+b+ab=a+b+ba=0$.
+		\item $S\simeq J(S_1)$. 
+	\end{enumerate}
+\end{proposition}  
+	
+\begin{proof}
+    Let us first prove that $1)\implies2)$. Let $R$ be a unitary ring such that 
+    $S\simeq J(R)$ and let $\psi\colon S\rightarrow R$ be an injective homomorphism 
+    of non-unitary rings $\psi(S)=J(R)$. Let $a\in S$. Since  
+    $1+\psi(a)\in R$ is invertible, there exists $c\in R$ such that 
+    \[
+    (1+\psi(a))(1+c)=(1+c)(1+\psi(a))=1.
+    \]
+    Thus 
+    $c=-\psi(a)c-\psi(a)\in J(R)$. 
+    Hence there exists $b\in S$ such that $\psi(b)=c$. Therefore 
+    \[
+    a+b+ab=a+b+ba=0.
+    \]
+    It is an exercise to prove that $b$ is unique. 
+    
+    We now prove that $2)\implies 3)$. We first note that if 
+    $a\in S$, then there exists $b\in S$ such that $a+b+ab=a+b+ba=0$. 
+    Thus every 
+    $(1,a)\in S_1$ is invertible, as 
+    \[
+    (1,a)(1,b)=(1,0)=(1,b)(1,a).
+    \]
+
+    We claim that $J(S_1)=\{0\}\times S$. Let us prove that 
+    $J(S_1)\supseteq \{0\}\times S$. If $(k,a)\in J(S_1)$, then, in particular, 
+    \[
+    (1+3k,3a)=(1,0)+(3,0)(k,a)
+    \]
+    is invertible, which implies that either $1+3k=1$ or $1+3k=-1$. Since
+    $k\in\Z$, it follows that $k=0$ and hence $(k,a)=(0,a)\in\{0\}\times S$. 
+    To prove that 
+    $J(S_1)\supseteq \{0\}\times S$ note that
+    if $(0,x)\in\{0\}\times S$, then
+    \[
+    (1,0)+(k,a)(0,x)=(1,kx+ax)
+    \]
+    is invertible, as $kx+ax\in S$. 
+    
+    The implication $3)\implies1)$ is trivial.
+\end{proof}
