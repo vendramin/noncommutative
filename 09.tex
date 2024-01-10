@@ -1,821 +1,543 @@
 \chapter{}
 
+\topic{Ore extensions}
 
-A \textbf{nil ring} is a non-unitary ring $S$ such that every 
-element of $S$ is nilpotent. Every nil ring is a radical ring.
-
-\begin{example} 
-    $X\C[\![X]\!]$ is a radical ring and it is not a nil ring.
-\end{example}
-
-Let $S$ be a ring (unitary or non-unitary, it is not important here). 
-Define on $S$ the binary operation 
+Let $R$ be an algebra with one (over a field $K$). 
+We will consider polynomials over $R$. What does it mean? $R[X]$ will 
+be the free (left) $R$-module of the elements of the form
 \[
-(a,b)\mapsto a\circ b=a+b+ab
+f=a_nX^n+a_{n-1}X^{n-1}+\cdots+a_1X+a_0X^0,
 \]
-for all $a,b\in S$. Then $(S,\circ)$ is a monoid with neutral element $0$.
-Note that $S$ is a radical ring if and only if $(S,\circ)$ is a group. 
-If $a\in S$ is invertible in the monoid $(S,\circ)$, we will denote by $a'$ its inverse.
-
-\begin{example}
-	For $n>1$ let $A=\left\{\frac{nx}{ny+1}:x,y\in\Z\right\}\subseteq \Q$. 
-	Note that $A$ is a (non-unitary) subring of $\Q$. In fact, $A$ is a radical ring. A straightforward computation shows that 
-	\[
-	\left(\frac{nx}{ny+1}\right)'=\frac{-nx}{n(x+y)+1}.
-	\]
-\end{example}
-
-We now go back to study solutions to the YBE and discuss the intriguing interplay
-between radical rings and involutive solutions. 
-
-\begin{definition}
-	\index{Solution!involutive}
-	A solution $(X,r)$ is said to be \emph{involutive} if $r^2=\id$. 
-\end{definition}
-
-Note that if $(X,r)$ is an  involutive solution, then 
-\[
-(x,y)=r^2(x,y)=r(\sigma_x(y),\tau_y(x))=(\sigma_{\sigma_x(y)}\tau_y(x),\tau_{\tau_y(x)}\sigma_x(y)).
-\]
-Hence 
-\begin{equation}
-	\label{eq:involutive}
-	\tau_y(x)=\sigma_{\sigma_x(y)}^{-1}(x),
-	\quad
-	\sigma_x(y)=\tau_{\tau_y(x)}^{-1}(y)
-\end{equation}
-for all $x,y\in X$. Thus for involutive solutions
-it is enough to know $\{\sigma_x:x\in X\}$, as from this we obtain the
-set $\{\tau_x:x\in X\}$.
-
-\begin{example}
-	Let $X$ be a non-empty set and $\sigma$ be a bijection on $X$. Then 
-	$(X,r)$, where $r(x,y)=(\sigma(y),\sigma^{-1}(x))$, is an involutive solution. 
-\end{example}
-
-\index{Jacobson!radical ring}
-\index{Radical ring}
-We now present a very important family of involutive solutions. 
-
-\begin{theorem}[Rump]
-	\label{thm:Rump}
-	\index{Rump's theorem}
-	Let $R$ be a radical ring. Then $(R,r)$, where 
-	\[
-	r(x,y)=( -x+x\circ y,(-x+x\circ y)'\circ x\circ y)
-	\]
-	is an involutive solution.
-\end{theorem}
-
-The proposition can demonstrated using Theorem~\ref{thm:LYZ}. We will
-prove a more general result later. 
-
-\topic{Braces}
-
-By convention, an additive group $A$ will be a (not necessarily abelian) group 
-with a binary operation $(a,b)\mapsto a+b$. The 
-identity of $A$ will be denoted by $0$ 
-and the inverse of an element $a$ will be denoted by $-a$. 
-
-\begin{definition}
-	\index{Brace}
-	\index{Brace!multiplicative group}
-	\index{Brace!additive group}
-	A \emph{brace} is a triple $(A,+,\circ)$, where $(A,+)$ and $(A,\circ)$ 
-	are (not necessarily abelian) 
-	groups and 
-	\begin{equation}
-	    \label{eq:compatibility}
-	    a\circ(b+c)=(a\circ b)-a+(a\circ c)
-	\end{equation}
-	holds for all $a,b,c\in A$. The groups 
-	$(A,+)$ and $(A,\circ)$ are respectively 
-	the \emph{additive} and \emph{multiplicative} group
-	of the brace $A$.
-\end{definition}
-
-We write $a'$ to denote the inverse of $a$ with respect to the circle operation $\circ$. 
-
-Our definition is that of left braces. 
-Right braces are defined similarly, one needs 
-to replace~\eqref{eq:compatibility} by 
-\[
-(a+b)\circ c=a\circ c-c+b\circ c.
-\]
-
-\begin{definition}
-    Let $\mathcal{X}$ be a family of groups. A brace $A$ is said to be
-    of $\mathcal{X}$-type if its additive group belongs to $\mathcal{X}$.
-\end{definition}
-
-One particularly interesting family of braces is the family of \emph{braces of
-abelian type}, that is braces with abelian additive group.  In the literature,
-our braces are called \emph{skew braces} and braces of abelian type are called
-\emph{braces}. 
-
-\begin{example}
-	\label{exa:trivial}
-	\index{Brace!trivial}
-	Let $A$ be an additive group. Then $A$ is a brace with
-	$a\circ b=a+b$ for all $a,b\in A$. 
-	A brace $(A,+,\circ)$ such that $a\circ b=a+b$ for all $a,b\in A$ is
-    said to be \emph{trivial}. 
-	Similarly, the
-   operation $a\circ b=b+a$ turns $A$ into a brace. 
-\end{example}
-
-\begin{example}
-	\label{exa:times}
-	\index{Direct product!of braces}
-	Let $A$ and $B$ be braces. Then $A\times B$ with 
-	\[
-		(a,b)+(a_1,b_1)=(a+a_1,b+b_1),\quad
-		(a,b)\circ (a_1,b_1)=(a\circ a_1,b\circ b_1),
-	\]
-	is a brace. This is the {\em direct product} of the braces $A$ and $B$. 
-\end{example}
-
-\begin{example}
-	\label{exa:sd}
-	Let $A$ and $M$ be additive groups and let $\alpha\colon A\to\Aut(M)$ be a
-	group homomorphism. Then $M\times A$ with 
-	\[
-	(x,a)+(y,b)=(x+y,a+b),
-	\quad
-	(x,a)\circ (y,b)=(x+\alpha_a(y),a+b)
-	\]
-	is a brace. Similarly, $M\times A$ with
-	\[
-	(x,a)+(y,b)=(x+\alpha_a(y),a+b),\quad
-	(x,a)\circ (y,b)=(x+y,b+a)
-	\]
-	is a brace. 
-\end{example}
-
-\begin{example}
-    \label{exa:WX}
-    Let $A$ be an additive group
-	and $B$ and $C$ be subgroups of $A$ such that $B\cap C=\{ 0\}$ and $A=B+C$. In this case, one says that $A$ admits an {\em exact factorization} through the subgroups $B$ and $C$.  Thus each $a\in A$ can be written in a unique
-	way as $a=b+c$, for some $b\in B$ and $c\in C$.  The map
-	\[
-		B\times C\to A,\quad
-		(b,c)\mapsto b-c,
-	\]
-	is bijective. Using this map we transport the group structure of 
-	$B\times C$ into the set $A$. That is, for $a=b+c\in A$, where $b\in B$ and $c\in C$, and
-	$a_1\in A$, let 
-	\begin{align*}
-		a\circ a_1&=b+a_1+c.
-	\end{align*}
-	Then $(A,\circ)$ is a group isomorphic to $B\times C$. Moreover, if $x,y\in A$, 
-	then 
-	\begin{align*}
-	a\circ x-a+a\circ y=b+x+c-(b+c)+b+y+c=b+x+y+c=a\circ (x+y),
-	\end{align*}
-	and therefore $(A,+,\circ)$ is a brace. 
-\end{example}
-
-% \begin{proof} The map $\eta\colon B\times C\to A$, $\eta(b,c)=bc^{-1}$, is
-%   bijective.  Since $\eta$ is bijective and $a\circ
-%   a'=\eta(\eta^{-1}(a)\eta^{-1}(a'))$, it follows that $(A,\circ)$ is a group
-%   isomorphic to the direct product $B\times C$. To prove that $A$ is a 
-%   brace it remains to show~\eqref{eq:compatibility}. Let $a=bc\in BC$ and
-%   $a',a''\in A$. Then \begin{align*} (a\circ a')a^{-1}(a\circ a'')
-%     &=(ba'c)a^{-1}(ba''c)\\ &=ba'c(c^{-1}b^{-1})ba''c\\ &=ba'a''c\\ &=a\circ
-%     (a'a'').  \end{align*} This completes the proof.  \end{proof}
-
-We now give concrete some examples of the previous construction. 
-
-\begin{example}
-  \label{exa:QR}
-  Let $n$ be a positive integer. 
-  The group $\GL_n(\C)$ admits an
-  exact factorization through the subgroups $U(n)$ and $T(n)$, where 
-  \[
-  U(n)=\{ A\in\GL_n(\C): AA^*=I\}
-  \]
-  is the unitary group and $T(n)$ is the group of upper triangular matrices
-  with positive diagonal entries.  Therefore there exists a brace with additive group 
-  isomorphic to $\GL_n(\C)$ and multiplicative group isomorphic to $U(n)\times T(n)$.  
-\end{example}
-
-The following examples appeared in the theory of 
-Hopf--Galois structures.
-
-\begin{example} 
-	\label{exa:a5a4c5}
-	The alternating simple group $\Alt_5$ admits an exact factorization
-  through the subgroups 
-  $A=\langle (123),(12)(34)\rangle\cong\Alt_4$ and 
-  $B=\langle(12345)\rangle\cong C_5$.  
-  There exists a brace with additive group isomorphic to $\Alt_5$ and multiplicative
-  group isomorphic to $\Alt_4\times C_5$. 
-\end{example}
-
-Let us review some basic properties of braces. 
+where $a_n,a_{n-1},\dots,a_1,a_0\in R$. By convention, we write $X^0=1$. 
+If $a_n\ne 0$, the element
+$f$ is said to be of degree $n$, that is 
+$\deg(f)=n$. By convention,
+$\deg(0)=-\infty$. 
 
 \begin{exercise}
-\label{xca:0=1}
-Let $A$ be a brace. Then the following properties hold:
-\begin{enumerate}
-    \item The neutral element of the additive group of $A$ coincides with 
-    the neutral element of the multiplicative group of $A$. It will be denoted
-    by $0$. 
-    \item $a\circ(-b+c)=a-(a\circ b)+(a\circ c)$, for all $a,b,c\in A$.
-    \item $a\circ(b-c)=(a\circ b)-(a\circ c)+a$, for all $a,b,c\in A$.
-\end{enumerate}
+    Compute the quotient of $\H[X]$ by the ideal generated by $X-i$. 
 \end{exercise}
 
-\begin{exercise}
-\label{xca:lambda}
-    Let $A$ be a brace. For each $a\in A$, the map
+The previous exercise shows that non-commutative polynomial rings are weird. Note that $i$ is not a central 
+element of the quaternion algebra $\H$, so we are not allowed to use standard evaluation techniques to compute
+the quotient. Furthermore, one can prove that the ideal $I$ generated by $X-i$ is equal to $\H[X]$. 
+
+\begin{definition}
+\index{Derivation}
+    Let $R$ be an algebra and $\alpha\in\End(R)$. A linear transformation $\alpha\colon R\to R$ is a \textbf{derivation}
+    with respect to $\alpha$ (or an 
+    $\alpha$-derivation) if 
     \[
-        \lambda_a\colon A\to A,\quad
-        b\mapsto -a+(a\circ b),
+    \delta(ab)=\alpha(a)\delta(b)+\delta(a)b
     \]
-    is an automorphism of $(A,+)$. Moreover, the map 
-    $\lambda\colon (A,\circ)\to\Aut(A,+)$, $a\mapsto\lambda_a$, is a group homomorphism. 
-\end{exercise}
-
-\begin{exercise}
-\label{xca:mu}
-    Let $A$ be a brace. For each $a\in A$, the map
-    \[
-        \mu_a\colon A\to A,\quad
-        b\mapsto \lambda_b(a)'\circ b\circ a,
-    \]
-    is bijective. Moreover, the map 
-    $\mu\colon (A,\circ)\to\Sym_A$, $a\mapsto\mu_a$, satisfies $\mu_b\circ\mu_a=\mu_{a\circ b}$, for all $a,b\in A$. 
-\end{exercise}
-
-Let $A$ be a brace. 
-Exercise \ref{xca:lambda} implies that 
-\begin{align}
-\label{eq:formulas}
-&a\circ b = a+\lambda_a(b),
-&&a+b=a\circ \lambda^{-1}_a(b),
-&&\lambda_a(a')=-a
-\end{align}
-hold for $a,b\in A$. Moreover, if 
-\[
-    a*b=\lambda_a(b)-b=-a+a\circ b-b,
-\]
-then the following identities are easily verified:
-\begin{align}
-&a*(b+c)=a*b+b+a*c-b,\\
-&(a\circ b)*c=(a*(b*c))+b*c+a*c.
-\end{align}
-
- \begin{definition}
- 	\index{Homomorphism!of braces}
- 	A map $f\colon A\to B$ between two braces $A$ and $B$ is a {\em homomorphism of braces} 
- 	if $f(x\circ y)=f(x)\circ f(y)$ and $f(x+y)=f(x)+f(y)$ for all $x,y\in A$.  The \emph{kernel} of $f$ is
-     \[
-         \ker f=\{a\in A:f(a)=0\}.
-     \]
- \end{definition}
-
-A bijective homomorphism of braces is an isomorphism. An automorphism of a brace $A$ is an isomorphism from the brace $A$ to it self. Two braces $A$ and $B$ are isomorphic if there exist an isomorphism $f\colon A\rightarrow B$. We write $A\simeq B$ to denote that the braces $A$ and $B$ are isomorphic.
-
-\begin{definition}
-    \index{Brace!two sided}
-	A brace $A$ is said to be \textbf{two-sided} if 
-	\begin{equation}
-	\label{eq:right_compatibility}
-	(a+b)\circ c=a\circ c-c+b\circ c
-	\end{equation}
-	holds for all $a,b,c\in A$. 
+    for all $a,b\in R$. 
 \end{definition}
 
-If $A$ is a two-sided brace, then 
-\begin{align}
-\label{eq:2sided}
-&a\circ(-b)=a-a\circ b+a,
-&&(-a)\circ b=b-a\circ b+b    
-\end{align}
-hold for all $a,b\in A$. The first equality holds for every brace and follows 
-from the compatibility condition. 
-The second equality follows from~\eqref{eq:right_compatibility}. 
-
-\begin{example}
-  Any brace with abelian multiplicative group is 
-  two-sided.
-\end{example}
-
-\begin{exercise}
-\label{xca:2sided}
-	Let $A$ be a brace of abelian type such that $\lambda_a(a)=a$ for all $a\in A$.
-	Prove that $A$ is two-sided.
-\end{exercise}
-
-\index{Jacobson!radical ring}
-\index{Radical ring}
-Two-sided braces of abelian type form an interesting family of non-unitary rings.
-Thus braces form a far reaching generalization of radical rings. 
-
-\begin{theorem}[Rump]
-\label{thm:radical}
-\index{Rump's theorem}
-    A brace of abelian type is two-sided if and only if it is a radical ring. 
-\end{theorem}
-
-\begin{proof}
-    Assume first that $A$ is a two-sided brace of abelian type. Then $(A,+)$ is an abelian group. 
-    Let us prove that the operation
-    \[
-    a*b=-a+a\circ b-b
-    \]
-    turns $A$ into a radical ring. Left distributivity follows from the compatibility condition:
-    \begin{align*}
-    a*(b+c)&=-a+a\circ (b+c)-(b+c)
-    =-a+a\circ b-a+a\circ c-c-b=a*b+a*c.
-    \end{align*}
-    Similarly, since $A$ is two-sided, one proves $(a+b)*c=a*c+b*c$. It remains to show that the operation $*$
-    is associative. On the one hand, using the first equality of~\eqref{eq:2sided} 
-    and the compatibility condition, we write
-    \begin{align*}
-    a*(b*c)&=a*(-b+b\circ c-c)\\
-    &=-a+a\circ(-b+b\circ c-c)-(-b+b\circ c-c)\\
-    &=-a+a\circ (-b)-a+a\circ(b\circ c)-a+a\circ (-c)+c-b\circ c+b\\
-    &=a\circ (b\circ c)-a\circ b-a\circ c-b\circ c+a+b+c,
-    \end{align*}
-    since the group $(A,+)$ is abelian. On the other hand, the second equality of~\eqref{eq:2sided} and
-    Equality~\eqref{eq:right_compatibility} imply that
-    \begin{align*}
-    (a*b)*c &= (-a+a\circ b-b)*c=-(-a+a\circ b-b)+(-a+a\circ b-b)\circ c-c\\
-    &=b-a\circ b+a+(-a)\circ c-c+(a\circ b)\circ c-c+(-b)\circ c-c\\
-    &=(a\circ b)\circ c-a\circ b-a\circ c-b\circ c+a+b+c.
-    \end{align*}
-    It then follows that the operation $*$ is associative. 
-    
-    Conversely, if $A$ is a radical ring, say with ring multiplication $(a,b)\mapsto ab$, 
-    then $a\circ b=a+ab+b$ turns $A$ into a two-sided brace 
-    of abelian type. In fact, since $A$ is a radical ring, then 
-    $(A,+)$ is an abelian group and $(A,\circ)$ is a group. Moreover, 
-    \begin{align*}
-        a\circ (b+c)=a+a(b+c)+(b+c)=a+ab+ac+b+c=a\circ b-a+a\circ c.
-    \end{align*}
-    Similarly ones proves $(a+b)\circ c=a\circ c-c+b\circ c$.
-\end{proof}
-
-A natural question arises: Does one need radical rings? Surprisingly, 
-radical rings are just the tip of the iceberg. 
+What can we say about algebra structures on $R[X]$ compatible with that of $R$ and 
+the degree function? 
 
 \begin{theorem}
-\label{thm:YB}
-Let $A$ be a brace. Then 
-$(A,r)$, where 
-\[
-r\colon A\times A\to A\times A,\quad
-r(x,y)=( -x+x\circ y,(-x+x\circ y)'\circ x\circ y),
-\]
-is a solution to the YBE. 
+    Let $R$ be an algebra and $R[X]$ be an algebra such that 
+    the canonical embedding $R\to R[X]$ is an algebra homomorphism and $\deg(fg)=\deg(f)+\deg(g)$ 
+    for all $f,g\in R[X]$. Then $R$ has no non-zero zero divisors and there exists a unique injective algebra homomorphism 
+    $\alpha\colon R\to R$ and a unique $\alpha$-derivation such that 
+    \[
+    Xa=\alpha(a)X+\delta(a)
+    \]
+    for all $a\in R$.    
 \end{theorem}
 
 \begin{proof}
-    By Theorem~\ref{thm:LYZ}, 
-    since $x\circ y=(-x+x\circ y)\circ ((-x+x\circ y)'\circ x\circ y)$ for all $x,y\in A$, 
-    we only need to check that 
-    $x\rhd y=\lambda_x(y)=-x+x\circ y$ 
-    is a left action of $(A,\circ)$ on the set $A$ 
-    and that $x\lhd y=\mu_y(x)=(-x+x\circ y)'\circ x\circ y$ 
-    is a right action of $(A,\circ)$ on the set $A$. For the left action we use 
-    Exercise~\ref{xca:lambda} and for the right action we use Exercise~\ref{xca:mu}.
+    Let $a,b\in R\setminus\{0\}$. Since $\deg(ab)=\deg(a)+\deg(b)=0$, 
+    $ab\ne 0$. Thus $R$ has no non-zero zero divisors. Since 
+    \[
+    \deg(Xa)=\deg(X)+\deg(a)=1,
+    \]
+    there exist $\alpha(a)\in R\setminus\{0\}$ and $\delta(a)\in R$ such that 
+    $Xa=\alpha(a)X+\delta(a)$. Thus we have well-defined maps
+    $\alpha\colon R\to R$ and $\delta\colon R\to R$. Note that 
+    \[
+    X(a+\lambda b)=Xa+\lambda Xb
+    \]
+    for all $a,b\in R$ and $\lambda\in K$. Thus $\alpha$ and $\delta$ are both 
+    linear transformations. Since 
+    $(Xa)b=X(ab)$ in $R[X]$, the formula 
+    \[
+    \alpha(a)\alpha(b)X+\alpha(a)\delta(b)+\delta(a)b=\alpha(ab)X+\delta(ab)
+    \]
+    implies that $\alpha(ab)=\alpha(a)\alpha(b)$ and $\delta(ab)=\alpha(a)\delta(b)+\delta(a)b$ 
+    hold for all $a,b\in R$. Moreover, $X1=X$ implies that $\alpha(1)=1$ and $\delta(1)=0$. 
 \end{proof}
 
-\begin{exercise}
-Let $A$ be a brace. 
-Prove that 
-\[
-\mu_b(a)=\lambda^{-1}_{\lambda_a(b)}(-a\circ b+a+a\circ b).
-\]
-\end{exercise}
-
-In Theorem~\ref{thm:YB} it is possible to prove that the solution 
-is involutive if and only if the additive group of the brace is abelian. We will
-prove a generalization of this result. For that purpose, we need a lemma. 
-
-\begin{lemma}
-\label{lem:|r|}
-Let $A$ be a brace and $r$ be its associated solution.  Then
-  \begin{align} 
-  \nonumber
-  r^{2n}(a,b)&=(-n(a\circ b)+a+n(a\circ
-    b),\\
-    \label{eq:r^2n}
-    &\phantom{=(-n(a\circ b)+}(-n(a\circ b)+a+n(a\circ b))'\circ a\circ b),\\
-  \nonumber
-  r^{2n+1}(a,b)&=(-n(a\circ b)-a+(n+1)(a\circ
-    b),\\
-    \label{eq:r^2n+1}
-    &\phantom{=(-n(a\circ b)+}(-n(a\circ b)-a+(n+1)(a\circ b))'\circ a\circ b),
-    \end{align} 
-    for all $n\geq0$.  Moreover, the following statements hold:
-  \begin{enumerate} 
-  \item $r^{2n}=\id$ if and only if $a+nb=nb+a$ for all $a,b\in A$.  
-      \item $r^{2n+1}=\id$ if and only if $\lambda_a(b)=n(a\circ
-	b)+a-n(a\circ b)$ for all $a,b\in A$.  
-	\end{enumerate} 
-\end{lemma}
-
-\begin{proof} 
-First we shall prove~\eqref{eq:r^2n} and~\eqref{eq:r^2n+1} by induction on $n$. The case $n=0$ is trivial for~\eqref{eq:r^2n}
-  and~\eqref{eq:r^2n+1}. Assume that the claim holds for some $n\geq 0$. By applying the map $r$ to Equation~\eqref{eq:r^2n+1} 
-  we obtain that 
-  \begin{align*} 
-  r^{2(n+1)}(a,b) &=r\left( -n(a\circ b)-a+(n+1)(a\circ b),\right.\\
-    &\phantom{=(-n(a\circ b)+} \left. (-n(a\circ b)-a+(n+1)(a\circ
-    b))'\circ a\circ b\right)\\
-    &=\left( -(n+1)(a\circ b)+a+(n+1)(a\circ b),\right.\\
-    &\phantom{=(-n(a\circ b)+} \left. (-(n+1)(a\circ b)+a+(n+1)(a\circ
-    b))'\circ a\circ b\right).
-    \end{align*} 
-    By applying $r$ again to this equality, we get 
-    \begin{align*} 
-  r^{2(n+1)+1}(a,b) &= r\left(-(n+1)(a\circ b)+a+(n+1)(a\circ
-    b),\right.\\
-    &\phantom{=(-n(a\circ b)+} \left. (-(n+1)(a\circ b)+a+(n+1)(a\circ b))'\circ a\circ b\right)\\
-    &=\left( -(n+1)(a\circ b)-a+(n+2)(a\circ b),\right.\\
-    &\phantom{=(-n(a\circ b)+} \left. (-(n+1)(a\circ b)-a+(n+2)(a\circ
-    b))'\circ a\circ b\right).
-    \end{align*} 
-   Thus Equations~\eqref{eq:r^2n} and~\eqref{eq:r^2n+1} hold by induction.  The other claims follow easily from
-    Equations~\eqref{eq:r^2n} and~\eqref{eq:r^2n+1}.
-\end{proof}
-
-%\begin{thm} \label{pro:depth_even} Let $A$ be a brace of finite depth
-%with more than one element and let $r_A$ be its associated solution. Then the
-%order of $r_A$ is an even number.  \end{thm}
-%
-%\begin{proof} Let $n$ be such that $r^{2n+1}=\id$. By applying
-%Lemma~\ref{lem:depth} one obtains that $a^{-1}(a\circ b)^{n+1}=(a\circ b)^na$
-%for all $a,b\in A$. In particular, if $b=1$, then $a=1$.  \end{proof}
-
-Recall that the (minimal) \emph{exponent} $\exp(G)$ of a 
-finite group $G$ is the least positive integer $n$ such that 
-$g^n=1$ for all $g\in G$. 
-
-\begin{theorem} 
-\label{thm:|r|} 
-  Let $A$ be a finite brace with more than one
-  element and let $K$ be the additive group of $A$. 
-  If $r$ is the solution associated with $A$, 
-  then, as a permutation, $r$ has order $2\exp(K/Z(K))$.
+\begin{theorem}
+\label{thm:Ore}
+    Let $R$ be an algebra with no non-zero zero divisors, 
+    $\alpha\colon R\to R$ an injective algebra homomorphism and $\delta$ an $\alpha$-derivation. 
+    There exists a unique algebra structure on $R[X]$ such that 
+    the canonical inclusion $R\to R[X]$ is an algebra homomorphism and 
+    \[
+    Xa=\alpha(a)X+\delta(a)
+    \]
+    for all $a\in R$. 
 \end{theorem}
 
-\begin{proof} 
-  Suppose that $r$ has odd order $2n+1$. Since $r^{2n+1}=\id$, 
-  Lemma~\ref{lem:|r|} implies that $-a+(n+1)(a\circ b)=n(a\circ b)+a$
-  for all $a,b\in A$. In particular, for $b=0$, we get $a=0$, 
-  for all $a\in A$, a contradiction. 
-  Therefore we may assume that the order of the permutation $r$ is
-  $2n$, where 
-  \[
-  n=\min\{k\in\Z: k>0\text{ and }kb+a=a+kb\;\text{ for all }a,b\in A\}.
-  \]
-  Now one computes
-  \begin{align*} 
-  n&=\min\{k\in\Z: k>0\text{ and }kb\in Z(G)\text{ for all }b\in A\}\\ 
-  &=\min\{k\in\Z: k>0\text{ and }k(b+Z(G)) = Z(G)\text{ for all }b\in A\} =\exp(G/Z(G)).\qedhere
-  \end{align*}
+\begin{proof}
+    Let $M$ be the algebra of infinite matrices $(f_{ij})_{i,j\geq1}$ with coefficients 
+    in $\End(R)$, where both each file and each row have only finitely many non-zero entries. The neutral 
+    element is the diagonal matrix 
+    \[
+    I=\begin{pmatrix}
+    1&0&0&0&\cdots\\
+    0&1&0&0&\cdots \\
+    0&0&1&0&\cdots \\
+    \vdots&\vdots&\vdots&\vdots&\ddots\\
+    \end{pmatrix}.
+    \]
+    For each $a\in R$, let $L_a\colon R\to R$, $x\mapsto ax$. Then
+    \begin{equation}
+    \label{eq:alpha_delta}
+    \alpha L_a=L_{\alpha(a)}\alpha,\quad  
+    \delta L_a=L_{\alpha(a)}\delta+L_{\delta(a)}
+    \end{equation}
+    for all $a\in R$. Let 
+    \[
+    T=\begin{pmatrix}
+    \delta&0&0&0&\cdots\\
+    \alpha&\delta&0&0&\cdots \\
+    0&\alpha&\delta&0&\cdots \\
+    \vdots&\vdots&\vdots&\vdots&\ddots\\
+    \end{pmatrix}\in M
+    \]
+    and consider the map 
+    \[ 
+    \Phi\colon R[X]\to M,\quad 
+    \sum a_iX^i\mapsto \sum (L_{a_i}I)T^i.
+    \]
+    We claim that $\Psi$ is injective. First note that, if $\{e_1,e_2,\dots\}$ is the standard basis 
+    of $\End(R)$, then $Te_i=e_{i+1}$ for all $i\geq 1$. If $\Phi(\sum a_iX^i)=0$, then
+    \[
+    0=\Phi\left(\sum a_iX^i\right)e_1=\sum (L_{a_i}I)T^ie_i=\sum (L_{a_i}I)e_{i+1}
+    \]
+    and hence $a_i=0$ for all $i$. 
+
+    From \eqref{eq:alpha_delta} one gets that 
+    \[
+    T(L_aI)=(L_{\alpha(a)}I)T+L_{\delta(a)}I
+    \]
+    holds for all $a\in R$. 
+
+    Let $S$ be the subalgebra of $M$ generated by $T$ and 
+    $\{L_aI:a\in R\}$. Then $S=\Phi(R[X])$ and therefore $\Psi\colon R[X]\to S$ is an isomorphism. 
 \end{proof}
 
-An inmmediate consequence is the following result.
+\begin{definition}
+    \index{Ore extension}
+    The algebra constructed in Theorem \ref{thm:Ore} is called \textbf{Ore extension} (with respect to $\alpha$ and $\delta$) 
+    and will be denoted
+    by $R[X,\alpha,\delta]$. 
+\end{definition}
+
+The following result is an immediate consequence of Theorem \ref{thm:Ore}.
 
 \begin{corollary}
-    Let $A$ be a finite brace and $r$ be its associated solution. Then 
-    $r$ is involutive if and only if $A$ is of abelian type.
-    \end{corollary}
+    Let $R$ be an algebra with no non-zero divisors, $\alpha\in\End(R)$ and 
+    $\delta$ be an $\alpha$-derivation. Then $R[X,\alpha,\delta]$ has no non-zero divisors 
+    and is a free left $R$-module with basis 
+    $\{X^i:i\geq 0\}$. 
+\end{corollary}
 
-% \begin{proof}
-%     It follows immediately from Theorem~\ref{thm:|r|}.
-% \end{proof}
+We can go further in the case where $\alpha$ is invertible. 
 
-%\begin{exa} A brace has depth one if and only if its additive group is
-%  abelian.  \end{exa}
-
-% \begin{exa} 
-%   \label{exa:2p} 
-%   Let $p$ be an odd prime number and let $A$ be a non-classical brace of
-%   size $2p$. Then the additive group of $A$ is isomorphic to the dihedral group
-%   $\D_{2p}$ of size $2p$.  Since $Z(\D_{2p})=1$ and the exponent of $\D_{2p}$
-%   is $2p$, the order of $r_A$ is $4p$.
-% \end{exa}
-
-\topic{Ideals}
-
-\begin{definition}
-\index{Subbrace}
-Let $A$ be a brace. A \emph{subbrace} of $A$ is a non-empty 
-subset $B$ of $A$ such that $(B,+)$ is a subgroup of $(A,+)$ and $(B,\circ)$ is a subgroup of $(A,\circ)$. 
-\end{definition}
-
-\begin{definition}
-    \index{Left!ideal}
-    \index{Strong!left ideal}
-    Let $A$ be a brace. A \emph{left ideal} of $A$ is a subgroup $(I,+)$ of
-	$(A,+)$ such that $\lambda_a(I)\subseteq I$ for all $a\in A$, i.e. $\lambda_a(x)\in I$ for all $a\in A$ and $x\in I$. A \emph{strong left ideal} of $A$ 
-	is a left ideal $I$ of $A$ such that $(I,+)$ is a normal subgroup of $(A,+)$. 
-\end{definition}
-
-\begin{example}
-    Let $A$ be a brace and $I$ be a characteristic subgroup 
-    of the additive group of $A$. Then 
-    $I$ is a left ideal of $A$. 
-\end{example}
-
-Recall that two-sided braces of abelian type 
-are equivalent to radical rings. 
-One can prove that under this equivalence, 
-(left) ideals of the radical ring correspond 
-to (left) ideals of the associated brace. 
-
-\begin{proposition}
-    A left ideal $I$ of a brace $A$ is a subbrace of $A$. 
-\end{proposition}
+\begin{corollary}
+    Let $R$ be an algebra with no non-zero divisors, $\alpha\in\Aut(R)$ and 
+    $\delta$ be an $\alpha$-derivation. Then $R[X,\alpha,\delta]$ has no non-zero divisors 
+    and is a free right $R$-module with basis 
+    $\{X^i:i\geq 0\}$. 
+\end{corollary}
 
 \begin{proof}
-    We need to prove that $(I,\circ)$ is a subgroup of $(A,\circ)$. Clearly $I$ is non-empty, 
-    as it is an additive subgroup of $A$. If $x,y\in I$, then
-    $x\circ y=x+\lambda_x(y)\in I+I\subseteq I$ and $x'=-\lambda_{x'}(x)\in I$. 
+    Let $f\in R[X,\alpha,\delta]$. We claim that there are finitely many 
+    elements $a_0,\dots,a_n\in R$ 
+    such that $f=\sum X^ia_i$. We proceed by induction on $n$. The case where $n=0$ is trivial. So assume
+    the result holds for every $k<n$. Since  
+    \[
+    aX^n=X^n\alpha^{-n}(a)+g(n)
+    \]
+    where $g(n)$ is a sum of terms of degree $<n$, 
+    the inductive hypothesis implies the claim. 
+
+    Let us prove now that $\{X^i:i\geq 0\}$ is linearly independent. If not, say 
+    if \[
+    X^na_n+\cdots+Xa_1+a_0=0
+    \]
+    with $a_n\ne 0$, then 
+    $0=\alpha^n(a_n)X^n+\cdots$. 
+    By the previous corollary, $\alpha^n(a_n)=0$ and hence $a_n=0$, a contradiction. 
 \end{proof}
 
 \begin{example}
-    Let $A$ be a brace. Then 
-    \[
-    \Fix(A)=\{a\in A:\lambda_x(a)=a\text{ for all $x\in A$}\}
-    \]
-    is a left ideal of $A$. 
+    If $\alpha=\id$ and $\delta=0$, then $R[X,\alpha,\delta]\simeq R[X]$. 
 \end{example}
 
+\begin{example}
+\index{Weyl algebra}
+    If $R=K[X]$, $\alpha=\id$ and $\delta=\frac{d}{dX}$, then 
+    $R[X,\alpha,\delta]$ is known as the \textbf{Weyl algebra}. 
+\end{example}
+
+A ring $R$ is said to be \textbf{left noetherian} if 
+every left ideal of $R$ is finitely generated. Routine calculations show
+that $R$ is left noetherian if and only if
+every sequence 
+$I_1\subseteq I_2\subseteq\cdots$
+of left ideals of $R$ stabilizes, that is that there exists $n$ such that 
+$I_n=I_{n+k}$ for all $k\geq0$. One proves that epimorphic images of left noetherian rings
+are left noetherian. 
+
+\begin{theorem}
+    Let $R$ be an algebra, $\alpha\in\Aut(R)$ and $\delta$ be an $\alpha$-derivation. If $R$ 
+    is left noetherian, then $R[X,\alpha,\delta]$ is left noethetian. 
+\end{theorem}
+
+\begin{proof}
+    Let $I$ be a left ideal of $R[X,\alpha,\delta]$. For $d\geq0$, let 
+    \[
+    I_d=\{0\}\cup...
+    \]
+\end{proof}
+
+\topic{Non-commutative localization}
+
 \begin{definition}
-    \index{Ideal}
-    An \emph{ideal} of a brace $A$ is a strong left ideal $I$ of $A$ such that 
-	$(I,\circ)$ is a normal subgroup of $(A,\circ)$. 
+\index{Left quotient ring}
+\index{Right quotient ring}
+    Let $R$ be a unitary ring and $S$ be a non-empty subset of $R$ such that 
+    $1\in S$ and $0\not\in S$. We say that a ring $Q$ is a 
+    \textbf{left quotient} of $R$ with respect to $S$ if there is 
+    a ring homomorphism $\varphi\colon R\to Q$ such that
+    \begin{enumerate}
+        \item $\varphi(s)$ is a unit for all $s\in S$, 
+        \item every element of $Q$ is of the form $\varphi(s)^{-1}\varphi(r)$ 
+        for some $r\in R$ and $s\in S$, and 
+        \item $\ker\varphi=\{r\in R:sr=0\text{ for some $s\in S$}\}$. 
+    \end{enumerate}
 \end{definition}
 
-In general 
+In the same way, one defines \textbf{right quotients}. One needs to use 
+the product $\varphi(r)\varphi(s)^{-1}$ in the second condition and 
+replace the third condition 
+by 
 \[
-\{\text{subbraces}\}\supsetneq \{\text{left ideals}\}\supsetneq\{\text{strong left ideals}\}\supsetneq\{\text{ideals}\}.
-\]
-For example, $\Fix(A)$ is not a strong left ideal of $A$.
+\ker\varphi=\{r\in R:rs=0\text{ for some $s\in S$}\}. 
+\]  
 
-\begin{example}
-    Consider the semidirect product $A=\Z/(3)\rtimes \Z/(2)$ of the
-    trivial braces $\Z/(3)$ and $\Z/(2)$
-    via the non-trivial action of $\Z/(2)$ over $\Z/(3)$.
-    Then 
-    \[
-    \lambda_{(x,y)}(a,b)=-(x,y)+(x,y)\circ(a,b)=-(x,y)+(x+(-1)^ya,y+b)=((-1)^ya,b).
-    \]
-    Then $\Fix(A)=\{(0,0),(0,1)\}$ is not a 
-    normal subgroup of $(A,+)$ and hence $\Fix(A)$ is not a strong left 
-    ideal of $A$.
-\end{example}
+\begin{exercise}
+    Let $R$ be a ring and $S$ be a non-empty subset of $R$ such that 
+    $1\in S$ and $0\not\in S$. A left quotient ring of $R$ with respect to $S$, if exists, is unique. 
+\end{exercise}
 
-\begin{example}
-    \index{Kernel}
-	Let $f\colon A\to B$ be a homomorphism of braces. Then $\ker f$ 
-	is an ideal of $A$.
-\end{example}
+%\begin{proof}
+%    Let $f\colon R\to R_1$ be a ring homomorphism. If $Q$ 
+%    is a left quotient of $R$ with respect to a set $S$ and 
+%    $f(s)$ is a unit of $R_1$ for every $s\in S$, then there exists
+%    a unique $g\colon Q\to R_1$ that extends $f$. 
+%\end{proof}
 
-If $X$ and $Y$ are subsets of a brace $A$, $X*Y$ is defined as the 
-subgroup of $(A,+)$ generated by elements of the form $x*y$, $x\in X$ and $y\in Y$, i.e.
-\[
-X*Y=\langle x*y:x\in X\,,y\in Y\rangle_+.
-\]
+The left (resp. right) quotient ring of $S$ 
+with respect to $S$ will be denoted by $S^{-1}R$ (resp. $RS^{-1}$). 
 
-\begin{proposition}
-    \label{pro:A*I}
-    Let $A$ be a brace. A subgroup $I$ of $(A,+)$ is 
-    a left ideal of $A$ if and only if $A*I\subseteq I$.
-\end{proposition}
-
-\begin{proof}
-    Let $a\in A$ and $x\in I$. If $I$ is a
-    left ideal, then $a*x=\lambda_a(x)-x\in I$. Conversely, if $A*I\subseteq
-    I$, then $\lambda_a(x)=a*x+x\in I$.
-\end{proof}
-
-\begin{proposition}
-    \label{pro:I*A}
-    Let $A$ be a brace. A normal subgroup $I$ of $(A,+)$
-    is an ideal of $A$ if and only $\lambda_a(I)\subseteq I$, for all $a\in A$, and
-    $I*A\subseteq I$.
-\end{proposition}
-
-\begin{proof}
-    Let $x\in I$ and $a\in A$.  Assume first that $I$ is invariant under the
-    action of $\lambda$ and that $I*A\subseteq I$. Then
-    \begin{equation}
-    \label{eq:trick:I*A}
-        \begin{aligned}
-        a\circ x\circ a' &=a+\lambda_a(x\circ a')\\
-        &=a+\lambda_a(x+\lambda_x(a'))
-        =a+\lambda_a(x)+\lambda_a\lambda_x(a')+a-a\\
-        &=a+\lambda_a(x+\lambda_x(a')-a')-a
-        =a+\lambda_a(x+x*a')-a\in I,
-    \end{aligned}
-    \end{equation}
-    and hence $I$ is an ideal.
-
-    Conversely, assume that $I$ is an ideal. Then $I*A\subseteq I$ since
-    \begin{align*}
-        x*a&=-x+x\circ a-a\\
-        &=-x+a\circ(a'\circ x\circ a)-a
-        =-x+a+\lambda_a(a'\circ x\circ a)-a\in I.\qedhere
-    \end{align*}
-\end{proof}
-
-
-Let $I$ and $J$ be ideals
-of a brace $A$. Then $I\cap J$ is an ideal of $A$.  
-The sum $I+J$ of $I$ and $J$ is defined as the
-additive subgroup of $A$ generated by all the 
-elements of the form
-$u+v$, $u\in I$ and $v\in J$. 
-
-\begin{proposition}
-Let $A$ be a brace and let
-$I$ and $J$ be ideals of $A$. Then $I+J$ is an ideal of $A$.
-\end{proposition}
-
-\begin{proof}
-    Since $I$ and $J$ are normal subgroups of $A$, we have that
-    \[ I+J=\{ u+v \mid u\in I,\; v\in J \}.\]
-    First note that $I+J$ is a normal subgroup of $(A,+)$ since
-    \[
-        a+(u+v)-a=(a+u-a)+(a+v-a)\in I+J
-    \]
-    for all $u\in I$, $v\in J$ and $a\in A$.
-    Let $a\in A$, $u\in I$ and $v\in J$. Then $\lambda_a(u+v)=\lambda_a(u)+\lambda_a(v)\in I+J$ and
-    hence it follows that $\lambda_a(I+J)\subseteq I+J$. Moreover, by Propositions~\ref{pro:A*I} and~\ref{pro:I*A},
-        \[
-        (u+v)*a=(u\circ\lambda^{-1}_u(v))*a
-        =u*(\lambda^{-1}_u(v)*a)+\lambda^{-1}_u(v)*a+u*a\in I+J.
-    \]
-    Hence $(I+J)*A\subseteq I+J$. Therefore the result follows by Proposition~\ref{pro:I*A}.
-\end{proof}
-
+\begin{exercise}
+    Prove that if $R$ admits a left quotient ring $Q$ with respect to $S$ and a right quotient ring $Q_1$ with
+    respect to $S$, then $Q\simeq Q_1$.  
+\end{exercise}
 
 \begin{definition}
-	\index{Socle}
-	Let $A$ be a brace. The subset 
-	$\Soc(A)=\ker\lambda\cap Z(A,+)$
-	is the \emph{socle} of $A$.
+    Let $R$ be a ring and 
+    $S$ be a non-empty multiplicatively closed subset of $R$ such that $0\not\in 0$ and 
+    $1\in S$. We say that $S$ is a \textbf{left denominator set} if 
+    the following conditions hold:
+    \begin{enumerate}
+        \item $S$ is left Ore.
+        \item For $r\in R$ and $s\in S$ with $rs=0$ there exists $s_1\in S$ such that $s_1r=0$. 
+    \end{enumerate}
 \end{definition}
 
-We will use the following exercise several times. 
-
-\begin{exercise}
-    \label{xca:socle}
-    Let $A$ be a brace and $a\in\Soc(A)$. Prove that  
-    \[
-    b+b\circ a=b\circ a+b\quad\text{and}\quad
-    \lambda_b(a)=b\circ a\circ b'
-    \]
-    hold 
-    for all $b\in A$.
-\end{exercise}
-
-\begin{exercise}
-\label{xca:Bachiller1}
-    Prove that the socle of a brace $A$ is the kernel of the 
-    group homomorphism $(A,\circ)\to\Aut(A,+)\times\Sym_A$, $a\mapsto (\lambda_a,\mu_a^{-1})$. 
-\end{exercise}
-
-\begin{exercise}
-\label{xca:Bachiller2}
-    Prove that the socle of a brace $A$ is the kernel of the 
-    group homomorphism 
-    \[
-    (A,\circ)\to\Aut(A,+)\times\Aut(A,+),
-    \quad
-    a\mapsto (\lambda_a,\xi_a),
-    \]
-    where
-    $\xi_a(b)=a+\lambda_a(b)-a$. 
-\end{exercise}
-
-\begin{proposition}
-	\label{pro:socle}
-	Let $A$ be a brace. Then $\Soc(A)$ is an ideal of $A$.
-\end{proposition}
-
-	
-	\begin{proof}
-		Clearly $0\in\Soc(A)$, since $\lambda$ is a group homomorphism. Let $a,b\in\Soc(A)$ and $c\in A$. Since 
-		$b\circ (-b)=b+(-b)=0$, it follows that 
-		$b'=-b\in\Soc(A)$. The calculation 
-		\[
-		\lambda_{a-b}(c)=\lambda_{a\circ b'}(c)=\lambda_a\lambda^{-1}_b(c)=c,
-		\]
- 		implies that $a-b\in\ker\lambda$. Since $a-b\in Z(A,+)$, it follows that 
-        $(\Soc(A),+)$ is a normal subgroup of $(A,+)$. 
-        
-        For each $d\in A$, $a+c'\circ d=c'\circ d+a$.  By Exercise~\ref{xca:socle}, we have 
-        \begin{align*}
-        d+\lambda_c(a) &= d-c+c\circ a
-        =c\circ (c'\circ d+a)\\
-        &= c\circ (a+c'\circ d)
-        = c\circ a-c+d
-        = -c+c\circ a+d
-        = \lambda_c(a)+d,
-        \end{align*}
-        that is $\lambda_c(a)$ is central in $(A,+)$. Moreover, again by Exercise~\ref{xca:socle},
-        \begin{align*}
-            \lambda_c(a)+d &= -c+c\circ a+d 
-            = c\circ a-c+d\\
-            &= c\circ (a+(c'\circ d)
-            = c\circ a\circ c'\circ d=\lambda_c(a)\circ d
-        \end{align*}
-        and hence 
-        \[
-        \lambda_{\lambda_c(a)}(d)=-\lambda_c(a)+\lambda_c(a)\circ d=-\lambda_c(a)+\lambda_c(a)+d=d.
-        \]
-        Therefore $\Soc(A)$ is a strong left ideal of $A$. In fact, $\Soc(A)$ is an ideal of $A$,
-        as $c\circ a\circ c'=\lambda_c(a)\in\Soc(A)$.  
-	\end{proof}
-
-As a corollary we obtain that the socle of a 
-brace $A$ is a trivial brace of abelian type. 
-
-\begin{proposition}
-    \label{pro:soc_kernels}
-    Let $A$ be a brace. Then $\Soc(A)=\ker\lambda\cap\ker\mu$.
-\end{proposition}
+\begin{theorem}
+    Let $R$ be a ring and $S$ be a non-empty multiplicatively closed subset of $R$ such that $0\not\in 0$ and 
+    $1\in S$. Then there exists a left quotient ring of $R$ with respect to $S$
+    if and only if $S$ is a left denominator set. 
+\end{theorem}
 
 \begin{proof}
-    Let $a\in\Soc(A)$ and $b\in A$. Then $\lambda_a=\id$ and $a\in Z(A,+)$. By Exercise~\ref{xca:socle}, \[\mu_a(b)=\lambda_b(a)'\circ b\circ a=(b\circ a\circ b')'\circ b\circ a=b.\]  Thus $a\in\ker\lambda\cap\ker\mu$. 
     
-    Conversely, let $a\in\ker\lambda\cap\ker\mu$ and $b\in A$. Then $b'=\mu_a(b')=\lambda_{b'}(a)'\circ b'\circ a$, so
-    $\lambda_{b'}(a)=b'\circ a\circ b$. Now 
-    \[
-    b+a=b\circ\lambda^{-1}_b(a)=b\circ\lambda_{b'}(a)=b\circ b'\circ a\circ b=a\circ b=a+\lambda_a(b)=a+b
-    \]
-    implies that $a\in\Soc(A)$. 
 \end{proof}
+
+\topic{Golod--Shafarevich theorem}
+
+\topic{The exterior algebra}
 
 \begin{definition}
-\index{Annihilator}
-Let $A$ be a brace. The \emph{annihilator} of $A$ is 
-defined as the set $\Ann(A)=\Soc(A)\cap Z(A,\circ)$. 
+\index{Exterior algebra}
+    Let $K$ be a field and $n\geq1$. The $n$-th 
+    \textbf{exterior algebra} 
+    $\Lambda_n(K)$ is the $K$-algebra
+    with generators $x_1,\dots,x_n$ and relations 
+    \[
+    x_ix_j+x_jx_i=0
+    \]
+    for all $i,j\in\{1,\dots,n\}$. 
 \end{definition}
 
-Note that $\Ann(A)\subseteq\Fix(A)$. 
+If $K$ has characteristic two, then $\Lambda_n(K)$ is isomorphic to 
+the polynomial algebra $K[X_1,\dots,X_n]$ in $n$ commutative variables $X_1,\dots,X_n$. If the characteristic 
+of $K$ is different from two, then the relations 
+$x_i^2=0$ hold in $\Lambda_n(K)$ 
+for all $i\in\{1,\dots,n\}$. 
 
-\begin{proposition}
-The annihilator of a brace $A$ is an ideal of $A$. 
-\end{proposition}
+% \begin{example}
+%     Let us examine the case $n=2$. Every element of $\Lambda_2(K)$ can be written uniquely 
+%     as \[
+%     \lambda+\lambda_1 x_1+\lambda_2x_2+\mu x_1x_2.
+%     \]
+% \end{example}
+
+\begin{theorem}
+    Let $K$ be a field of characteristic $\ne2$. Then 
+    the monomials of the form 
+    \[
+    x_{i_1}\cdots x_{i_k}
+    \]
+    with $1\leq k\leq n$ and $i_1<\cdots<i_k\leq n$, together with $1$, form 
+    a basis of $\Lambda_n(K)$. In particular, $\dim\Lambda_n(K)=2^n$. 
+\end{theorem}
 
 \begin{proof}
-    Let $x,y\in\Ann(A)$. Note that $x-y=x\circ y'\in Z(A,\circ)$. Hence $\Ann(A)$ is a subbrace of $A$. Since $\Ann(A)\subseteq Z(A,+)\cap Z(A,\circ)$, 
-    we only need to note that $\lambda_a(x)=x\in\Ann(A)$, for all $a\in A$. 
+    Since $x_i^2=0$ for all $i$ and $x_ix_j=-x_jx_i$ for all $i,j$, it follows that 
+    every monomial is either one or of the form $x_{i_1}x_{i_2}\cdots x_{i_k}$ 
+    for some $k\leq n$. In particular 
+    \[
+    \dim\Lambda_n(K)=1+\sum_{k=1}^n\binom{n}{k}=2^n.
+    \]
 \end{proof}
 
+\begin{exercise}
+    Prove that $x_i\Lambda_n(K)x_i=\{0\}$ for all $i\in\{1,\dots,n\}$. 
+\end{exercise}
 
+% x_i(x_{i_1}x_{i_2}\cdots x_{i_k})x_i=\pm x_i^2x_{i_1}x_{i_2}\cdots x_{i_k}=0$. 
 
-%Clearly $\Soc(A)=\ker(\lambda)\cap Z(A,+)$. In \cite[Lemma~2.5]{MR3647970} it
-%is proved that $\Soc(A)$ is an ideal of $A$.
+\begin{exercise}
+    Let $z_1,\dots,z_{n+1}\in\Lambda_n(K)$ be elements with zero constant term. Prove that 
+    $z_1z_2\cdots z_{n+1}=0$. 
+\end{exercise}
 
-\index{Quotient brace}
-If $A$ is a brace and $I$ is an ideal of $A$, then $a+I=a\circ I$ for all $a\in A$. Indeed, 
-$a\circ x=a+\lambda_a(x)\in a+I$ and 
-$a+x=a\circ\lambda_a^{-1}(x)=a\circ\lambda_{a'}(x)\in a\circ I$ 
-for all $a\in A$ and $x\in I$. 
-This allows us to prove that there exists a unique brace structure over $A/I$ such that
-the map 
+% Every monomial appearing in $z$ is a product of at least $n+1$ elements of $\{x_1,\dots,x_n\}$. Thus it is zero. 
+
+\begin{exercise}
+    Prove the following statements:
+    \begin{enumerate}
+        \item Every element of $\Lambda_n(K)$ is either a unit or a zero divisor. 
+        \item An element of $\Lambda_n(K)$ is a zero divisor if and only if its constant term is zero.
+        \item The non-units of of $\Lambda_n(K)$ form a nilpotent ideal. 
+    \end{enumerate}    
+\end{exercise}
+
+% Since $\Lambda_n(K)$ is finite-dimensional, $\Lambda_n(K)$ is algebraic. 
+
+\topic{Quaternion algebras}
+
+\begin{definition}
+\index{Quaternion algebra}
+    Let $K$ be a field and $a,b\in K\setminus\{0\}$. The \textbf{quaternion algebra}
+    with respect to $a,b$ (over $K$) is the $K$-algebra
+    $(a,b)_K$ given by generators $i,j$ and relations
+    \[
+    i^2=a,\quad 
+    j^2=b,\quad 
+    ij=-ji.
+    \] 
+\end{definition}
+
+The $K$-algebra $(a,b)_K$ is the quotient of the free algebra $K\langle x,y\rangle$ 
+by the ideal generated by $x^2-a$, $y^2-b$ and $xy+yx$. Write
+$i=x+I$, $j=y+I$ and $k=ij$. Then every element $\alpha\in(a,b)_K$ admits a unique
+representation of the form
 \[
-\pi\colon A\to A/I,
-\quad
-a\mapsto a+I=a\circ I,
+\alpha=\lambda_1+\lambda_2x+\lambda_3y+\lambda_4xy+I=\lambda_1+\lambda_2i+\lambda_3j+\lambda_4k
 \]
-is a homomorphism of braces. The brace $A/I$ 
-is the \textbf{quotient brace} of $A$ modulo $I$. 
+for $\lambda_1,\lambda_2,\lambda_3,\lambda_4\in K$. 
+In particular, $\{1,i,j,k\}$ is a basis of $(a,b)_K$. 
+
+\begin{example}
+The real algebra $(-1,-1)_{\R}$ is the classical 
+4-dimensional real 
+quaternion algebra with basis $\{1,i,j,k\}$ with 
+$i^2=j^2=k^2=ijk=-1$. 
+\end{example}
 
 \begin{exercise}
-\label{xca:iso1}
-    Let $A$ and $B$ be braces and $f\colon A\to B$ be a homomorphism. Prove that $A/\ker f\simeq f(A)$. 
+    If $\alpha=\lambda_1+\lambda_2i+\lambda_3j+\lambda_4k\in (a,b)_K$, let 
+    \[
+    \overline{\alpha}=\lambda_1-\lambda_2i-\lambda_3j-\lambda_4k. 
+    \]
+    Prove that the map 
+    \[
+    N\colon (a,b)_K\to K,
+    \quad 
+    \alpha\mapsto \alpha\overline{\alpha}=\lambda_1-a\lambda_2^2-b\lambda_3^2+ab\lambda_4^2,
+    \]
+    is a multiplicative function, that is $N(\alpha\beta)=N(\alpha)N(\beta)$ for all $\alpha,\beta\in (a,b)_K$. 
 \end{exercise}
 
 \begin{exercise}
-\label{xca:iso2}
-    Let $A$ be a brace and let $B$ be a subbrace of $A$. Prove that if $I$ is an ideal of $A$, 
-    then $B\circ I$ is a subbrace of $A$, 
-    $B\cap I$ is an ideal of $B$ and $(B\circ I)/I\simeq B/(B\cap I)$. 
+    Prove that a quaternion algebra 
+    $(a,b)_K$ is a division algebra if and only if $N(\alpha)\ne 0$ for all $\alpha\ne0$. 
 \end{exercise}
+
+Over fields of characteristic two, quaternion algebras are commutative. 
 
 \begin{exercise}
-\label{xca:iso3}
-Let $A$ be a brace and $I$ and $J$ be ideals of $A$. Prove that if $I\subseteq J$, then
-$A/J\simeq (A/I)/(J/I)$. 
+    Let $K$ be a field of characteristic $\ne2$. 
+    Let $A=(a,b)_K$ be a quaternion algebra. 
+    Prove that $Z(A)=K$. 
 \end{exercise}
+
+The previous exercise shows that, in particular, $(-1,-1)_{\R}$ is a division algebra. 
+What happens with the quaternion algebra $(1,1)_{\R}$?
+
+\begin{theorem}
+    Let $K$ be a field of characteristic $\ne2$. Then the quaternion algebra
+    $(a,b)_K$ is simple. 
+\end{theorem}
+
+\begin{proof}
+    Let $A=(a,b)_K$ and $I$ be a non-zero ideal of $A$. Let $0\ne\alpha\in I$. 
+    Write 
+    \[
+    \alpha=\lambda_1+\lambda_2i+\lambda_3j+\lambda_4k.
+    \]
+    Without loss of generality, 
+    we may assume that $\lambda_1\ne 0$ (if not, replace $\alpha$ by $\alpha i$, $\alpha j$ or 
+    $\alpha k$). Since 
+    \[
+    2a(\lambda_1+\lambda_2 i)=i\alpha i+a\alpha\in I
+    \]
+    and $2a\ne 0$, $\beta=\lambda_1+\lambda_2 i\in I$. Moreover, 
+    $2b\lambda_1=j\beta j+b\beta\in I$ and hence $\lambda_1\in I$. This implies
+    that $I=A$, as $1=\lambda_1^{-1}\lambda_1\in I$. 
+\end{proof}
+
+\begin{corollary}
+    Let $K$ be a field of characteristic $\ne2$ and $A=(a,b)_K$. 
+    Then either $A$ is a division algebra or $A\simeq M_2(K)$. 
+\end{corollary}
+
+\begin{proof}
+    We know that $\dim_KA=4$. The previous theorem shows that 
+    $A$ is simple. By Artin--Wedderburn, $A\simeq M_n(D)$ for some 
+    division algebra $D$. Since 
+    \[
+    4=\dim_KA=\dim_KM_n(D)=n^2\dim_KD,
+    \]
+    either $n=1$ and $\dim_KD=4$ or $n=2$ and $\dim_KD=1$. This means
+    that either $A\simeq D$ is a division algebra or $A\simeq M_2(K)$. 
+\end{proof}
+
+\topic{Clifford algebras}
+
+\begin{definition}
+\index{Clifford algebra}
+    Let $K$ be a field and $a_1,\dots,a_n\in K\setminus\{0\}$. 
+    The \textbf{Clifford algebra} $C_K(a_1,\dots,a_n)$ 
+    is the $K$-algebra with generators $x_1,\dots,x_n$ and relations
+    $x_ix_j=-x_jx_i$ for all $i\ne j$ and $x_i^2=a_i$ for all $i$. 
+\end{definition}
+
+Note that $\Lambda_n(K)=C_K(0,\dots,0)$ and 
+$(a,b)_K=C_K(a,b)$. 
+
+\begin{theorem}
+    Let $K$ be a field of characteristic $\ne2$ and 
+    $A=C_K(a_1,\dots,a_n)$ be a Clifford algebra. 
+    Then $\dim_KA=2^n$. Moreover, $A$ is semisimple if and only if $a_i\ne0$ for all $i$. 
+\end{theorem}
+
+\begin{proof}
+    We first prove that the set
+    \[
+    \{1\}\cup \{x_{i_1}\cdots x_{i_m}:m\neq n,1\leq i_1<\cdots<i_m\leq n\}
+    \]
+    is a basis of $A$. In particular, $\dim_KA=2^n$.
+
+    We claim that $J(A)=\{0\}$ if and only if... 
+\end{proof}
+
+\topic{Amitsur--Levitski theorem}
+
+In this section, we will prove a beautiful theorem 
+on matrices. The first proof was given by Amitsur and Levitski. 
+There is a beautiful graph theoretical proof; see...
+The proof we present here goes back to Rosset. We first present 
+an auxiliary result. 
 
 \begin{exercise}
-\label{xca:correspondence}
-Let $A$ be a brace and let $I$ be an ideal of $A$. Prove that there is a bijective correspondence between (left) ideals 
-of $A$ containing $I$ and (left) ideals of $A/I$. 
+    \label{xca:traces}
+    Let $A\in M_n(\C)$. If $\trace(A^k)=0$ for all $k\geq n$, then 
+    $A^n=0$. 
 \end{exercise}
 
+Now we are ready to prove the theorem. 
 
+\begin{theorem}[Amitsur--Levitski]
+    \label{thm:AmitsurLevitski}
+    \index{Amitsur-Levitski theorem}
+    Let $A_1,\dots,A_{2n}\in M_n(\C)$. Then 
+    \[
+    \sum_{\sigma\in\Sym_{2n}}\operatorname{sign}(\sigma)A_{\sigma(1)}\cdots A_{\sigma(2n)}=0.
+    \]
+\end{theorem}
 
+\begin{proof}
+    For $k\geq1$, write 
+    \[
+    s_k(A_1,\dots,A_k)=\sum_{\sigma\in\Sym_k}\operatorname{sign}(\sigma)A_{\sigma(1)}\cdots A_{\sigma(k)}=0.
+    \]
+    Let $G$ be the Grassman algebra, that is 
+    the algebra given by generators $x_1,x_2\dots$ and relations 
+    $x_i^2=0$ for all $i$ and 
+    $x_ix_j+x_jx_i=0$ for all $i,j$. Every element is a finite sum 
+    of the form
+    \[
+    \lambda+\sum \lambda_{i_1i_2\cdots i_k}x_{i_1}x_{i_2}\cdots x_{i_k}.
+    \]
+    
+    For $B=(b_{ij})\in M_n(\C)$ and $x\in G$, let $Bx\in M_n(G)$ be given by
+    $(Bx)_{ij}=(b_{ij}x)$. Note that the product of these matrices is given by
+    $(Bx)(Cy)=(BC)(xy)$. Let 
+    \[
+    A=\sum_{j=1}^{2n}A_jx_j\in M_n(G).
+    \]
+    %Since $x_jGx_j=\{0\}$ for all $j$,  
+    We claim that 
+    \[
+    A^{k}=\sum_{i_1<\cdots<i_k}s_k(A_{i_1},\dots,A_{i_k})x_{i_1}\cdots x_{i_k}.
+    \]
+    In particular, $A^{2n}=s_{2n}(A)x_1\cdots x_{2n}$. 
+
+    We need to prove that $A^{2n}=(A^2)^k=0$. By Exercise \ref{xca:traces}, 
+    it is enough to prove that $(A^2)^k=0$ for all $k\leq n$. Write 
+    $A^{2k-1}=\sum_j B_jy_j$ for $y_1,y_2...\in G_1$. Then 
+    \begin{align*}
+        \trace(A^{2k})&=\trace(AA^{2k-1})
+        =\trace\left(\sum_{i,j}A_iB_jx_iy_j\right)
+        =\sum_{i,j}\trace(A_iB_j)x_iy_j.
+    \end{align*}
+    On the other hand, 
+    \begin{align*}
+        \trace(A^{2k})&=\trace(A^{2k-1}A)
+        =\trace\left(\sum_{i,j}B_jA_iy_jx_i\right)
+        =\sum_{i,j}\trace(B_jA_i)y_jx_i.
+    \end{align*}
+    Since $\trace(B_jA_i)=\trace(A_iB_j)$ and $y_jx_i=-x_iy_j$, it follows that 
+    $\trace(A^{2k})=0$. 
+\end{proof}
