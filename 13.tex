@@ -1,0 +1,117 @@
+\section*{It\^o's theorem}
+
+\begin{definition}
+\index{Grup!metabelian}
+A group $G$ is said to be \textbf{metabelian} if $[G,G]$ is abelian. 
+\end{definition}
+
+\begin{exercise}
+\label{xca:metabelian1}
+Prove that a group $G$ is metabelian if and only if there exists a normal 
+subgroup $K$ of $G$ such that $K$ and $G/K$ are abelian.
+\end{exercise}
+
+% \begin{remark}
+% 	Los grupos metabelianos son solvables pues 
+% 	si $G$ is metabeliano entonces 
+% 	$G\supseteq [G,G]\supseteq 1$ is una serie solvable para $G$.
+% \end{remark}
+
+\begin{exercise}
+\label{xca:metabelian2}
+Let $G$ be a metabelian group. Prove the following statements: 
+\begin{enumerate}
+\item If $H$ is a subgroup of $G$, then $H$ is metabelian.
+\item If $f\colon G\to H$ is a group homomorphism, then $f(H)$ is metabelian. 
+\end{enumerate}
+\end{exercise}
+
+\begin{lemma}
+In a group, the following formulas hold:
+\begin{enumerate}
+	\item $[a,bc]=[a,b]b[a,c]b^{-1}$. 
+	\item $[ab,c]=a[b,c]a^{-1}[a,c]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is a straightforward calculation:
+\begin{align*}
+&[a,b]b[a,c]b^{-1}=aba^{-1}b^{-1}baca^{-1}c^{-1}b^{-1}=abca^{-1}c^{-1}b^{-1}=[a,bc],\\
+&a[b,c]a^{-1}[a,c]=abcb^{-1}c^{-1}a^{-1}aca^{-1}c^{-1}=abcb^{-1}a^{-1}c^{-1}=[ab,c].\qedhere
+\end{align*}
+\end{proof}
+
+\begin{example}
+The group $\Sym_3$ is metabelian, as $\Alt_3\simeq C_3$ is a normal subgroup 
+and the quotient $\Sym_3/\Alt_3\simeq C_2$ an abelian group. 
+\end{example}
+
+\begin{example}
+The group $\Alt_4$ is metabelian, as the normal subgroup
+\[
+K=\{\id,(12)(34),(13)(24),(14)(23)\}
+\]
+is abelian and the quotient 
+$\Alt_4/K\simeq C_3$ is abelian.
+\end{example}
+
+\begin{example}
+The group $\SL_2(3)$ is not metabelian, as $[\SL_2(3),\SL_2(3)]\simeq Q_8$ 
+is not abelian: 
+\begin{lstlisting}
+gap> IsAbelian(DerivedSubgroup(SL(2,3)));
+false
+gap> StructureDescription(DerivedSubgroup(SL(2,3)));
+"Q8"
+\end{lstlisting}
+\end{example}
+
+We now prove It\^o's theorem. The proof is surprisingly simple. 
+
+\begin{theorem}[It\^o]
+\label{theorem:Ito}
+Let $G=AB$ be a factorization of $G$ with $A$ and $B$ abelian 
+subgroups of $G$. Then $G$ is metabelian.
+\end{theorem}
+
+\begin{proof}
+Since $G=AB$ is a group, $AB=BA$. We claim that $[A,B]$ is a normal subgroup 
+of $G$. Let $a,\alpha\in A$ and $b,\beta\in B$. Let  $a_1,a_2\in A$ and 
+	$b_1,b_2\in B$ be such that $\alpha b\alpha^{-1}=b_1a_1$, $\beta
+	a\beta^{-1}=a_2b_2$. Since 
+	\begin{align*}
+		&\alpha[a,b]\alpha^{-1}=a(\alpha b\alpha^{-1})a^{-1}(\alpha b^{-1}\alpha^{-1})=ab_1a_1a^{-1}a_1^{-1}b_1^{-1}=[a,b_1]\in [A,B]\\
+		&\beta[a,b]\beta^{-1}=(\beta a\beta^{-1})\beta b\beta^{-1}(\beta a^{-1}\beta^{-1})b^{-1}=a_2b_2bb_2^{-1}a_2^{-1}b^{-1}=[a_2,b]\in [A,B],
+	\end{align*}
+	it follows that $[A,B]$ is normal in $G$. 
+
+	We now claim that $[A,B]$ is abelian. Since 
+	\begin{align*}
+		&\beta\alpha[a,b]\alpha^{-1}\beta^{-1} = \beta[a,b_1]\beta^{-1}=(\beta a\beta^{-1})b_1(\beta a^{-1}\beta^{-1})b_1^{-1}=[a_2,b_1],\\
+		&\alpha\beta[a,b]\beta^{-1}\alpha^{-1} = \alpha[a_2,b]\alpha^{-1}=a_2(\alpha b\alpha^{-1})a_2^{-1}(\alpha b\alpha^{-1})=[a_2,b_1],
+	\end{align*}
+	a direct calculation shows that 
+	\[
+		[\alpha^{-1},\beta^{-1}][a,b][\alpha^{-1},\beta^{-1}]^{-1}=[a,b].
+	\]
+	Two arbitrary generators of $[A,B]$ commute, so the group $[A,B]$ is abelian. 
+	
+	To finish the proof, note that $[G,G]=[A,B]$. In fact, 
+	\[
+	[a_1b_1,a_2b_2]=a_1[a_2,b_1]^{-1}a_1^{-1}a_2[a_1,b_2]a_2^{-1}\subseteq [A,B],
+	\]
+	as $[A,B]$ is normal in $G$. 
+\end{proof}
+
+In 1988 Sysak proved the following generalization 
+of It\^o's theorem.  
+
+\begin{theorem}[Sysak]
+\index{Sysak's theorem}
+    Let $A$ and $B$ be abelian subgroups of $G$. If $H$ is a subgroup of 
+    $G$ contained in 
+    $AB$, then $H$ is metabelian. 
+\end{theorem}
+
+For the proof, see \cite{MR988177}.

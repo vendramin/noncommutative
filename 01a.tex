@@ -1,0 +1,315 @@
+\section{}
+
+\subsection{Group rings}
+
+Let $K$ be a field and $G$ be a group (written multiplicatively). Let $K[G]$ be the 
+vector space with basis $\{g:g\in G\}$. Then $\dim K[G]<\infty$ if and only if $G$ 
+is finite. The vector space $K[G]$ is an algebra
+with multiplication
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\]
+
+\begin{exercise}
+    Prove that $\C[\Z]\simeq\C[X,X^{-1}]$. 
+\end{exercise}
+
+For $n\in\Z_{>1}$
+let $C_n$ be the cyclic group of order $n$.
+    
+\begin{exercise}
+    Let $n\in\Z_{>1}$. Prove that $\C[C_n]\simeq\C[X]/(X^n-1)$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that if $G$ and $H$ are isomorphic groups, then $K[G]\simeq K[H]$. 
+\end{exercise}
+
+In a similar way, if $R$ is a commutative ring (with 1) 
+and $G$ is a group, then one defines the group ring $R[G]$. More precisely,
+$R[G]$ is the set of finite linear combinations
+\[
+    \sum_{g\in G}\lambda_gg
+\]
+where $\lambda_g\in R$ and $\lambda_g=0$ for all but finitely many $g\in G$. 
+One easily proves that $R[G]$ is a ring with 
+addition
+\[
+\left(\sum_{g\in G}\lambda_gg\right)+\left(\sum_{g\in G}\mu_gg\right)
+=\sum_{g\in G}(\lambda_g+\mu_g)(g)
+\]
+and multiplication 
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\]
+Moreover, $R[G]$ is a left $R$-module with
+$\lambda(\sum_{g\in G}\lambda_gg)=\sum_{g\in G}(\lambda\lambda_g)g$. 
+
+\begin{exercise}
+    Let $G$ be a group. Prove that if 
+    $\Z[G]\simeq\Z[H]$, then $R[G]\simeq R[H]$ for any commutative ring $R$.      
+\end{exercise}
+
+\begin{question}[Isomorphism problem]
+\label{question:IP}
+    Let $G$ and $H$ be groups. Does $\Z[G]\simeq\Z[H]$ imply $G\simeq H$?
+\end{question}   
+
+Although there are several cases where 
+the isomorphism problem has an affirmative answer (e.g. abelian groups, 
+metabelian groups, nilpotent groups, nilpotent-by-abelian groups, simple groups, 
+abelian-by-nilpotent groups), it is false in general. In 2001  
+Hertweck found a counterexample of order $2^{21}97^{28}$, see \cite{MR1847590}.  
+
+\begin{question}[Modular isomorphism problem]
+\label{question:MIP}
+    Let $p$ be a prime number. Let 
+    $G$ and $H$ be finite $p$-groups and let $K$ be a field of characteristic $p$. 
+    Does $K[G]\simeq K[H]$ imply $G\simeq H$?
+\end{question}   
+
+Question \ref{question:MIP} has an affirmative answer in several cases. However, 
+this is not true in general. This question was recently answered by Garc\'ia, Margolis and
+del R\'io \cite{MR4373245}. They found two non-isomorphic groups $G$ and $H$ both of order $512$ 
+such that $K[G]\simeq K[H]$ for all field $K$ 
+of characteristic two. 
+
+\subsection{Kapanskly's problems}
+
+Let $G$ be a group and $K$ be a field. If  
+$x\in G\setminus\{1\}$ is such that $x^n=1$, then, since 
+\[
+(1-x)(1+x+x^2+\cdots+x^{n-1})=0, 
+\] 
+it follows that $K[G]$ has non-trivial zero divisors. What happens in the case
+where $G$ is torsion-free?
+
+\begin{example}
+	\label{example:k[Z]}
+	Let $G=\langle x\rangle\simeq\Z$. Then $K[G]$ has no zero divisors. 
+	Let $\alpha,\beta\in K[G]$ be non-zero elements and write 
+	$\alpha=\sum_{i\leq n}a_ix^i$ with $a_n\ne 0$ and $\beta=\sum_{j\leq m}b_jx^j$
+	with $b_m\ne 0$. Since the coefficient of $x^{n+m}$ of $\alpha\beta$ is non-zero,
+	it follows that 
+	$\alpha\beta\ne 0$.
+\end{example}
+
+A similar problem concerns units of group algebras.  A unit $u\in K[G]$ is said
+to be \textbf{trivial} if $u=\lambda g$ for some $\lambda\in K\setminus\{0\}$ and
+$g\in G$.	
+
+\begin{exercise}
+\label{xca:non_trivial:C2andC5}
+	Prove that $\C[C_2]$ and $\C[C_5]$ have non-trivial units.
+\end{exercise}
+
+% \begin{exercise}
+% \label{xca:non_trivial:C5}
+% 	Prove that $\C[C_5]$ has non-trivial units. 
+% \end{exercise}
+
+\begin{problem}[Zero divisors]
+	\label{prob:dominio}
+	Let $G$ be a torsion-free group. Is it true that 
+	$K[G]$ is a domain?
+\end{problem}
+
+
+% Si $g$ tiene orden cinco, entonces 1-g+g^2-g^3+g^4$ es una unidad no trivial con
+% inverso $\frac12+\frac12g$. 
+
+We mention some intriguing problems, generally known as Kaplansky's problems. 
+%En general, no es fácil determinar si $K[G]$ tiene divisores de cero. Los
+%siguientes problemas abiertos fueron formulados por Kaplansky:
+
+\begin{problem}[Units]
+	\label{prob:units}
+	Let $G$ be a torsion-free group. Is it true that all units of $K[G]$ are
+	trivial?
+\end{problem}
+
+\index{Promislow's group}
+The unit problem is still open for fields of characteristic zero. 
+However, it was recently solved by Gardam \cite{MR4334981} 
+in the case of 
+$K$ the field of two elements. We will present Gardam's theorem 
+as a computer calculation. We will use \textsf{GAP} \cite{GAP4}.  
+
+\begin{lemma}
+    The group $G=\langle a,b:a^{-1}b^2a=b^{-2},b^{-1}a^2b=a^{-2}\rangle$
+    is torsion-free. Moreover, the subgroup $N=\langle a^2,b^2,(ab)^2\rangle$ is normal in $G$, 
+    free-abelian of rank three and $G/N\simeq C_2\times C_2$.
+\end{lemma}
+
+\begin{proof}
+    We first construct the group.
+\begin{lstlisting}
+gap> F := FreeGroup(2);;
+gap> A := F.1;;
+gap> B := F.2;;
+gap> rels := [(B^2)^A*B^2,(A^2)^B*A^2];;
+gap> G := F/rels;;
+gap> a := G.1;;
+gap> b := G.2;;
+\end{lstlisting}
+    Now we construct the subgroup $N$ generated by $a^2$, $b^2$ and $(ab)^2$. 
+    It is easy to check that $N$ is normal 
+    in $G$ and that $G/N\simeq C_2\times C_2$. It is even easier 
+    to do this with the computer.
+\begin{lstlisting}
+gap> N := Subgroup(G, [a^2,b^2,(a*b)^2]);;
+gap> IsNormal(G,N);
+true
+gap> StructureDescription(G/N);
+"C2 x C2"
+\end{lstlisting}
+    It is easy to check by hand that $N$ is abelian, and not so easy to do it with
+    the computer. For example, 
+    \[
+    b^{-2}a^2b^{-2}=b^{-1}a^{-2}b=(b^{-1}a^2b)^{-1}=(a^{-2})^{-1}=a^2.
+    \]
+    We use the computer to show that
+    $N$ is free abelian of rank three. 
+\begin{lstlisting}
+gap> AbelianInvariants(N);
+[ 0, 0, 0 ]
+\end{lstlisting}
+    Let us prove that $G$ is torsion-free. Let 
+    $x=a^2$, $y=b^2$ and $z=(ab)^2$. 
+    Since $(G:N)=4$, the group $G$ decomposes as a disjoint union
+    $G=N\cup aN\cup bN\cup (ab)N$. Let $g\in G$ be a non-trivial element of finite order. 
+    Since $N$ is torsion-free, $g\in aN\cup bN\cup (ab)N$. Without loss of generality 
+    we may assume that $g\in aN$, so $g=an$ for some $n\in N$. 
+    Let $\pi\colon G\to G/N$ be the canonical map. 
+    Since $g\not\in N$ and $\pi(g)\in G/N\simeq C_2\times C_2$, 
+    \[
+    \pi(g^2)=\pi(g)^2=1
+    \]
+    so $g^2\in N$ and hence $g^2=1$, as $N$ is torsion-free.  Thus
+    \[
+    1=g^2=(an)^2=(an)(an)=a^2(a^{-1}na)n=x(a^{-1}na)n.
+    \]
+    Write $n=x^iy^jz^k$ for some $i,j,k\in\Z$. Then
+    \[
+    a^{-1}na=(a^{-1}x^ia)(a^{-1}y^ja)(a^{-1}z^ka)=x^it^{-j}z^{-k}
+    \]
+    and hence $(a^{-1}na)n=x^{2i}$. Then it follows that 
+    $1=g^2=x(a^{-1}na)n=x^{2i+1}$, a contradiction. 
+\end{proof}
+
+Let $P$ be the group
+generated by
+\[
+a=\begin{pmatrix}
+1 & 0 & 0 & 1/2\\
+0 & -1 & 0 & 1/2\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix},
+\quad
+b=\begin{pmatrix}
+-1 & 0 & 0 & 0\\
+0 & 1 & 0 & 1/2\\
+0 & 0 & -1 & 1/2\\
+0 & 0 & 0 & 1
+\end{pmatrix}. 
+\]
+The group $P$ appears in the literature with various names. 
+For us $P$ will be the Promislow group. It is easy to check
+that there exists a surjective group homomorphism $G\to P$. 
+Prove that $G\simeq P$. 
+
+\begin{theorem}[Gardam]
+\label{thm:Gardam}
+\index{Gardam's theorem}
+    Let $\F_2$ be the field of two elements. Consider the elements 
+    $x=a^2$, $y=b^2$ and $z=(ab)^2$ of $P$ and let 
+    \begin{align*}
+        &p=(1+x)(1+y)(1+z^{-1}), 
+        &&q = x^{-1}y^{-1}+x+y^{-1}z+z,\\
+        &r = 1+x+y^{-1}z+xyz,
+        &&s=1+(x+x^{-1}+y+y^{-1})z^{-1}.
+    \end{align*}
+    Then $u=p+qa+rb+sab$ is a non-trivial unit in $\F_2[P]$. 
+\end{theorem}
+
+\begin{proof}
+    We claim that the inverse of $u$ 
+    is the element $v=p_1+q_1a+r_1b+s_1ab$, where
+    \begin{align*}
+        p_1=x^{-1}(a^{-1}pa), 
+        && q_1=-x^{-1}q,
+        && r_1=-y^{-1}r,
+        && s_1=z^{-1}(a^{-1}sa).
+    \end{align*}
+    We only need to show that $uv=vu=1$. We will perform this
+    calculation with \textsf{GAP}. 
+    We first need to create the group $P=\langle a,b\rangle$. 
+\begin{lstlisting} 
+gap> a := [[1,0,0,1/2],[0,-1,0,1/2],[0,0,-1,0],[0,0,0,1]];;
+gap> b := [[-1,0,0,0],[0,1,0,1/2],[0,0,-1,1/2],[0,0,0,1]];;
+gap> P := Group([a,b]);
+\end{lstlisting}
+    Now we create the group algebra $F[P]$ and 
+    the embedding $P\hookrightarrow F[P]$.  
+    The field $\F_2$ will be \lstinline{GF(2)} 
+    and the embedding will be denoted by \lstinline{f}. 
+\begin{lstlisting}
+gap> R := GroupRing(GF(2),P);;
+gap> f := Embedding(P, R);;
+\end{lstlisting}
+    We first need the elements $x$, $y$ and $z$ that were defined in the
+    statement.
+\begin{lstlisting}
+gap> x := Image(f, a^2);;
+gap> y := Image(f, b^2);;
+gap> z := Image(f, (a*b)^2);;
+\end{lstlisting}
+    Now we define the elements $p$, $q$, $r$ and $s$. Note that
+    the identity of the group algebra \lstinline{R} 
+    is \lstinline{One(R)}. 
+\begin{lstlisting}
+gap> p := (One(R)+x)*(One(R)+y)*(One(R)+Inverse(z));;
+gap> r := One(R)+x+Inverse(y)*z+x*y*z;;
+gap> q := Inverse(x)*Inverse(y)+x+Inverse(y)*z+z;;
+gap> s := One(R)+(x+Inverse(x)+y+Inverse(y))*Inverse(z);
+\end{lstlisting}
+    Rather than trying 
+    to compute the inverse of $u$ we will show that 
+    $uv=vu=1$. For that purpose we need to define
+    $p_1$, $q_1$, $r_1$ and $s_1$.
+\begin{lstlisting}
+gap> p1 := Inverse(x)*p^Image(f, a);;
+gap> q1 := -Inverse(x)*q;;
+gap> r1 := -Inverse(y)*r;;
+gap> s1 := Inverse(z)*s^Image(f, a);;
+\end{lstlisting}
+Now it is time to prove the theorem. 
+\begin{lstlisting}
+gap> u := p+q*a+r*b+s*a*b;;
+gap> v := p1+q1*a+r1*b+s1*a*b;;
+gap> IsOne(u*v);
+true
+gap> IsOne(v*u);
+true
+\end{lstlisting}
+This completes the proof of the theorem. 
+\end{proof}
+
+Our proof of Theorem \ref{thm:Gardam} is exactly 
+as that of \cite{MR4334981}. 
+
+\begin{exercise}
+     Let $p$ be a prime number and $\F_p$ be the field of size $p$. 
+     Use the technique 
+     for proving Gardam's theorem to prove Murray's theorem
+     on the existence 
+     on non-trivial units in $\F_p[P]$. 
+     Reference: \href{https://arxiv.org/abs/2106.02147}{arXiv:2106.02147}. 
+\end{exercise}
+
+
+
+

@@ -1,260 +1,232 @@
-\chapter{}
+\section{}
 
-\topic{More applications of the transfer}
+\subsection{The Fitting subgroup}
 
-Let us start with a group-theoretic application
-of the transfer map. We start with some applications to the theory 
-of finite groups. 
+\begin{definition}
+\index{$p$-radical}
+Let $G$ be a finite group and $p$ be a prime number. 
+The \textbf{$p$-radical} of $G$ is the subgroup 
+\[
+O_p(G)=\bigcap_{P\in\Syl_p(G)}P.
+\]
+\end{definition}
 
-\begin{proposition}
-	\label{prop:semidirecto}
-	Let $G$ be a finite group and $H$ a central subgroup of index $n$, where 
-	$n$ is coprime with $|H|$. Then
-	$G\simeq N\rtimes H$.
-\end{proposition}
+\begin{lemma}
+\label{lem:core:Op(G)}
+Let $G$ be a finite group and $p$ be a prime number. The following statements hold: 
+\begin{enumerate}
+    \item $O_p(G)$ is normal in $G$.
+    \item If $N$ is a normal subgroup of $G$ contained in some 
+    $P\in\Syl_p(G)$, then $N\subseteq O_p(G)$.
+\end{enumerate}
+\end{lemma}
 
 \begin{proof}
-	Since $H$ is abelian, $H=H/[H,H]$. Let  
-	$\nu\colon G\to H$ be the transfer map and $h\in H$. 
-	By Lemma~\ref{lem:transfer}, 
-	\[
-		\nu(h)
-		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i,
-	\]
-	where each $s_i^{-1}h^{n_i}s_i\in H$. Since 
-	$h^{n_i}\in H\subseteq Z(G)$ for all $i$, it follows that 
-	$s_i^{-1}h^{n_i}s_i=h^{n_i}$ for all $i$. Thus 
-	\[
-		\nu(h)
-		=\prod_{i=1}^m s_i^{-1}h^{n_i}s_i
-		=\prod_{i=1}^mh^{n_i}
-		=h^{\sum_{i=1}^m n_i}=h^n.
-	\] 
-	The composition $f\colon H\hookrightarrow G\xrightarrow{\nu} H$ is a group homomorphism. 
-	We claim that it is an isomorphism. It is injective: If $h^n=1$, then 
-	$|h|$ divides both $|H|$ and $n$. Since $n$ and $|H|$ are
-	coprime, $h=1$. It is surjectice: Since $n$ and $|H|$ are coprime, there exists 
-	$m\in\Z$ such that $nm\equiv 1\bmod |H|$. If $h\in H$, then $h^m\in
-	H$ and $\nu(h^m)=h^{nm}=h$. 
-	
-	Let $N=\ker f$. We claim that $G=N\rtimes H$. 
-	By definition, $N$ is normal in $G$ and $N\cap
-	H=\{1\}$. To show that $G=NH$ note that 
-	$|NH|=|N||H|$ and $G/N\simeq H$.
+Let $P\in\Syl_p(G)$. Let $G$ act on $G/P$ by left multiplication. There is a group homomorphism 
+$\rho\colon G\to\Sym_{G/P}$ with kernel 
+\begin{align*}
+		\ker\rho&=\{x\in G:\rho_x=\id\}\\
+		&=\{x\in G:xgP=gP\;\forall g\in G\}\\
+		&=\{x\in G:x\in gPg^{-1}\;\forall g\in G\}\\
+    &=\bigcap_{g\in G}gPg^{-1}\\
+    &=O_p(G).
+\end{align*}
+Then $O_p(G)$ is normal in $G$.
+
+Let $N$ be a normal subgroup of $G$ such that $N\subseteq P$. Since 
+$N=gNg^{-1}\subseteq gPg^{-1}$ for all $g\in G$, we conclude that 
+$N\subseteq O_p(G)$.
 \end{proof}
 
+\begin{definition}
+\index{Fitting!subgroup}
+Let $G$ be a finite group and $p_1,\dots,p_k$ be the prime divisors of 
+$|G|$. The \textbf{Fitting subgroup} of $G$ is the subgroup 
+\[
+F(G)=O_{p_1}(G)\cdots O_{p_k}(G)
+\]
+\end{definition}
+
 \begin{exercise}
-	Let $H$ be a central subgroup of a finite group $G$. If $|H|$
-	and $|G/H|$ are coprime, then $G\simeq H\times G/H$.
+\label{xca:Fitting_char}
+Prove that $F(G)$ is characteristic in $G$.
 \end{exercise}
 
-%\begin{proof}
-%	Es consecuencia inmediata del corolario~\ref{corollary:semidirecto} pues
-%	$H$ es normal por ser un subgrupo central.
-%\end{proof}
+% \begin{svgraybox}
+% 	Sea $f\in\Aut(G)$ y sea $p$ un primo. Como $f$ 
+% 	permuta los $p$-subgrupos de Sylow de $G$, $f(O_p(G))=O_p(G)$. Luego
+% 	$f(F(G))=F(G)$.
+% \end{svgraybox}
 
-% TODO: Transitivity of the transfer
+\begin{example}
+Let $G=\Sym_3$. Then $O_2(G)=\{1\}$ and $O_3(G)=\langle
+(123)\rangle$. Hence $F(G)=\langle (123)\rangle$.
+\end{example}
 
-% serre, 7.12
-An application to infinite groups taken from Serre's book 
-\cite[7.12]{MR3469786}. 
+\begin{theorem}[Fitting]
+\label{thm:Fitting}
+\index{Fitting's theorem}
+Let $G$ be a finite group. Then $F(G)$ is a nilpotent and normal in $G$.
+Moreover, $F(G)$ contains every nilpotent normal subgroup of $G$.
+\end{theorem}
+
+\begin{proof}
+By definition, $|F(G)|=\prod_p|O_p(G)|$.
+Since $O_p(G)\in\Syl_p(F(G))$, we conclude that $F(G)$ is nilpotent, as it contains 
+a normal Sylow $p$-subgroup for every prime $p$. 
+Hence $F(G)$ is nilpotent by Theorem~\ref{thm:nilpotente:eq}.
+
+Let $N$ be a nilpotent normal subgroup of $G$ and $P\in\Syl_p(N)$. Since 
+$N$ is nilpotent, $P$ is normal in $N$ and hence $P$ is the only 
+Sylow $p$-subgroup of $N$. Thus $P$ is characteristic in $N$ and 
+$P$ is normal in $G$. Since $N$ is nilpotent, $N$ is a direct product of its Sylow subgroups. 
+Therefore $N\subseteq O_p(G)$ by Lemma~\ref{lem:core:Op(G)}.
+\end{proof}
+
+\begin{corollary}
+\label{cor:Z(G)subsetF(G)}
+If $G$ is a finite group, then $Z(G)\subseteq F(G)$.
+\end{corollary}
+
+\begin{proof}
+Since $Z(G)$ is nilpotent (in fact, it is abelian) and 
+normal in $G$, by Fitting's theorem~\ref{thm:Fitting} we conclude that 
+$Z(G)\subseteq F(G)$ 
+\end{proof}
+
+\begin{corollary}[Fitting]
+\label{cor:Fitting}
+Let $K$ and $L$ be nilpotent normal subgroups of a finite group $G$. 
+Then $KL$ is nilpotent. 
+\end{corollary}
+
+\begin{proof}
+By Fitting's theorem \ref{thm:Fitting}, $K\subseteq F(G)$ and 
+$L\subseteq F(G)$. Then $KL\subseteq F(G)$ and $KL$ is nilpotent, as 
+$F(G)$ is nilpotent. 
+\end{proof}
+
+\begin{corollary}
+\label{cor:McapF(G)}
+Let $N$ be a normal subgroup of a finite group $G$. Then 
+$N\cap F(G)=F(N)$.
+\end{corollary}
+
+\begin{proof}
+Since $F(N)$ is characteristic in $N$, $F(N)$ is normal in $G$. Then 
+$F(N)\subseteq N\cap F(G)$ because $F(N)$ is nilpotent.  
+Conversely, since $F(G)$ is normal in $G$, the subgroup $F(G)\cap N$ is normal in $N$. Since $F(G)\cap N$
+is nilpotent, $F(G)\cap N\subseteq F(N)$. 
+\end{proof}
+
+We now discuss an application to finite solvable groups.
 
 \begin{theorem}
-	Let $G$ be a torsion-free group that contains a finite-index subgroup isomorphic to  
-	$\Z$. Then $G\simeq\Z$.
+Let $G$ be a non-trivial solvable group. Every normal non-trivial subgroup $N$ 
+contains a normal abelian non-trivial subgroup. Moreover, this subgroup is contained in $F(N)$. 
+% un grupo finito no trivial y resoluble. Todo subgrupo normal $N$ no
+% trivial contiene un subgrupo normal abeliano no trivial y este subgrupo está en realidad 
+% contenido en $F(N)$. 
 \end{theorem}
 
 \begin{proof}
-	We may assume that $G$ contains a finite-index normal subgroup isomorphic to $\Z$. Indeed, 
-	if $H$ is a finite-index subgroup of $G$ such that $H\simeq\Z$, then 
-	$K=\cap_{x\in G}xHx^{-1}$ is a non-trivial normal subgroup of $G$ (because $K=\Core_G(H)$ and 
-	$G$ has no torsion) and hence $K\simeq\Z$ (because  
-	$K\subseteq H$) and $(G:K)=(G:H)(H:K)$ is finite.
-	The action of $G$ on $K$ by conjugation induces a group homomorphism  
-	$\epsilon\colon G\to\Aut(K)$. Since $\Aut(K)\simeq\Aut(\Z)=\{-1,1\}$, 
-	there are two cases to consider.
-	
-	Assume first that $\epsilon=\id$. Since $K\subseteq Z(G)$, let
-	$\nu\colon G\to K$ be the transfer homomorphism. By
-	Proposition~\ref{pro:center} (more precisely, 
-	by Exercise \ref{xca:K_central}), $\nu(g)=g^n$, where $n=(G:K)$. Since
-	$G$ has no torsion, $\nu$ is injective. Thus
-	$G\simeq\Z$ because it is isomorphic to a subgroup of $K$.
-
-	Assume now that $\epsilon\ne\id$. Let $N=\ker\epsilon\ne G$. Since
-	$K\simeq\Z$ is abelian, $K\subseteq N$. The result proved in the previous paragraph 
-	applied to $\epsilon|_N=1$ implies that $N\simeq\Z$, as 
-	$N$ contains a finite-index subgroup isomorphic to $\Z$. Let $g\in G\setminus N$. 
-	Since $N$ is normal in $G$, $G$ acts by conjugation on $N$ and hence 
-	there exists a group homomorphism $c_g\in\Aut(N)\simeq\{-1,1\}$. Since
-	$K\subseteq N$ y $g$ acts non-trivially on $K$, 
-	\[
-	c_g(n)=gng^{-1}=n^{-1}
-	\]
-	for all $n\in N$.  Since 
-	$g^2\in N$, 
-	\[
-		g^2=gg^2g^{-1}=g^{-2}.
-	\]
-	Therefore $g^4=1$, a contradiction since $g\ne1$ and $G$ has no torsion.
+Note that $N\cap G^{(0)}=N\ne\{1\}$. Since $G$ is solvable, there exists 
+$m\geq1$ such that $N\cap G^{(m)}=\{1\}$. Let $n$ be the largest positive integer such that 
+$N\cap G^{(n)}\ne\{1\}$. Since $[N,N]\subseteq N$ and $[G^{(n)},G^{(n)}]=G^{(n+1)}$, 
+\[
+[N\cap G^{(n)},N\cap G^{(n)}]\subseteq N\cap G^{(n+1)}=\{1\}.
+\]
+Then $N\cap G^{(n)}$ is an abelian subgroup of $G$. Moreover, it is normal and 
+nilpotent. Hence 
+\[
+N\cap G^{(n)}\subseteq N\cap F(G)=F(N).\qedhere
+\]
 \end{proof}
 
-Before giving another application of the transfer map, we 
-prove Dietzman's theorem: 
-
-\begin{theorem}[Dietzmann]
-	\index{Dietzmann's theorem}
-	\label{theorem:Dietzmann} 
-	Let $G$ be a group and $X\subseteq G$ be a finite subset of $G$ closed by
-	conjugation. If there exists $n$ such that $x^n=1$ for all $x\in X$, then
-	$\langle X\rangle$ is a finite subgroup of $G$.
+\begin{theorem}
+\label{thm:F(G)centraliza}
+If $N$ is a minimal normal subgroup of a finite group $G$, then 
+$F(G)\subseteq C_G(N)$.
 \end{theorem}
 
 \begin{proof}
-	Let $S=\langle X\rangle$. Since $x^{-1}=x^{n-1}$, every element of $S$ can be 
-	written as a finite product of elements of $X$. 
-	Fix $x\in X$. We claim that if $x\in X$ appears $k\geq 1$ times 
-	in the word $s$, then we can write $s$ as a product of $m$
-	elements of $X$, where the first $k$ elements are equal to $x$. Suppose that 
-	\[
-	s=x_1x_2\cdots x_{t-1}xx_{t+1}\cdots x_m,
-	\]
-	where $x_j\ne x$ for all $j\in\{1,\dots,t-1\}$. Then 
-	\[
-		s=x(x^{-1}x_1x)(x^{-1}x_2x)\cdots (x^{-1}x_{t-1}x)x_{t+1}\cdots x_m
-	\]
-	is a product of $m$ elements of $X$ since $X$ is closed under conjugation and 
-	the first element is $x$. The same argument implies that $s$
-	can be written as 
-	\[
-		s=x^ky_{k+1}\cdots y_m,
-	\]
-	where each $y_j$ belongs to $X\setminus\{x\}$.
-
-	Let $s\in S$ and write $s$ as a product of $m$ elements of 
-	$X$, where $m$ is minimal. We need to show that 
-	$m\leq (n-1)|X|$. 
-	If $m>(n-1)|X|$, 
-	then at least one $x\in X$ appears exactly $n$ 
-	times in the representation of 
-	$s$. Without loss of generality, we write 
-	\[
-		s=x^nx_{n+1}\cdots x_m=x_{n+1}\cdots x_m,
-	\]
-	a contradiction to the minimality of $m$. 
+By Fitting's theorem \ref{thm:Fitting}, $F(G)$ is a normal nilpotent group. 
+The subgroup $N\cap F(G)$ is normal in $G$. Moreover, 
+$[F(G),N]\subseteq N\cap F(G)$. If $N\cap F(G)=\{1\}$, then
+$[F(G),N]=\{1\}$. Otherwise, $N=N\cap F(G)\subseteq F(G)$ by the minimality of $N$. 
+By Hirsch's theorem, $N\cap Z(F(G))\ne \{1\}$ 
+%~\ref{theorem:Z(nilpotent)}. 
+Since $Z(F(G))$ is characteristic in $F(G)$ and 
+$F(G)$ is normal in $G$, $Z(F(G))$ is normal in $G$. Since $\{1\}\ne N\cap Z(F(G))$ is 
+normal in $G$, the minimality of $N$ implies that 
+$N=N\cap Z(F(G))\subseteq
+Z(F(G))$. Hence $[F(G),N]=\{1\}$. 
 \end{proof}
 
-The second result goes back to Schur:
+\begin{corollary}
+Let $G$ be a finite solvable group. The following statements hold: 
+\begin{enumerate}
+\item If $N$ is a minimal normal subgroup, then $N\subseteq Z(F(G))$. 
+\item If $H$ is a non-trivial normal subgroup, then $H\cap F(G)\ne\{1\}$.
+\end{enumerate}
+\end{corollary}
 
-\begin{theorem}[Schur]
-\index{Schur's theorem}
-\label{thm:Schur}
-	Let $G$ be a group. 
-	If $Z(G)$ has finite index in $G$, then $[G,G]$ is finite.
+\begin{proof}
+Let us prove the first claim. Since $N$ is a $p$-group by Lemma~\ref{lemma:minimal_normal}, 
+$N$ is nilpotent and hence $N\subseteq F(G)$. Moreover, $F(G)\subseteq C_G(N)$ by the previous theorem. 
+Therefore $N\subseteq Z(F(G))$. 
+
+Let us prove now the second claim. The subgroup $H$ contains a minimal normal subgroup $N$ and 
+$N\subseteq F(G)$. Then $H\cap F(G)\ne\{1\}$. 
+\end{proof}
+
+\begin{theorem}
+Let $G$ be a finite group. The following statements hold:
+\begin{enumerate}
+\item $\Phi(G)\subseteq F(G)$ and $Z(G)\subseteq F(G)$.
+\item $F(G)/\Phi(G)\simeq F(G/\Phi(G))$.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	Let $n=(G:Z(G))$ and  
-	$X$ be the set of commutators of $G$. We claim that $X$ is finite, in fact
-	$|X|\leq n^2$.
-	A routine calculation shows that the map 
+Let us prove the first claim. Since $\Phi(G)$ is normal in $G$, nilpotent by 
+Frattini's Theorem~\ref{thm:Frattini} and $F(G)$ contains every normal nilpotent subgroup of $G$, 
+$\Phi(G)\subseteq F(G)$. Moreover, $Z(G)$ is normal in $G$ and nilpotent. Hence 
+$Z(G)\subseteq F(G)$.
+
+Let us prove the second claim. Let $\pi\colon G\to G/\Phi(G)$ be the canonical map. Since 
+$F(G)$ is nilpotent, $\pi(F(G))$ is nilpotent. Hence 
+\[
+\pi(F(G))\subseteq F(G/\Phi(G))
+\]
+by Fitting's Theorem~\ref{thm:Fitting}. Let 
+$H=\pi^{-1}(F(G/\Phi(G)))$. By the correspondence theorem, $H$ is a normal 
+subgroup of $G$ containing $\Phi(G)$. If $P\in\Syl_p(H)$, then 
+$\pi(P)\in\Syl_p(\pi(H))$. In fact, $\pi(P)\simeq P/P\cap \Phi(G)$ is a $p$-group and 
+$(\pi(H):\pi(P))$ is coprime with $p$ because 
 	\[
-		\varphi\colon X\to G/Z(G)\times G/Z(G),\quad [x,y]\mapsto (xZ(G),yZ(G)),
+	(\pi(H):\pi(P))
+	=\frac{|\pi(H)|}{|\pi(P)|}
+	=\frac{|H/\Phi(G)|}{|P/P\cap \Phi(G)|}
+	=\frac{(H:P)}{(\Phi(G):P\cap\Phi(G))}
 	\]
-	is well-defined. It is, moreover, 
-	injective: if $(xZ(G),yZ(G))=(uZ(G),vZ(G))$, then $u^{-1}x\in Z(G)$, 
-	$v^{-1}y\in Z(G)$. Thus 
-	\begin{align*}
-		[u,v]&=uvu^{-1}v^{-1}=uv(u^{-1}x)x^{-1}v^{-1}=xvx^{-1}(v^{-1}y)y^{-1}=xyx^{-1}y^{-1}=[x,y].
-	\end{align*}
-	Moreover, $X$ is closed under conjugation, as 
-	\[
-		g[x,y]g^{-1}=[gxg^{-1},gyg^{-1}]
-	\]
-	for all $g,x,y\in G$. Since $G\to Z(G)$, $g\mapsto g^n$ is a group
-	homomorphism, Proposition~\ref{pro:center} implies that $[x,y]^n=[x^n,y^n]=1$ for
-	all $[x,y]\in X$.  The theorem follows from applying Dietzmann's theorem. 
+divides $(H:P)$, a number coprime with $p$. Since $\pi(H)$ is nilpotent, 
+$\pi(P)$ is characteristic in $\pi(H)$. Then $\pi(P)$ is normal
+in $\pi(G)=G/\Phi(G)$ and $P\Phi(G)=\pi^{-1}(\pi(P))$ is normal 
+in $G$. Since $P\in\Syl_p(P\Phi(G))$, Frattini's argument (Lemma~\ref{lem:Frattini_argument}) implies that 
+$G=\Phi(G)N_G(P)$. Therefore $P$
+is normal in $G$ by Lemma~\ref{lem:G=HPhi(G)}. Since $P$ is nilpotent and normal in $G$, 
+$P\subseteq F(G)$ by Fitting's theorem~\ref{thm:Fitting}. Hence 
+$H\subseteq F(G)$ and 
+$F(G/\Phi(G))=\pi(H)\subseteq \pi(F(G))$.
 \end{proof}
 
-\begin{exercise}
-    Let $G$ be the group with generators $a,b,c$ and 
-    relations $ab=ca$, $ac=ba$ and $bc=ab$. Prove the following statements:
-    \begin{enumerate}
-        \item $G$ is infinite and non-abelian.
-        \item $Z(G)$ has finite index in $G$ and every conjugacy class of $G$ is finite.
-        \item $[G,G]$ is finite. 
-        \item The subgroup $N=\langle a^3\rangle$ of $G$ 
-        generated by $a^3$ is central 
-        and $G/N$ is finite.
-    \end{enumerate}
-\end{exercise}
-
-We conclude the section with some results similar to that of Schur. 
-
-\begin{theorem}[Niroomand]
-\index{Niroomand´s theorem}
-\label{thm:Niroomand}
-	If the set of commutators of a group $G$ is finite, then 
-	$[G,G]$ is finite.
-\end{theorem}
-
-\begin{proof}
- 	Let $C=\{[x_1,y_1],\dots,[x_k,y_k]\}$ be the (finite) set of commutators of $G$ and  
-	$H=\langle x_1,x_2,\dots,x_k,y_1,y_2,\dots,y_k\rangle$. Since $C$ is a set of commutators of $H$, 
-	it follows that 
-	$[G,G]=\langle C\rangle\subseteq [H,H]$. To simplify the notation we write 
-	$H=\langle h_1,\dots,h_{2k}\rangle$. 	
- 	Since $h\in Z(H)$ if and only if $h\in C_H(h_i)$ for all 
-	$i\in\{1,\dots,2k\}$, we conclude that $Z(H)=C_H(h_1)\cap\cdots\cap C_H(h_{2k})$. Moreover, if 
-	$h\in H$, then $hh_ih^{-1}=ch_i$ for some $c\in C$. Thus the conjugacy class of each 
-	$h_i$ contains at most as many elements as $C$. This implies that 
-	\[
-		|H/Z(H)|=|H/\cap_{i=1}^{2k} C_H(h_i)|\leq\prod_{i=1}^{2k} (H:C_H(h_i))\leq |C|^{2k}.
-	\]
-	Since $H/Z(H)$ is finite, $[H,H]$ is finite. Hence  
-	$[G,G]=\langle C\rangle\subseteq [H,H]$ 
-	is a finite group. 
-\end{proof}
-
-\begin{theorem}[Hilton--Niroomand]
-	\index{Hilton--Niroomand´s theorem}
-	\label{thm:HiltonNiroomand}
-	Let $G$ be a finitely generated group. If $[G,G]$ is finite and $G/Z(G)$ is generated by
-	$n$ elements, then  
-	\[
-	|G/Z(G)|\leq |[G,G]|^n. 
-	\]
-\end{theorem}
-
-\begin{proof}
-	Assume that $G/Z(G)=\langle x_1Z(G),\dots,x_nZ(G)\rangle$. Let 
-	\[
-		f\colon G/Z(G)\to [G,G]\times\cdots\times [G,G],
-		\quad
-		y\mapsto ([x_1,y],\dots,[x_n,y]).
-	\]
-	Note that $f$ is well-defined: If $y\in G$ y $z\in Z(G)$, then $[x_i,y]=[x_i,yz]$ for all $i$. 
-	Then $f(yz)=f(y)$.
-	 
-	The map $f$ is injective. Assume that $f(xZ(G))=f(yZ(G))$. Then 
-	$[x_i,x]=[x_i,y]$ for all $i\in\{1,\dots,n\}$. For each $i$ we compute  
-	\begin{align*}
-		[x^{-1}y,x_i] &= x^{-1}[y,x_i]x[x^{-1},x_i]\\
-		&=x^{-1}[y,x_i][x_i,x]x=x^{-1}[x_i,y]^{-1}[x_i,x]x=x^{-1}[x_i,y]^{-1}[x_i,y]x=1.
-	\end{align*}
-	This implies that $x^{-1}y\in Z(G)$. Indeed, since  
-	every $g\in G$ can be written as $g=x_kz$ for some $k\in\{1,\dots,n\}$ and some $z\in Z(G)$, 
-	it follows that 
-    \[
-    [x^{-1}y,g]=[x^{-1}y,x_kz]=[x^{-1}y,x_k]=1.
-    \]
-    Since $f$ is injective, 
-	$|G/Z(G)|\leq |[G,G]|^n$. 
-\end{proof}
-
-\begin{exercise}
-Prove Theorem~\ref{thm:HiltonNiroomand} from Theorem~\ref{thm:Niroomand}. 
-\end{exercise}
-
-
-
+%\begin{exercise}
+%	Sea $G$ un grupo finito. Demuestre que
+%	$F(G)/Z(G)\simeq F(G/Z(G))$.
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico. 
+%	Como $Z(G)$ es abeliano, $\pi(Z(G))$ es nilpotente y luego $\pi(Z(G))\subseteq F(G/Z(G))$. 
+%\end{svgraybox}<++>

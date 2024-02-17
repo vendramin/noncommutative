@@ -1,260 +1,366 @@
-\chapter{}
+\section{28/02/2024}
 
-\topic{Passman's theorem}
+\subsection{Frattini subgroup}
 
-\begin{proposition}
-	\label{pro:FCabeliano}
-	If $G$ is a torsion-free group such 
-	that $\Delta(G)=G$, then $G$ is abelian.
-\end{proposition}
-
-\begin{proof}
-	Let $x,y\in G=\Delta(G)$ and $S=\langle x,y\rangle$. The group $Z(S)=C_S(x)\cap C_S(y)$ has 
-	finite index, say $n$, in $S$. By Proposition~\ref{pro:center}, 
-	the map $S\to Z(S)$, $s\mapsto s^n$, is a group homomorphism. Thus  
-	\[
-		[x,y]^n=(xyx^{-1}y^{-1})^n=x^ny^nx^{-n}y^{-n}=1
-	\]
-	as $x^n\in Z(S)$. Since $G$ is torsion-free, $[x,y]=1$.
-\end{proof}
-
-\begin{lemma}[Neumann]
-	\index{Lema!de Neumann}
-	\label{lem:Neumann}
-	Let $H_1,\dots,H_m$ be subgroups of $G$. 
-	Assume there are finitely many elements
-	$a_{ij}\in G$, $1\leq i\leq m$, $1\leq j\leq n$, such that 
-	\[
-		G=\bigcup_{i=1}^m\bigcup_{j=1}^n H_ia_{ij}.
-	\]
-	Then some $H_i$ has finite index in $G$.
-\end{lemma}
-
-\begin{proof}
-	We proceed by induction on $m$. The case $m=1$ is trivial. 
-	Let us assume that $m\geq2$. If $(G:H_1)=\infty$, there exists $b\in G$
-	such that 
-	\[
-		H_1b\cap\left(
-	\bigcup_{j=1}^nH_1a_{1j}\right)=\emptyset.
-	\]
-	Since $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, 
-	it follows that 
-	\[
-		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n H_1a_{ij}b^{-1}a_{1k}.
-	\]
-	Hence $G$ can be covered by finitely many cosets of $H_2,\dots,H_m$. By the inductive hypothesis, 
-	some of these $H_j$ has finite index in $G$.
-\end{proof}
-
-We now consider a projection operator of group algebras. If $G$ 
-is a group and $H$ is a subgroup of $G$, let 
-\[
-	\pi_H\colon K[G]\to K[H],\quad
-	\pi_H\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in H}\lambda_gg.
-\]
-
-If $R$ and $S$ are rings, a $(R,S)$-bimodule is an abelian group
-$M$ that is both a left $R$-module and a right $S$-module 
-and the compatibility condition 
-\[
-(rm)s = r(ms)
-\]
-holds for all $r\in R$, $s\in S$ and $m\in M$.
-
+\begin{definition}
+\index{Frattini subgroup}
+Let $G$ be a group. If $G$ has maximal subgroups, 
+the \textbf{Frattini subgroup} is the intersection 
+$\Phi(G)$ of all the maximal subgroups of $G$. 
+Otherwise, 
+$\Phi(G)=G$. 
+\end{definition}
 
 \begin{exercise}
-	Let $G$ be a group and $H$ be a subgroup of $G$. Prove that
-	if $\alpha\in
-	K[G]$, then $\pi_H$ is a $(K[H],K[H])$-bimodule homomorphism
-	with usual left and right multiplications,
-	\[
-		\pi_H(\beta\alpha\gamma)=\beta\pi_H(\alpha)\gamma
-	\]
-	for all $\beta,\gamma\in K[H]$.
+\label{xca:Phi(G)char}
+Prove that $\Phi(G)$ is a characteristic subgroup of $G$. 
 \end{exercise}
 
-%\begin{proof}
-%	Supongamos que $\alpha=\sum_{g\in G}\lambda_gg=\alpha_1+\alpha_2$, donde
-%	$\alpha_1=\sum_{g\not\in H}\lambda_gg$ y $\alpha_2=\sum_{g\in
-%	H}\lambda_gg=\pi_H(\alpha)$. Entonces
-%	$\beta\alpha\gamma=\beta\alpha_1\gamma+\beta\alpha_2\gamma$, donde
-%	$\beta\alpha_1\gamma\not\in K[H]$ y $\beta\alpha_2\gamma\in K[H]$.
-%\end{proof}
+\begin{example}
+Sea $G=\Sym_3$. The maximal subgroups of $G$ are 
+\[
+M_1=\langle (123)\rangle,
+\quad
+M_2=\langle (12)\rangle,
+\quad
+M_3=\langle (23)\rangle,
+\quad
+M_4=\langle (13)\rangle.
+\]
+Hence $\Phi(G)=\{1\}$. 
+\end{example}
 
-\begin{lemma}
-	\label{lem:escritura}
-	Let $X$ be a left transversal of $H$ in $G$. Every $\alpha\in K[G]$ can be written
-	uniquely as 
-	\[
-	\alpha=\sum_{x\in X}x\alpha_x,
-	\]
-	where $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$.
+\begin{example}
+Let $G=\langle g\rangle\simeq C_{12}$. The subgroups of $G$ are 
+\[
+\{1\},\quad
+\langle g^6\rangle\simeq C_2,\quad
+\langle g^4\rangle\simeq C_3,\quad
+\langle g^3\rangle\simeq C_4,\quad
+\langle g^2\rangle\simeq C_6,\quad
+G.
+\]
+Let us draw a picture:
+\[\begin{tikzcd}
+	& {C_{12}} \\
+	{C_4} && {C_6} \\
+	& {C_2} && {C_3} \\
+	&& {\{1\}}
+	\arrow[no head, from=4-3, to=3-2]
+	\arrow[no head, from=4-3, to=3-4]
+	\arrow[no head, from=3-4, to=2-3]
+	\arrow[no head, from=2-3, to=1-2]
+	\arrow[no head, from=3-2, to=2-1]
+	\arrow[no head, from=2-1, to=1-2]
+	\arrow[no head, from=3-2, to=2-3]
+\end{tikzcd}\]
+The maximal subgroups of $G$ are 
+$\langle g^3\rangle\simeq C_4$ and $\langle
+g^2\rangle\simeq C_6$. Hence $\Phi(G)=\langle g^3\rangle\cap \langle
+g^2\rangle=\langle g^6\rangle\simeq C_2$. 
+Let us see how to do this calculation with the computer:
+\begin{lstlisting}
+gap> G = CyclicGroup(12);;
+gap> StructureDescription(FrattiniSubgroup(G));
+"C2"
+\end{lstlisting} 
+\end{example}
+
+\begin{lemma}[Dedekind]
+\label{lem:Dedekind}
+\index{Dedekind's!lemma}
+Let $H$, $K$ and $L$ be subgroups of $G$ 
+such that $H\subseteq L\subseteq G$. Then 
+$HK\cap L=H(K\cap L)$.
 \end{lemma}
 
 \begin{proof}
-	Let $\alpha\in K[G]$. Since $\supp\alpha$ is finite, $\supp\alpha$ is contained 
-    in finitely many cosets of $H$, say $x_1H,\dots,x_nH$, where each 
-	$x_j$ belongs to $X$. Write $\alpha=\alpha_1+\cdots+\alpha_n$,
-	where $\alpha_i=\sum_{g\in x_iH}\lambda_gg$. If $g\in x_iH$, then 
-	$x_i^{-1}g\in H$ and hence 
-	\[
-		\alpha=\sum_{i=1}^n x_i(x_i^{-1}\alpha_i)=\sum_{x\in X}x\alpha_x
-	\]
-	with $\alpha_x\in K[H]$ for all $x\in X$. For the uniqueness, note that 
-	for each  $x\in X$ the previous exercise implies that  
-	\[
-		\pi_H(x^{-1}\alpha)
-		=\pi_H\left(\sum_{y\in X}x^{-1}y\alpha_y\right)
-		=\sum_{y\in X}\pi_H(x^{-1}y)\alpha_y=\alpha_x, 
-	\]
-	as  
-	\[
-		\pi_H(x^{-1}y)=\begin{cases}
-		1 & \text{si $x=y$},\\
-		0 & \text{si $x\ne y$}.
-	\end{cases}\qedhere 
-	\]
+One inclusion is trivial. Let us prove then that 
+$HK\cap L\subseteq H(K\cap L)$. If 
+$x=hk\in HK\cap L$ with $x\in L$, $h\in H$ and $k\in K$, then 
+$k=h^{-1}x\in L\cap K$, as $H\subseteq L$. Thus $x=hk\in H(L\cap
+	K)$.
 \end{proof}
 
-%De la misma forma puede obtenerse un análogo al lema~\ref{lem:escritura} en el
-%caso en que se tenga un transversal a derecha. 
-
 \begin{lemma}
-	\label{lem:ideal_pi}
-	Let $G$ be a group and $H$ be a subgroup of $G$. If $I$ is a non-zero 
-	left ideal
-	of $K[G]$, then  $\pi_H(I)\ne\{0\}$.
+\label{lem:G=HPhi(G)}
+Let $G$ be a finite group and $H$ be a subgroup of $G$ such that 
+$G=H\Phi(G)$. Then $H=G$.
 \end{lemma}
 
 \begin{proof}
-	Let $X$ be a left transversal of $H$ in $G$ and $\alpha\in I\setminus\{0\}$. By Lemma
-	\ref{lem:escritura} we can write $\alpha=\sum_{x\in
-	X}x\alpha_x$ with $\alpha_x=\pi_H(x^{-1}\alpha)\in K[H]$ for all $x\in X$.
-	Since $\alpha\ne0$, there exists $y\in X$ such that $0\ne
-	\alpha_y=\pi_H(y^{-1}\alpha)\in\pi_H(I)$ ($y^{-1}\alpha\in I$ since $I$ is 
-    a left ideal).
+If $H\ne G$, let $M$ be a maximal subgroup of $G$ such that 
+$H\subseteq M$. Since $\Phi(G)\subseteq M$, $G=H\Phi(G)\subseteq M$, a 
+contradiction. 
 \end{proof}
-
-Another application:
 
 \begin{proposition}
-	Let $G$ be a group, $H$ be a subgroup of $G$ and $\alpha\in K[H]$. The following statements hold:
-	\begin{enumerate}
-		\item $\alpha$ is invertible in $K[H]$ if and only if $\alpha$ is
-			invertible in $K[G]$.
-		\item $\alpha$ is a zero divisor of $K[H]$ if and only if $\alpha$ is  
-			a zero divisor of $K[G]$.
-	\end{enumerate}
+\label{pro:phi(N)phi(G)}
+Let $N$ be a normal subgroup of a finite group $G$. Then 
+$\Phi(N)\subseteq\Phi(G)$.
 \end{proposition}
 
 \begin{proof}
-	If $\alpha$ is invertible in $K[G]$, there exists $\beta\in K[G]$ such that 
-	$\alpha\beta=\beta\alpha=1$. Apply $\pi_H$ and use that $\pi_H$ 
-	is a $(K[H],K[H])$-bimodule homomorphism to obtain  
-	\[
-		\alpha\pi_H(\beta)=\pi_H(\alpha\beta)=\pi_H(1)=1=\pi_H(1)=\pi_H(\beta\alpha)=\pi_H(\beta)\alpha.
-	\]
-	
-	Assume now that $\alpha\beta=0$ for some $\beta\in K[G]\setminus\{0\}$. Let $g\in G$
-	be such that $1\in\supp(\beta g)$. Since $\alpha(\beta g)=0$, 
-	\[
-		0=\pi_H(0)=\pi_H(\alpha(\beta g))=\alpha\pi_H(\beta g),
-	\]
-	where $\pi_H(\beta g)\in K[H]\setminus\{0\}$, as $1\in\supp(\beta g)$. 
+Since $\Phi(N)$ is characteristic in $N$ and $N$ 
+is normal in $G$, $\Phi(N)$ is normal in $G$. 
+If there exists a maximal subgroup $M$ such that 
+$\Phi(N)\not\subseteq M$, then $\Phi(N)M=G$. (This happens
+because, otherwise, $M=\Phi(N)M\supseteq\Phi(N)$.) By Dedekind's lemma (with  $H=\Phi(N)$, $K=M$ and $L=N$), 
+\[
+N=G\cap N=(\Phi(N)M)\cap N=\Phi(N)(M\cap N).
+\]
+By Lemma \ref{lem:G=HPhi(G)} (with $G=N$ and $H=M\cap N$), 
+$\Phi(N)\subseteq N\subseteq M$, a contradiction. 
+Hence every maximal subgroup of $G$ contains $\Phi(N)$ and therefore 
+$\Phi(G)\supseteq\Phi(N)$. 
 \end{proof}
 
-\begin{lemma}[Passman]
-	\index{Passman's lemma}
-	\label{lem:Passman}
-	Let $G$ be a group and 
-	$\gamma_1,\gamma_2\in K[G]$ be such that $\gamma_1K[G]\gamma_2=\{0\}$.
-	Then $\pi_{\Delta(G)}(\gamma_1)\pi_{\Delta(G)}(\gamma_2)=\{0\}$.
-\end{lemma}
+The following proposition states that the 
+elements of the Frattini subgroup are the \textbf{non-generators} of 
+the group. 
+
+\begin{proposition}
+	\label{pro:nongenerators}
+	Let $G$ be a finite group. Then 
+ 	\[
+	\Phi(G)=\{x\in G:\text{if $G=\langle x,Y\rangle$ for some $Y\subseteq G$, then $G=\langle Y\rangle$}\}.
+	\]
+\end{proposition}
 
 \begin{proof}
-	It is enough to show that $\pi_{\Delta(G)}(\gamma_1)\gamma_2=\{0\}$, 
-	as in this case
-	\[
-		\{0\}=\pi_{\Delta(G)}(\pi_{\Delta(G)}(\gamma_1)\gamma_2)=\pi_{\Delta}(\gamma_1)\pi_{\Delta(G)}(\gamma_2).
-	\]
-	Write $\gamma_1=\alpha_1+\beta_1$, where 
-	\begin{align*}
-		&\alpha_1=a_1u_1+\cdots+a_ru_r, && u_1,\dots,u_r\in\Delta(G),\\
-		&\beta_1=b_1v_1+\cdots+b_sv_s, && v_1,\dots,v_s\not\in\Delta(G),\\
-		&\gamma_2=c_1w_1+\cdots+c_tw_t,&& w_1,\dots,w_t\in G.
-	\end{align*}
-	The subgroup $C=\bigcap_{i=1}^rC_G(u_i)$ has finite index in $G$.
-	Assume that 
-	\[
-		0\ne \pi_{\Delta}(\gamma_1)\gamma_2=\alpha_1\gamma_2. 
-	\]
-	Let $g\in\supp(\alpha_1\gamma_2)$. 
-	If $v_i$ is a conjugate in $G$ of some 
-	$gw_j^{-1}$, let $g_{ij}\in G$ be such that
-	$g_{ij}^{-1}v_ig_{ij}=gw_j^{-1}$. If $v_i$ and $gw_j^{-1}$ 
-	are not conjugate, 
-	we take $g_{ij}=1$. 
+We first prove $\supseteq$. Let $x\in G$. If $M$ is a maximal subgroup of $G$ such that $x\not\in M$, then, since $G=\langle
+	x,M\rangle$, we obtain that $G=\langle M\rangle=M$, a contradiction. Thus $x\in M$ for all maximal subgroup $M$ of $G$. Hence 
+ $x\in \Phi(G)$. 
 
-	For every $x\in C$ it follows that
-	$\alpha_1\gamma_2=(x^{-1}\alpha_1x)\gamma_2$. Since  
-	\[
-		x^{-1}\gamma_1x\gamma_2\in x^{-1}\gamma_1K[G]\gamma_2=0,
-	\]
-	it follows that
-	\begin{align*}
-		(a_1u_1+\cdots+a_ru_r)\gamma_2&=
-		\alpha_1\gamma_2=x^{-1}\alpha_1x\gamma_2=-x^{-1}\beta_1x\gamma_2\\
-		&=-x^{-1}(b_1v_1+\cdots+b_sv_r)x(c_1w_1+\cdots+c_tw_t).
-	\end{align*}
-	Now $g\in\supp(\alpha_1\gamma_2)$ implies that there exist $i,j$ such that
-	$g=x^{-1}v_ixw_j$.
-	Thus $v_i$ and $gw_j^{-1}$ are conjugate and hence
-	$x^{-1}v_ix=gw_j^{-1}=g_{ij}^{-1}v_ig_{ij}$, that is
-	$x\in C_G(v_i)g_{ij}$. This proves that 
-	\[
-		C\subseteq\bigcup_{i,j}C_G(v_i)g_{ij}. 
-	\]
-	Since $C$ has finite index in $G$, it follows that 
-	$G$ can be covered by finitely many cosets of 
-	the $C_G(v_i)$. Every $v_i\not\in\Delta(G)$, so 
-	each $C_G(v_i)$ has infinite index in $G$, a contradiction 
-	to Neumann's lemma.
+We now prove $\subseteq$. Let $x\in\Phi(G)$ be such that $G=\langle
+	x,Y\rangle$ for some subset $Y$ of $G$. If $G\ne \langle Y\rangle$,
+	there exists a maximal subgroup $M$ such that $\langle Y\rangle\subseteq M$. Since
+	$x\in M$, $G=\langle x,Y\rangle\subseteq M$, a contradiction. 
 \end{proof}
 
-Before proving Passman's theorem, we need to mention 
-that if $G$ is a torsion-free abelian group, then 
-$K[G]$ has no non-zero divisors. We will prove this fact later, 
-as an application of the theory of bi-ordered 
-groups (see Corollary \ref{cor:domain_G_abelian}).
+\begin{example}
+For a prime number $p$, let $G$ be an elementary $p$-group, that is 
+$G\simeq C_p^m$ for some $m\geq1$. Assume that 
+	$G=\langle x_1\rangle\times\cdots\times\langle x_m\rangle$ with $\langle x_j\rangle\simeq C_p$.  
+	We claim that $\Phi(G)$ is trivial. 
+	For $j\in\{1,\dots,m\}$, let $n_j\in\{1,\dots,p-1\}$. Since 
+	\[
+	\{x_1,\dots,x_{j-1},x_j^{n_j},x_{j+1},\dots,x_m\}
+	\]
+	generates $G$ and $\{x_1,\dots,x_{j-1},x_{j+1},\dots,x_m\}$ does not, 
+	$x_j^{n_j}\not\in\Phi(G)$ by Proposition \ref{pro:nongenerators}. 
+	Hence $\Phi(G)=\{1\}$.
+\end{example}
 
-
-\begin{theorem}[Passman]
-\index{Passman's theorem}
-\label{thm:Passman}
-	Let $G$ be a torsion-free group. If 
-	$K[G]$ is reduced, then $K[G]$ is a domain.
+\begin{theorem}[Frattini]
+\label{thm:Frattini}
+\index{Frattini's!theorem}
+Let $G$ be a finite group. Then $\Phi(G)$ is nilpotent.
 \end{theorem}
 
 \begin{proof}
-	Assume that $K[G]$ is not a domain. Let $\gamma_1,\gamma_2\in K[G]\setminus\{0\}$
-	be such that $\gamma_2\gamma_1=0$. If $\alpha\in K[G]$, then
-	\[
-		(\gamma_1\alpha\gamma_2)^2=\gamma_1\alpha\gamma_2\gamma_1\alpha\gamma_2=0
-	\]
-	and thus $\gamma_1\alpha\gamma_2=0$, as $K[G]$ is reduced. In particular, 
-	$\gamma_1K[G]\gamma_2=\{0\}$. Let $I$ be the left ideal of $K[G]$ generated 
-	by $\gamma_2$. Since $I\ne\{0\}$, it follows
-	from Lemma~\ref{lem:ideal_pi} that 
-	$\pi_{\Delta(G)}(I)\ne\{0\}$. Hence 
-	$\pi_{\Delta(G)}(\beta\gamma_2)\ne\{ 0\}$ for some $\beta\in K[G]$. 
-	Similarly, 
-	$\pi_{\Delta(G)}(\gamma_1\alpha)\ne\{ 0\}$ for some $\alpha\in K[G]$. Since 
-	\[
-		\gamma_1\alpha K[G]\beta\gamma_2\subseteq \gamma_1 K[G]\gamma_2=\{0\},
-	\]
-    it follows that $\pi_{\Delta(G)}(\gamma_1\alpha)\pi_{\Delta(G)}(\beta\gamma_2)=\{0\}$
-    by Passman's lemma. Hence $K[\Delta(G)]$ has zero divisors, a contradictions
-    since $\Delta(G)$ is an abelian group.
+Let $P\in\Syl_p(\Phi(G))$ for some prime number $p$. Since $\Phi(G)$ is normal in 
+$G$, Lemma~\ref{lem:Frattini_argument} (Frattini's argument) implies that 
+$G=\Phi(G)N_G(P)$. By Lemma~\ref{lem:G=HPhi(G)},
+$G=N_G(P)$. Since every Sylow subgroup of $\Phi(G)$ is normal in $G$,
+$\Phi(G)$ is nilpotent. 
 \end{proof}
 
+\begin{exercise}
+\label{xca:G/M}
+Let $G$ be a group and $M$ be a normal subgroup of $G$. Prove that if  
+$M$ is maximal, then 
+$G/M$ is cyclic of prime order. 
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Por el teorema de la correspondencia, $G/M$ no tiene subgrupos no trivales.
+% 	Luego $G/M\simeq C_p$ para algún primo $p$.
+% \end{svgraybox}
+
+\begin{theorem}[Gasch\"utz]
+	\label{thm:Gaschutz}
+	\index{Gasch\"utz'!theorem}
+	If $G$ is a finite group, then 
+	\[
+	[G,G]\cap Z(G)\subseteq\Phi(G).
+	\]
+\end{theorem}
+
+\begin{proof}
+Let $D=[G,G]\cap Z(G)$. Assume that $D$ is not contained in $\Phi(G)$.
+Since $\Phi(G)$ is contained in every maximal subgroup of $G$, 
+there is a maximal subgroup $M$ of $G$ not containing $D$. Then
+$G=MD$. Since $D\subseteq Z(G)$, $M$ is normal in $G$, as 
+	$g=md\in G=MD$ implies 
+	\[
+		gMg^{-1}=(md)Md^{-1}m^{-1}=mMm^{-1}=M.
+	\]
+	Since $G/M$ is cyclic of prime order, 
+	$G/M$ is, in particular, abelian and hence $[G,G]\subseteq M$. Therefore 
+	$D\subseteq [G,G]\subseteq M$, a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lem:N_G(H)=H}
+Let $G$ be a finite group and $P\in\Syl_p(G)$. If $H$ is a subgroup of $G$ such that
+$N_G(P)\subseteq H$, then $N_G(H)=H$.
+\end{lemma}
+
+\begin{proof}
+Let $x\in N_G(H)$. Since $P\in\Syl_p(H)$ and $Q=xPx^{-1}\in\Syl_p(H)$, the second Sylow's theorem 
+implies that there exists 
+$h\in H$ such that $hQh^{-1}=(hx)P(hx)^{-1}=P$. Then $hx\in
+N_G(P)\subseteq H$ and hence $x\in H$. 
+\end{proof}
+
+\begin{theorem}[Wielandt]
+\label{thm:Wielandt}
+\index{Wielandt's!theorem}
+A finite group $G$ is nilpotent if and only if 
+$[G,G]\subseteq\Phi(G)$.
+\end{theorem}
+
+\begin{proof}
+Assume that $[G,G]\subseteq\Phi(G)$. Let $P\in\Syl_p(G)$. If $N_G(P)\ne
+G$, then $N_G(P)\subseteq M$ for some maximal subgroup $M$ of $G$. If 
+$g\in G$ and $m\in M$, then, since 
+\[
+	gmg^{-1}m^{-1}=[g,m]\in [G,G]\subseteq\Phi(G)\subseteq M,
+\]
+$M$ is normal in $G$. Furthermore $N_G(P)\subseteq M$. 
+By Lemma~\ref{lem:N_G(H)=H},
+\[
+G=N_G(M)=M,
+\]
+a contradiction.
+Thus $N_G(P)=G$ and every Sylow subgroup of $G$ si normal in $G$. Therefore 
+$G$ is nilpotent. 
+
+Conversely, assume that $G$ is nilpotent. Let $M$ be a maximal subgroup of $G$.
+Since $M$ is normal in $G$ and maximal, $G/M$ has no proper non-trivial subgroups. 
+Then $G/M\simeq C_p$ for some prime number $p$. In particular, $G/M$ is abelian
+and $[G,G]\subseteq M$. Since $[G,G]$ is contained in every maximal subgroup of $G$, 
+$[G,G]\subseteq\Phi(G)$.
+\end{proof}
+
+\begin{theorem}
+\label{the:G/phi(G)}
+A finite group $G$ is nilpotent if and only if 
+$G/\Phi(G)$ is nilpotent. 
+\end{theorem}
+
+%%% TODO: la demostración no está bien explicada!
+\begin{proof}
+If $G$ is nilpotent, then $G/\Phi(G)$ is nilpotent. Conversely, assume that 
+$G/\Phi(G)$ is nilpotent. Let $P\in\Syl_p(G)$. Since 
+$\Phi(G)P/\Phi(G)\in\Syl_p(G/\Phi(G))$ and $G/\Phi(G)$ is nilpotent,
+$\Phi(G)P/\Phi(G)$ is a normal subgroup of $G/\Phi(G)$. By the correspondence theorem, 
+$\Phi(G)P$ is a normal subgroup of $G$.
+Since $P\in\Syl_p(\Phi(G)P)$, Frattini's argument 
+(Lemma~\ref{lem:Frattini_argument}) implies that 
+\[
+G=\Phi(G)PN_G(P)=\Phi(G)N_G(P), 
+\]
+as $P\subseteq N_G(P)$. Thus $G=N_G(P)$ by Lemma~\ref{lem:G=HPhi(G)}). Hence 
+$P$ is normal in $G$ and therefore $G$ is nilpotent. 
+\end{proof}
+
+\begin{theorem}[Hall]
+\index{Hall's!theorem}
+\label{thm:Hall_nilpotente}
+Let $G$ be a finite group with a normal subgroup $N$. If both $N$ and 
+$G/[N,N]$ are nilpotent, then $G$ is nilpotent.
+\end{theorem}
+
+\begin{proof}
+Since $N$ is nilpotent, $[N,N]\subseteq\Phi(N)$ by 
+Wielandt's theorem~\ref{thm:Wielandt}. 
+By Proposition~\ref{pro:phi(N)phi(G)},
+$[N,N]\subseteq\Phi(N)\subseteq\Phi(G)$. 
+By the universal property, there exists a surjective group homomorphism 
+$G/[N,N]\to G/\Phi(G)$ such that the diagram 
+    \[
+    \begin{tikzcd}
+	G & {G/\Phi(G)} \\
+	{G/[N,N]}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[dashed, from=2-1, to=1-2]
+    \end{tikzcd}
+    \]
+%     \[
+% 	\xymatrix{
+% 	G
+% 	\ar[d]
+% 	\ar[r]
+% 	& G/\Phi(G)
+% 	\\
+% 	G/[N,N]\ar@{-->}[ur]
+% 	}
+%    \xymatrix{ & P\ar[d]^f\ar@{-->}[ld]_h\\ M\ar[r]^g & N\ar[r] & 0 }
+%    \]
+is commutative. Since $G/[N,N]$ is nilpotent, $G/\Phi(G)$ is nilpotent by 
+Exercise~\ref{xca:nilpotente}. Thus $G$ is nilpotent by the previous theorem. 
+\end{proof}
+
+\begin{definition}
+A \textbf{minimal generating set} of a group $G$ is a set 
+$X$ of generators of $G$ such that no proper subset of $X$ generates $G$. 
+\end{definition}
+
+Note that a minimal generating set does not necessarily have minimal size. 
+	
+\begin{example}
+Let $G=\langle g\rangle\simeq C_6$.  If $a=g^2$ and 
+$b=g^3$, then $\{a,b\}$ is a minimal generating set of $G$ that does not have
+minimal size, as $G=\langle ab\rangle$.
+\end{example}
+	
+For a prime number $p$, we write $\F_p$ to denote the field of $p$ elements. 
+
+\begin{lemma}
+\label{lem:Burnside:minimal}
+Let $p$ be a prime number and 
+$G$ be a finite $p$-group. Then $G/\Phi(G)$ is a vector space over $\F_p$.
+\end{lemma}
+
+\begin{proof}
+Let $K$ be a maximal subgroup of $G$. Since $G$ is nilpotent 
+(see Proposition~\ref{pro:nilpotent_pgroups}), 
+$K$ is normal in $G$ (Exercise~\ref{xca:normalizadora}). 
+Thus $G/K\simeq C_p$ because it is a simple $p$-group. 
+	
+It is enough to prove that $G/\Phi(G)$ is an elementary abelian $p$-group. It is a 
+$p$-group because $G$ is a $p$-group. Let $K_1,\dots,K_m$ be the maximal subgroups 
+of $G$. If $x\in G$, then $x^p\in K_j$ for all $j\in\{1,\dots,m\}$. Hence 
+$x^p\in\Phi(G)=\cap_{j=1}^m K_j$. Moreover,  $G/\Phi(G)$ is abelian, as 
+$[G,G]\subseteq \Phi(G)$ because $G$ is nilpotent (Wielandt's theorem~\ref{thm:Wielandt}). 
+\end{proof}
+
+\begin{theorem}[Burnside]
+\label{thm:Burnside:basis}
+Let $p$ be a prime number and $G$ a finite $p$-group. If $X$ is a minimal 
+generating set of $G$, then $|X|=\dim G/\Phi(G)$. 
+\end{theorem}
+
+\begin{proof}
+By Lemma \ref{lem:Burnside:minimal}, $G/\Phi(G)$ is a vector space over $\F_p$. 
+Let $\pi\colon G\to G/\Phi(G)$ be the canonical map and 
+$\{x_1,\dots,x_n\}$ be a minimal generating set of $G$.
+We claim that $\{\pi(x_1),\dots,\pi(x_n)\}$ is a linearly independent subset of $G/\Phi(G)$. 
+Assume this is not the case. Without loss of generality, let us assume that 
+$\pi(x_1)\in\langle \pi(x_2),\dots,\pi(x_n)\rangle$. There exists $y\in
+\langle x_2,\dots,x_n\rangle$ such that $x_1y^{-1}\in\Phi(G)$. Since $G$ is generated by 
+$\{x_1y^{-1},x_2,\dots,x_n\}$ and $x_1y^{-1}\in\Phi(G)$, Proposition~\ref{pro:nongenerators}
+implies that $G$ is generated by 
+$\{x_2,\dots,x_n\}$, a contradiction to the minimality of $\{x_1,\dots,x_n\}$. 
+Therefore $n=\dim G/\Phi(G)$.
+\end{proof}
+
+% TODO: agregar una aplicación (teorema de Hall). Ver Passman permutation groups, 11.7, pag 47
+
+\begin{exercise}
+Let $p$ be a prime number and $G$ a finite $p$-group. Prove that if $x\not\in\Phi(G)$, then 
+$x$ belongs to some minimal set of generators of $G$. 
+\end{exercise}

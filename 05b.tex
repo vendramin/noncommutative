@@ -1,0 +1,584 @@
+\section{}
+
+\subsection{Bi-ordered groups}
+
+Based on Example~\ref{example:k[Z]} we will study 
+some properties of groups. 
+
+Recall that a \textbf{total order} is a partial order in which any two elements are comparable. This
+means that a total order is a binary relation $\leq$ on some set $X$ 
+such that for all $x,y,z\in X$ one has 
+\begin{enumerate}
+    \item $x\leq x$.
+    \item $x\leq y$ and $y\leq z$ imply $x\leq z$.
+    \item $x\leq y$ and $y\leq x$ imply $x=y$.
+    \item $x\leq y$ or $y\leq x$. 
+\end{enumerate}
+A set equipped with a total order is a \textbf{totally ordered set}. 
+
+\begin{definition}
+	\index{Group!bi-ordered}
+	A group $G$ is \textbf{bi-ordered} if there exists a total order 
+	$<$ in $G$
+	such that $x<y$ implies that $xz<yz$ and $zx<zy$ for all $x,y,z\in G$.
+\end{definition}
+
+\begin{example}
+	The group $\R_{>0}$ of positive real numbers is bi-ordered. 
+\end{example}
+
+The multiplicative group $\R\setminus\{0\}$ is not bi-ordered. Why?
+
+\begin{exercise}
+	Let $G$ be a bi-ordered group and $x,x_1,y,y_1\in G$. Prove that
+	$x<y$ and $x_1<y_1$ imply $xx_1<yy_1$.
+\end{exercise}
+
+Clearly, bi-orderability is preserved under taking subgroups. 
+
+\begin{exercise}
+	Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n=h^n$
+	for some $n>0$ implies $g=h$.
+\end{exercise}
+
+The following result goes back to Neumann.
+
+\begin{exercise}
+    Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n\in C_G(h)$ if 
+    and only if $g\in C_G(h)$.
+\end{exercise}
+
+Bi-ordered groups do not behave nicely under extensions:
+
+\begin{exercise}
+\label{xca:BO_sequence}
+    Let $1\to K\to G\to Q\to 1$ be an exact sequence of groups. Assume that $K$ and $Q$ 
+    are bi-ordered. Prove that $G$ is bi-ordered if and only if 
+    $x<y$ implies $gxg^{-1}<gyg^{-1}$ for all $x,y\in K$ and $g\in G$. 
+\end{exercise}
+
+\begin{definition}
+	Let $G$ be a bi-ordered group. The \textbf{positive cone} of $G$  
+	is the set $P(G)=\{x\in
+	G:1<x\}$.
+\end{definition}
+
+Let us state some properties of positive cones. 
+
+\begin{proposition}
+	\label{pro:biordenableP1}
+	Let $G$ be a bi-ordered group and let $P$ be its positive cone. 
+	\begin{enumerate}
+		\item $P$ is closed under multiplication, i.e. $PP\subseteq P$. 
+		\item $G=P\cup P^{-1}\cup \{1\}$ (disjoint union).
+		\item $xPx^{-1}=P$ for all $x\in G$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	If $x,y\in P$ and $z\in G$, then, since $1<x$ and $1<y$, it follows that 
+	$1<xy$.  Thus $1=z1z^{-1}<zxz^{-1}$. It remains to prove the second claim.  
+	If $g\in G$, then $g=1$ or $g>1$ or $g<1$. Note that $g<1$ if and only if 
+	$1<g^{-1}$, so the claim follows. 
+\end{proof}
+
+The previous proposition admits a converse statement. 
+
+\begin{proposition}
+	\label{pro:biordenableP2}
+	Let $G$ be a group and $P$ be a subset of $G$ such that 
+	$P$ is closed under multiplication, $G=P\cup P^{-1}\cup \{1\}$ (disjoint union) and
+	$xPx^{-1}=P$ for all $x\in G$. Let $x<y$ whenever  
+	$yx^{-1}\in P$. Then $G$ is bi-ordered with positive
+	cone is $P$.
+\end{proposition}
+
+\begin{proof}
+	Let $x,y\in G$. Since $yx^{-1}\in G$ and $G=P\cup
+	P^{-1}\cup\{1\}$ (disjoint union), 
+	either $yx^{-1}\in P$ or $xy^{-1}=(yx^{-1})^{-1}\in
+	P$ or $yx^{-1}=1$. Thus either $x<y$ or $y<x$ or $x=y$. If $x<y$ and $z\in
+	G$, then $zx<zy$, as $(zy)(zx)^{-1}=z(yx^{-1})z^{-1}\in P$ and  
+	$zPz^{-1}=P$. Moreover, $xz<yz$ since $(yz)(xz)^{-1}=yx^{-1}\in P$. To prove
+	that $P$ is the positive cone of $G$ note that 
+	$x1^{-1}=x\in P$ if and only if $1<x$. 
+\end{proof}
+
+An important property:
+
+\begin{proposition}
+	\label{pro:BOsintorsion}
+	Bi-ordered groups are torsion-free.
+\end{proposition}
+
+\begin{proof}
+	Let $G$ be a bi-ordered group and $g\in G\setminus\{1\}$. 
+	If $g>1$, then
+	$1<g<g^2<\cdots$. If $g<1$, then $1>g>g^2>\cdots$. Hence $g^n\ne 1$ 
+	for all $n\ne 0$. 
+\end{proof}
+
+The converse of the previous proposition does not hold. 
+
+\begin{exercise}
+Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$. 
+\begin{enumerate}
+    \item Prove that $x$ and $y$ are torsion-free. 
+    \item Prove that $G$ is torsion-free. 
+    \item Prove that $G\simeq \langle a,b:a^2=b^2\rangle$.
+\end{enumerate}
+\end{exercise}
+
+% To prove that $x$ is torsion-free, use the group homomorphism $G\to\Z$
+% given by $x\mapsto 1$, $y\mapsto 0$. To prove that $y$ is torsion-free
+% use the group homomorphism $x\mapsto\begin{pmatrix}-1&0\\0&1\end{pmatrix}$,
+% $y\mapsto\begin{pmatrix}1&1\\0&1\end{pmatrix}$. 
+
+% 	We first show that $G\simeq\langle a,b:a^2=b^2\rangle$. For that purpose, 
+% 	it is enough to check that 
+% 	the map $G\to \langle a,b:a^2=b^2\rangle$, $x\mapsto a$, $y\mapsto ab^{-1}$, 
+% 	is a well-defined group homomorphism with inverse
+% 	$\langle a,b:a^2=b^2\rangle\to G$, $a\mapsto x$, $b\mapsto y^{-1}x$. 
+
+\begin{example}
+	The torsion-free group $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$ is not bi-ordered. 
+	If not, let $P$ 
+	be the positive cone. If $x\in P$, 
+	then $yxy^{-1}=x^{-1}\in P$, a contradiction. Hence $x^{-1}\in P$
+	and $x=y^{-1}x^{-1}y\in P$, a contradiction.
+\end{example}
+
+\begin{theorem}
+	\label{thm:BO}
+	Let $G$ be a bi-ordered group. Then $K[G]$ is a domain such that
+	only has trivial units. Moreover, if $G$ is non-trivial, 
+	then $J(K[G])=\{0\}$. 
+\end{theorem}
+
+\begin{proof}
+	Let $\alpha,\beta\in K[G]$ be such that  
+	\begin{align*}
+		\alpha&=\sum_{i=1}^m a_ig_i, && g_1<g_2<\cdots<g_m,&& a_i\ne 0 && \forall i\in\{1,\dots,m\},\\
+		\beta&=\sum_{j=1}^n b_jh_j, && h_1<h_2<\cdots<h_n, && b_j\ne 0 && \forall j\in\{1,\dots,n\}.
+	\end{align*}
+	Then 
+	\[
+		g_1h_1\leq g_ih_j\leq g_mh_n
+	\]
+	for all $i,j$. Moreover, $g_1h_1=g_ih_j$ if and only if $i=j=1$. The
+	coefficient of $g_1h_1$ in $\alpha\beta$ is $a_1b_1\ne 0$. In particular, 
+	$\alpha\beta\ne0$. If $\alpha\beta=\beta\alpha=1$, then the coefficient of
+	$g_mh_n$ in $\alpha\beta$ is $a_mb_n$. Hence $m=n=1$ and therefore 
+	$\alpha=a_1g_1$ and $\beta=b_1h_1$ with $a_1b_1=b_1a_1=1$ in $K$ and $g_1h_1=1$
+	in $G$.
+\end{proof}
+
+\begin{theorem}[Levi]
+	\label{thm:Levi}
+	\index{Levi's theorem}
+	Let $A$ be an abelian group. Then $A$ is bi-ordered if and only
+	if $A$ is torsion-free.
+\end{theorem}
+
+\begin{proof}
+	If $A$ is bi-ordered, then $A$ is torsion-free. Let us prove the non-trivial implication, 
+	so assume that
+	$A$ is torsion-free abelian. Let $\mathcal{S}$ be the class 
+	of subsets $P$ of $A$ such that $0\in P$, are closed under 
+	the addition of
+	$A$ and satisfy the following property: if $x\in P$ and $-x\in P$,
+	then $x=0$.
+	Clearly, $\mathcal{S}\ne\emptyset$, as 
+	$\{0\}\in\mathcal{S}$.  The inclusion turns $\mathcal{S}$ into a partially ordered set  
+	and $\bigcup_{i\in I}P_i$ is an upper bound for the chain 
+	$\{P_i:i\in I\}$. By Zorn's lemma, 
+	$\mathcal{S}$ admits a maximal element $P\in\mathcal{S}$.
+
+	\begin{claim}
+		If $x\in A$ is such that $kx\in P$ for some $k>0$, then  $x\in P$.		
+	\end{claim}
+
+	Let $Q=\{x\in A:kx\in P\text{ for some 
+	$k>0$}\}$. We will show that $Q\in\mathcal{S}$.  Clearly, $0\in Q$. Moreover, $Q$
+	is closed under addition, as $k_1x_1\in P$ and $k_2x_2\in P$ imply 
+	$k_1k_2(x_1+x_2)\in P$. Let $x\in A$ be such that $x\in Q$ and $-x\in Q$. Thus 
+	$kx\in P$ and $l(-x)\in P$ for some $l>0$. Since $klx\in P$ and 
+	$kl(-x)\in P$, it follows that $klx=0$, a contradiction since $A$ is torsion-free. 
+	Hence $x\in Q\subseteq P$. 
+
+	\begin{claim}
+		If $x\in A$ is such that $x\not\in P$, then $-x\in P$. 	
+	\end{claim}
+
+	Assume that $-x\not\in P$ and let $P_1=\{y+nx:y\in P,\,n\geq0\}$. We will
+	show that  $P_1\in\mathcal{S}$.  Clearly, $0\in P_1$ and $P_1$ is closed under
+	addition. If $P_1\not\in S$, there exists 
+	\[
+		0\ne y_1+n_1x=-(y_2+n_2x),
+	\]
+	where $y_1,y_2\in P$ and $n_1,n_2\geq0$. Thus $y_1+y_2=-(n_1+n_2)x$. If 
+	$n_1=n_2=0$, then $y_1=-y_2\in P$ and $y_1=y_2=0$, so it follows that
+	$y_1+n_1x=0$, a contradiction. If $n_1+n_2>0$, then, since 
+	\[
+		(n_1+n_2)(-x)=y_1+y_2\in P,
+	\]
+	it follows from the first claim that $-x\in P$, a contradiction. 
+	Let us show that $P_1\in\mathcal{S}$. 
+	Since $P\subseteq P_1$, the maximality of $P$ implies that 
+	$x\in P=P_1$.
+
+	\medskip
+	By Proposition~\ref{pro:biordenableP2}, 
+	$P^*=P\setminus\{0\}$ is the positive cone of a bi-order in $A$. 
+	In fact, $P^*$ is closed under addition, as $x,y\in
+	P^*$ implies that $x+y\in P$ and $x+y=0$ implies $x=y=0$, as $x=-y\in P$. Moreover,
+	$G=P^*\cup -P^*\cup\{0\}$ (disjoint union), as 
+	the second claim states that $x\not\in P^*$ implies 
+	$-x\in P$. 
+\end{proof}
+
+Our proof of Passman's theorem (Theorem \ref{thm:Passman}) 
+used the fact that the group algebra $K[G]$ of
+a torsion-free abelian group $G$ has no non-zero divisors. 
+We now present a proof of this fact. 
+
+\begin{corollary}
+\label{cor:domain_G_abelian}
+	Let $A$ be a non-trivial torsion-free abelian group. Then $K[A]$ 
+	is a domain that only admits trivial units and $J(K[A])=\{0\}$. 
+\end{corollary}
+
+\begin{proof}
+	Apply Levi's theorem and Theorem~\ref{thm:BO}.
+\end{proof}
+
+Some exercises. The first one is a variation on Exercise \ref{xca:BO_sequence}.
+
+\begin{exercise}
+    Let $N$ be a central subgroup of $G$. If $N$ and $G/N$ are bi-ordered, 
+    then $G$ is bi-ordered. Prove with an example that $N$ needs to be central, normal 
+    is not enough. 
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group that admits 
+    a sequence 
+    \[
+    \{1\}=G_0\subseteq G_1\subseteq\cdots\subseteq G_n=G
+    \]
+    such that
+    each $G_k$ is normal in $G_{k+1}$ and each quotient $G_{k+1}/G_k$ is 
+    torsion-free abelian. Prove that $G$ is bi-ordered.  
+\end{exercise}
+
+\begin{exercise}
+    Prove that torsion-free nilpotent groups are bi-ordered. 
+\end{exercise}
+
+
+\subsection{Left-ordered groups}
+
+\begin{definition}
+	\index{Group!left-ordered}
+	A group $G$ is \textbf{left-ordered} if there is a total order 
+	$<$ in $G$ such that $x<y$ implies $zx<zy$ for all $x,y,z\in G$.
+\end{definition}
+
+If $G$ is left-ordered, the positive cone of $G$ is defined as $P(G)=\{x\in G:1<x\}$. 
+
+\begin{exercise}
+	Let $G$ be left-ordered with positive cone $P$. Prove that 
+	$P$ is closed under multiplication and that 
+	$G=P\cup P^{-1}\cup \{1\}$ (disjoint union).
+\end{exercise}
+
+\begin{exercise}
+\label{xca:LO_cone}
+	Let $G$ be a group and $P$ be a subset closed under multiplication. Assume that 
+	$G=P\cup P^{-1}\cup \{1\}$ (disjoint union). Prove that $x<y$ if and only if
+	$x^{-1}y\in P$ turns $G$ into a left-ordered group with positive cone $P$.
+\end{exercise}
+
+Left-ordered groups behave nicely with respect to extensions. Let $G$ be a group
+and $N$ be a left-ordered normal subgroup of $G$. If $\pi\colon G\to G/N$ is the 
+canonical map and $G/N$ is left-ordered, then
+$G$ is left-ordered with
+$x<y$ if and only if either $\pi(x)<\pi(y)$ or $\pi(x)=\pi(y)$ and $1<x^{-1}y$. 
+
+
+\begin{proposition}
+	Let $G$ be a group and $N$ be a normal subgroup of $G$. 
+	If $N$ and $G/N$ are left-ordered, then so is $G$.
+\end{proposition}
+
+\begin{proof}
+	Since $N$ and $G/N$ are both left-ordered, there exist positive cones 
+	$P(N)$ and $P(G/N)$. Let $\pi\colon G\to G/N$ be the canonical map and 
+	\[
+		P(G)=\{x\in G:\pi(x)\in P(G/N)\text{ or }x\in P(N)\}.
+	\]	
+	A routine calculation shows that $P(G)$ is closed under multiplication 
+	and that $G$ decomposes as $G=P(G)\cup P(G)^{-1}\cup \{1\}$ (disjoint union). It follows
+	from Exercise \ref{xca:LO_cone} that 
+	$G$ is left-ordered. 
+\end{proof}
+
+
+%
+%\begin{theorem}
+%	\label{theorem:}
+%	Si $G$ tiene una serie finita subnormal $1=G_0\triangleleft
+%	G_1\triangleleft\cdots\triangleleft G_n=G$ y cada cociente $G_{i+1}/G_i$ es
+%	abeliano libre de torsión, entonces $G$ es ordenable a derecha. Si además
+%	$G$ es libre de torsión y nilpotente, entonces $G$ es biordenable.
+%\end{theorem}
+
+We now present a criterion for detecting left-ordered groups. We shall need 
+a lemma. 
+
+\begin{lemma}
+	\label{lem:fg}
+	Let $G$ be a finitely generated group. If $H$ is a finite-index subgroup, 
+	then $H$ is finitely generated. 
+\end{lemma}
+
+\begin{proof}
+	Assume that $G$ is generated by $\{g_1,\dots,g_m\}$. Assume that
+	for each $i$ there exists $k$ such that $g_i^{-1}=g_k$. Let $\{t_1,\dots,t_n\}$ be
+	a transversal of $H$ in $G$. For $i\in\{1,\dots,n\}$ and 
+	$j\in\{1,\dots,m\}$ write 
+	\[
+		t_ig_j=h(i,j)t_{k(i,j)}.
+	\]
+	We claim that $H$ is generated by the $h(i,j)$. For $x\in H$, write 
+	\begin{align*}
+	x &=g_{i_1}\cdots g_{i_s}\\
+	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
+	&= h(1,i_1)t_{k_1}g_{i_2}\cdots g_{i_s}\\
+	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
+	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},g_{i_s})t_{k_s},
+	\end{align*}
+	where $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Since $t_{k_s}\in H$, it follows that 
+	$t_{k_s}=t_1\in H$.
+\end{proof}
+
+Now the theorem.
+
+\begin{theorem}
+	Let $G$ be a finitely generated torsion-free group. If $A$ is an abelian normal
+	subgroup such that $G/A$ is finite and cyclic, then $G$ is left-ordered. 
+\end{theorem}
+
+\begin{proof}
+	Note that if $A$ is trivial, then so is $G$. Let us assume that $A\ne\{1\}$. 
+    Since $(G:A)$ is finite, $A$ is finitely generated by the previous lemma. 
+    We proceed by induction on the number of generators of $A$. Since 
+    $G/A$ is cyclic, there exists $x\in G$ such that $G=\langle A,x\rangle$. Then
+    $[x,A]=\langle [x,a]:a\in A\rangle$ is a normal subgroup of $G$ such that 
+    $A/C_A(x)\simeq [x,A]$ (because $a\mapsto [x,a]$ is a group homomorphism $A\to A$
+    with image $[x,A]$ and kernel $C_A(x)$). If $\pi\colon G\to G/[x,A]$ is the canonical map, then
+    $G/[x,A]=\langle \pi(A),\pi(x)\rangle$ and thus $G/[x,A]$ is abelian, as 
+    $[\pi(x),\pi(A)]=\pi[x,A]=1$. Moreover, $G/[x,A]$ is finitely generated, as $G$
+    is finitely generated. Since $(G:A)=n$ and $G$ is torsion-free, it follows that 
+    $1\ne x^n\in A$. Hence $x^n\in C_A(x)$ and therefore $1\leq \rank C_A(x)<\rank A$ (if $\rank
+    C_A(x)=\rank A$, then $[x,A]$ would be a torsion subgroup of $A$, a contradiction
+    since $x\not\in A$). So 
+    \[
+    \rank[x,A]=\rank (A/C_A(x))\leq\rank A-1
+    \]
+    and hence $\rank (A/[x,A])\geq 1$. We proved that $A/[x,A]$ is infinite and hence 
+    $G/[x,A]$ is infinite. 
+
+    Since $G/[x,A]$ is infinite, abelian and finitely generated, there exists a normal subgroup
+    $H$ of $G$ such that $[x,A]\subseteq H$ and $G/H\simeq\Z$. The subgroup 
+    $B=A\cap H$ is abelian, normal in $H$ and such that $H/B$ is cyclic
+    (because it is isomorphic to a subgroup of $G/A$). Since $\rank B<\rank A$, the inductive hypothesis implies that $H$ is left-ordered. Hence $G$ is left-ordered. 
+\end{proof}
+
+\index{Lagrange--Rhemtulla's theorem} 
+Lagrange and Rhemtulla proved that the integral isomorphism problem 
+has an affirmative solution for left-ordered groups. More precisely,
+if $G$ is left-ordered and $H$ is a group such that $\Z[G]\simeq\Z[H]$, then
+$G\simeq H$, see \cite{MR240183}.
+
+\begin{theorem}[Malcev--Neumann]
+	\index{Malcev--Neumann's theorem}
+	Let $G$ be left-ordered group. Then $K[G]$ has no zero divisors 
+	and no non-trivial units. 
+\end{theorem}
+
+\begin{proof}
+	If $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ and
+	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$, then 
+	\begin{equation}
+		\label{eq:producto}
+		\alpha\beta=\sum_{i=1}^n\sum_{j=1}^ma_ib_j(g_ih_j).
+	\end{equation}
+	Without loss of generality we may assume that $a_i\ne 0$ for
+	all $i$ and $b_j\ne 0$ for all $j$. Moreover, we may assume that 
+	$g_1<g_2<\cdots<g_n$. Let $i,j$ be such that 
+	\[
+		g_ih_j=\min\{g_ih_j:1\leq i\leq n,1\leq j\leq m\}.
+	\]
+	Then $i=1$, as $i>1$ implies
+	$g_1h_j<g_ih_j$, a contradiction. Since $g_1h_j\ne g_1h_k$ whenever 
+	$k\ne j$, there exists a unique minimal element in the left hand side of Equality~\eqref{eq:producto}. The same argument shows that there is a unique
+	maximal element in~\eqref{eq:producto}. Thus 
+	$\alpha\beta\ne 0$, as $a_1b_j\ne 0$, and therefore $K[G]$ has no zero divisors. 
+	If, moreover, $n>1$ or $m>1$, then~\eqref{eq:producto} contains at least two
+	terms than cancel out and thus  
+	$\alpha\beta\ne1$. It follows that units of $K[G]$ are trivial. 
+\end{proof}
+
+\index{Formanek's theorem}
+\index{Farkas--Snider's theorem}
+\index{Brown's theorem}
+Formanek proved that the zero divisors conjecture is true 
+in the case of torsion-free super solvable. Brown and, independently, 
+Farkas and Snider proved that the conjecture is true 
+in the case of groups algebras (over fields of characteristic zero) of 
+polycyclic-by-finite torsion-free groups. These results
+can be found in Chapter 13 of
+Passman's book \cite{MR798076}. 
+
+\subsection{The braid group}
+
+\begin{definition}
+    \index{Braid group}
+    Let $n\geq1$. The \textbf{braid group} $\B_n$ is
+    the group with generators $\sigma_1,\dots,\sigma_{n-1}$ and
+    relations
+    \begin{align*}
+        &\sigma_i\sigma_{i+1}\sigma_i=\sigma_{i+1}\sigma_i\sigma_{i+1} && \text{if }1\leq i\leq n-2,\\
+        &\sigma_i\sigma_j=\sigma_j\sigma_i && \text{if }|i-j|> 1.
+    \end{align*}
+\end{definition}
+
+Note that $\B_1=\{1\}$ and $\B_2\simeq\Z$. The braid 
+group $\B_3$ is generated by
+$\sigma_1$ and $\sigma_2$ with relations
+$\sigma_1\sigma_2\sigma_1=\sigma_2\sigma_1\sigma_2$.
+
+\begin{exercise}
+    Prove that there exists a group homomorphism $\B_n\to\Sym_n$ 
+    given by $\sigma_i\mapsto (i\,i+1)$ for all $i\in\{1,\dots,n-1\}$. 
+\end{exercise}
+
+Note that if $n\geq3$, then 
+$\B_n$ is a non-abelian group, as there exists a surjective
+group homomorphism $\B_n\to\Sym_n$. 
+
+\begin{exercise}
+    Let $n\geq 2$. 
+    Prove that the map $\deg\colon\B_n\to\Z$, $\sigma_i\mapsto 1$, 
+    is a group homomorphism. Moreover, $\ker\deg=[\B_n,\B_n]$. 
+\end{exercise}
+
+The previous result implies, in particular, that $\B_n$ is an infinite 
+group for all $n\geq2$. Moreover, $\sigma_i^m\ne1$ for all $m\in\Z\setminus\{0\}$ and all $i$.  
+
+\begin{exercise}
+    Prove that $\B_3\simeq\langle x,y:x^2=y^3\rangle$ and that 
+    $\B_3/Z(\B_3)\simeq\PSL_2(\Z)$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that the center $Z(\B_3)$ of $\B_3$ is
+    the cyclic group generated by $(\sigma_1\sigma_2\sigma_1)^2$.
+\end{exercise}
+
+More generally, one can prove that
+the center of $\B_n$ is generated by $\Delta_n^2$, where
+\[
+\Delta_n=(\sigma_1\cdots\sigma_{n-1})(\sigma_1\cdots\sigma_{n-2})\cdots(\sigma_1\sigma_2)\sigma_1, 
+\]
+see for example \cite[Theorem 1.24]{MR2435235}. 
+As a corollary, $\B_n\simeq\B_m$ if and only if $n=m$. 
+
+\begin{exercise}
+\label{xca:Bn_notBO}
+    Let $n\geq3$. 
+    Prove that $\B_n$ is not bi-ordered. 
+\end{exercise}
+
+One can prove that 
+the natural map $\B_n\to\B_{n+1}$ is an injective group homomorphism, this is not an easy proof (see \cite[Corollary 1.14]{MR2435235}). Moreover,
+the diagram
+\[\begin{tikzcd}
+	\B_n & \Sym_n \\
+	\B_{n+1} & \Sym_{n+1}
+	\arrow[two heads, from=1-1, to=1-2]
+	\arrow[hook, from=1-2, to=2-2]
+	\arrow[hook, from=1-1, to=2-1]
+	\arrow[two heads, from=2-1, to=2-2]
+\end{tikzcd}
+\]
+commutes. 
+
+\begin{exercise}
+\label{xca:derivedB3}
+\index{Reidemeister--Schreier's method}
+    Use the Reidemeister--Schreier's method to prove that 
+    $[\B_3,\B_3]$ is isomorphic to the free group in two letters.
+\end{exercise}
+
+\index{Dehornoy's theorem}
+A celebrated theorem of Dehornoy states that the braid group $\B_n$ 
+is left-ordered (see for example \cite[Theorem 7.15]{MR2435235}). The proof of this fact is quite hard. However, 
+there is a nice short proof of the fact that 
+$\B_3$ is left-ordered, see 
+\cite[\S7.2]{MR3560661}.
+
+\begin{problem}[Burau's representation]
+\index{Burau's representation}
+    Let $\B_4\to\GL_4(\Z[t,t^{-1}])$ be the group 
+    homomorphism given by
+    \[
+    \sigma_1\mapsto\begin{pmatrix}
+    1-t&t&0&0\\
+    1&0&0&0\\
+    0&0&1&0\\
+    0&0&0&1
+    \end{pmatrix},
+    \quad
+    \sigma_2\mapsto\begin{pmatrix}
+    1&0&0&0\\
+    0&1-t&t&0\\
+    0&1&0&0\\
+    0&0&0&1
+    \end{pmatrix},
+    \quad
+    \sigma_3\mapsto\begin{pmatrix}
+    1&0&0&0\\
+    0&1&0&0\\
+    0&0&1-t&t\\
+    0&0&1&0
+    \end{pmatrix}.
+    \]
+    Is this homomorphism injective?
+\end{problem}
+
+In general, the Burau's representation
+$\B_n\to\GL_{n}(\Z[t,t^{-1}])$ 
+is defined
+by
+\[
+\sigma_j\mapsto
+I_{j-1}\oplus
+\begin{pmatrix}
+1-t & t\\
+1 & 0
+\end{pmatrix}
+\oplus
+I_{n-j-1},
+\]
+where $I_k$ denotes the $k\times k$ identity matrix. 
+
+It is known that the Burau's representation of $\B_n$ is faithful
+for $n\leq3$ and not faithful for $n\geq5$. Only the case
+$n=4$ remains open.
+
+Using a different representation,  
+Krammer \cite{MR1888796} and Bigelow \cite{MR1815219} 
+independently proved that braid groups are linear. 
+

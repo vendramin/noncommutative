@@ -1,584 +1,672 @@
-\chapter{}
+\section{}
 
-\topic{Bi-ordered groups}
-
-Based on Example~\ref{example:k[Z]} we will study 
-some properties of groups. 
-
-Recall that a \textbf{total order} is a partial order in which any two elements are comparable. This
-means that a total order is a binary relation $\leq$ on some set $X$ 
-such that for all $x,y,z\in X$ one has 
-\begin{enumerate}
-    \item $x\leq x$.
-    \item $x\leq y$ and $y\leq z$ imply $x\leq z$.
-    \item $x\leq y$ and $y\leq x$ imply $x=y$.
-    \item $x\leq y$ or $y\leq x$. 
-\end{enumerate}
-A set equipped with a total order is a \textbf{totally ordered set}. 
+\subsection{Super solvable groups}
 
 \begin{definition}
-	\index{Group!bi-ordered}
-	A group $G$ is \textbf{bi-ordered} if there exists a total order 
-	$<$ in $G$
-	such that $x<y$ implies that $xz<yz$ and $zx<zy$ for all $x,y,z\in G$.
+\index{Group!super solvable}
+A group $G$ is said to be \textbf{super solvable} if there exists a sequence 
+\[
+G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
+\]
+of normal subgroups of $G$ such that every 
+quotient $G_{i-1}/G_i$ is cyclic. 
 \end{definition}
+
+In the previous definition, we do not require the group to be finite. Hence the quotients 
+could be finite cyclic groups or isomorphic to $\Z$. 
 
 \begin{example}
-	The group $\R_{>0}$ of positive real numbers is bi-ordered. 
+The dihedral group $\D_{n}$ of order $2n$ is super solvable, as 
+\[	
+\D_{n}\supseteq \langle
+r\rangle\supseteq \{1\}
+\]
+is a sequence of normal subgroups with cyclic factors. 
 \end{example}
 
-The multiplicative group $\R\setminus\{0\}$ is not bi-ordered. Why?
+Every solvable group is super solvable. See Exercise~\ref{xca:solvable}.
+
+\begin{example}
+The alternating group $\Alt_4$ solvable but not super solvable. The only 
+proper non-trivial normal subgroup of $\Alt_4$ is 
+	\[
+	\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
+	\]
+Thus $\Alt_4$ does not have a sequence of normal subgroups 
+with cyclic factors. 
+\end{example}
 
 \begin{exercise}
-	Let $G$ be a bi-ordered group and $x,x_1,y,y_1\in G$. Prove that
-	$x<y$ and $x_1<y_1$ imply $xx_1<yy_1$.
+\label{xca:Aff_supersolvable}
+Prove that $\Aff(\Z)$ is super solvable. 
 \end{exercise}
+% aff(Z) es súper-resoluble
 
-Clearly, bi-orderability is preserved under taking subgroups. 
-
-\begin{exercise}
-	Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n=h^n$
-	for some $n>0$ implies $g=h$.
-\end{exercise}
-
-The following result goes back to Neumann.
-
-\begin{exercise}
-    Let $G$ be a bi-ordered group and $g,h\in G$. Prove that $g^n\in C_G(h)$ if 
-    and only if $g\in C_G(h)$.
-\end{exercise}
-
-Bi-ordered groups do not behave nicely under extensions:
+\begin{example}
+The group $\SL_2(3)$ is solvable but not super solvable. Here is a computer verification: 
+\begin{lstlisting}
+gap> IsSolvable(SL(2,3));
+true
+gap> IsSupersolvable(SL(2,3));
+false
+\end{lstlisting}
+\end{example}
 
 \begin{exercise}
-\label{xca:BO_sequence}
-    Let $1\to K\to G\to Q\to 1$ be an exact sequence of groups. Assume that $K$ and $Q$ 
-    are bi-ordered. Prove that $G$ is bi-ordered if and only if 
-    $x<y$ implies $gxg^{-1}<gyg^{-1}$ for all $x,y\in K$ and $g\in G$. 
-\end{exercise}
-
-\begin{definition}
-	Let $G$ be a bi-ordered group. The \textbf{positive cone} of $G$  
-	is the set $P(G)=\{x\in
-	G:1<x\}$.
-\end{definition}
-
-Let us state some properties of positive cones. 
-
-\begin{proposition}
-	\label{pro:biordenableP1}
-	Let $G$ be a bi-ordered group and let $P$ be its positive cone. 
-	\begin{enumerate}
-		\item $P$ is closed under multiplication, i.e. $PP\subseteq P$. 
-		\item $G=P\cup P^{-1}\cup \{1\}$ (disjoint union).
-		\item $xPx^{-1}=P$ for all $x\in G$.
-	\end{enumerate}
-\end{proposition}
-
-\begin{proof}
-	If $x,y\in P$ and $z\in G$, then, since $1<x$ and $1<y$, it follows that 
-	$1<xy$.  Thus $1=z1z^{-1}<zxz^{-1}$. It remains to prove the second claim.  
-	If $g\in G$, then $g=1$ or $g>1$ or $g<1$. Note that $g<1$ if and only if 
-	$1<g^{-1}$, so the claim follows. 
-\end{proof}
-
-The previous proposition admits a converse statement. 
-
-\begin{proposition}
-	\label{pro:biordenableP2}
-	Let $G$ be a group and $P$ be a subset of $G$ such that 
-	$P$ is closed under multiplication, $G=P\cup P^{-1}\cup \{1\}$ (disjoint union) and
-	$xPx^{-1}=P$ for all $x\in G$. Let $x<y$ whenever  
-	$yx^{-1}\in P$. Then $G$ is bi-ordered with positive
-	cone is $P$.
-\end{proposition}
-
-\begin{proof}
-	Let $x,y\in G$. Since $yx^{-1}\in G$ and $G=P\cup
-	P^{-1}\cup\{1\}$ (disjoint union), 
-	either $yx^{-1}\in P$ or $xy^{-1}=(yx^{-1})^{-1}\in
-	P$ or $yx^{-1}=1$. Thus either $x<y$ or $y<x$ or $x=y$. If $x<y$ and $z\in
-	G$, then $zx<zy$, as $(zy)(zx)^{-1}=z(yx^{-1})z^{-1}\in P$ and  
-	$zPz^{-1}=P$. Moreover, $xz<yz$ since $(yz)(xz)^{-1}=yx^{-1}\in P$. To prove
-	that $P$ is the positive cone of $G$ note that 
-	$x1^{-1}=x\in P$ if and only if $1<x$. 
-\end{proof}
-
-An important property:
-
-\begin{proposition}
-	\label{pro:BOsintorsion}
-	Bi-ordered groups are torsion-free.
-\end{proposition}
-
-\begin{proof}
-	Let $G$ be a bi-ordered group and $g\in G\setminus\{1\}$. 
-	If $g>1$, then
-	$1<g<g^2<\cdots$. If $g<1$, then $1>g>g^2>\cdots$. Hence $g^n\ne 1$ 
-	for all $n\ne 0$. 
-\end{proof}
-
-The converse of the previous proposition does not hold. 
-
-\begin{exercise}
-Let $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$. 
+\label{xca:super}
+Prove the following statements: 
 \begin{enumerate}
-    \item Prove that $x$ and $y$ are torsion-free. 
-    \item Prove that $G$ is torsion-free. 
-    \item Prove that $G\simeq \langle a,b:a^2=b^2\rangle$.
+\item Every subgroup of a super solvable group is super solvable. 
+\item Quotients of super solvable groups are super solvable. 
 \end{enumerate}
 \end{exercise}
 
-% To prove that $x$ is torsion-free, use the group homomorphism $G\to\Z$
-% given by $x\mapsto 1$, $y\mapsto 0$. To prove that $y$ is torsion-free
-% use the group homomorphism $x\mapsto\begin{pmatrix}-1&0\\0&1\end{pmatrix}$,
-% $y\mapsto\begin{pmatrix}1&1\\0&1\end{pmatrix}$. 
+% \begin{svgraybox}
+% 	Sea $G$ un grupo súper-resoluble y sea 			
+% 	\[ 
+% 	G=G_0\supseteq G_1\supseteq \cdots\supseteq G_n=1 
+% 	\] 
+% 	una sucesión de subgrupos normales
+% 	donde cada cociente $G_{i-1}/G_{i}$ es cíclico. 
+% 	\begin{enumerate}
+% 		\item Sea $H$ un subgrupo de $G$. Como $G$ es
+% 			súper-resoluble, Sea 
+% 			\[
+% 			H=H\cap G_0\supseteq H\cap G_1\supseteq\cdots\supseteq H\cap G_n=1
+% 			\]
+% 			una sucesión de subgrupos de $H$. Cada $H\cap G_i$ es normal en $H$
+% 			pues $G_i$ es normal en $G$. Fijemos $i\in\{1,\dots,n\}$ y sea
+% 			$\pi_{i-1}\colon G_{i-1}\to G_{i-1}/G_{i}$ el morfismo canónico. La
+% 			restricción de $\pi_{i-1}$ al subgrupo $H\cap G_{i-1}$ es un morfismo con
+% 			núcleo $G_{i}\cap H$.  Al usar el teorema de isomorfismos vemos que 
+% 			\[
+% 			\frac{H\cap G_{i-1}}{H\cap G_{i}}\simeq \pi_{i-1}(H\cap G_i)\subseteq G_{i-1}/G_i
+% 			\]
+% 			es un grupo cíclico por ser subgrupo de un grupo cíclico. 
+% 		\item Sea $K$ un subgrupo normal de $G$ y sea $\pi\colon G\to G/K$ el
+% 			morfismo canónico. Para cada $i$ sea $Q_i=\pi(G_i)$. Cada $Q_i$ es
+% 			normal en $Q_n=\pi(G_n)=G/K$ pues $G_i$ es normal en $G$. Como
+% 			$G_{i-1}K=G_{i-1}(G_iK)$ para todo $i$, 
+% 			el grupo
+% 			\begin{align*}
+% 			Q_{i-1}/Q_i
+% 			&\simeq\frac{G_{i-1}/G_{i-1}\cap K}{G_i/G_i\cap K}
+% 			\simeq \frac{G_{i-1}K/K}{G_{i}K/K}\\
+% 			&\simeq\frac{ G_{i-1}K}{G_iK}
+% 			\simeq\frac{ G_{i-1}(G_iK)}{G_iK}
+% 			\simeq\frac{ G_{i-1}}{G_iK\cap G_{i-1}}
+% 			\simeq\frac{ G_{i-1}/G_i}{G_iK\cap G_{i-1}/G_i}
+% 			\end{align*}
+% 			es cíclico por ser un cociente de un grupo cíclico.
+% 	\end{enumerate}
+% \end{svgraybox}
 
-% 	We first show that $G\simeq\langle a,b:a^2=b^2\rangle$. For that purpose, 
-% 	it is enough to check that 
-% 	the map $G\to \langle a,b:a^2=b^2\rangle$, $x\mapsto a$, $y\mapsto ab^{-1}$, 
-% 	is a well-defined group homomorphism with inverse
-% 	$\langle a,b:a^2=b^2\rangle\to G$, $a\mapsto x$, $b\mapsto y^{-1}x$. 
+\begin{exercise}
+\label{xca:directosuper}
+Prove that the direct product of super solvable groups is super solvable. 
+\end{exercise}
 
-\begin{example}
-	The torsion-free group $G=\langle x,y:yxy^{-1}=x^{-1}\rangle$ is not bi-ordered. 
-	If not, let $P$ 
-	be the positive cone. If $x\in P$, 
-	then $yxy^{-1}=x^{-1}\in P$, a contradiction. Hence $x^{-1}\in P$
-	and $x=y^{-1}x^{-1}y\in P$, a contradiction.
-\end{example}
+% \begin{svgraybox}
+% 	Supongamos que $G$ admite una sucesión $G=G_0\supseteq G_1\supseteq
+% 	\cdots\supseteq G_n=1$ de de subgrupos normales tales que cada cociente
+% 	$G_{i-1}/G_i$ es cíclico, y que $H$ admite una sucesión $H=H_0\supseteq
+% 	H_1\supseteq \cdots\supseteq H_m=1$ de subgrupos normales donde cada
+% 	$H_{i-1}/H_i$ es cíclico. Consideramos la sucesión 
+% 	\[
+% 		1=G_0\times H_0\supseteq G_1\times H_0\supseteq\cdots\supseteq G_n\times H_0\supseteq G_n\times H_1\supseteq \cdots\supseteq G_n\times H_m=G\times H
+% 	\]
+% 	tiene factores cíclicos pues 
+% 	cada $G_{i-1}\times H_0/G_i\times H_0\simeq G_{i-1}/G_i$ es cíclico y cada 
+% 	$G_n\times H_{j-1}/G_n\times H_j$ también pues
+% 	\[
+% 	G_n\times H_{j-1}/G_n\times H_j
+% 	\simeq \frac{GH_{j-1}/G}{GH_j/G}
+% 	\simeq \frac{H_{j-1}/H_{j-1}\cap G}{H_j/H_j\cap G}\simeq H_{j-1}/H_j.
+% 	\]
+% \end{svgraybox}
+
+\begin{exercise}
+\label{xca:super}
+Let $H$ and $K$ be normal subgroups of a group $G$ such that $G/K$ and $G/H$
+are super solvable. Prove that $G/H\cap K$ is super solvable. 
+\end{exercise}
+
+% \begin{svgraybox}
+% 	El producto directo $G/H\times G/K$ es súper-resoluble. Sea $\partial\colon
+% 	G\to G/H\times G/K$, $g\mapsto (gH,gK)$.  Como $\ker\partial=H\cap K$, se
+% 	tiene que $G/H\cap K\simeq\partial(G)$, que es súper-resoluble por ser un
+% 	subgrupo de un grupo súper-resoluble.
+% \end{svgraybox}
+
+\begin{exercise}
+\label{xca:Nciclico}
+Let $N$ be a cyclic normal subgroup of $G$. If $G/N$ is super solvable, then 
+$G$ is super solvable. 
+\end{exercise}
+
+% todo: arreglar 
+
+% \begin{proof}
+% 	Sea $\pi\colon G\to G/N$ el morfismo canónico y sea $Q=G/N$. Como $Q$ es
+% 	súper-resoluble, tenemos una sucesión
+% 	\[
+% 		Q=Q_0\supseteq Q_1\supseteq \cdots\supseteq Q_n=\{1\}
+% 	\]
+% 	de subgrupos normales de $Q$ tales que cada cociente $Q_{i-1}/Q_i$ es
+% 	cíclico. Cada elemento de la sucesión
+% 	\[
+% 	G=\pi^{-1}(Q)\supseteq\pi^{-1}(Q_1)\supseteq\cdots\supseteq \pi^{-1}(Q_n)=N\supseteq \{1\}
+% 	\]
+% 	es normal en $G$ (por la correspondencia) y dejamos como 
+% 	ejercicio demostrar que cada cociente es cíclico. 
+% % 	cada cociente es cíclico $N$ es cíclico. 
+% % 	Queda como ejercicio demostrar 
+% % 	y cada 
+% % 	\[
+% % 	\frac{\pi^{-1}(Q_j)}{\pi^{-1}(Q_{j+1})}
+% % 		=\frac{Q_jN}{Q_{j+1}N}
+% % 		\simeq\frac{Q_jN/N}{Q_{j+1}N/N}
+% % 		\simeq\frac{Q_j(Q_{j+1}N)}{Q_{j+1}N}
+% % 		\simeq\frac{Q_j/Q_{j+1}}{Q_{j+1}N\cap Q_j}
+% % 	\]
+% % 	es cíclico por ser cociente de un grupo cíclico.
+% \end{proof}
 
 \begin{theorem}
-	\label{thm:BO}
-	Let $G$ be a bi-ordered group. Then $K[G]$ is a domain such that
-	only has trivial units. Moreover, if $G$ is non-trivial, 
-	then $J(K[G])=\{0\}$. 
+\label{thm:ZorCp}
+Let $G$ be a super solvable non-trivial group. Then $G$ admits a sequence 
+\[
+G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
+\]
+of normal subgroups 
+such that every quotient $G_{i-1}/G_i$ is cyclic of prime order or isomorphic to 
+$\Z$.
 \end{theorem}
 
 \begin{proof}
-	Let $\alpha,\beta\in K[G]$ be such that  
-	\begin{align*}
-		\alpha&=\sum_{i=1}^m a_ig_i, && g_1<g_2<\cdots<g_m,&& a_i\ne 0 && \forall i\in\{1,\dots,m\},\\
-		\beta&=\sum_{j=1}^n b_jh_j, && h_1<h_2<\cdots<h_n, && b_j\ne 0 && \forall j\in\{1,\dots,n\}.
-	\end{align*}
-	Then 
-	\[
-		g_1h_1\leq g_ih_j\leq g_mh_n
-	\]
-	for all $i,j$. Moreover, $g_1h_1=g_ih_j$ if and only if $i=j=1$. The
-	coefficient of $g_1h_1$ in $\alpha\beta$ is $a_1b_1\ne 0$. In particular, 
-	$\alpha\beta\ne0$. If $\alpha\beta=\beta\alpha=1$, then the coefficient of
-	$g_mh_n$ in $\alpha\beta$ is $a_mb_n$. Hence $m=n=1$ and therefore 
-	$\alpha=a_1g_1$ and $\beta=b_1h_1$ with $a_1b_1=b_1a_1=1$ in $K$ and $g_1h_1=1$
-	in $G$.
+Let $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ be a sequence of normal subgroups
+of $G$ such that every quotient $G_{i-1}/G_i$ is cyclic. Let 
+$i\in\{1,\dots,n\}$ be such that $G_{i-1}/G_i\simeq C_n$ for some non-prime  
+$n$ and let $\pi\colon G_{i-1}\to G_{i-1}/G_i$ be the canonical map. 
+Let $p$ be a prime divisor of $n$ and $H$ be a subgroup of $G$ such that 
+$\pi(H)$ is a subgroup of $G_{i-1}/G_i$ of order $p$. By the correspondence theorem, 
+$G_{i}\subseteq H\subseteq G_{i-1}$. 
+
+We claim that $H$ is normal in $G$. Let $g\in G$. Since $\pi(gHg^{-1})$ is a subgroup of order $p$ of 
+the cyclic group $G_{i-1}/G_i$, $\pi(gHg^{-1})=\pi(H)$. Then 
+$gHg^{-1}=G_{i}H\subseteq H$ and hence $gHg^{-1}=H$. 
+% 	\[
+% 	\frac{gHg^{-1}}{G_i}=\frac{G_{i}H}{G_{i}}\simeq \frac{H}{G_i\cap H}=\frac{H}{G_i}
+% 	\]
+% 	y entonces $gHg^{-1}\subseteq H$.  
+
+Note that $H/G_i$ is cyclic of prime order, as 
+\[
+H/G_i=H/H\cap G_i\simeq \pi(H)\simeq C_p. 
+\]
+Moreover, $G_{i-1}/H$ is cyclic, as 
+\[
+G_{i-1}/H\simeq\frac{G_{i-1}/G_i}{H/G_i}
+\]
+is the quotient of a cyclic group. 
+	
+We have shown that by adding $H$ to our sequence of normal subgroups, 
+we obtain a sequence with cyclic factors where 
+$H/G_{i}$ is cylic of prime order. Repeating this procedure, we obtain the desired result. 
 \end{proof}
 
-\begin{theorem}[Levi]
-	\label{thm:Levi}
-	\index{Levi's theorem}
-	Let $A$ be an abelian group. Then $A$ is bi-ordered if and only
-	if $A$ is torsion-free.
-\end{theorem}
-
-\begin{proof}
-	If $A$ is bi-ordered, then $A$ is torsion-free. Let us prove the non-trivial implication, 
-	so assume that
-	$A$ is torsion-free abelian. Let $\mathcal{S}$ be the class 
-	of subsets $P$ of $A$ such that $0\in P$, are closed under 
-	the addition of
-	$A$ and satisfy the following property: if $x\in P$ and $-x\in P$,
-	then $x=0$.
-	Clearly, $\mathcal{S}\ne\emptyset$, as 
-	$\{0\}\in\mathcal{S}$.  The inclusion turns $\mathcal{S}$ into a partially ordered set  
-	and $\bigcup_{i\in I}P_i$ is an upper bound for the chain 
-	$\{P_i:i\in I\}$. By Zorn's lemma, 
-	$\mathcal{S}$ admits a maximal element $P\in\mathcal{S}$.
-
-	\begin{claim}
-		If $x\in A$ is such that $kx\in P$ for some $k>0$, then  $x\in P$.		
-	\end{claim}
-
-	Let $Q=\{x\in A:kx\in P\text{ for some 
-	$k>0$}\}$. We will show that $Q\in\mathcal{S}$.  Clearly, $0\in Q$. Moreover, $Q$
-	is closed under addition, as $k_1x_1\in P$ and $k_2x_2\in P$ imply 
-	$k_1k_2(x_1+x_2)\in P$. Let $x\in A$ be such that $x\in Q$ and $-x\in Q$. Thus 
-	$kx\in P$ and $l(-x)\in P$ for some $l>0$. Since $klx\in P$ and 
-	$kl(-x)\in P$, it follows that $klx=0$, a contradiction since $A$ is torsion-free. 
-	Hence $x\in Q\subseteq P$. 
-
-	\begin{claim}
-		If $x\in A$ is such that $x\not\in P$, then $-x\in P$. 	
-	\end{claim}
-
-	Assume that $-x\not\in P$ and let $P_1=\{y+nx:y\in P,\,n\geq0\}$. We will
-	show that  $P_1\in\mathcal{S}$.  Clearly, $0\in P_1$ and $P_1$ is closed under
-	addition. If $P_1\not\in S$, there exists 
-	\[
-		0\ne y_1+n_1x=-(y_2+n_2x),
-	\]
-	where $y_1,y_2\in P$ and $n_1,n_2\geq0$. Thus $y_1+y_2=-(n_1+n_2)x$. If 
-	$n_1=n_2=0$, then $y_1=-y_2\in P$ and $y_1=y_2=0$, so it follows that
-	$y_1+n_1x=0$, a contradiction. If $n_1+n_2>0$, then, since 
-	\[
-		(n_1+n_2)(-x)=y_1+y_2\in P,
-	\]
-	it follows from the first claim that $-x\in P$, a contradiction. 
-	Let us show that $P_1\in\mathcal{S}$. 
-	Since $P\subseteq P_1$, the maximality of $P$ implies that 
-	$x\in P=P_1$.
-
-	\medskip
-	By Proposition~\ref{pro:biordenableP2}, 
-	$P^*=P\setminus\{0\}$ is the positive cone of a bi-order in $A$. 
-	In fact, $P^*$ is closed under addition, as $x,y\in
-	P^*$ implies that $x+y\in P$ and $x+y=0$ implies $x=y=0$, as $x=-y\in P$. Moreover,
-	$G=P^*\cup -P^*\cup\{0\}$ (disjoint union), as 
-	the second claim states that $x\not\in P^*$ implies 
-	$-x\in P$. 
-\end{proof}
-
-Our proof of Passman's theorem (Theorem \ref{thm:Passman}) 
-used the fact that the group algebra $K[G]$ of
-a torsion-free abelian group $G$ has no non-zero divisors. 
-We now present a proof of this fact. 
+Let us discuss an immediate application. 
 
 \begin{corollary}
-\label{cor:domain_G_abelian}
-	Let $A$ be a non-trivial torsion-free abelian group. Then $K[A]$ 
-	is a domain that only admits trivial units and $J(K[A])=\{0\}$. 
+A finite super solvable group admits a sequence 
+of normal subgroups where each quotient is cyclic of prime order. 
 \end{corollary}
 
+% \begin{proof}
+% 	Es consecuencia inmediata del teorema~\ref{theorem:ZorCp}.
+% \end{proof}
+
+We now discuss other properties of super solvable groups. 
+
+\begin{theorem}
+\label{thm:super_structure}
+Let $G$ be a super solvable group. The following statement hold:  
+\begin{enumerate}
+\item If $N$ is minimal normal in $G$, then $N\simeq C_p$ for some prime number $p$.
+\item If $M$ is maximal in $G$, then $(G:M)=p$ for some prime number $p$.
+\item The commutator subgroup $[G,G]$ is nilpotent. 
+\item If $G$ is non-abelian, there exists a normal subgroup $N\ne G$ such that
+	$Z(G)\subsetneq N$.
+\end{enumerate}
+\end{theorem}
+
 \begin{proof}
-	Apply Levi's theorem and Theorem~\ref{thm:BO}.
+Let us prove the first claim. Since $G$ is super solvable, there exists a sequence 
+\[
+G=G_0\supseteq G_1\supseteq
+G_2\supseteq\cdots\supseteq G_n=\{1\}
+\]
+of normal subgroups with cyclic factors. Since 
+each $G_i\cap N$ is a normal subgroup of $G$ contained in $N$, 
+the minimality implies that 
+each $G_i\cap N$ is either trivial or equal to $N$. Moreover, $N\cap G_0=N$ and $N\cap
+G_n=\{1\}$. Let $j$ be the smallest positive integer such that $N\cap G_j=\{1\}$. 
+Since $N\subseteq G_{j-1}$ (because $N\cap G_{j-1}=N$), the composition 
+	\[
+	N\hookrightarrow G_{j-1}\to G_{j-1}/G_j
+	\]
+is an injective group homomorphism, as its kernel is equal $N\cap G_{j}=\{1\}$. 
+Thus $N$ is cyclic, as it is isomorphic to a subgroup of the cyclic group $G_{i-1}/G_i$. 
+If $G_{i-1}/G_i\simeq\Z$, then $N\simeq\Z$, a contradiction to the fact that $N$ is minimal normal. (For example, 
+$2\Z$ is characteristic subgroup of $\Z$ and hence it is normal in $G$. Thus $N$ is cyclic and finite. Hence $N\simeq C_p$.)
+
+We now prove the second claim. Let $M$ be a maximal subgroup of $G$. If $M$ is normal in $G$, 
+then $G/M$ does not contain non-trivial proper subgroups. Then 
+$G/M\simeq C_p$ for some prime number $p$. Assume that $M$ is not normal in $G$. 
+Let $H=\cap_{g\in G}gMg^{-1}$ and $\pi\colon G\to G/H$ be the canonical map.  
+Since $\pi(M)$ is maximal in 
+	$\pi(G)=G/H$ and 
+	\[
+		(G:M)=(G/H:M/H)=(G/H:M/H\cap M)=(\pi(G):\pi(M)),
+	\]
+we may assume that $M$ does not contain non-trivial normal subgroups of $G$ (if needed, 
+we just replace $G$ by $G/H$). Since $G$ is super solvable, there exists a sequence 
+$G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ of normal subgroups of $G$ 
+with factors either cyclic of prime order or isomorphic to $\Z$. Let 
+$N=G_{n-1}$. Since $N$ is cyclic, every subgroup of $N$ is characteristic 
+in $N$ and hence normal in $G$. In particular, $M\cap N$ is normal in 
+$G$ and therefore $M\cap N=\{1\}$. Since $M\subseteq
+NM\subseteq G$, the maximality of $M$ implies that either $M=NM$ or $G=NM$.
+Since $N\subseteq NM=M$ yields a contradiction, we conclude that $G=NM$.
+
+If $N\simeq C_p$ for some prime $p$, then $(G:M)=p$ and the proof is complete. 
+Assume that $N\simeq\Z$. Let $H$ be a proper subgroup of $N$. Since 
+$H$ is characteristic in $N$, $H$ is normal in $G$. Since 
+$M\subseteq HM\subseteq NM=G$, the maximality of $M$ implies that either $HM=M$ or 
+$HM=G$. Since $HM=M$ implies $H\subseteq M\cap N=\{1\}$,
+we may assume that $HM=G$. If $n\in N\setminus H$, then $n=hm$ for some 
+$h\in H$ and $m\in M$. Then $h=n$, as $h^{-1}n\in N\cap M=\{1\}$, a contradiction. 
+
+	Demostremos ahora la tercera afirmación. Como $G$ es súper-resoluble, existe
+	una sucesión
+	\[
+	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
+	\]
+	de subgrupos normales tal que cada $G_i/G_{i+1}$ es cíclico. Para cada
+	$i\in\{0,\dots,n\}$ sea $H_i=[G,G]\cap G_i$. Como $[G,G]$ y los $G_i$ son
+	normales en $G$, se tiene una sucesión
+	\[
+	[G,G]=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=\{1\}
+	\]
+	de subgrupos normales de $G$. Como $H_i$ y $H_{i+1}$ es normal en $G$, el
+	grupo $G$ actúa por conjugación en $H_i/H_{i+1}$. Esto induce un morfismo
+	$\gamma\colon G\to\Aut(H_i/H_{i+1})$. Como $H_i/H_{i+1}$ es cíclico, 
+	$\Aut(H_i/H_{i+1})$ es abeliano y luego $[G,G]\subseteq\ker \gamma$. Luego
+	$[G,G]$ actúa trivialmente por conjugación en $H_{i}/H_{i+1}$ y entonces
+	\[
+	H_i/H_{i+1}\subseteq Z([G,G]/H_{i+1}).
+	\]
+	%%% TODO: explicar mejor
+
+	Por último demostremos la cuarta afirmación. Como $G$ es no abeliano,
+	$Z(G)\ne G$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.  El cociente
+	$G/Z(G)$ es súper-resoluble y la sucesión
+	\[
+	G/Z(G)=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq \pi(1)=1
+	\]
+	es una sucesión de subgrupos normales de $G/Z(G)$ con cocientes cíclicos.
+	En particular, $1\ne \pi(G_1)$ es propio y normal en $G/Z(G)$.  Por el
+	teorema de la correspondencia, $\pi^{-1}(\pi(G_1))\ne G$ es un subgrupo normal
+	de $G$ que contiene propiamente a $Z(G)$. 
 \end{proof}
 
-Some exercises. The first one is a variation on Exercise \ref{xca:BO_sequence}.
-
-\begin{exercise}
-    Let $N$ be a central subgroup of $G$. If $N$ and $G/N$ are bi-ordered, 
-    then $G$ is bi-ordered. Prove with an example that $N$ needs to be central, normal 
-    is not enough. 
-\end{exercise}
-
-\begin{exercise}
-    Let $G$ be a group that admits 
-    a sequence 
-    \[
-    \{1\}=G_0\subseteq G_1\subseteq\cdots\subseteq G_n=G
-    \]
-    such that
-    each $G_k$ is normal in $G_{k+1}$ and each quotient $G_{k+1}/G_k$ is 
-    torsion-free abelian. Prove that $G$ is bi-ordered.  
-\end{exercise}
-
-\begin{exercise}
-    Prove that torsion-free nilpotent groups are bi-ordered. 
-\end{exercise}
-
-
-\topic{Left-ordered groups}
-
-\begin{definition}
-	\index{Group!left-ordered}
-	A group $G$ is \textbf{left-ordered} if there is a total order 
-	$<$ in $G$ such that $x<y$ implies $zx<zy$ for all $x,y,z\in G$.
-\end{definition}
-
-If $G$ is left-ordered, the positive cone of $G$ is defined as $P(G)=\{x\in G:1<x\}$. 
-
-\begin{exercise}
-	Let $G$ be left-ordered with positive cone $P$. Prove that 
-	$P$ is closed under multiplication and that 
-	$G=P\cup P^{-1}\cup \{1\}$ (disjoint union).
-\end{exercise}
-
-\begin{exercise}
-\label{xca:LO_cone}
-	Let $G$ be a group and $P$ be a subset closed under multiplication. Assume that 
-	$G=P\cup P^{-1}\cup \{1\}$ (disjoint union). Prove that $x<y$ if and only if
-	$x^{-1}y\in P$ turns $G$ into a left-ordered group with positive cone $P$.
-\end{exercise}
-
-Left-ordered groups behave nicely with respect to extensions. Let $G$ be a group
-and $N$ be a left-ordered normal subgroup of $G$. If $\pi\colon G\to G/N$ is the 
-canonical map and $G/N$ is left-ordered, then
-$G$ is left-ordered with
-$x<y$ if and only if either $\pi(x)<\pi(y)$ or $\pi(x)=\pi(y)$ and $1<x^{-1}y$. 
-
+\begin{example}
+	Si $G$ es un grupo resoluble, no necesariamente $[G,G]$ es un grupo nilpotente. El grupo
+	$\Sym_4$ es resoluble pero $[\Sym_4,\Sym_4]=\Alt_4$ no es nilpotente.
+\end{example}
 
 \begin{proposition}
-	Let $G$ be a group and $N$ be a normal subgroup of $G$. 
-	If $N$ and $G/N$ are left-ordered, then so is $G$.
+	\label{proposition:psuper}
+	Sea $p$ un número primo.  Todo $p$-grupo finito es súper-resoluble.
 \end{proposition}
 
 \begin{proof}
-	Since $N$ and $G/N$ are both left-ordered, there exist positive cones 
-	$P(N)$ and $P(G/N)$. Let $\pi\colon G\to G/N$ be the canonical map and 
-	\[
-		P(G)=\{x\in G:\pi(x)\in P(G/N)\text{ or }x\in P(N)\}.
-	\]	
-	A routine calculation shows that $P(G)$ is closed under multiplication 
-	and that $G$ decomposes as $G=P(G)\cup P(G)^{-1}\cup \{1\}$ (disjoint union). It follows
-	from Exercise \ref{xca:LO_cone} that 
-	$G$ is left-ordered. 
+	Sea $G$ un contraejemplo de orden minimal. Podemos suponer que $|G|=p^n$
+	con $n>1$ (pues si $n=1$ el grupo $G$ es trivialmente súper-resoluble).
+	Como $G$ es un $p$-grupo, es nilpotente  y existe un subgrupo normal $N$ de
+	orden $p$. El cociente $G/N$ tiene orden $p^{n-1}$ entonces es
+	súper-resoluble pues $|G/N|<|G|$. Como $N$ es cíclico y $G/N$ es
+	súper-resoluble, $G$ es súper-resoluble por la
+	proposición~\ref{proposition:Nciclico}.
 \end{proof}
 
+Como todo grupo finito nilpotente es producto directo de (finitos) subgrupos de
+Sylow, cada $p$-grupo es súper-resoluble y el producto directo de súper-resolubles es súper-resoluble, 
+se obtiene el siguiente resultado:
 
+\begin{proposition}
+	Todo grupo finito nilpotente es súper-resoluble.
+\end{proposition}
+
+% \begin{proof}
+% 	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
+% 	Sylow. Como cada $p$-grupo es súper-resoluble por la
+% 	proposición~\ref{proposition:psuper}, el resultado se obtiene
+% 	inmediatamente del ejercicio~\ref{exercise:directosuper}.
+% \end{proof}
+
+\begin{theorem}
+	Todo grupo súper-resoluble tiene subgrupos maximales.	
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en la longitud de la sucesión de
+	superresolubilidad. Si la longitud es uno, el teorema es cierto pues en
+	este caso el grupo es cíclico. Supongamos entonces que $G$ admite una
+	sucesión
+	\[
+		G=G_0\supseteq\cdots\supseteq G_k=\{1\}
+	\]
+	y que la afirmación es cierta para grupos súper-resolubles con sucesiones 
+	de longitud $<k$. Como $G_{k-1}$ es normal en $G$, sea $\pi\colon G\to
+	G/G_{k-1}$ el morfismo canónico. Entonces la sucesión
+	\[
+		G/G_{k-1}=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq\pi(G_{k-1})=\{1\}
+	\]
+	prueba la resolubilidad de $\pi(G)$ y tiene longitud $<k$. Por hipótesis
+	inductiva, $G/G_{k-1}$ admite subgrupos maximales y luego, por el teorema
+	de la correspondencia, $G$ también admite subgrupos maximales.
+\end{proof}
+
+Los grupos resolubles o nilpotentes no siempre admiten
+subgrupos maximales, ver por ejemplo $\Q$.
+
+\begin{definition}
+	\index{Grupo!que satisface la condición maximal para subgrupos}
+	Se dice que un grupo $G$ satisface la \textbf{condición maximal para
+	subgrupos} si 
+	todo subconjunto $\mathcal{S}$ no vacío de subgrupos tiene un subgrupo
+	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
+	%toda sucesión creciente
+	%$S_1\subseteq S_2\subseteq S_3\subseteq\cdots$
+	%de subgrupos es finita. 
+	%%si todo subconjunto $\mathcal{S}$ 
+	%%no vacío de subgrupos tiene un elemento maximal, es decir: existe
+	%$M\in\mathcal{S}$ tal que $S\subseteq M$ para todo $S\in\mathcal{S}$.
+\end{definition}
+
+%\begin{lemma}
+%	Un grupo $G$ satisface la la condición maximal para subgrupos si y sólo si
+%	todo subconjunto $\mathcal{S}$ no vacío de subgrupos tiene un subgrupo
+%	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
+%\end{lemma}
+
+\begin{proposition}
+	\label{pro:MAX=fg}
+	Sea $G$ un grupo. Entonces $G$ satisface la condición maximal para
+	subgrupos si y sólo si todo subgrupo de $G$ es finitamente generado.
+\end{proposition}
+
+\begin{proof}
+	Supongamos que $G$ satisface la condición maximal para subgrupos y sea $H$
+	un subgrupo de $G$.  Sea $\mathcal{S}$ el conjunto de subgrupos de $H$
+	finitamente generados. Como $\mathcal{S}$ es no vacío (pues
+	$1\in\mathcal{S}$), existe un elemento maximal $M\in\mathcal{S}$.  Sea
+	$x\in H$. Como $\langle M,x\rangle\in\mathcal{S}$, $M=\langle M,x\rangle$ y
+	luego $x\in M$. Como entonces $H=M$, $H$ es finitamente generado.
+	%Supongamos que $G$ no es finitamente generado y satisface la condición maximal para subgrupos. Sea $1\ne g\in G$
+	%y sea $S_1=\langle g_1\rangle$. Como $S_1\ne G$, existe $g_2\in G\setminus S_1$, y entonces 
+	%$S_1\subseteq S_2=\langle x_1,x_2\rangle$. 
+
+	Supongamos ahora que todo subgrupo de $G$ es finitamente generado. Si
+	$\mathcal{S}$ es un subconjunto no vacío de subgrupos de $G$ sin elemento
+	maximal, podemos construir una sucesión de subgrupos $S_1\subseteq
+	S_2\subseteq\cdots$ que no se estabiliza (acá necesitamos utilizar el
+	axioma de elección). Como la unión 
+	\[
+		S=\bigcup_{j\geq1}S_j 
+	\]
+	es un subgrupo de $G$, es finitamente generado y luego $S\subseteq S_k$
+	para algún $k$ suficientemente grande, una contradicción.
+\end{proof}
+
+Una consecuencia inmediata. 
+
+\begin{proposition}
+    Sean $G$ un grupo y $H$ un subgrupo de $G$.  Si $G$ satisface la
+	condición maximal para subgrupos entonces $H$ también. 
+\end{proposition}
+
+\begin{proposition}
+	\label{proposition:max:G/N}
+	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $G/N$ y $N$
+	satisfacen la condición maximal para subgrupos entonces $G$ también. 
+\end{proposition}
+
+\begin{proof} 
+	Sea $\pi\colon G\to G/N$ el morfismo canónico.  Sea $\mathcal{S}$ un
+	subconjunto no vacío de subgrupos de $G$. El conjunto $\{S\cap
+	N:S\in\mathcal{S}\}$ tiene un elemento maximal $A$ y el conjunto
+	$\{\pi(S):S\in\mathcal{S},S\cap N=A\}$ tiene un elemento maximal $B$. Sea
+	$S\in\mathcal{S}$ tal que $\pi(S)=B$ y $S\cap N=A$. Si $S$ no es maximal en
+	$\mathcal{S}$, existe $T\in\mathcal{S}$ tal que $S\subseteq T$, $N\cap T=A$
+	y $\pi(T)=B$. Sea $x\in T\setminus S$. Como $\pi(xN)=\pi(x)\in\pi(T)=B$,
+	existe $y\in S$ tal que $xN=yN$. Luego $y^{-1}x\in N\cap T=A=N\cap S$, una
+	contradicción pues $x\not\in S$. 
+\end{proof}
+
+% TODO: agregar teorema de Huppert (ver por ejemplo Robinson, p. 268)
+% corolario: G super si y sólo G/\Phi(G) super
+% teorema de Iwasawa, Hall 342-345, 19.3
+% teorema de Zappa-Ore, Duke 5 (1939), 431-460, Duke 6 (1940), 511-512
+
+%\begin{definition}
+%	\index{Grupo!que satisface la condición minimal para subgrupos}
+%	Se dice que un grupo $G$ satisface la \textbf{condición minimal para
+%	subgrupos} si todo subconjunto no vacío de subgrupos tiene un elemento
+%	minimal.
+%\end{definition}
 %
-%\begin{theorem}
-%	\label{theorem:}
-%	Si $G$ tiene una serie finita subnormal $1=G_0\triangleleft
-%	G_1\triangleleft\cdots\triangleleft G_n=G$ y cada cociente $G_{i+1}/G_i$ es
-%	abeliano libre de torsión, entonces $G$ es ordenable a derecha. Si además
-%	$G$ es libre de torsión y nilpotente, entonces $G$ es biordenable.
-%\end{theorem}
+%\begin{example}
+%	El grupo $\Z$ no satisface la condición minimal para subgrupos pues
+%	el conjunto $\{2^n\Z:n\in\N\}$ no posee elemento minimal. 
+%\end{example}
+%
+%\begin{proposition}
+%	Sea $G$ un grupo que satisface la condición minimal sobre subgrupos.
+%	Entonces todo elemento de $G$ tiene orden finito.
+%\end{proposition}
+%
+%\begin{proof}
+%	Si existe $x\in G$ de orden infinito, la sucesión $\mathcal{S}$ de subgrupos 
+%	\[
+%	\langle x\rangle\supsetneq\langle x^2\rangle\supsetneq\langle
+%	x^4\rangle\supsetneq\cdots\supsetneq\langle x^{2^k}\rangle\supsetneq\cdots
+%	\]
+%	tiene infinitos elementos y luego no posee un elemento minimal. 
+%\end{proof}
+%
+%\begin{exercise}
+%	\label{exercise:min:N}
+%	Sea $G$ un grupo y sea $H$ un subgrupo de $G$.  Si $G$ satisface la
+%	condición minimal para subgrupos entonces $H$ también. 
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si $\mathcal{S}$ es un subconjunto no vacío de subgrupos de $H$, entonces
+%	$\mathcal{S}$ posee un elemento minimal por ser un subconjunto no vacío de
+%	subgrupos de $G$.
+%\end{svgraybox}
+%
+%\begin{proposition}
+%	\label{proposition:min:G/N}
+%	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $G/N$ y $N$
+%	satisfacen la condición minimal para subgrupos entonces $G$ también. 
+%\end{proposition}
+%
+%\begin{proof}
+%	
+%\end{proof}
 
-We now present a criterion for detecting left-ordered groups. We shall need 
-a lemma. 
+\begin{proposition}
+	\label{proposition:superfg}
+	Todo grupo súper-resoluble satisface la condición maximal para subgrupos. En
+	particular, todo grupo súper-resoluble es finitamente generado.
+\end{proposition}
+
+\begin{proof}
+	Procederemos por inducción en la longitud $n$ de la sucesión de
+	súper-resolubilidad.  El caso $n=1$ es trivial pues entonces $G$ es cíclico.
+	Supongamos entonces que el resultado vale para grupos súper-resolubles con
+	serie de longitud $\leq n-1$.  Sea $G$ un grupo súper-resoluble no trivial y sea 
+	\[
+	G=G_0\supsetneq
+	G_1\supsetneq\cdots\supsetneq G_n=\{1\}
+	\]
+	una sucesión de subgrupos normales de $G$ con factores cíclicos. Como
+	$G_{1}$ es súper-resoluble por el ejercicio~\ref{xca:super},
+	$G_{1}$ satisface la condición maximal para subgrupos por hipótesis
+	inductiva.  Luego, por la proposición~\ref{proposition:max:G/N}, $G$ satisface la condición maximal para subgrupos porque
+	$G/G_{1}$ es un grupo cíclico.
+\end{proof}
+
+%\begin{proposition}\
+%	\begin{enumerate}
+%		\item Si un grupo súper-resoluble admite una serie de composición,
+%			entonces es finito. 
+%		\item Si un grupo súper-resoluble satisface la condición de minimal en
+%			subgrupos entonces es finito.
+%	\end{enumerate}
+%\end{proposition}
+%
+%\begin{proof}
+%	%Para probar la segunda afirmación obsevemos que todo cociente de $G$ es súper-resoluble 
+%	%y que por el teorema~\ref{theorem:ZorCp} todo factor de la serie debe ser finito pues
+%	%$\Z$ no satisface la condición minimal para subgrupos.
+%\end{proof}
+
+\begin{example}
+	El grupo abeliano $\Q$ es nilpotente pero no es súper-resoluble
+	porque no es finitamente generado.
+\end{example}
+
+%\begin{example}
+%	El grupo $\Sym_3$ es súper-resoluble pero no es nilpotente. 
+%\end{example}
+
+Si $G$ es un grupo y $x_1,\dots,x_{n+1}\in G$ se define 
+\[
+[x_1,\dots,x_{n+1}]=\left[ [x_1,\dots,x_n],x_{n+1} \right],\quad
+n\geq1.
+\]
 
 \begin{lemma}
-	\label{lem:fg}
-	Let $G$ be a finitely generated group. If $H$ is a finite-index subgroup, 
-	then $H$ is finitely generated. 
+	\label{lemma:G_n}
+	Sea $G$ un grupo finitamente generado, digamos $G=\langle X\rangle$ con $X$
+	finito. Para cada $n\geq2$ se define
+	\[
+		G_n=\langle g[x_1,\dots,x_n]g^{-1}:x_1,\dots,x_n\in X,\,g\in G\rangle.
+	\]
+	Entonces $G_n=\gamma_n(G)$ para todo $n\geq2$. 
 \end{lemma}
 
 \begin{proof}
-	Assume that $G$ is generated by $\{g_1,\dots,g_m\}$. Assume that
-	for each $i$ there exists $k$ such that $g_i^{-1}=g_k$. Let $\{t_1,\dots,t_n\}$ be
-	a transversal of $H$ in $G$. For $i\in\{1,\dots,n\}$ and 
-	$j\in\{1,\dots,m\}$ write 
+	Observemos que cada $G_n$ es normal en $G$.  Procederemos por inducción en
+	$n$. El caso $n=2$ es trivial. Supongamos entonces que
+	$\gamma_{n-1}(G)=G_{n-1}$. Sean $x_1,\dots,x_n\in X$. Como
+	$[x_1,\dots,x_n]\in\gamma_{n}(G)$, $G_{n-1}\subseteq\gamma_n(G)$. Sea
+	$N=G_n$ y sea $\pi\colon G\to G/N$ el morfismo canónico. El grupo $G/N$ es
+	finitamente generado. Como
 	\[
-		t_ig_j=h(i,j)t_{k(i,j)}.
+	[\pi([x_1,\dots,x_{n-1}]),\pi(x_n)]=\pi([x_1,\dots,x_n])=1,
 	\]
-	We claim that $H$ is generated by the $h(i,j)$. For $x\in H$, write 
-	\begin{align*}
-	x &=g_{i_1}\cdots g_{i_s}\\
-	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
-	&= h(1,i_1)t_{k_1}g_{i_2}\cdots g_{i_s}\\
-	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
-	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},g_{i_s})t_{k_s},
-	\end{align*}
-	where $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Since $t_{k_s}\in H$, it follows that 
-	$t_{k_s}=t_1\in H$.
+	se tiene que $\pi([x_1,\dots,x_{n-1}])\in Z(G/N)$. Luego
+	$\pi(g[x_1,\dots,x_n]g^{-1})=1$ para todo $g\in G$ y, por hipótesis
+	inductiva, 
+	se concluye que 
+	\[
+	\pi(\gamma_{n-1}(G))=\pi(G_{n-1})\subseteq Z(G/N).
+	\]
+	Como entonces 
+	\[
+	\pi(\gamma_{n}(G))=\pi([\gamma_{n-1}(G),G])=[\pi(\gamma_{n-1}(G)),\pi(G)]=\{1\},
+	\]
+	se concluye que $\gamma_n(G)\subseteq N=G_n$.
 \end{proof}
 
-Now the theorem.
+\begin{lemma}
+	\label{lemma:gamma_n/gamma_n+1}
+	Sea $G$ un grupo finitamente generado.  Entonces
+	$\gamma_n(G)/\gamma_{n+1}(G)$ es finitamente generado. 
+\end{lemma}
+
+\begin{proof}
+	Supongamos que $G=\langle X\rangle$ con $X$ finito. 
+	Al escribir 
+	\[
+	g[x_1,\dots,x_n]g^{-1}=[g,[x_1,\dots,x_n]][x_1,\dots,x_n]
+	\]
+	y usar el lema~\ref{lemma:G_n} para obtener 
+	que $[g,[x_1,\dots,x_n]]\in \gamma_{n+1}(G)=G_{n+1}$, 
+	\[
+	g[x_1,\dots,x_n]g^{-1}\equiv [x_1,\dots,x_n]\bmod \gamma_{n+1}(G). 
+	\]
+	Luego $\gamma_{n}(G)/\gamma_{n+1}(G)$ está generado por 
+	el conjunto finito 
+	\[
+	\{[x_1,\dots,x_n]\gamma_{n+1}(G):x_1,\dots,x_n\in X\}. \qedhere 
+	\]
+\end{proof}
 
 \begin{theorem}
-	Let $G$ be a finitely generated torsion-free group. If $A$ is an abelian normal
-	subgroup such that $G/A$ is finite and cyclic, then $G$ is left-ordered. 
+	\label{theorem:super=fg}
+	Sea $G$ un grupo nilpotente. Entonces $G$ es súper-resoluble si y sólo si
+	$G$ es finitamente generado.
 \end{theorem}
 
 \begin{proof}
-	Note that if $A$ is trivial, then so is $G$. Let us assume that $A\ne\{1\}$. 
-    Since $(G:A)$ is finite, $A$ is finitely generated by the previous lemma. 
-    We proceed by induction on the number of generators of $A$. Since 
-    $G/A$ is cyclic, there exists $x\in G$ such that $G=\langle A,x\rangle$. Then
-    $[x,A]=\langle [x,a]:a\in A\rangle$ is a normal subgroup of $G$ such that 
-    $A/C_A(x)\simeq [x,A]$ (because $a\mapsto [x,a]$ is a group homomorphism $A\to A$
-    with image $[x,A]$ and kernel $C_A(x)$). If $\pi\colon G\to G/[x,A]$ is the canonical map, then
-    $G/[x,A]=\langle \pi(A),\pi(x)\rangle$ and thus $G/[x,A]$ is abelian, as 
-    $[\pi(x),\pi(A)]=\pi[x,A]=1$. Moreover, $G/[x,A]$ is finitely generated, as $G$
-    is finitely generated. Since $(G:A)=n$ and $G$ is torsion-free, it follows that 
-    $1\ne x^n\in A$. Hence $x^n\in C_A(x)$ and therefore $1\leq \rank C_A(x)<\rank A$ (if $\rank
-    C_A(x)=\rank A$, then $[x,A]$ would be a torsion subgroup of $A$, a contradiction
-    since $x\not\in A$). So 
-    \[
-    \rank[x,A]=\rank (A/C_A(x))\leq\rank A-1
-    \]
-    and hence $\rank (A/[x,A])\geq 1$. We proved that $A/[x,A]$ is infinite and hence 
-    $G/[x,A]$ is infinite. 
-
-    Since $G/[x,A]$ is infinite, abelian and finitely generated, there exists a normal subgroup
-    $H$ of $G$ such that $[x,A]\subseteq H$ and $G/H\simeq\Z$. The subgroup 
-    $B=A\cap H$ is abelian, normal in $H$ and such that $H/B$ is cyclic
-    (because it is isomorphic to a subgroup of $G/A$). Since $\rank B<\rank A$, the inductive hypothesis implies that $H$ is left-ordered. Hence $G$ is left-ordered. 
-\end{proof}
-
-\index{Lagrange--Rhemtulla's theorem} 
-Lagrange and Rhemtulla proved that the integral isomorphism problem 
-has an affirmative solution for left-ordered groups. More precisely,
-if $G$ is left-ordered and $H$ is a group such that $\Z[G]\simeq\Z[H]$, then
-$G\simeq H$, see \cite{MR240183}.
-
-\begin{theorem}[Malcev--Neumann]
-	\index{Malcev--Neumann's theorem}
-	Let $G$ be left-ordered group. Then $K[G]$ has no zero divisors 
-	and no non-trivial units. 
-\end{theorem}
-
-\begin{proof}
-	If $\alpha=\sum_{i=1}^na_ig_i\in K[G]$ and
-	$\beta=\sum_{j=1}^mb_jh_j\in K[G]$, then 
-	\begin{equation}
-		\label{eq:producto}
-		\alpha\beta=\sum_{i=1}^n\sum_{j=1}^ma_ib_j(g_ih_j).
-	\end{equation}
-	Without loss of generality we may assume that $a_i\ne 0$ for
-	all $i$ and $b_j\ne 0$ for all $j$. Moreover, we may assume that 
-	$g_1<g_2<\cdots<g_n$. Let $i,j$ be such that 
+	Si $G$ es súper-resoluble, es finitamente generado por la
+	proposición~\ref{proposition:superfg}.  Supongamos que $G$ es finitamente
+	generado y nilpotente. Como por el lema~\ref{lemma:gamma_n/gamma_n+1} cada
+	$\gamma_{n}(G)/\gamma_{n+1}(G)$ es finitamente generado, digamos por
+	$y_1,\dots,y_m$. Sea $\pi\colon G\to G/\gamma_{n+1}(G)$ el morfismo
+	canónico.  Para cada $j\in\{1,\dots,m\}$ sea 
 	\[
-		g_ih_j=\min\{g_ih_j:1\leq i\leq n,1\leq j\leq m\}.
+	K_j=\langle \gamma_{n+1}(G),y_1,\dots,y_j\rangle.
 	\]
-	Then $i=1$, as $i>1$ implies
-	$g_1h_j<g_ih_j$, a contradiction. Since $g_1h_j\ne g_1h_k$ whenever 
-	$k\ne j$, there exists a unique minimal element in the left hand side of Equality~\eqref{eq:producto}. The same argument shows that there is a unique
-	maximal element in~\eqref{eq:producto}. Thus 
-	$\alpha\beta\ne 0$, as $a_1b_j\ne 0$, and therefore $K[G]$ has no zero divisors. 
-	If, moreover, $n>1$ or $m>1$, then~\eqref{eq:producto} contains at least two
-	terms than cancel out and thus  
-	$\alpha\beta\ne1$. It follows that units of $K[G]$ are trivial. 
+	Como
+	$[K_j,G]\subseteq [\gamma_n(G),G]=\gamma_{n+1}(G)$, 
+	se tiene que $\pi(K_j)$ es central en $\pi(G)$. Luego $\pi(K_j)$ es normal
+	en $\pi(G)$ y por lo tanto $K_j$ es normal en $G$. Como cada $K_j/K_{j-1}$
+	es cíclico generado por $y_jK_{j-1}$, entre $\gamma_n(G)$ y
+	$\gamma_{n+1}(G)$ pudimos construir una sucesión de subgrupos normales de
+	$G$ con factores cíclicos. Como $G$ es nilpotente, existe $c$ tal que
+	$\gamma_{c+1}(G)=1$ y luego $G$ es súper-resoluble.
 \end{proof}
 
-\index{Formanek's theorem}
-\index{Farkas--Snider's theorem}
-\index{Brown's theorem}
-Formanek proved that the zero divisors conjecture is true 
-in the case of torsion-free super solvable. Brown and, independently, 
-Farkas and Snider proved that the conjecture is true 
-in the case of groups algebras (over fields of characteristic zero) of 
-polycyclic-by-finite torsion-free groups. These results
-can be found in Chapter 13 of
-Passman's book \cite{MR798076}. 
+\begin{corollary}
+	\label{corollary:nilpotente=>max}
+	Todo grupo nilpotente finitamente generado satisface la condición maximal
+	en subgrupos.
+\end{corollary}
 
-\topic{The braid group}
+\begin{proof}
+	Es consecuencia del teorema~\ref{theorem:super=fg} y la
+	proposición~\ref{proposition:superfg}.
+\end{proof}
 
-\begin{definition}
-    \index{Braid group}
-    Let $n\geq1$. The \textbf{braid group} $\B_n$ is
-    the group with generators $\sigma_1,\dots,\sigma_{n-1}$ and
-    relations
-    \begin{align*}
-        &\sigma_i\sigma_{i+1}\sigma_i=\sigma_{i+1}\sigma_i\sigma_{i+1} && \text{if }1\leq i\leq n-2,\\
-        &\sigma_i\sigma_j=\sigma_j\sigma_i && \text{if }|i-j|> 1.
-    \end{align*}
-\end{definition}
+\begin{theorem}
+	Sea $G$ un grupo nilpotente y finitamente generado. Entonces $T(G)$ es
+	finito.
+\end{theorem}
 
-Note that $\B_1=\{1\}$ and $\B_2\simeq\Z$. The braid 
-group $\B_3$ is generated by
-$\sigma_1$ and $\sigma_2$ with relations
-$\sigma_1\sigma_2\sigma_1=\sigma_2\sigma_1\sigma_2$.
+\begin{proof}
+	Como $G$ es nilpotente, $G$ satisface la condición maximal para subgrupos
+	por el corolario~\ref{corollary:nilpotente=>max} y entonces
+	todo subgrupo de $G$ es finitamente generado. Como $T(G)$ es un subgrupo por el teorema~\ref{theorem:T(nilpotent)}, 
+	es finitamente generado y de torsión. Luego $T(G)$ es finito por el
+	teorema~\ref{theorem:T(G)finito}.
+\end{proof}
 
-\begin{exercise}
-    Prove that there exists a group homomorphism $\B_n\to\Sym_n$ 
-    given by $\sigma_i\mapsto (i\,i+1)$ for all $i\in\{1,\dots,n-1\}$. 
-\end{exercise}
 
-Note that if $n\geq3$, then 
-$\B_n$ is a non-abelian group, as there exists a surjective
-group homomorphism $\B_n\to\Sym_n$. 
-
-\begin{exercise}
-    Let $n\geq 2$. 
-    Prove that the map $\deg\colon\B_n\to\Z$, $\sigma_i\mapsto 1$, 
-    is a group homomorphism. Moreover, $\ker\deg=[\B_n,\B_n]$. 
-\end{exercise}
-
-The previous result implies, in particular, that $\B_n$ is an infinite 
-group for all $n\geq2$. Moreover, $\sigma_i^m\ne1$ for all $m\in\Z\setminus\{0\}$ and all $i$.  
-
-\begin{exercise}
-    Prove that $\B_3\simeq\langle x,y:x^2=y^3\rangle$ and that 
-    $\B_3/Z(\B_3)\simeq\PSL_2(\Z)$. 
-\end{exercise}
-
-\begin{exercise}
-    Prove that the center $Z(\B_3)$ of $\B_3$ is
-    the cyclic group generated by $(\sigma_1\sigma_2\sigma_1)^2$.
-\end{exercise}
-
-More generally, one can prove that
-the center of $\B_n$ is generated by $\Delta_n^2$, where
-\[
-\Delta_n=(\sigma_1\cdots\sigma_{n-1})(\sigma_1\cdots\sigma_{n-2})\cdots(\sigma_1\sigma_2)\sigma_1, 
-\]
-see for example \cite[Theorem 1.24]{MR2435235}. 
-As a corollary, $\B_n\simeq\B_m$ if and only if $n=m$. 
-
-\begin{exercise}
-\label{xca:Bn_notBO}
-    Let $n\geq3$. 
-    Prove that $\B_n$ is not bi-ordered. 
-\end{exercise}
-
-One can prove that 
-the natural map $\B_n\to\B_{n+1}$ is an injective group homomorphism, this is not an easy proof (see \cite[Corollary 1.14]{MR2435235}). Moreover,
-the diagram
-\[\begin{tikzcd}
-	\B_n & \Sym_n \\
-	\B_{n+1} & \Sym_{n+1}
-	\arrow[two heads, from=1-1, to=1-2]
-	\arrow[hook, from=1-2, to=2-2]
-	\arrow[hook, from=1-1, to=2-1]
-	\arrow[two heads, from=2-1, to=2-2]
-\end{tikzcd}
-\]
-commutes. 
-
-\begin{exercise}
-\label{xca:derivedB3}
-\index{Reidemeister--Schreier's method}
-    Use the Reidemeister--Schreier's method to prove that 
-    $[\B_3,\B_3]$ is isomorphic to the free group in two letters.
-\end{exercise}
-
-\index{Dehornoy's theorem}
-A celebrated theorem of Dehornoy states that the braid group $\B_n$ 
-is left-ordered (see for example \cite[Theorem 7.15]{MR2435235}). The proof of this fact is quite hard. However, 
-there is a nice short proof of the fact that 
-$\B_3$ is left-ordered, see 
-\cite[\S7.2]{MR3560661}.
-
-\begin{problem}[Burau's representation]
-\index{Burau's representation}
-    Let $\B_4\to\GL_4(\Z[t,t^{-1}])$ be the group 
-    homomorphism given by
-    \[
-    \sigma_1\mapsto\begin{pmatrix}
-    1-t&t&0&0\\
-    1&0&0&0\\
-    0&0&1&0\\
-    0&0&0&1
-    \end{pmatrix},
-    \quad
-    \sigma_2\mapsto\begin{pmatrix}
-    1&0&0&0\\
-    0&1-t&t&0\\
-    0&1&0&0\\
-    0&0&0&1
-    \end{pmatrix},
-    \quad
-    \sigma_3\mapsto\begin{pmatrix}
-    1&0&0&0\\
-    0&1&0&0\\
-    0&0&1-t&t\\
-    0&0&1&0
-    \end{pmatrix}.
-    \]
-    Is this homomorphism injective?
-\end{problem}
-
-In general, the Burau's representation
-$\B_n\to\GL_{n}(\Z[t,t^{-1}])$ 
-is defined
-by
-\[
-\sigma_j\mapsto
-I_{j-1}\oplus
-\begin{pmatrix}
-1-t & t\\
-1 & 0
-\end{pmatrix}
-\oplus
-I_{n-j-1},
-\]
-where $I_k$ denotes the $k\times k$ identity matrix. 
-
-It is known that the Burau's representation of $\B_n$ is faithful
-for $n\leq3$ and not faithful for $n\geq5$. Only the case
-$n=4$ remains open.
-
-Using a different representation,  
-Krammer \cite{MR1888796} and Bigelow \cite{MR1815219} 
-independently proved that braid groups are linear. 
 
