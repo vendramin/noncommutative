@@ -58,6 +58,17 @@ $G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.
 \end{example}
 
 \begin{exercise}
+\label{xca:Robinson:5.4.1}
+    Let $p$, $q$ and $r$ be prime numbers. Prove that groups
+    of order $p^\alpha q$, $p^2q^2$ and $pqr$ are solvable. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:less60}
+    Prove that groups of order $<60$ are solvable. 
+\end{exercise}
+
+\begin{exercise}
 \label{xca:pgroups_solvable}
 Let $p$ be a prime number. Prove that finite $p$-groups are solvable.
 \end{exercise}
@@ -356,75 +367,115 @@ We start with an extremely simple and useful tool.
 \end{theorem}
 
 \begin{proof}
-	We proceed by induction on $|G|$. Let $N$ be a minimal normal subgroup of 
-	$G$ and $p$ be the largest prime divisor of $|N|$. Let $P\in\Syl_p(N)$ and 
-	$L=N_G(P)$. If $L=G$, then $P$ is normal in $G$. Since $P$ and 
-	$G/P$ are solvable by the inductive hypothesis, $G$ is solvable. Assume now that 
-	$L\ne G$. Let $M$ be a maximal subgroup of $G$ containing $L$. 
-	    By Frattini's argument (Lemma~\ref{lem:Frattini_argument}),  
-	$G=NL=NM$. Since $M$ is maximal, 
-	there exists a prime number $q$ such that  
-	\[
-	(N:N\cap M)=(G:M)\in\{q,q^2\}, 
-	\]
-	as $(G:M)=|G|/|M|=|NM|/|M|=|N|/|N\cap M|$.  
-	Thus $q$ divides $|N|$ and hence $q\leq p$. In particular, $q\not\equiv
-	1\bmod p$ (otherwise, if $q\equiv1\bmod p$, 
-        then $p\mid q-1$ and thus $p\leq q-1<q\leq p$, a contradiction). 
-	If $g\in G$, then  
-	\[
-	gPg^{-1}\subseteq gNg^{-1}=N
-	\]
-	and hence $gPg^{-1}\in\Syl_p(N)$. Let $G$ act by conjugation on 
-	$\Syl_p(N)$. The number of $p$-subgroups of $N$ is then 
-	\[
-		(G:N_G(P))=(G:L)\equiv 1\bmod p.	
-	\]
-	Since $L\subseteq M$, $L=N_M(P)$. 
-	
-	%Supongamos que $|P|=p^{\alpha}$.  
-	Since $P\subseteq M$, $P$ acts 
-	on the set $X=\{mPm^{-1}:m\in M\}$. We claim that $\{P\}$ is the only one-element orbit. 
-        If $\{P_1\}$ is an orbit, then $P_1=mPm^{-1}$ for some $m\in M$ and 
- 	$P=m^{-1}P_1m=P_1$. 
-% 	es un subgrupo normal de $\langle P,P_1\rangle$ y
-% 	luego $P_1P$ is un subgrupo de $M$ de orden $p^{\beta}$ con
-% 	$\beta\leq\alpha$. Since $P\subseteq P_1P$, se concluye que $P_1P=P$ and luego
-% 	$P=P_1$. 
+We proceed by induction on $|G|$. Let $p$ be the largest prime divisor of $|G|$. Let 
+$S\in\Syl_p(G)$ and $N=N_G(S)$. 
 
-    Decompose $X$ as a disjoint union of orbits: 
-	\[
-	X=\{P\}\cup O(P_1)\cup\cdots\cup O(P_k),
-	\]
-	where $\{P\}$ is the only one-element orbit and 
-        each $O(P_j)$ has size divisible by $p$. 
-	Then 
-	\[
-		(M:N_M(P))=(M:L)=|X|\equiv1\bmod p.
-	\]
-	From $(G:L)=(G:M)(M:L)$ we conclude that 
-        $(G:M)\equiv1\bmod p$.
-	Therefore 
- \[
- (G:M)=q^2\equiv 1\bmod p.
- \]
- This implies that $q\equiv -1\bmod
-	p$. Hence $q=2$ and $p=q+1=3$.
+If $N=G$, then $S$ is normal in $G$. Since every 
+maximal subgroup of $G/S$ has prime or a prime-square index, 
+$G/S$ is solvable by the inductive hypothesis. Since $S$ is a $p$-group, it is solvable. 
+Therefore $G$ is solvable. 
 
-	Since $(N:N\cap M)=4$, letting $N$ act on $N/N\cap M$ by left multiplication, there exists 
-        a non-trivial group homomorphism $\rho\colon
-	N\to\Sym_4$. Since $[N,N]$ is characteristic in $N$ and $N$ is normal in $G$,
-	there are two cases: either $[N,N]=\{1\}$ or 
-	$[N,N]=N$. If $[N,N]=N$, then
-	\[
-	\rho(N)=\rho([N,N])=[\rho(N),\rho(N)].
-	\]
-	Since $\Sym_4$ is solvable, $\rho(N)$ is solvable. Hence $\rho(N)=\{1\}$, a contradiction. 
-	Therefore $[N,N]=\{1\}$. Since $N$ is solvable (it is abelian) 
-	and $G/N$ is solvable by the inductive hypothesis, $G$ is solvable.
-%	El grupo $N$ tiene orden $2^a3^b$, and entonces $N$ is solvable por el
-%	teorema de Burnside.  Since $N$ is solvable and $G/N$ is solvable por
-%	hipótesis inductiva, $G$ is solvable por el
-%	teorema~\ref{theorem:solvable}. 
+Assume now that $N\ne G$. Let $H$ be a maximal subgroup of $G$ containing $N$. Then 
+\[
+N=N_H(S)=N_G(S),
+\]
+the number of Sylow $p$-subgroups of $G$ is $(G:N)\equiv1\bmod p$  
+and the number of Sylow $p$-subgroups of $H$ is $(G:H)\equiv1\bmod p$ 
+by the third Sylow's theorem. By assumption, there exists a prime number $q$ 
+such that 
+$(G:H)\in\{q,q^2\}$. Since $q$ divides $|G|$, it follows that $p<q$. If $(G:H)=q$, then 
+$p$ divides $q-1$ and therefore $p\leq q-1<p$, a contradiction. Thus $q^2=(G:H)\equiv 1\bmod p$.
+From this it follows that $q\equiv -1\bmod p$ and hence $q=2$ and 
+$p=q+1=3$. 
+
+Therefore $G$ has order $2^\alpha 3^ \beta$. 
+If we apply Burnside's theorem, we are done. Instead, we will finish the proof with an elementary argument. Let $K$ be a minimal normal subgroup of $G$.
+By Frattini's argument (Lemma~\ref{lem:Frattini_argument}),  $G=KN=KH$. Since $H$ is maximal, 
+\[
+(K:K\cap H)(G:H)=4, 
+\]
+as $(G:H)=|G|/|H|=|KH|/|H|=|K|/|K\cap H|$. 
+Since $(K:K\cap H)=4$, letting $K$ act on $K/K\cap H$ by left multiplication, there exists 
+a non-trivial group homomorphism $\rho\colon K\to\Sym_4$. Since $[K,K]$ is characteristic in $K$ and $K$ is normal in $G$, $[K,K]\subseteq K$ is normal in $G$. Since $K$ is minimal normal in $G$, 
+there are two possible cases: either $[K,K]=\{1\}$ or 
+$[K,K]=K$. If $[K,K]=K$, 
+since $\Sym_4$ is solvable, $\rho(K)$ is solvable. Then
+\[
+\rho(K)=\rho([K,K])=[\rho(K),\rho(K)],
+\]
+a contradiction. Therefore $[K,K]=\{1\}$ and $K$ is solvable (as it is abelian).
 \end{proof}
+
+% \begin{proof}
+% 	We proceed by induction on $|G|$. Let $N$ be a minimal normal subgroup of 
+% 	$G$ and $p$ be the largest prime divisor of $|N|$. Let $P\in\Syl_p(N)$ and 
+% 	$L=N_G(P)$. If $L=G$, then $P$ is normal in $G$. Since $P$ and 
+% 	$G/P$ are solvable by the inductive hypothesis, $G$ is solvable. Assume now that 
+% 	$L\ne G$. Let $M$ be a maximal subgroup of $G$ containing $L$. 
+% 	    By Frattini's argument (Lemma~\ref{lem:Frattini_argument}),  
+% 	$G=NL=NM$. Since $M$ is maximal, 
+% 	there exists a prime number $q$ such that  
+% 	\[
+% 	(N:N\cap M)=(G:M)\in\{q,q^2\}, 
+% 	\]
+% 	as $(G:M)=|G|/|M|=|NM|/|M|=|N|/|N\cap M|$.  
+% 	Thus $q$ divides $|N|$ and hence $q\leq p$. In particular, $q\not\equiv
+% 	1\bmod p$ (otherwise, if $q\equiv1\bmod p$, 
+%         then $p\mid q-1$ and thus $p\leq q-1<q\leq p$, a contradiction). 
+% 	If $g\in G$, then  
+% 	\[
+% 	gPg^{-1}\subseteq gNg^{-1}=N
+% 	\]
+% 	and hence $gPg^{-1}\in\Syl_p(N)$. Let $G$ act by conjugation on 
+% 	$\Syl_p(N)$. The number of $p$-subgroups of $N$ is then 
+% 	\[
+% 		(G:N_G(P))=(G:L)\equiv 1\bmod p.	
+% 	\]
+% 	Since $L\subseteq M$, $L=N_M(P)$. 
+	
+% 	%Supongamos que $|P|=p^{\alpha}$.  
+% 	Since $P\subseteq M$, $P$ acts 
+% 	on the set $X=\{mPm^{-1}:m\in M\}$. We claim that $\{P\}$ is the only one-element orbit. 
+%         If $\{P_1\}$ is an orbit, then $P_1=mPm^{-1}$ for some $m\in M$ and 
+%  	$P=m^{-1}P_1m=P_1$. 
+% % 	es un subgrupo normal de $\langle P,P_1\rangle$ y
+% % 	luego $P_1P$ is un subgrupo de $M$ de orden $p^{\beta}$ con
+% % 	$\beta\leq\alpha$. Since $P\subseteq P_1P$, se concluye que $P_1P=P$ and luego
+% % 	$P=P_1$. 
+
+%     Decompose $X$ as a disjoint union of orbits: 
+% 	\[
+% 	X=\{P\}\cup O(P_1)\cup\cdots\cup O(P_k),
+% 	\]
+% 	where $\{P\}$ is the only one-element orbit and 
+%         each $O(P_j)$ has size divisible by $p$. 
+% 	Then 
+% 	\[
+% 		(M:N_M(P))=(M:L)=|X|\equiv1\bmod p.
+% 	\]
+% 	From $(G:L)=(G:M)(M:L)$ we conclude that 
+%         $(G:M)\equiv1\bmod p$.
+% 	Therefore 
+%  \[
+%  (G:M)=q^2\equiv 1\bmod p.
+%  \]
+%  This implies that $q\equiv -1\bmod
+% 	p$. Hence $q=2$ and $p=q+1=3$.
+
+% 	Since $(N:N\cap M)=4$, letting $N$ act on $N/N\cap M$ by left multiplication, there exists 
+%         a non-trivial group homomorphism $\rho\colon
+% 	N\to\Sym_4$. Since $[N,N]$ is characteristic in $N$ and $N$ is normal in $G$,
+% 	there are two cases: either $[N,N]=\{1\}$ or 
+% 	$[N,N]=N$. If $[N,N]=N$, then
+% 	\[
+% 	\rho(N)=\rho([N,N])=[\rho(N),\rho(N)].
+% 	\]
+% 	Since $\Sym_4$ is solvable, $\rho(N)$ is solvable. Hence $\rho(N)=\{1\}$, a contradiction. 
+% 	Therefore $[N,N]=\{1\}$. Since $N$ is solvable (it is abelian) 
+% 	and $G/N$ is solvable by the inductive hypothesis, $G$ is solvable.
+% %	El grupo $N$ tiene orden $2^a3^b$, and entonces $N$ is solvable por el
+% %	teorema de Burnside.  Since $N$ is solvable and $G/N$ is solvable por
+% %	hipótesis inductiva, $G$ is solvable por el
+% %	teorema~\ref{theorem:solvable}. 
+% \end{proof}
 
