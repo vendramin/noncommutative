@@ -733,23 +733,20 @@ that contains no maximal subgroups.
 
 \begin{proposition}
 \label{pro:g^n}
-Sea $G$ un grupo nilpotente y sea $H$ un subgrupo de $G$ de índice $n$. Si
-$g\in G$ entonces $g^n\in H$.
+Let $G$ be a nilpotent group and $H$ be a subgroup with $(G:H)=n$. If 
+$g\in G$, then $g^n\in H$.
 \end{proposition}
 
-%%% TODO: hacer inducción en el índice para escribirlo mejor
-
 \begin{proof}
-	Procederemos por inducción en $n$. El caso $n=1$ es trivial y el caso 
-	$n=2$ se obtiene de la normalidad de $H$. Supongamos entonces que el resultado es válido para
-	todo subgrupo de índice $<n$. Si $H$ es tal que $(G:H)=n$, entonces
-	sean 
-	$H_0=H$ y $H_{i+1}=N_G(H_i)$ para $i\geq0$. Por definición, $H_{i}$ es
-	normal en $H_{i+1}$ y además, como $G$ es nilpotente, si $H_i\ne G$
-	entonces $H_i\subsetneq H_{i+1}$ por la condición normalizadora. 
-	Como $(G:H)$ es finito, existe $k$ tal que $H_k=G$. Por hipótesis 
-	inductiva, como $(H_j:H_{j-1})<n$ para todo $j$, se tiene que
-	$x^{(H_j:H_{j-1})}\in H_{j-1}$ para todo $x\in H_j$ y todo $j$. Luego  
+We proceed by induction on $n$. The case $n=1$ is trivial. The case  
+$n=2$ follows from the normality of  $H$. So assume the result 
+holds for all groups of index $<n$. Let $H$ be a subgroup of $G$ such that $(G:H)=n$. 
+Let $H_0=H$ and $H_{i+1}=N_G(H_i)$ for all $i\geq0$. By definition, $H_{i}$ is normal in 
+$H_{i+1}$. Since $G$ is nilpotent, $H_i\ne G$
+implies that $H_i\subsetneq H_{i+1}$ by the normalizer condition. 
+Since $(G:H)$ is finite, there exists $k$ such that  $H_k=G$. Since
+$(H_j:H_{j-1})<n$ for all $j$, the inductive hypotehsis implies that 
+	$x^{(H_j:H_{j-1})}\in H_{j-1}$ for all $x\in H_j$ and all $j$. Hence 
 	\[
 		g^{(G:H)}=g^{(H_k:H_{k-1})(H_{k-1}:H_{k-2})\cdots (H_1:H_0)}\in H.\qedhere 
 	\]
@@ -769,35 +766,42 @@ $g\in G$ entonces $g^n\in H$.
 % 	pues $H_{k-2}$ es normal en $H_{k-1}$. Al repetir este argumento, $g^{(G:H)}\in H$. 
 \end{proof}
 
-\begin{example}
-	La proposición anterior no vale si el grupo $G$ no es
-	nilpotente. Sea $G=\Sym_3$ y sea $H=\{\id,(12)\}$ de índice tres.  Si
-	$g=(13)$ entonces $g^{3}=(13)\not\in H$.
-\end{example}
+\begin{exercise}
+\label{xca:g^n}
+    Does the previous proposition hold for non-nilpotent groups? 
+\end{exercise}
 
-El lema que daremos a continuación es una herramienta útil para hacer demostraciones por inducción
-en grupos nilpotentes. 
+% \begin{sol}{xca:g^n}
+% No. Take for example 
+% $G=\Sym_3$ and $H=\{\id,(12)\}$. Then $H$ is index three in $G$ and 
+% for  
+% $g=(13)$ one has $g^{3}=(13)\not\in H$.
+% \end{sol}
+
+The following lemma is useful for performing induction 
+in the nilpotency index of nilpotent groups. 
 
 \begin{lemma}
-	\label{lemma:a[GG]}
-	Sea $G$ un grupo nilpotente de clase $c\geq2$. Si $x\in G$ entonces el subgrupo 
-	$\langle x,[G,G]\rangle$ es nilpotente de clase $<c$.
+\label{lem:a[GG]}
+Let $G$ be a nilpotent group of class $c\geq2$. If $x\in G$, then 
+the subgroup 
+$\langle x,[G,G]\rangle$ is nilpotente of class $<c$.
 \end{lemma}
 
 \begin{proof}
-	Sea $H=\langle x,[G,G]\rangle$.  Si $x\in [G,G]$, el resultado es cierto.
-	Supongamos entonces que $x\not\in [G,G]$. Observemos que 
+Let $H=\langle x,[G,G]\rangle$.  If $x\in [G,G]$, the there is nothing to prove. 
+So assume that $x\not\in [G,G]$. Note that 
 	\[
 		H=\{x^nc:n\in\Z,c\in [G,G]\},
 	\]
-	pues $[G,G]$ es normal en $G$. Para demostrar el lema  
-	alcanza entonces con probar que $[H,H]\subseteq\gamma_3(G)$. Sean $h=x^nc,k=x^md\in H$
-	con $c,d\in [G,G]$. 
-	Como 
+as $[G,G]$ is normal in $G$. We need to show that
+$[H,H]\subseteq\gamma_3(G)$. Let $h=x^nc,k=x^md\in H$
+be such that $c,d\in [G,G]$. 
+Since 
 	\[
 	[h,x^m]=[x^n,[c,x^m]][c,x^m]\in\gamma_4(G)\gamma_3(G)\subseteq\gamma_3(G),
 	\]
-	entonces 
+then  
 	\begin{align*}
 		[h,k]&=[h,x^m][x^m,[h,d]][h,d]\\
 			&=[x^n,[c,x^m]][c,x^m][x^m,[h,d]][h,d]\in\gamma_3(G).\qedhere
@@ -811,15 +815,12 @@ en grupos nilpotentes.
 %	nilpotente de clase uno.
 \end{proof}
 
-Veamos un ejemplo, está hecho con la computadora. 
-
 \begin{example}
-	Sea $G=\D_{8}=\langle r,s:r^{8}=s^2=1,srs=r^{-1}\rangle$ el grupo diedral
-	de orden 16. El grupo $G$ es nilpotente de clase tres
-	y $[G,G]=\{1,r^2,r^4,r^6\}\simeq C_4$. El subgrupo $\langle
-	s,[G,G]\rangle\simeq\D_4$ es nilpotente de clase dos.
-
-	\begin{lstlisting}
+Let $G=\D_{8}=\langle r,s:r^{8}=s^2=1,srs=r^{-1}\rangle$ the dihedral group of order 16.
+Then $G$ is nilpotent of class three and 
+$[G,G]=\{1,r^2,r^4,r^6\}\simeq C_4$. The subgroup $\langle
+s,[G,G]\rangle\simeq\D_4$ is nilpotent of class two. 
+\begin{lstlisting}
 gap> G := DihedralGroup(IsPermGroup,16);;
 gap> gens := GeneratorsOfGroup(G);;
 gap> r := gens[1];;
@@ -835,99 +836,107 @@ gap> NilpotencyClassOfGroup(S);
 	\end{lstlisting}
 \end{example}
 
-Ahora una aplicación del lema. 
+Let us discuss a concrete application of Lemma \ref{lem:a[GG]}.
 
 \begin{theorem}
-	\label{theorem:T(nilpotent)}
-	Si $G$ es un grupo nilpotente, entonces
-	\[
-	T(G)=\{g\in G:g^n=1\text{ para algún $n\gew1$}\}
-	\]
-	es un subgrupo de $G$. 
+\label{thm:T(nilpotent)}
+If $G$ is a nilpotent group, then 
+\[
+T(G)=\{g\in G:g^n=1\text{ for some $n\geq1$}\}
+\]
+is a subgroup of $G$. 
 \end{theorem}
 
 \begin{proof}
-	Sean $a,b\in T(G)$ y sean
-	\[
-		A=\langle a,[G,G]\rangle,\quad
-		B=\langle b,[G,G]\rangle.
-	\]
-	Como $A$ y $B$ son nilpotentes por el lema anterior, por hipótesis
-	inductiva, $T(A)$ es un subgrupo de $A$ y $T(B)$ es un subgrupo de $B$.
-	Como $T(A)$ es característico en $A$ y $A$ es normal en $G$, $T(A)$ es
-	normal en $G$. Similarmente se demuestra que $T(B)$ es normal en $B$.  
-	Veamos ahora que todo elemento de $T(A)T(B)$ tiene orden finito: si
-	$x\in T(A)T(B)$, digamos $x=a_1b_1$ con
-	$a_1$ de orden $m$, entonces $x$ tiene orden finito pues 
-	\begin{align*}
-	x^m=(a_1b_1)^m&=%(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a_1^{m-1} b_1 a_1^{-m+1}b_1)\\
-	(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^{m-1} b_1 a^{-m+1})b_1\in T(B).
-	\end{align*}
-	
-	Para entender mejor el truco hagamos un caso concreto, digamos $m=3$. La fórmula en este caso queda así:
-	\begin{align*}
-	(a_1b_1)^3&=(a_1b_1)(a_1b_1)(a_1b_1)\\
-	&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})a_1^3b_1
-	=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})b_1,
-	\end{align*}
-	pues $a_1^3=1$.
-	
-	El truco nos permite entonces demostrar que $ab$ y $a^{-1}$ tienen ambos 
-	orden finito. Luego $T(G)$ es un
-	subgrupo de $G$.
+We proceed by induction on the nilpotency class of $G$. 
+Let $a,b\in T(G)$ and 
+\[
+	A=\langle a,[G,G]\rangle,\quad
+	B=\langle b,[G,G]\rangle.
+\]
+Since  $A$ and $B$ are nilpotent of class $<c$ by the previous lemma, 
+the inductive hypothesis 
+implies that $T(A)$ is a subgroup of $A$ and $T(B)$ is a subgroup of $B$.
+Since $T(A)$ is characteristic in $A$ and $A$ is normal in $G$, $T(A)$ is normal in $G$. 
+Similarly, $T(B)$ is normal in $G$. 
+
+We claim that every element of 
+$T(A)T(B)$ has finite order. If 
+$x\in T(A)T(B)$, say $x=a_1b_1$ with
+$a_1$ of order $m$, then $x$ has finite order, as 
+\begin{align*}
+x^m=(a_1b_1)^m&=%(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a_1^{m-1} b_1 a_1^{-m+1}b_1)\\
+(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})\cdots (a^{m-1} b_1 a^{-m+1})b_1\in T(B).
+\end{align*}
+
+To see clearly what is what we did, let us work out a concrete 
+example, say $m=3$. In this case, we obtain the following formula:
+\begin{align*}
+(a_1b_1)^3&=(a_1b_1)(a_1b_1)(a_1b_1)\\
+&=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})a_1^3b_1
+=(a_1b_1a_1^{-1})(a_1^2b_1a_1^{-2})b_1,
+\end{align*}
+as $a_1^3=1$.
+
+With this trick, we prove that $ab$ and $a^{-1}$ have finite order. Hence $T(G)$ 
+is a subgroup of $G$. 
 \end{proof}
 
-Otra aplicación.
+Another application:
 
 \begin{theorem}
-	\label{theorem:a=b}
-	Sea $G$ un grupo nilpotente y sin torsión y sean $a,b\in G$. Si existe
-	$n\ne 0$ tal que $a^n=b^n$ entonces $a=b$.
+\label{thm:a=b}
+Let $G$ be a torsion-free nilpotent group and $a,b\in G$. If there exists 
+$n\ne 0$ such that $a^n=b^n$, then $a=b$.
 \end{theorem}
 
 \begin{proof}
-	Procederemos por inducción en el orden de nilpotencia $c$ de $G$. El
-	resultado es trivialmente cierto si $G$ es abeliano. Supongamos entonces
-	que $G$ es nilpotente de índice $c\geq1$. Como $\langle a,[G,G]\rangle$ es un
-	subgrupo de $G$ nilpotente de índice $<c$, y $bab^{-1}=[b,a]a\in \langle
-	a,[G,G]\rangle$, por hipótesis inductiva, $ba=ab$ pues 
-	\[
-		a^n=(bab^{-1})^n=b^n.
-	\]
-	Luego $(ab^{-1})^n=a^nb^{-n}=1$ y por lo tanto, como $G$ no tiene torsión,
-	se concluye que $a=b$.
+We proceed by induction on the nilpotency order $c$ of $G$. 
+The result clearly holds for abelian groups. Assume that $G$ is nilpotent of class $c\geq2$. 
+Since $\langle a,[G,G]\rangle$ is a nilpotent subgroup of $G$ of class $<c$
+and $bab^{-1}=[b,a]a\in \langle
+a,[G,G]\rangle$, the inductive hypotehsis implies that 
+$ba=ab$, as 
+\[
+	a^n=(bab^{-1})^n=b^n.
+\]
+Thus $(ab^{-1})^n=a^nb^{-n}=1$. Since $G$ has no torsion, we conclude that 
+$a=b$.
 \end{proof}
 
 \begin{corollary}
-	Sea $G$ un grupo nilpotente sin torsión. Si $x,y\in G$ son tales que
-	$x^ny^m=y^mx^n$ para algún $n,m\ne 0$, entonces $xy=yx$.
+Let $G$ be a torsion-free nilpotent group. If $x,y\in G$ are such that 
+$x^ny^m=y^mx^n$ for some $n,m\ne 0$, then $xy=yx$.
 \end{corollary}
 
 \begin{proof}
-	Sean $a=x$ y $b=y^nxy^{-n}$. Como $a^m=b^m$, el teorema anterior
-	implica que $a=b$ y luego $xy^n=y^nx$. Al usar nuevamente ese 
-	teorema, esta vez con con $a=y$ y $b=xyx^{-1}$, se
-	concluye que $xy=yx$. 
+Let $a=x$ and $b=y^nxy^{-n}$. Since $a^m=b^m$, the previous theorem implies that 
+$a=b$. Thus $xy^n=y^nx$. Apply the previous theorem again, this time with 
+$a=y$ and $b=xyx^{-1}$. Then we conclude that 
+$xy=yx$. 
 \end{proof}
 
+Before proving another theorem, we recall a basic 
+lemma about finitely generated groups. 
+
 \begin{lemma}
-	\label{lemma:fg}
-	Sea $G$ un grupo finitamente generado y sea $H$ un subgrupo de índice
-	finito. Entonces $H$ es finitamente generado.
+\label{lem:fg}
+Let $G$ be a finitely generated group and 
+$H$ a finite-index subgroup. 
+Then $H$ is finitely generated. 
 \end{lemma}
 
 \begin{proof}
-	Supongamos que $G$ está generado por $\{g_1,\dots,g_m\}$. Podemos suponer, sin pérdida de generalidad, que
-	para cada $i$ existe $k$ tal que $g_i^{-1}=g_k$. 
+Assume that $G$ is generated by $\{g_1,\dots,g_m\}$. Without loss of generality, we may assume that 
+for each $i$ there exists $k$ such that $g_i^{-1}=g_k$. 
 	
-	Sea $\{1=t_1,\dots,t_n\}$ un transversal de $H$ en $G$, es decir un 
-	conjunto de representantes de $G/H$. Para $i\in\{1,\dots,n\}$,
-	$j\in\{1,\dots,m\}$, escribimos
-	\[
-		t_ig_j=h(i,j)t_{k(i,j)}.
-	\]
-	Vamos a demostrar que $H$ está generado por los $h(i,j)$. Sea $x\in H$.
-	Escribamos 
+Let $\{1=t_1,\dots,t_n\}$ be a transversal of $H$ in $G$, that is 
+a complete set of representatives of $G/H$. For $i\in\{1,\dots,n\}$ 
+and $j\in\{1,\dots,m\}$, write 
+\[
+t_ig_j=h(i,j)t_{k(i,j)}.
+\]
+We claim that $H$ is generated by the $h(i,j)$. Let $x\in H$. Then  
 	\begin{align*}
 	x &=g_{i_1}\cdots g_{i_s}\\
 	&= (t_1g_{i_1})g_{i_2}\cdots g_{i_s}\\
@@ -935,23 +944,27 @@ Otra aplicación.
 	&= h(1,i_1)h(k_1,i_2)t_{k_2}g_{i_3}\cdots g_{i_s}\\
 	&= h(1,i_1)h(k_1,i_2)\cdots h(k_{s-1},i_s)t_{k_s},
 	\end{align*}
-	donde $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Como $t_{k_s}\in H$ pues $x\in H$, entonces
-	$t_{k_s}=1\in H$ y luego $x$ está generado por los $h(i,j)$.
+where $k_1,\dots,k_{s-1}\in\{1,\dots,n\}$. Since $t_{k_s}\in H$ (because $x\in H$), 
+$t_{k_s}=1\in H$. Hence  $x$ is generated by the $h(i,j)$.
 \end{proof}
 
+Now the theorem:
+
 \begin{theorem}
-	\label{theorem:T(G)finito}
-	Sea $G$ un grupo finitamente generado, de torsión y nilpotente. Entonces
-	$G$ es finito. 	
+\label{thm:T(G)finito}
+Let $G$ be a finitely generated torsion group that is nilpotent. 
+Then $G$ is finite 
 \end{theorem}
 
 \begin{proof}
-	Procederemos por inducción en la clase de nilpotencia $c$. El caso $c=1$ es
-	verdadero pues $G$ es abeliano. Supongamos entonces que el resultado es
-	válido para $c\geq1$.  Como $[G,G]$ y $G/[G,G]$ son nilpotentes de clase
-	$<c$, finitamente generados por el lema anterior y de torsión, por
-	hipótesis inductiva se tiene que $[G,G]$ y $G/[G,G]$ son finitos. Luego $G$
-	es también finito, de hecho puede probarse que $G$ es de orden $|[G,G]|(G:[G,G])$.
+We proceed by induction on the nilpotency class $c$ of $G$. The case
+$c=1$ is true, as $G$ is abelian. So assume the result holds for 
+groups of class $c\geq1$. Since $[G,G]$ and $G/[G,G]$ are 
+finitely generated (Lemma \ref{lem:fg}) torsion 
+nilpotent groups of class  
+$<c$, the inductive hypothesis implies that
+$[G,G]$ and $G/[G,G]$ are finite groups. Thus 
+$G$ is finite. % of order $|[G,G]|(G:[G,G])$.
 \end{proof}
 
 %\begin{lemma}
@@ -996,75 +1009,80 @@ Otra aplicación.
 
 
 %\subsection{Grupos finitos nilpotentes}
+\subsection{Finite nilpotent groups}
 
-El siguiente lema también resultará muy útil, especialmente en caso de trabajar con 
-grupos finitos nilpotentes. 
+Before studying finite nilpotent groups, we need a lemma. 
 
 \begin{lemma}
-	\label{lemma:normalizador}
-	Sean $G$ un grupo finito, $p$ un primo que divide a $|G|$ y
-	$P\in\Syl_p(G)$. Entonces
-	\[
-	N_G(N_G(P))=N_G(P). 
-	\]
+\label{lem:normalizador}
+Let $G$ be a finite group and $p$ a prime number dividing $|G|$. 
+If 
+$P\in\Syl_p(G)$, then 
+\[
+N_G(N_G(P))=N_G(P). 
+\]
 \end{lemma}
 
 \begin{proof}
-	Sea $H=N_G(P)$. Como $P$ es normal en $H$, $P$ es el único $p$-subgrupo de
-	Sylow de $H$. Para ver que $N_G(H)=H$ basta demostrar que $N_G(H)\subseteq
-	H$. Sea $g\in N_G(H)$. Como 
-	\[
-	gPg^{-1}\subseteq gHg^{-1}=H,
-	\]
-	$gPg^{-1}\in\Syl_p(H)$ y $H$ tiene un único $p$-subgrupo de Sylow, 
-	$P=gPg^{-1}$.  Luego $g\in N_G(P)=H$. 
+Let $H=N_G(P)$. Since $P$ is normal in $H$, $P$ is the only Sylow $p$-subgroup of $H$. 
+To prove that $N_G(H)=H$, it is enough to see that $N_G(H)\subseteq
+H$. Let $g\in N_G(H)$. Since  
+\[
+gPg^{-1}\subseteq gHg^{-1}=H,
+\]
+$gPg^{-1}\in\Syl_p(H)$ and $H$ has only one Sylow $p$-subgroup, 
+$P=gPg^{-1}$.  Hence $g\in N_G(P)=H$. 
 \end{proof}
 
 \begin{theorem}
-	\label{thm:nilpotente:eq}
-	Sea $G$ un grupo finito. Son equivalentes:
-	\begin{enumerate}
-		\item $G$ es nilpotente.
-		\item Todo subgrupo de Sylow de $G$ es normal.
-		\item $G$ es producto directo de sus subgrupos de Sylow.
-	\end{enumerate}
+\label{thm:nilpotente:eq}
+Let $G$ be a finite group. The following statements are equivalent:
+\begin{enumerate}
+	\item $G$ is nilpotent. 
+	\item Every Sylow subgroup of $G$ is normal in $G$. 
+	\item $G$ is a direct product of its Sylow subgroups. 
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	Veamos que $(1)\implies(2)$. Sea $P\in\Syl_p(G)$. Queremos ver que $P$ es
-	normal en $G$, es decir $N_G(P)=G$.  Por el lema anterior, 
-	$N_G(N_G(P))=N_G(P)$. La condición normalizadora implica entonces que $N_G(P)=G$.
+We first prove that $(1)\implies(2)$. Let $P\in\Syl_p(G)$. We aim to prove that $P$ 
+is normal in $G$, that is $N_G(P)=G$. By Lemma \ref{lem:normalizador}, 
+$N_G(N_G(P))=N_G(P)$. Now the normalizer condition (Lemma \ref{lem:normalizadora}) implies that 
+$N_G(P)=G$.
 
-	Veamos ahora que $(2)\implies(3)$. Sean $p_1,\cdots,p_k$ los factores
-	primos de $|G|$ y para cada $i\in\{1,\dots,k\}$ sea $P_i\in\Syl_{p_i}(G)$.
-	Por hipótesis, cada $P_j$ es normal en $G$.
+We now prove that $(2)\implies(3)$. Let $p_1,\cdots,p_k$ be the prime factors of 
+$|G|$. For each $i\in\{1,\dots,k\}$, let  $P_i\in\Syl_{p_i}(G)$.
+By assumption, each $P_j$ is normal in $G$.
 
-	Vamos a demostrar que $P_1\cdots P_j\simeq P_1\times\cdots\times P_j$ para todo $j$.
-	El caso $j=1$ es trivial. Supongamos entonces que el resultado vale para
-	algún $j\geq 1$. Como 
-	\[
-	N=P_1\cdots P_j\simeq P_1\times\cdots\times P_j
-	\]
-	es normal en $G$ y tiene orden coprimo con $|P_{j+1}|$, $N\cap
-	P_{j+1}=\{1\}$. Luego
-	\[
-		NP_{j+1}\simeq N\times P_{j+1}\simeq P_1\times\cdots\times P_j\times P_{j+1}
-	\]
-	pues $P_{j+1}$ es también normal en $G$. 
+We claim that $P_1\cdots P_j\simeq P_1\times\cdots\times P_j$ for all $j$.
+The case $j=1$ is trivial. So assume the result holds for some 
+$j\geq 1$. Since 
+\[
+N=P_1\cdots P_j\simeq P_1\times\cdots\times P_j
+\]
+is normal in $G$ and it has order coprime with $|P_{j+1}|$, 
+\[
+N\cap P_{j+1}=\{1\}.
+\]
+Hence 
+\[
+	NP_{j+1}\simeq N\times P_{j+1}\simeq P_1\times\cdots\times P_j\times P_{j+1}, 
+\]
+as $P_{j+1}$ is normal in $G$. 
+Since now $P_1\cdots P_k\simeq P_1\times\cdots\times P_k$ is a subgroup of 
+$G$ of order $|G|$, we conclude that $G=P_1\times\cdots\times P_k$.
 
-	Ahora que sabemos que $P_1\cdots P_k\simeq P_1\times\cdots\times P_k$ es un
-	subgrupo de orden $|G|$, se concluye que $G=P_1\times\cdots\times P_k$.
-
-	Para ver que $(3)\implies(1)$ simplemente hace falta observar que todo
-	$p$-grupo es nilpotente (proposición~\ref{pro:nilpotent_pgroups}) y
-	que el producto directo de finitos nilpotentes es nilpotente.
-	%(ejercicio~\ref{exercise:HxK_nilpotente}).
+Finally, we prove that $(3)\implies(1)$. We just need to note that 
+every 
+$p$-group is nilpotent (Proposition~\ref{pro:nilpotent_pgroups}) and that the direct product
+of nilpotent groups is nilpotent. 
+%(ejercicio~\ref{exercise:HxK_nilpotente}).
 \end{proof}
 
 \begin{exercise}
-	\label{xca:truco}
-	Sea $G$ un grupo finito. Demuestre que si $P\in\Syl_p(G)$ y $M$ es un subgrupo de $G$ tal que
-	$N_G(P)\subseteq M$ entonces $M=N_G(M)$. 
+\label{xca:truco}
+Let $G$ be a finite group. Prove that if $P\in\Syl_p(G)$ and $M$ is a subgroup of $G$ such that 
+$N_G(P)\subseteq M$, then $M=N_G(M)$. 
 \end{exercise}
 
 % \begin{svgraybox}
@@ -1079,13 +1097,13 @@ grupos finitos nilpotentes.
 % \end{svgraybox}
 
 \begin{exercise}
-	\label{xca:normalizadora}
-	Sea $G$ un grupo finito. Son equivalentes:
-	\begin{enumerate}
-		\item $G$ es nilpotente.
-		\item Si $H\subsetneq G$ es un subgrupo entonces $H\subsetneq N_G(H)$.
-		\item Todo subgrupo maximal de $G$ es normal en $G$.
-	\end{enumerate}
+\label{xca:normalizadora}
+Let $G$ be a finite group. Prove that the following statements are equivalent:
+\begin{enumerate}
+	\item $G$ is nilpotent.
+	\item If $H\subsetneq G$ is a subgroup of $G$, then $H\subsetneq N_G(H)$.
+	\item Every maximal subgroup of $G$ is normal in $G$.
+\end{enumerate}
 \end{exercise}
 
 % \begin{svgraybox}
@@ -1105,30 +1123,29 @@ grupos finitos nilpotentes.
 % 5.41 rotman
 
 \begin{theorem}
-	Sea $G$ un grupo finito nilpotente. Si $p$ es un primo que divide al orden
-	de $G$, existe un subgrupo minimal-normal de orden $p$ y existe un subgrupo
-	maximal de índice $p$.
+Let $G$ be a finite nilpotent group. If $p$ is a prime number dividing 
+$|G|$, there exist a minimal normal subgroup of order $p$ and 
+there exists a maximal subgroup of index $p$. 
 \end{theorem}
 
 \begin{proof}
-	Supongamos que $|G|=p^{\alpha}m$, donde $p$ es un primo coprimo con $m$.
-	Escribamos $G=P\times H$, donde $P\in\Syl_p(G)$.  Como $Z(P)$ es un
-	subgrupo normal no trivial de $P$, todo subgrupo 
-	de $Z(P)$ minimal-normal en $G$ tiene orden $p$ (y esos subgrupos 
-	existen porque $G$ es un grupo finito). Por otro lado, como $P$ contiene un subgrupo
-	de índice $p$, que resulta maximal. Luego $P\times H$ también contiene un
-	subgrupo maximal de índice $p$.
+Assume that $|G|=p^{\alpha}m$ with $\gcd(p,m)=1$. 
+Write $G=P\times H$, where $P\in\Syl_p(G)$.  Since $Z(P)$ is a non-trivial normal subgroup of
+$P$, every subgroup of $Z(P)$ that is minimal normal in $G$ has order $p$ (and such subgroups exist because $G$ is finite). Since $P$ contains a subgroup of index $p$, 
+it is maximal. Hence $P\times H$ contains 
+a maximal subgroup of index $p$.
 \end{proof}
 
 \begin{exercise}
-	\label{xca:pgrupos}
-	Sea $p$ un primo y sea $G$ un grupo no trivial de orden $p^n$.
-	Demuestre las siguientes afirmaciones:
-	\begin{enumerate}
-		\item $G$ tiene un subgrupo normal de orden $p$.
-		\item Para todo $j\in\{0,\dots,n\}$ existe un subgrupo normal de
-			$G$ de orden $p^j$. 
-	\end{enumerate}
+\label{xca:pgrupos}
+Let $p$ be a prime number and $G$ be a non-trivial group 
+of order $p^n$.
+Prove the following statements:
+\begin{enumerate}
+	\item $G$ has a normal subgroup of order $p$.
+	\item For every $j\in\{0,\dots,n\}$ there exists a normal subgroup 
+            of $G$ of order $p^j$. 
+\end{enumerate}
 \end{exercise}
 
 % \begin{svgraybox}
@@ -1154,15 +1171,13 @@ grupos finitos nilpotentes.
 
 \begin{exercise}
 \label{xca:nilpotente_equivalencia}
-	Sea $G$ un grupo finito. Demuestre que las siguientes afirmaciones son
-	equivalentes: 
-	\begin{enumerate}
-		\item $G$ es nilpotente.
-		\item Cualesquiera dos elementos de órdenes coprimos conmutan. 
-		\item Todo cociente no trivial de $G$ tiene centro no trivial.
-		\item Si $d$ divide al orden de $G$, existe un subgrupo normal de $G$
-			de orden $d$.
-	\end{enumerate}
+Let $G$ be a finite group. Prove that the following statements are equivalent:
+\begin{enumerate}
+	\item $G$ is nilpotent.
+	\item Any two elements of coprime order commute. 
+ 	\item Every non-trivial quotient of $G$ has a non-trivial center.
+	\item If $d$ divides $|G|$, then there exists a normal subgroup of $G$ of order $d$. 
+ \end{enumerate}
 \end{exercise}
 
 % \begin{svgraybox}
@@ -1206,122 +1221,246 @@ grupos finitos nilpotentes.
 % 	se aplica la hipótesis a cada $p$-subgrupo de $G$ de orden maximal.
 % \end{svgraybox}
 
-El siguiente resultado, que puede demostrarse en forma
-completamente elemental, fue descubierto en 2014. 
+\subsection{Baumslag--Wiegold theorem}
+
+The following result can be proved with elementary tools 
+and was discovered 
+in 2014. 
 
 \begin{theorem}[Baumslag--Wiegold]
-	\index{Teorema de!Baumslag--Wiegold}
-	Sea $G$ un grupo finito tal que $|xy|=|x||y|$ si $x$ e $y$ son elementos de
-	órdenes coprimos. Entonces $G$ es nilpotente.
+\index{Baumslag--Wiegold theorem}
+Let $G$ be a finite group such that $|xy|=|x||y|$ for all $x,y\in G$ of coprime orders. 
+Then $G$ is nilpotent. 
 \end{theorem}
 
 \begin{proof}
-	Sean $p_1,\dots,p_n$ los distintos primos que dividen al orden de $G$. Para cada
-	$i\in\{1,\dots,n\}$ sea $P_i\in\Syl_{p_i}(G)$.  Primero vamos a demostrar
-	que $G=P_1\cdots P_n$. La inclusión no trivial equivale a 
-	demostrar que la función 
-	\[
-		\psi\colon P_1\times\cdots\times P_n\to G,\quad
-		(x_1,\dots,x_n)\mapsto x_1\cdots x_n
-	\]
-	es sobreyectiva. Procederemos de la siguiente forma. Primero vemos que  
-	la función $\psi$ es inyectiva. En efecto, si
-	$\psi(x_1,\dots,x_n)=\psi(y_1,\dots,y_n)$, entonces 
-	\[
-		x_1\cdots
-	x_n=y_1\cdots y_n. 
-	\]
-	Si $y_n\ne x_n$, entonces $x_1\cdots x_{n-1}=(y_1\cdots
-	y_{n-1})y_nx_n^{-1}$. Pero $x_1\cdots x_{n-1}$ es un elemento de orden
-	coprimo con $p_n$ y $y_1\cdots y_{n-1}y_nx_n^{-1}$ es un elemento de orden
-	múltiplo de $p_n$, una contradicción. Entonces $x_n=y_n$ y luego, el mismo
-	argumento, prueba que $\psi$ es inyectiva. Como $|P_1\times\cdots\times
-	P_n|=|G|$, se concluye que $\psi$ es biyectiva. En particular, $\psi$ es sobreyectiva
-	y luego $G=P_1\cdots P_n$.
+Let $p_1,\dots,p_n$ be the prime factors of $|G|$. For 
+each 
+$i\in\{1,\dots,n\}$, let $P_i\in\Syl_{p_i}(G)$. We first prove that 
+$G=P_1\cdots P_n$. To prove the non-trivial inclusion, we need to show that 
+the map
+\[
+	\psi\colon P_1\times\cdots\times P_n\to G,\quad
+	(x_1,\dots,x_n)\mapsto x_1\cdots x_n
+\]
+is surjective. We first show that $\psi$ is injective: If 
+$\psi(x_1,\dots,x_n)=\psi(y_1,\dots,y_n)$, then 
+\[
+x_1\cdots x_n=y_1\cdots y_n. 
+\]
+If $y_n\ne x_n$, then $x_1\cdots x_{n-1}=(y_1\cdots
+y_{n-1})y_nx_n^{-1}$. Since $x_1\cdots x_{n-1}$ has order coprime with 
+$p_n$ and $y_1\cdots y_{n-1}y_nx_n^{-1}$ has order a multiple of 
+$p_n$, we get a contradiction. Thus  $x_n=y_n$. The same argument shows that 
+$\psi$ is injective. Since $|P_1\times\cdots\times
+P_n|=|G|$, we conclude that $\psi$ is bijective. In particular, 
+$\psi$ is surjective. 
 
-	Veamos ahora que cada $P_j$ es normal en $G$.  Sea $j\in\{1,\dots,n\}$ y
-	sea $x_j\in P_j$. Sea $g\in G$ y sea $y_j=gx_jg^{-1}$.  Como $y_j\in G$,
-	podemos escribir $y_j=z_1\cdots z_n$ con $z_k\in P_k$ para todo $k$.  Como
-	el orden de $y_j$ es una potencia del primo $p_j$, el elemento $z_1\cdots
-	z_n$ tiene orden una potencia de $p_j$ y luego $z_k=1$ para todo $k\ne j$ y
-	además $y_j=z_j\in P_j$. Como cada subgrupo de Sylow es normal en $G$, se
-	concluye que $G$ es nilpotente.
+We now prove that each $P_j$ is normal in $G$. Let $j\in\{1,\dots,n\}$ and 
+$x_j\in P_j$. Let $g\in G$ and $y_j=gx_jg^{-1}$.  Since $y_j\in G$,
+we can write $y_j=z_1\cdots z_n$ with $z_k\in P_k$ for all $k$.  Since
+the order of $y_j$ is a power of $p_j$, the element $z_1\cdots
+z_n$ has order a power of $p_j$. Thus $z_k=1$ for all $k\ne j$. Moreover, 
+$y_j=z_j\in P_j$. Since every Sylow subgroup of $G$ is normal in $G$, 
+we conclude that $G$ is nilpotent. 
 \end{proof}
 
+\subsection{It\^o's theorem}
+
+\begin{definition}
+\index{Grup!metabelian}
+A group $G$ is said to be \textbf{metabelian} if $[G,G]$ is abelian. 
+\end{definition}
+
+\begin{exercise}
+\label{xca:metabelian1}
+Prove that a group $G$ is metabelian if and only if there exists a normal 
+subgroup $K$ of $G$ such that $K$ and $G/K$ are abelian.
+\end{exercise}
+
+% \begin{remark}
+% 	Los grupos metabelianos son solvables pues 
+% 	si $G$ is metabeliano entonces 
+% 	$G\supseteq [G,G]\supseteq 1$ is una serie solvable para $G$.
+% \end{remark}
+
+\begin{exercise}
+\label{xca:metabelian2}
+Let $G$ be a metabelian group. Prove the following statements: 
+\begin{enumerate}
+\item If $H$ is a subgroup of $G$, then $H$ is metabelian.
+\item If $f\colon G\to H$ is a group homomorphism, then $f(H)$ is metabelian. 
+\end{enumerate}
+\end{exercise}
+
+\begin{lemma}
+In a group, the following formulas hold:
+\begin{enumerate}
+	\item $[a,bc]=[a,b]b[a,c]b^{-1}$. 
+	\item $[ab,c]=a[b,c]a^{-1}[a,c]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is a straightforward calculation:
+\begin{align*}
+&[a,b]b[a,c]b^{-1}=aba^{-1}b^{-1}baca^{-1}c^{-1}b^{-1}=abca^{-1}c^{-1}b^{-1}=[a,bc],\\
+&a[b,c]a^{-1}[a,c]=abcb^{-1}c^{-1}a^{-1}aca^{-1}c^{-1}=abcb^{-1}a^{-1}c^{-1}=[ab,c].\qedhere
+\end{align*}
+\end{proof}
+
+\begin{example}
+The group $\Sym_3$ is metabelian, as $\Alt_3\simeq C_3$ is a normal subgroup 
+and the quotient $\Sym_3/\Alt_3\simeq C_2$ an abelian group. 
+\end{example}
+
+\begin{example}
+The group $\Alt_4$ is metabelian, as the normal subgroup
+\[
+K=\{\id,(12)(34),(13)(24),(14)(23)\}
+\]
+is abelian and the quotient 
+$\Alt_4/K\simeq C_3$ is abelian.
+\end{example}
+
+\begin{example}
+The group $\SL_2(3)$ is not metabelian, as $[\SL_2(3),\SL_2(3)]\simeq Q_8$ 
+is not abelian: 
+\begin{lstlisting}
+gap> IsAbelian(DerivedSubgroup(SL(2,3)));
+false
+gap> StructureDescription(DerivedSubgroup(SL(2,3)));
+"Q8"
+\end{lstlisting}
+\end{example}
+
+\begin{theorem}[It\^o]
+\label{theorem:Ito}
+Let $G=AB$ be a factorization of $G$ with $A$ and $B$ abelian 
+subgroups of $G$. Then $G$ is metabelian.
+\end{theorem}
+
+\begin{proof}
+Since $G=AB$ is a group, $AB=BA$. We claim that $[A,B]$ is a normal subgroup 
+of $G$. Let $a,\alpha\in A$ and $b,\beta\in B$. Let  $a_1,a_2\in A$ and 
+	$b_1,b_2\in B$ be such that $\alpha b\alpha^{-1}=b_1a_1$, $\beta
+	a\beta^{-1}=a_2b_2$. Since 
+	\begin{align*}
+		&\alpha[a,b]\alpha^{-1}=a(\alpha b\alpha^{-1})a^{-1}(\alpha b^{-1}\alpha^{-1})=ab_1a_1a^{-1}a_1^{-1}b_1^{-1}=[a,b_1]\in [A,B]\\
+		&\beta[a,b]\beta^{-1}=(\beta a\beta^{-1})\beta b\beta^{-1}(\beta a^{-1}\beta^{-1})b^{-1}=a_2b_2bb_2^{-1}a_2^{-1}b^{-1}=[a_2,b]\in [A,B],
+	\end{align*}
+	it follows that $[A,B]$ is normal in $G$. 
+
+	We now claim that $[A,B]$ is abelian. Since 
+	\begin{align*}
+		&\beta\alpha[a,b]\alpha^{-1}\beta^{-1} = \beta[a,b_1]\beta^{-1}=(\beta a\beta^{-1})b_1(\beta a^{-1}\beta^{-1})b_1^{-1}=[a_2,b_1],\\
+		&\alpha\beta[a,b]\beta^{-1}\alpha^{-1} = \alpha[a_2,b]\alpha^{-1}=a_2(\alpha b\alpha^{-1})a_2^{-1}(\alpha b\alpha^{-1})=[a_2,b_1],
+	\end{align*}
+	a direct calculation shows that 
+	\[
+		[\alpha^{-1},\beta^{-1}][a,b][\alpha^{-1},\beta^{-1}]^{-1}=[a,b].
+	\]
+	Two arbitrary generators of $[A,B]$ commute, so the group $[A,B]$ is abelian. 
+	
+	To finish the proof, note that $[G,G]=[A,B]$. In fact, 
+	\[
+	[a_1b_1,a_2b_2]=a_1[a_2,b_1]^{-1}a_1^{-1}a_2[a_1,b_2]a_2^{-1}\subseteq [A,B],
+	\]
+	as $[A,B]$ is normal in $G$. 
+\end{proof}
+
+In 1988 Sysak proved the following generalization 
+of It\^o's theorem.  
+
+\begin{theorem}[Sysak]
+\index{Sysak's theorem}
+    Let $A$ and $B$ be abelian subgroups of $G$. If $H$ is a subgroup of 
+    $G$ contained in 
+    $AB$, then $H$ is metabelian. 
+\end{theorem}
+
+For the proof, see \cite{MR988177}.
+
+\subsection{Nilpotent groups of class two}
+
+The following exercises go over groups 
+of nilpotency class two. 
 
 %\subsection{Grupos nilpotentes de clase dos}
 
-\begin{lemma}
-	\label{lemma:commutador}
-	Si $x,y\in G$ son tales que $[x,y]\in C_G(x)\cap C_G(y)$, entonces
-	\[
-	[x,y]^n=[x^n,y]=[x,y^n]
-	\]
-	para todo $n\in\Z$.
-\end{lemma}
+\begin{exercise}
+\label{xca:commutador}
+Let $G$ be a group. Prove that 
+if $x,y\in G$ are such that $[x,y]\in C_G(x)\cap C_G(y)$, then 
+\[
+[x,y]^n=[x^n,y]=[x,y^n]
+\]
+for all $n\in\Z$.
+\end{exercise}
 
-\begin{proof}
-	Procederemos por inducción en $n\geq0$. El caso $n=0$ es trivial. Supongamos entonces
-	que el resultado vale para algún $n\geq0$. Entonces, como $[x,y]\in C_G(x)$, 
-	\begin{align*}
-		[x,y]^{n+1}&=[x,y]^n[x,y]
-		=[x^n,y][x,y]=[x^n,y]xyx^{-1}y^{-1}=x[x^n,y]yx^{-1}y^{-1}=[x^{n+1},y].
-	\end{align*}
-	Para demostrar el lema en el caso $n<0$ basta observar que, como $[x,y]^{-1}=[x^{-1},y]$, 
-	$[x,y]^{-n}=[x^{-1},y]^n=[x^{-n},y]$.
-\end{proof}
+% \begin{proof}
+% 	Procederemos por inducción en $n\geq0$. El caso $n=0$ es trivial. Supongamos entonces
+% 	que el resultado vale para algún $n\geq0$. Entonces, como $[x,y]\in C_G(x)$, 
+% 	\begin{align*}
+% 		[x,y]^{n+1}&=[x,y]^n[x,y]
+% 		=[x^n,y][x,y]=[x^n,y]xyx^{-1}y^{-1}=x[x^n,y]yx^{-1}y^{-1}=[x^{n+1},y].
+% 	\end{align*}
+% 	Para demostrar el lema en el caso $n<0$ basta observar que, como $[x,y]^{-1}=[x^{-1},y]$, 
+% 	$[x,y]^{-n}=[x^{-1},y]^n=[x^{-n},y]$.
+% \end{proof}
 
-\begin{lemma}[Hall]
-    \index{Lema!de Hall}
-	\label{lemma:Hall}
-	Sea $G$ un grupo nilpotente de clase dos y $x,y\in G$. Entonces
-	\[
-		(xy)^n=[y,x]^{n(n-1)/2}x^ny^n
-	\]
-	para todo $n\in\N$.
-\end{lemma}
+\begin{exercise}[Hall]
+\label{xca:Hall}
+Let $G$ be a class-two nilpotent group and 
+$x,y\in G$. Prove that 
+\[
+(xy)^n=[y,x]^{n(n-1)/2}x^ny^n
+\]
+for all $n\geq1$.
+\end{exercise}
 
-\begin{proof}
-	Procederemos por inducción en $n$. Como el caso $n=1$ es trivial,
-	supongamos que el resultado es válido para algún $n\geq1$. Entonces,
-	gracias al lema anterior, 
-	\begin{align*}
-		(xy)^{n+1} &= (xy)^n(xy)=[y,x]^{n(n-1)/2}x^ny^{n-1}(yx)y\\
-		&=[y,x]^{n(n-1)/2}x^{n}[y^n,x]xy^{n+1}=[y,x]^{n(n-1)/2}[y,x]^nx^{n+1}y^{n+1}.\qedhere 
-	\end{align*}
-\end{proof}
+% \begin{proof}
+% 	Procederemos por inducción en $n$. Como el caso $n=1$ es trivial,
+% 	supongamos que el resultado es válido para algún $n\geq1$. Entonces,
+% 	gracias al lema anterior, 
+% 	\begin{align*}
+% 		(xy)^{n+1} &= (xy)^n(xy)=[y,x]^{n(n-1)/2}x^ny^{n-1}(yx)y\\
+% 		&=[y,x]^{n(n-1)/2}x^{n}[y^n,x]xy^{n+1}=[y,x]^{n(n-1)/2}[y,x]^nx^{n+1}y^{n+1}.\qedhere 
+% 	\end{align*}
+% \end{proof}
 
-\begin{lemma}
-	\label{lemma:class2}
-	Sea $p>2$ un número primo y sea 
-	$P$ un $p$-grupo de clase de nilpotencia $\leq2$. 
-	Si $[y,x]^p=1$ para todo $x,y\in P$ entonces $P\to [P,P]$,
-	$x\mapsto x^p$, es un morfismo de grupos.
-\end{lemma}
+\begin{exercise}
+\label{xca:class2}
+Let $p$ be an odd prime number and 
+$P$ $p$-group of nilpotency class $\leq2$. 
+Prove that if $[y,x]^p=1$ for all $x,y\in P$, then
+$P\to [P,P]$,
+$x\mapsto x^p$, is a group homomorphism. 
+\end{exercise}
 
-\begin{proof}
-	Por lema de Hall,
-	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=x^py^p$. 	
-\end{proof}
+% \begin{proof}
+% 	Por lema de Hall,
+% 	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=x^py^p$. 	
+% \end{proof}
 
-\begin{theorem}
-	\label{thm:class2}
-	Sea $p>2$ un número primo y sea 
-	$P$ un $p$-grupo de clase de nilpotencia $\leq2$. 
-	Entonces $\{x\in P:x^p=1\}$ es un subgrupo de $P$.
-\end{theorem}
+\begin{exercise}
+\label{xca:class2_torsion}
+Let $p$ be an odd prime number and 
+$P$ a $p$-group of nilpotency class $\leq2$. 
+Prove that $\{x\in P:x^p=1\}$ is a subgroup of $P$.
+\end{exercise}
 
-\begin{proof}
-	Como $P$ tiene clase de nilpotencia dos, los conmutadores son centrales.
-	Para cada $x\in G$, la función $g\mapsto [g,x]$ es un morfismo de grupos
-	pues
-	\[
-		[gh,x]=ghxh^{-1}g^{-1}x^{-1}=g[h,x]xg^{-1}x^{-1}=[g,x][h,x].
-	\]
-	En particular, si $x,y\in P$ con $x^p=y^p=1$, entonces
-	\[
-		[x,y]^p=[x^p,y]=[1,y]=1.
-	\]
-	Luego, al usar el lema de Hall, se concluye que
-	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=1$.
-\end{proof}
+% \begin{proof}
+% 	Como $P$ tiene clase de nilpotencia dos, los conmutadores son centrales.
+% 	Para cada $x\in G$, la función $g\mapsto [g,x]$ es un morfismo de grupos
+% 	pues
+% 	\[
+% 		[gh,x]=ghxh^{-1}g^{-1}x^{-1}=g[h,x]xg^{-1}x^{-1}=[g,x][h,x].
+% 	\]
+% 	En particular, si $x,y\in P$ con $x^p=y^p=1$, entonces
+% 	\[
+% 		[x,y]^p=[x^p,y]=[1,y]=1.
+% 	\]
+% 	Luego, al usar el lema de Hall, se concluye que
+% 	$(xy)^p=[y,x]^{p(p-1)/2}x^py^p=1$.
+% \end{proof}
