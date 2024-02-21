@@ -6,7 +6,7 @@ These are lecture notes for the course _Non-commutative Algebra_, taught by Lean
 at Vrije Universiteit Brussel.
 
 ## PDF
-[Here](https://github.com/vendramin/noncommutative/blob/main/book.pdf) is the PDF.
+[Here](https://github.com/vendramin/noncommutative/blob/main/notes.pdf) is the PDF.
 
 ## License
 
