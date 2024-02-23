@@ -1,10 +1,10 @@
 \section{14/03/2024}
 
-\subsection{Super solvable groups}
+\subsection{super-solvable groups}
 
 \begin{definition}
-\index{Group!super solvable}
-A group $G$ is said to be \textbf{super solvable} if there exists a sequence 
+\index{Group!super-solvable}
+A group $G$ is said to be \textbf{super-solvable} if there exists a sequence 
 \[
 G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
 \]
@@ -16,7 +16,7 @@ In the previous definition, we do not require the group to be finite. Hence the 
 could be finite cyclic groups or isomorphic to $\Z$. 
 
 \begin{example}
-The dihedral group $\D_{n}$ of order $2n$ is super solvable, as 
+The dihedral group $\D_{n}$ of order $2n$ is super-solvable, as 
 \[	
 \D_{n}\supseteq \langle
 r\rangle\supseteq \{1\}
@@ -24,10 +24,10 @@ r\rangle\supseteq \{1\}
 is a sequence of normal subgroups with cyclic factors. 
 \end{example}
 
-Every solvable group is super solvable. See Exercise~\ref{xca:solvable}.
+Every solvable group is super-solvable. See Exercise~\ref{xca:solvable}.
 
 \begin{example}
-The alternating group $\Alt_4$ solvable but not super solvable. The only 
+The alternating group $\Alt_4$ solvable but not super-solvable. The only 
 proper non-trivial normal subgroup of $\Alt_4$ is 
 	\[
 	\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
@@ -38,12 +38,12 @@ with cyclic factors.
 
 \begin{exercise}
 \label{xca:Aff_supersolvable}
-Prove that $\Aff(\Z)$ is super solvable. 
+Prove that $\Aff(\Z)$ is super-solvable. 
 \end{exercise}
 % aff(Z) es súper-resoluble
 
 \begin{example}
-The group $\SL_2(3)$ is solvable but not super solvable. Here is a computer verification: 
+The group $\SL_2(3)$ is solvable but not super-solvable. Here is a computer verification: 
 \begin{lstlisting}
 gap> IsSolvable(SL(2,3));
 true
@@ -56,8 +56,8 @@ false
 \label{xca:super}
 Prove the following statements: 
 \begin{enumerate}
-\item Every subgroup of a super solvable group is super solvable. 
-\item Quotients of super solvable groups are super solvable. 
+\item Every subgroup of a super-solvable group is super-solvable. 
+\item Quotients of super-solvable groups are super-solvable. 
 \end{enumerate}
 \end{exercise}
 
@@ -103,7 +103,7 @@ Prove the following statements:
 
 \begin{exercise}
 \label{xca:directosuper}
-Prove that the direct product of super solvable groups is super solvable. 
+Prove that the direct product of super-solvable groups is super-solvable. 
 \end{exercise}
 
 % \begin{svgraybox}
@@ -128,7 +128,7 @@ Prove that the direct product of super solvable groups is super solvable.
 \begin{exercise}
 \label{xca:super}
 Let $H$ and $K$ be normal subgroups of a group $G$ such that $G/K$ and $G/H$
-are super solvable. Prove that $G/H\cap K$ is super solvable. 
+are super-solvable. Prove that $G/H\cap K$ is super-solvable. 
 \end{exercise}
 
 % \begin{svgraybox}
@@ -140,8 +140,8 @@ are super solvable. Prove that $G/H\cap K$ is super solvable.
 
 \begin{exercise}
 \label{xca:Nciclico}
-Let $N$ be a cyclic normal subgroup of $G$. If $G/N$ is super solvable, then 
-$G$ is super solvable. 
+Let $N$ be a cyclic normal subgroup of $G$. If $G/N$ is super-solvable, then 
+$G$ is super-solvable. 
 \end{exercise}
 
 % todo: arreglar 
@@ -174,7 +174,7 @@ $G$ is super solvable.
 
 \begin{theorem}
 \label{thm:ZorCp}
-Let $G$ be a super solvable non-trivial group. Then $G$ admits a sequence 
+Let $G$ be a super-solvable non-trivial group. Then $G$ admits a sequence 
 \[
 G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
 \]
@@ -218,7 +218,7 @@ $H/G_{i}$ is cylic of prime order. Repeating this procedure, we obtain the desir
 Let us discuss an immediate application. 
 
 \begin{corollary}
-A finite super solvable group admits a sequence 
+A finite super-solvable group admits a sequence 
 of normal subgroups where each quotient is cyclic of prime order. 
 \end{corollary}
 
@@ -226,11 +226,11 @@ of normal subgroups where each quotient is cyclic of prime order.
 % 	Es consecuencia inmediata del teorema~\ref{theorem:ZorCp}.
 % \end{proof}
 
-We now discuss other properties of super solvable groups. 
+We now discuss other properties of super-solvable groups. 
 
 \begin{theorem}
 \label{thm:super_structure}
-Let $G$ be a super solvable group. The following statement hold:  
+Let $G$ be a super-solvable group. The following statement hold:  
 \begin{enumerate}
 \item If $N$ is minimal normal in $G$, then $N\simeq C_p$ for some prime number $p$.
 \item If $M$ is maximal in $G$, then $(G:M)=p$ for some prime number $p$.
@@ -241,7 +241,7 @@ Let $G$ be a super solvable group. The following statement hold:
 \end{theorem}
 
 \begin{proof}
-Let us prove the first claim. Since $G$ is super solvable, there exists a sequence 
+Let us prove the first claim. Since $G$ is super-solvable, there exists a sequence 
 \[
 G=G_0\supseteq G_1\supseteq
 G_2\supseteq\cdots\supseteq G_n=\{1\}
@@ -270,7 +270,7 @@ Since $\pi(M)$ is maximal in
 		(G:M)=(G/H:M/H)=(G/H:M/H\cap M)=(\pi(G):\pi(M)),
 	\]
 we may assume that $M$ does not contain non-trivial normal subgroups of $G$ (if needed, 
-we just replace $G$ by $G/H$). Since $G$ is super solvable, there exists a sequence 
+we just replace $G$ by $G/H$). Since $G$ is super-solvable, there exists a sequence 
 $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ of normal subgroups of $G$ 
 with factors either cyclic of prime order or isomorphic to $\Z$. Let 
 $N=G_{n-1}$. Since $N$ is cyclic, every subgroup of $N$ is characteristic 
@@ -287,66 +287,67 @@ $HM=G$. Since $HM=M$ implies $H\subseteq M\cap N=\{1\}$,
 we may assume that $HM=G$. If $n\in N\setminus H$, then $n=hm$ for some 
 $h\in H$ and $m\in M$. Then $h=n$, as $h^{-1}n\in N\cap M=\{1\}$, a contradiction. 
 
-	Demostremos ahora la tercera afirmación. Como $G$ es súper-resoluble, existe
-	una sucesión
+We now prove the third claim. Since $G$ is super-solvable, 
+there exists a sequence
 	\[
 	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
 	\]
-	de subgrupos normales tal que cada $G_i/G_{i+1}$ es cíclico. Para cada
-	$i\in\{0,\dots,n\}$ sea $H_i=[G,G]\cap G_i$. Como $[G,G]$ y los $G_i$ son
-	normales en $G$, se tiene una sucesión
+of normal subgroups of $G$ such that each 
+$G_i/G_{i+1}$ is cyclic. For  
+	$i\in\{0,\dots,n\}$, let $H_i=[G,G]\cap G_i$. Since $[G,G]$ the each 
+ $G_i$ are normal in $G$, one obtains a sequence 
 	\[
 	[G,G]=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=\{1\}
 	\]
-	de subgrupos normales de $G$. Como $H_i$ y $H_{i+1}$ es normal en $G$, el
-	grupo $G$ actúa por conjugación en $H_i/H_{i+1}$. Esto induce un morfismo
-	$\gamma\colon G\to\Aut(H_i/H_{i+1})$. Como $H_i/H_{i+1}$ es cíclico, 
-	$\Aut(H_i/H_{i+1})$ es abeliano y luego $[G,G]\subseteq\ker \gamma$. Luego
-	$[G,G]$ actúa trivialmente por conjugación en $H_{i}/H_{i+1}$ y entonces
-	\[
+of normal subgroups of $G$. Since $H_i$ and $H_{i+1}$ are normal in $G$, 
+the group $G$ acts by conjugation on $H_i/H_{i+1}$. Thus there exists a group
+homomorphism 
+	$\gamma\colon G\to\Aut(H_i/H_{i+1})$. Since $H_i/H_{i+1}$ is cyclic, 
+	$\Aut(H_i/H_{i+1})$ is abelian. Thus $[G,G]\subseteq\ker \gamma$. Therefore 
+	$[G,G]$ acts trivially by conjugation on $H_{i}/H_{i+1}$. Hence 
+ 	\[
 	H_i/H_{i+1}\subseteq Z([G,G]/H_{i+1}).
 	\]
-	%%% TODO: explicar mejor
 
-	Por último demostremos la cuarta afirmación. Como $G$ es no abeliano,
-	$Z(G)\ne G$. Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico.  El cociente
-	$G/Z(G)$ es súper-resoluble y la sucesión
+ Finally, we prove the fourth claim. Since $G$ is non-abelian,
+	$Z(G)\ne G$. Let $\pi\colon G\to G/Z(G)$ be the canonical map. The group 
+	$G/Z(G)$ is super-solvable and the sequence 
 	\[
-	G/Z(G)=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq \pi(1)=1
+	G/Z(G)=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq \pi(1)=\{1\}
 	\]
-	es una sucesión de subgrupos normales de $G/Z(G)$ con cocientes cíclicos.
-	En particular, $1\ne \pi(G_1)$ es propio y normal en $G/Z(G)$.  Por el
-	teorema de la correspondencia, $\pi^{-1}(\pi(G_1))\ne G$ es un subgrupo normal
-	de $G$ que contiene propiamente a $Z(G)$. 
+is a sequence of normal subgroups of $G/Z(G)$ with cyclic quotients. 
+In particular, $1\ne \pi(G_1)$ is a proper normal subgroup of $G/Z(G)$. By the correspondence theorem, $\pi^{-1}(\pi(G_1))\ne G$ is a normal subgroup of 
+$G$ properly containing $Z(G)$. 
 \end{proof}
 
+There are solvable groups with a non-nilpotent derived subgroup. 
+
 \begin{example}
-	Si $G$ es un grupo resoluble, no necesariamente $[G,G]$ es un grupo nilpotente. El grupo
-	$\Sym_4$ es resoluble pero $[\Sym_4,\Sym_4]=\Alt_4$ no es nilpotente.
+The group $\Sym_4$ is solvable and $[\Sym_4,\Sym_4]=\Alt_4$ is not nilpotent.
 \end{example}
 
 \begin{proposition}
-	\label{proposition:psuper}
-	Sea $p$ un número primo.  Todo $p$-grupo finito es súper-resoluble.
+\label{pro:psuper}
+Let $p$ be a prime number. Every finite $p$-group is super-solvable.
 \end{proposition}
 
 \begin{proof}
-	Sea $G$ un contraejemplo de orden minimal. Podemos suponer que $|G|=p^n$
-	con $n>1$ (pues si $n=1$ el grupo $G$ es trivialmente súper-resoluble).
-	Como $G$ es un $p$-grupo, es nilpotente  y existe un subgrupo normal $N$ de
-	orden $p$. El cociente $G/N$ tiene orden $p^{n-1}$ entonces es
-	súper-resoluble pues $|G/N|<|G|$. Como $N$ es cíclico y $G/N$ es
-	súper-resoluble, $G$ es súper-resoluble por la
-	proposición~\ref{proposition:Nciclico}.
+Let $G$ be a minimal counterexample. We may assume that $|G|=p^n$ for some 
+$n>1$ (otherwise, if $n=1$, then $G$ is trivially super-solvable). 
+The group $G$ is nilpotent and contains a normal subgroup $N$ of order $p$. 
+Moreover, since $|G/N|=p^{n-1}$, the group $G/N$ is super-solvable. 
+Since $N$ is cyclic and $G/N$ is super-solvable, 
+$G$ is super-solvable by Exercise~\ref{xca:Nciclico}.
 \end{proof}
 
-Como todo grupo finito nilpotente es producto directo de (finitos) subgrupos de
-Sylow, cada $p$-grupo es súper-resoluble y el producto directo de súper-resolubles es súper-resoluble, 
-se obtiene el siguiente resultado:
+% Como todo grupo finito nilpotente es producto directo de (finitos) subgrupos de
+% Sylow, cada $p$-grupo es súper-resoluble y el producto directo de súper-resolubles es súper-resoluble, 
+% se obtiene el siguiente resultado:
 
-\begin{proposition}
-	Todo grupo finito nilpotente es súper-resoluble.
-\end{proposition}
+\begin{exercise}
+\label{xca:nilpotent=>supersolvable}
+Prove that finite nilpotent groups are super-solvable.
+\end{exercise}
 
 % \begin{proof}
 % 	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
@@ -356,12 +357,12 @@ se obtiene el siguiente resultado:
 % \end{proof}
 
 \begin{theorem}
-	Todo grupo súper-resoluble tiene subgrupos maximales.	
+Super-solvable groups have maximal subgroups. 	
 \end{theorem}
 
 \begin{proof}
-	Procederemos por inducción en la longitud de la sucesión de
-	superresolubilidad. Si la longitud es uno, el teorema es cierto pues en
+We proceed by induction on the length of the super-solvable series. 
+Si la longitud es uno, el teorema es cierto pues en
 	este caso el grupo es cíclico. Supongamos entonces que $G$ admite una
 	sucesión
 	\[
