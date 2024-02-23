@@ -1,6 +1,6 @@
 \section{14/03/2024}
 
-\subsection{super-solvable groups}
+\subsection{Super-solvable groups}
 
 \begin{definition}
 \index{Group!super-solvable}
@@ -360,34 +360,33 @@ Prove that finite nilpotent groups are super-solvable.
 Super-solvable groups have maximal subgroups. 	
 \end{theorem}
 
-\begin{proof}
-We proceed by induction on the length of the super-solvable series. 
-Si la longitud es uno, el teorema es cierto pues en
-	este caso el grupo es cíclico. Supongamos entonces que $G$ admite una
-	sucesión
+\begin{proof} 
+We proceed by induction on the length of the super-solvable series. The claim holds for groups with a super-solvable series of length one, as in this case we are dealing with cyclic groups. So let 
+$G$ be a group admitting a sequence
 	\[
 		G=G_0\supseteq\cdots\supseteq G_k=\{1\}
 	\]
-	y que la afirmación es cierta para grupos súper-resolubles con sucesiones 
-	de longitud $<k$. Como $G_{k-1}$ es normal en $G$, sea $\pi\colon G\to
-	G/G_{k-1}$ el morfismo canónico. Entonces la sucesión
-	\[
+and suppose the theorem holds for super-solvable groups
+with super-solvable series of length $<k$. Each  
+$G_{k-1}$ is normal in $G$. Let $\pi\colon G\to
+	G/G_{k-1}$ be the canonical map. 
+The sequence 
+ 	\[
 		G/G_{k-1}=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq\pi(G_{k-1})=\{1\}
 	\]
-	prueba la resolubilidad de $\pi(G)$ y tiene longitud $<k$. Por hipótesis
-	inductiva, $G/G_{k-1}$ admite subgrupos maximales y luego, por el teorema
-	de la correspondencia, $G$ también admite subgrupos maximales.
+has length 
+$<k$ and proves the super-solvability of $\pi(G)$. By the inductive hypothesis, 
+$G/G_{k-1}$ admits maximal subgroups. By the correspondence theorem, 
+$G$ admits maximal subgroups. 
 \end{proof}
 
-Los grupos resolubles o nilpotentes no siempre admiten
-subgrupos maximales, ver por ejemplo $\Q$.
+Solvable or nilpotent groups do not always admit maximal subgroups. Can you give an example?
 
 \begin{definition}
-	\index{Grupo!que satisface la condición maximal para subgrupos}
-	Se dice que un grupo $G$ satisface la \textbf{condición maximal para
-	subgrupos} si 
-	todo subconjunto $\mathcal{S}$ no vacío de subgrupos tiene un subgrupo
-	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
+	\index{Group!que satisface la condición maximal para subgrupos}
+A group $G$ satisfies the \textbf{maximal condition on subgroups} if
+for every non-empty subset $\mathcal{S}$ of subgroups contains a maximal 
+subgroup (i.e. a subgroup not contained in any other subgroup of $\mathcal{S}$). 
 	%toda sucesión creciente
 	%$S_1\subseteq S_2\subseteq S_3\subseteq\cdots$
 	%de subgrupos es finita. 
@@ -402,59 +401,59 @@ subgrupos maximales, ver por ejemplo $\Q$.
 %	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
 %\end{lemma}
 
-\begin{proposition}
-	\label{pro:MAX=fg}
-	Sea $G$ un grupo. Entonces $G$ satisface la condición maximal para
-	subgrupos si y sólo si todo subgrupo de $G$ es finitamente generado.
-\end{proposition}
+\begin{exercise}
+\label{xca:MAX=fg}
+A group satisfies the maximal condition on subgroups if and only if
+every subgroup of $G$ is finitely generated. 
+\end{exercise}
 
-\begin{proof}
-	Supongamos que $G$ satisface la condición maximal para subgrupos y sea $H$
-	un subgrupo de $G$.  Sea $\mathcal{S}$ el conjunto de subgrupos de $H$
-	finitamente generados. Como $\mathcal{S}$ es no vacío (pues
-	$1\in\mathcal{S}$), existe un elemento maximal $M\in\mathcal{S}$.  Sea
-	$x\in H$. Como $\langle M,x\rangle\in\mathcal{S}$, $M=\langle M,x\rangle$ y
-	luego $x\in M$. Como entonces $H=M$, $H$ es finitamente generado.
-	%Supongamos que $G$ no es finitamente generado y satisface la condición maximal para subgrupos. Sea $1\ne g\in G$
-	%y sea $S_1=\langle g_1\rangle$. Como $S_1\ne G$, existe $g_2\in G\setminus S_1$, y entonces 
-	%$S_1\subseteq S_2=\langle x_1,x_2\rangle$. 
+% \begin{proof}
+% 	Supongamos que $G$ satisface la condición maximal para subgrupos y sea $H$
+% 	un subgrupo de $G$.  Sea $\mathcal{S}$ el conjunto de subgrupos de $H$
+% 	finitamente generados. Como $\mathcal{S}$ es no vacío (pues
+% 	$1\in\mathcal{S}$), existe un elemento maximal $M\in\mathcal{S}$.  Sea
+% 	$x\in H$. Como $\langle M,x\rangle\in\mathcal{S}$, $M=\langle M,x\rangle$ y
+% 	luego $x\in M$. Como entonces $H=M$, $H$ es finitamente generado.
+% 	%Supongamos que $G$ no es finitamente generado y satisface la condición maximal para subgrupos. Sea $1\ne g\in G$
+% 	%y sea $S_1=\langle g_1\rangle$. Como $S_1\ne G$, existe $g_2\in G\setminus S_1$, y entonces 
+% 	%$S_1\subseteq S_2=\langle x_1,x_2\rangle$. 
 
-	Supongamos ahora que todo subgrupo de $G$ es finitamente generado. Si
-	$\mathcal{S}$ es un subconjunto no vacío de subgrupos de $G$ sin elemento
-	maximal, podemos construir una sucesión de subgrupos $S_1\subseteq
-	S_2\subseteq\cdots$ que no se estabiliza (acá necesitamos utilizar el
-	axioma de elección). Como la unión 
-	\[
-		S=\bigcup_{j\geq1}S_j 
-	\]
-	es un subgrupo de $G$, es finitamente generado y luego $S\subseteq S_k$
-	para algún $k$ suficientemente grande, una contradicción.
-\end{proof}
+% 	Supongamos ahora que todo subgrupo de $G$ es finitamente generado. Si
+% 	$\mathcal{S}$ es un subconjunto no vacío de subgrupos de $G$ sin elemento
+% 	maximal, podemos construir una sucesión de subgrupos $S_1\subseteq
+% 	S_2\subseteq\cdots$ que no se estabiliza (acá necesitamos utilizar el
+% 	axioma de elección). Como la unión 
+% 	\[
+% 		S=\bigcup_{j\geq1}S_j 
+% 	\]
+% 	es un subgrupo de $G$, es finitamente generado y luego $S\subseteq S_k$
+% 	para algún $k$ suficientemente grande, una contradicción.
+% \end{proof}
 
-Una consecuencia inmediata. 
+% Una consecuencia inmediata. 
 
-\begin{proposition}
-    Sean $G$ un grupo y $H$ un subgrupo de $G$.  Si $G$ satisface la
-	condición maximal para subgrupos entonces $H$ también. 
-\end{proposition}
+\begin{exercise}
+Let $H$ be a subgroup of a group $G$. If $G$ satisfies 
+the maximal condition on subgroups, then so does $H$. 
+\end{exercise}
 
-\begin{proposition}
-	\label{proposition:max:G/N}
-	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $G/N$ y $N$
-	satisfacen la condición maximal para subgrupos entonces $G$ también. 
-\end{proposition}
+\begin{exercise}
+\label{xca:max:G/N}
+Let $G$ be a group and $N$ be a normal subgroup of $G$. If $G/N$ and $N$
+satisfy the maximal condition on subgroups, then so does $G$.
+\end{exercise}
 
-\begin{proof} 
-	Sea $\pi\colon G\to G/N$ el morfismo canónico.  Sea $\mathcal{S}$ un
-	subconjunto no vacío de subgrupos de $G$. El conjunto $\{S\cap
-	N:S\in\mathcal{S}\}$ tiene un elemento maximal $A$ y el conjunto
-	$\{\pi(S):S\in\mathcal{S},S\cap N=A\}$ tiene un elemento maximal $B$. Sea
-	$S\in\mathcal{S}$ tal que $\pi(S)=B$ y $S\cap N=A$. Si $S$ no es maximal en
-	$\mathcal{S}$, existe $T\in\mathcal{S}$ tal que $S\subseteq T$, $N\cap T=A$
-	y $\pi(T)=B$. Sea $x\in T\setminus S$. Como $\pi(xN)=\pi(x)\in\pi(T)=B$,
-	existe $y\in S$ tal que $xN=yN$. Luego $y^{-1}x\in N\cap T=A=N\cap S$, una
-	contradicción pues $x\not\in S$. 
-\end{proof}
+% \begin{proof} 
+% 	Sea $\pi\colon G\to G/N$ el morfismo canónico.  Sea $\mathcal{S}$ un
+% 	subconjunto no vacío de subgrupos de $G$. El conjunto $\{S\cap
+% 	N:S\in\mathcal{S}\}$ tiene un elemento maximal $A$ y el conjunto
+% 	$\{\pi(S):S\in\mathcal{S},S\cap N=A\}$ tiene un elemento maximal $B$. Sea
+% 	$S\in\mathcal{S}$ tal que $\pi(S)=B$ y $S\cap N=A$. Si $S$ no es maximal en
+% 	$\mathcal{S}$, existe $T\in\mathcal{S}$ tal que $S\subseteq T$, $N\cap T=A$
+% 	y $\pi(T)=B$. Sea $x\in T\setminus S$. Como $\pi(xN)=\pi(x)\in\pi(T)=B$,
+% 	existe $y\in S$ tal que $xN=yN$. Luego $y^{-1}x\in N\cap T=A=N\cap S$, una
+% 	contradicción pues $x\not\in S$. 
+% \end{proof}
 
 % TODO: agregar teorema de Huppert (ver por ejemplo Robinson, p. 268)
 % corolario: G super si y sólo G/\Phi(G) super
@@ -510,25 +509,27 @@ Una consecuencia inmediata.
 %\end{proof}
 
 \begin{proposition}
-	\label{proposition:superfg}
-	Todo grupo súper-resoluble satisface la condición maximal para subgrupos. En
-	particular, todo grupo súper-resoluble es finitamente generado.
+\label{pro:superfg}
+Super-solvable groups satisfy the maximal condition on subgroups. In particular, 
+every super-solvable group is finitely generated. 
 \end{proposition}
 
 \begin{proof}
-	Procederemos por inducción en la longitud $n$ de la sucesión de
-	súper-resolubilidad.  El caso $n=1$ es trivial pues entonces $G$ es cíclico.
-	Supongamos entonces que el resultado vale para grupos súper-resolubles con
-	serie de longitud $\leq n-1$.  Sea $G$ un grupo súper-resoluble no trivial y sea 
+We proceed by induction on the length of the super-solvable sequence. If the length
+is one, the result holds as the group is cyclic. 
+So assume the result holds for super-solvable groups with 
+super-solvable series of length $\leq n-1$.  Let $G$
+be a non-trivial super-solvable group and 
 	\[
 	G=G_0\supsetneq
 	G_1\supsetneq\cdots\supsetneq G_n=\{1\}
 	\]
-	una sucesión de subgrupos normales de $G$ con factores cíclicos. Como
-	$G_{1}$ es súper-resoluble por el ejercicio~\ref{xca:super},
-	$G_{1}$ satisface la condición maximal para subgrupos por hipótesis
-	inductiva.  Luego, por la proposición~\ref{proposition:max:G/N}, $G$ satisface la condición maximal para subgrupos porque
-	$G/G_{1}$ es un grupo cíclico.
+a sequence of normal subgroups of $G$ with cyclic factors. Since 
+$G_{1}$ is super-solvable (Exercise~\ref{xca:super}),
+	$G_{1}$ satisfies the maximal condition on subgroups by the inductive
+ hypothesis. By Exercise~\ref{xca:max:G/N}, $G$ satisfies the maximal
+ condition on subgroups, as 
+ $G/G_{1}$ is cyclic. 
 \end{proof}
 
 %\begin{proposition}\
@@ -547,22 +548,21 @@ Una consecuencia inmediata.
 %\end{proof}
 
 \begin{example}
-	El grupo abeliano $\Q$ es nilpotente pero no es súper-resoluble
-	porque no es finitamente generado.
+The abelian group $\Q$ is nilpotent but not super-solvable, 
+as it is not finitely generated. 
 \end{example}
 
-%\begin{example}
 %	El grupo $\Sym_3$ es súper-resoluble pero no es nilpotente. 
-%\end{example}
 
-Si $G$ es un grupo y $x_1,\dots,x_{n+1}\in G$ se define 
+If $G$ is a group and $x_1,\dots,x_{n+1}\in G$, 
+let 
 \[
 [x_1,\dots,x_{n+1}]=\left[ [x_1,\dots,x_n],x_{n+1} \right],\quad
 n\geq1.
 \]
 
 \begin{lemma}
-	\label{lemma:G_n}
+	\label{lem:G_n}
 	Sea $G$ un grupo finitamente generado, digamos $G=\langle X\rangle$ con $X$
 	finito. Para cada $n\geq2$ se define
 	\[
