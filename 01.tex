@@ -58,6 +58,11 @@ $G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.
 \end{example}
 
 \begin{exercise}
+\label{xca:pgroups_solvable}
+Let $p$ be a prime number. Prove that finite $p$-groups are solvable.
+\end{exercise}
+
+\begin{exercise}
 \label{xca:Robinson:5.4.1}
     Let $p$, $q$ and $r$ be prime numbers. Prove that groups
     of order $p^\alpha q$, $p^2q^2$ and $pqr$ are solvable. 
@@ -68,16 +73,12 @@ $G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.
     Prove that groups of order $<60$ are solvable. 
 \end{exercise}
 
-\begin{exercise}
-\label{xca:pgroups_solvable}
-Let $p$ be a prime number. Prove that finite $p$-groups are solvable.
-\end{exercise}
 
 \begin{theorem}[Burnside]
 	\index{Burnside's theorem}
         \label{thm:Burnside}
 	Let $p$ be a prime number. If $G$ is a finite group that has 
-        a conjugacy class of $G$ with $p^k>1$ elements, then $G$ 
+        a conjugacy class with $p^k>1$ elements, then $G$ 
 	is not simple.
 \end{theorem}
 
@@ -135,7 +136,7 @@ The proof appears in~\cite{MR3827208}.
 The theorem implies Burnside's theorem. Let $G$ be a group of order
 $N=p^aq^b$. Assume that $G$ is not solvable. 
 Fix a composition series of $G$. There is a non-abelian factor $S$ 
-of order that divides $N$. Since 
+of order dividing $N$. Since 
 $S$ is simple non-abelian and $s^N=1$, it follows that the word map
 $(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
 to the theorem. 
@@ -153,10 +154,6 @@ A formal verification of the proof
 was announced in~\cite{MR3111271}.  This motivates a natural problem: To formally verify 
 the classification of finite simple groups.  
 Will mathematics move away from depending on just humans to verify proofs? Formal verification with computer-proof assistants 
-could become the new standard for rigor in mathematics. 
-
-The proof of the Feit-Thompson theorem is notably hard, spanning an entire volume of the \emph{Pacific Journal of Mathematics}\cite{MR166261}. The theorem was recently verified using Coq, a computer-proof assistant; see \cite{MR3111271}. 
-This prompts a natural question: Can we extend the practice of formal verification to the classification of finite simple groups? And this prompts another question: Will mathematics move away from relying on humans to verify proofs? Formal verification with computer-proof assistants 
 could become the new standard for rigor in mathematics. 
 
 Back in the day, it was believed that if a certain divisibility 
@@ -202,7 +199,8 @@ Let $p$ be a prime number. A $p$-group $P$ is said to be
 
 \begin{definition}
 \index{Subgroup!minimal normal}
-A subgroup $M$ of $G$ is said to be \textbf{minimal normal} if $M\ne\{1\}$,
+A subgroup $M$ of $G$ is said to be \textbf{minimal normal} if $M\ne\{1\}$
+(or $G = \{1\}$),
 $M$ is normal in $G$ and the only normal 
 subgroup of $G$ properly contained in $M$ is $\{1\}$. 
 \end{definition}
@@ -381,10 +379,15 @@ Assume now that $N\ne G$. Let $H$ be a maximal subgroup of $G$ containing $N$. T
 N=N_H(S)=N_G(S),
 \]
 the number of Sylow $p$-subgroups of $G$ is $(G:N)\equiv1\bmod p$  
-and the number of Sylow $p$-subgroups of $H$ is $(G:H)\equiv1\bmod p$ 
-by the third Sylow's theorem. By assumption, there exists a prime number $q$ 
+and the number of Sylow $p$-subgroups of $H$ is $(H:N)\equiv1\bmod p$ 
+by the third Sylow's theorem. So,
+\[
+\underbrace{(G:N)}_{\equiv1\bmod p} = (G:H)\underbrace{(H:N)}_{\equiv1\bmod p},
+\]
+implies that also $(G:H)\equiv1\bmod p$.
+By assumption, there exists a prime number $q$ 
 such that 
-$(G:H)\in\{q,q^2\}$. Since $q$ divides $|G|$, it follows that $p<q$. If $(G:H)=q$, then 
+$(G:H)\in\{q,q^2\}$. Since $q$ divides $|G|$, it follows that $q<p$. If $(G:H)=q$, then 
 $p$ divides $q-1$ and therefore $p\leq q-1<p$, a contradiction. Thus $q^2=(G:H)\equiv 1\bmod p$.
 From this it follows that $q\equiv -1\bmod p$ and hence $q=2$ and 
 $p=q+1=3$. 
@@ -393,7 +396,7 @@ Therefore $G$ has order $2^\alpha 3^ \beta$.
 If we apply Burnside's theorem, we are done. Instead, we will finish the proof with an elementary argument. Let $K$ be a minimal normal subgroup of $G$.
 By Frattini's argument (Lemma~\ref{lem:Frattini_argument}),  $G=KN=KH$. Since $H$ is maximal, 
 \[
-(K:K\cap H)(G:H)=4, 
+(K:K\cap H) = (G:H)=4, 
 \]
 as $(G:H)=|G|/|H|=|KH|/|H|=|K|/|K\cap H|$. 
 Since $(K:K\cap H)=4$, letting $K$ act on $K/K\cap H$ by left multiplication, there exists 
