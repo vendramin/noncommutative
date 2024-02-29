@@ -5,122 +5,118 @@
 \begin{theorem}[Wielandt]
 	\index{Wielandt's zipper theorem}
 	\label{thm:zipper}
-	Let $G$ un grupo finito y sea $S$ un subgrupo de $G$ tal que $S$ es
-	subnormal en todo subgrupo propio de $G$ que contiene a $S$. Si $S$ no es
-	subnormal en $G$ entonces existe un único maximal de $G$ que contiene a
-	$S$.
+	Let $G$ be a finite group and $S$ be a subgroup of $G$ subnormal in every 
+    proper subgroup of $G$ containing $S$. If $S$ is not subnormal in $G$, 
+    then there exists a unique maximal subgroup of $G$ containing $S$. 
 \end{theorem}
 
 \begin{proof}
-	Procederemos por inducción en $(G:S)$. Si $S$ no es subnormal en $G$
-	entonces $S\ne G$ y entonces el caso $(G:S)=1$ es trivialmente cierto. 
+	We proceed by induction on $(G:S)$. If $S$ is not subnormal in $G$, then 
+	$S\ne G$ and the case where $(G:S)=1$ holds. 
 
-	Como $S$ no es subnormal en $G$, $N_G(S)\ne G$. Entonces $S\subseteq
-	N_G(S)\subseteq M$ para algún subgrupo maximal $M$ de $G$. Supongamos que
-	$S\subseteq K$ para algún subgrupo maximal $K$ de $G$. Vamos a demostrar
-	que $K=M$. Como $S\subseteq K\ne G$, $S$ es subnormal en $K$. Si $S$ es
-	normal en $K$ entonces $K\subseteq N_G(S)\subseteq M$ y luego $K=M$ por
-	maximalidad de $K$. Si $S$ no es normal en $K$, existen $m\geq2$ 
-	subgrupos $S_0,\dots,S_m$ de $K$ tales que 
+	Since $S$ is not subnormal in $G$, $N_G(S)\ne G$. Then $S\subseteq
+	N_G(S)\subseteq M$ for some maximal subgroup $M$ of $G$. Assume that 
+	$S\subseteq K$ for some maximal subgroup $K$ of $G$. We claim that 
+	que $K=M$. Since $S\subseteq K\ne G$, $S$ is subnormal in $K$. If $S$ is 
+	normal in $K$, then $K\subseteq N_G(S)\subseteq M$. Hence $K=M$ by the maximality of $K$. 
+	If $S$ is not normal in $K$, there exist a sequence 
+	$S_0,\dots,S_m$ of subgroups of $K$ such that 
 	\[
-		S=S_0\triangleleft S_1\triangleleft\cdots\triangleleft S_m=K,
+		S=S_0\subseteq S_1\subseteq\cdots\subseteq S_m=K,
 	\]
-	donde $S$ no es normal en $S_2$.  Sea $x\in S_2$ tal que $xSx^{-1}\ne S$ y
-	sea $T=\langle S,xSx^{-1}\rangle\subseteq K$. 
+    where $S_i$ is normal in $S_{i+1}$ for all $i$ and 
+	$S$ is not normal in $S_2$. Let $x\in S_2$ be such that $xSx^{-1}\ne S$ and 
+	$T=\langle S,xSx^{-1}\rangle\subseteq K$. 
 
-	Como $xSx^{-1}\subseteq xS_1x^{-1}=S_1\subseteq N_G(S)$, se tiene que
-	$T\subseteq N_G(S)\subseteq M$. Además $S$ es normal en $T$ y luego $T\ne
-	G$. 
+	Since $xSx^{-1}\subseteq xS_1x^{-1}=S_1\subseteq N_G(S)$, we obtain that 
+	$T\subseteq N_G(S)\subseteq M$. Moreover, $S$ is normal in $T$. Thus $T\ne G$. 
 
-	Veamos que el grupo $T$ satisface las hipótesis del teorema. Si $T$ fuera
-	subnormal en $G$ entonces, como $S$ es normal en $T$, $S$ sería subnormal
-	en $G$. Si $H$ es un subgrupo propio de $G$ que contiene a $T$ entonces,
-	como $S\subseteq H$, $S$ es subnormal en $H$. Además $xSx^{-1}$ es también
-	subnormal en $H$.  Luego $T$ es subnormal en $H$ por el
-	teorema~\ref{theorem:STsubnormal}.
+	We claim that $T$ satisfies the theorem's assumptions. If $T$ is subnormal in $G$, then, since 
+	$S$ is normal in $T$, $S$ is subnormal in $G$. If $H$ is a proper subgroup of $G$ 
+    containing $T$, then, since 
+	$S\subseteq H$, $S$ is subnormal in $H$. Moreover, $xSx^{-1}$ is subnormal in $H$. Hence 
+	$T$ is subnormal in $H$ by Theorem~\ref{thm:STsubnormal}.
 
-	Como $S\subsetneq T$, $(G:T)<(G:S)$. Por hipótesis inductiva, $T$ está
-	contenido en un único maximal de $G$. Luego $K=M$ pues $T\subseteq M$ y
+	Since $S\subsetneq T$, $(G:T)<(G:S)$. By the inductive hypothesis, $T$ is contained in a unique maximal subgroup of $G$. Therefore
+	$K=M$, since $T\subseteq M$ and 
 	$T\subseteq K$.
 \end{proof}
 
-\subsubsection*{Aplicaciones del teorema de la cremallera}
-% 2.8 pag 50 es una aplicación del zipper
-% 2.11
-
-La primera aplicación es el siguiente criterio para detectar subnormalidad.
-Antes de enunciar y demostrar el teorema, necesitamos un lema.
+Before giving an application, we need a lemma. 
 
 \begin{lemma}
-	\label{lemma:H=G}
-	Sea $G$ un grupo y $H$ un subgrupo de $G$. Si $(xHx^{-1})H=G$ para algún
-	$x\in G$ entonces $H=G$.
+	\label{lem:H=G}
+	Let $G$ be a group and $H$ be a subgroup of $G$. If $(xHx^{-1})H=G$ for some 
+	$x\in G$, then $H=G$.
 \end{lemma}
 
 \begin{proof}
-	Escribimos $x=uv$ con $u\in xHx^{-1}$, $v\in H$. Como $u\in xHx^{-1}$ y
-	$u^{-1}x=v\in H$, se tiene que 
-	$H=vHv^{-1}=u^{-1}(xHx^{-1})u=xHx^{-1}$. Luego 
+	Write $x=uv$ for some $u\in xHx^{-1}$ and $v\in H$. Since $u\in xHx^{-1}$ and 
+	$u^{-1}x=v\in H$, we obtain that 
+	$H=vHv^{-1}=u^{-1}(xHx^{-1})u=xHx^{-1}$. Thus 
 	$G=H$. 
 \end{proof}
 
-Dos subgrupos $S$ y $T$ de un grupo $G$ se dicen \textbf{permutables} si
+Recall that two subgroups $S$ and $T$ of a group $G$ are said to be \textbf{permutable} if 
 $ST=TS$. 
 
 \begin{theorem}
-	Sea $G$ un grupo finito y sea $S$ un subgrupo de $G$ permutable con todos
-	sus conjugados.  Entonces $S$ es subnormal en $G$.
+	Let $G$ be a finite group and $S$ be a subgroup of $G$ permutable with any of its conjugates. Then 
+	$S$ is subnormal in $G$. 
 \end{theorem}
 
 \begin{proof}
-	Procederemos por inducción en $|G|$. Supongamos que $S$ es subnormal en
-	todo subgrupo $H$ tal que $S\subseteq H\subsetneq G$.  Si $S$ no es
-	subnormal en $G$ entonces, por el teorema~\ref{theorem:zipper}, existe un
-	único subgrupo maximal $M$ de $G$ tal que $S\subseteq M$. Sea $x\in G$ y
-	sea $T=xSx^{-1}$. Por el lema~\ref{lemma:H=G} $ST\ne G$ (pues $S\ne G$) y
-	entonces $ST$ está contenido en algún subgrupo maximal de $G$. Como
-	$S\subseteq ST$ y $S$ está contenido en un único maximal, se concluye que
-	$T\subseteq ST\subseteq M$.  Como $S^G=\langle xSx^{-1}:x\in
-	G\rangle\subseteq M\ne G$, por hipótesis inductiva $S$ es subnormal en
-	$S^G$. Luego $S$ es subnormal en $G$ pues $S^G$ es normal en $G$, una
-	contradicción.
+	We proceed by induction on $|G|$. Assume that $S$ is subnormal in 
+	every subgroup $H$ such that $S\subseteq H\subsetneq G$.  If $S$ is not subnormal in $G$, 
+	then, by Theorem~\ref{thm:zipper}, there exists a unique maximal subgroup $M$ of $G$ 
+	such that $S\subseteq M$. Let $x\in G$ and 
+	$T=xSx^{-1}$. By Lemma~\ref{lem:H=G}, $ST\ne G$ (because $S\ne G$). Thus 
+	$ST$ is contained in some maximal subgroup of $G$. Since 
+	$S\subseteq ST$ and $S$ is contained in a unique maximal subgroup of $G$, we conclude that 
+	$T\subseteq ST\subseteq M$.  Since $S^G=\langle xSx^{-1}:x\in
+	G\rangle\subseteq M\ne G$, the inductive hypothesis implies that $S$ is subnormal in
+	$S^G$. Hence $S$ is subnormal in $G$ since $S^G$ is normal in $G$, a contradiction. 
 \end{proof}
 
+\subsection{Baer's theorem}
+
 \begin{theorem}[Baer]
-	\index{Teorema!de Baer}
-	\index{Baer!teorema de}
-	\label{theorem:Baer}
-	Sean $G$ un grupo finito y $H$ un subgrupo de $G$. Entonces $H\subseteq
-	F(G)$ si y sólo si $\langle H,xHx^{-1}\rangle$ es nilpotente para todo
+	\index{Baer's theorem}
+	\label{thm:Baer}
+	Let $G$ be a finite group and $H$ be a subgroup of $G$. Then $H\subseteq
+	F(G)$ if and only if $\langle H,xHx^{-1}\rangle$ is nilpotent for all 
 	$x\in G$.
 \end{theorem}
 
 \begin{proof}
-	Si $H\subseteq F(G)$ entonces $xHx^{-1}\subseteq F(G)$ para todo $x\in G$
-	pues $F(G)$ es normal en $G$. Luego $\langle H,xHx^{-1}\rangle$ es
-	nilpotente por ser un subgrupo de $F(G)$.
+	If $H\subseteq F(G)$, then $xHx^{-1}\subseteq F(G)$ for all $x\in G$, since 
+	$F(G)$ is normal in $G$. Thus $\langle H,xHx^{-1}\rangle$ is nilpotent, 
+    as it is a subgroup of $F(G)$.
 
-	Demostraremos la recíproca. Supongamos que $\langle H,xHx^{-1}\rangle$ es nilpotente para todo $x\in
-	G$. Como $H\subseteq \langle H,xHx^{-1}\rangle$, $H$ es nilpotente. Por el
-	teorema~\ref{theorem:F(G)subnormalidad} basta ver que $H$ es subnormal en
-	$G$. Procederemos por inducción en $|G|$. Supongamos que $H$ no es subnormal en $G$. 
-	Si $H$ está contenido propiamente en algún subgrupo $K$ entonces, como
-	$\langle H,kHk^{-1}\rangle$ es nilpotente para todo $k\in K$, $H$ es
-	subnormal en $K$ por hipótesis inductiva. Por el
-	teorema~\ref{theorem:zipper}, existe un único maximal $M$ de $G$ que
-	contiene a $H$. 
-	Vamos a considerar dos casos posibles: a) $G=\langle H,xHx^{-1}\rangle$
-	para algún $x\in G$. Como $G$ entonces es nilpotente, $H$ es subnormal en
-	$G$ por el teorema~\ref{theorem:subnormal}, una contradicción. 
-	b) $\langle H,xHx^{-1}\rangle\ne G$ para todo $x\in G$. En este caso, para
-	cada $x\in G$ existe un subgrupo maximal que contiene a $\langle
-	H,xHx^{-1}\rangle$. Como $H\subseteq \langle H,xHx^{-1}\rangle$ y $H$
-	está contenido en un único maximal, se concluye que $\langle
-	H,xHx^{-1}\rangle\subseteq M$ para todo $x\in G$. En particular, la
-	clausura normal $H^G$ de $H$ está propiamente contenida en $G$. Como por
-	hipótesis inductiva $H$ es subnormal en $H^G$ y $H^G$ es normal en $G$, se
-	concluye que $H$ es subnormal en $G$, una contradicción.
+	Conversely, assume that $\langle H,xHx^{-1}\rangle$ is nilpotent for all  $x\in
+	G$. Since $H\subseteq \langle H,xHx^{-1}\rangle$, $H$ is nilpotent. By Theorem~\ref{thm:F(G)subnormalidad}, 
+    it is enough to see that $H$ is subnormal in $G$. We proceed by induction on $|G|$. 
+	Suppose that $H$ is not subnormal in $G$. If 
+	$H$ is properly contained in some subgroup $K$, then, since 
+	$\langle H,kHk^{-1}\rangle$ is nilpotent for all $k\in K$, $H$ is 
+	subnormal in $K$ by the inductive hypothesis. By Theorem~\ref{thm:zipper}, 
+    there exists a unique maximal subgroup $M$ of $G$ containing $H$. 
+	There are two cases to consider.
+    
+    Assume first that $G=\langle H,xHx^{-1}\rangle$
+	for some $x\in G$. Since $G$ is nilpotent, $H$ subnormal in $G$ by Theorem~\ref{thm:subnormal}, a contradiction. 
+	
+    Assume now that $\langle H,xHx^{-1}\rangle\ne G$ for all $x\in G$. For each 
+	$x\in G$, there exists a maximal subgroup containing $\langle
+	H,xHx^{-1}\rangle$. Since $H\subseteq \langle H,xHx^{-1}\rangle$ and $H$
+	is contained in a unique maximal subgroup, we conclude that $\langle
+	H,xHx^{-1}\rangle\subseteq M$ for all $x\in G$. In particular, the normal closure 
+	$H^G$ of $H$ is properly contained in $G$. By the inductive hypothesis, 
+	$H$ is subnormal in $H^G$ and $H^G$ is normal in $G$, we conclude that 
+	$H$ is subnormal in $G$, a contradiction. 
 \end{proof}
+
+\subsection{Zenkov's theorem}
 
 \begin{theorem}[Zenkov]
 	\index{Teorema!de Zenkov}
@@ -209,6 +205,8 @@ $ST=TS$.
 	A\cap F(G)$, entonces $a\in C_A(N)=1$, una contradicción.
 \end{proof}
 
+\subsection{Brodkey's theorem}
+
 \begin{theorem}[Brodkey]
 	\index{Teorema!de Brodkey}
 	\index{Brodkey!teorema de}
@@ -283,6 +281,8 @@ $ST=TS$.
 	entonces $K=xKx^{-1}\subseteq xAx^{-1}$ para todo $x\in G$. Luego
 	$K\subseteq\Core_G(A)$.
 \end{svgraybox}
+
+\subsection{Lucchini's theorem}
 
 \begin{theorem}[Lucchini]
 	\index{Lucchini!teorema de}

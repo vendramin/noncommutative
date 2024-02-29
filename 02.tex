@@ -406,7 +406,7 @@ the inductive hypothesis implies that  $A\subseteq \gamma_k(G)$ and $B\subseteq
 
 \begin{exercise}
 \label{xca:inclusion}
-    Let $G$ be a group. Prove that $G^{(k)}\subseteq \gamma^{2^k}(G)$ for all $k\geq1$. 
+    Let $G$ be a group. Prove that $G^{(k)}\subseteq \gamma_{2^k}(G)$ for all $k\geq1$. 
 \end{exercise}
 
 \begin{exercise}
@@ -460,15 +460,15 @@ $\zeta_0(G)=\{1\}$. Assume the result holds for some $i$.
 We claim that $\zeta_{i+1}(G)$ is normal subgroup of $G$. 
 Let $g,h\in \zeta_{i+1}(G)$ and $x\in G$. By the inductive hypothesis, 
 \begin{align*}
-	&[x,g^{-1}]=(xg^{-1})[x^{-1},g](xg^{-1})^{-1}\zeta_i(G)(xg^{-1})^{-1}=\zeta_i(G),\\
+	&[x,g^{-1}]=(xg^{-1})[x^{-1},g](xg^{-1})^{-1}\in\zeta_i(G)(xg^{-1})^{-1}=\zeta_i(G),\\
 	&[x,gh]=[x,h][hxh^{-1},g]\in \zeta_{i}(G).
 \end{align*}
 Since $1\in\zeta_{i+1}(G)$, we conclude that each $\zeta_i(G)$ is a subgroup of $G$. 
-Moreover, $xgx^{-1}\in\zeta_{i+1}(G)$, as  
+Moreover, since 
 	\[
 	[xgx^{-1},y]=x[g,x^{-1}yx]x^{-1}\in\zeta_{i}(G)
 	\]
-for all $y\in G$.
+for all $y\in G$, we obtain that $xgx^{-1}\in\zeta_{i+1}(G)$. 
 \end{proof}
 
 \begin{definition}
