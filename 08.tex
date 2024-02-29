@@ -51,18 +51,17 @@ Before giving an application, we need a lemma.
 \end{lemma}
 
 \begin{proof}
-	Write $x=uv$ for some $u\in xHx^{-1}$ and $v\in H$. Since $u\in xHx^{-1}$ and 
-	$u^{-1}x=v\in H$, we obtain that 
-	$H=vHv^{-1}=u^{-1}(xHx^{-1})u=xHx^{-1}$. Thus 
+	Write $x=uv$ for some $u\in xHx^{-1}$ and $v\in H$. Since $u\in xHx^{-1}$ and
+	$u^{-1}x=v\in H$, we obtain that $H=vHv^{-1}=u^{-1}(xHx^{-1})u=xHx^{-1}$. Thus
 	$G=H$. 
 \end{proof}
 
-Recall that two subgroups $S$ and $T$ of a group $G$ are said to be \textbf{permutable} if 
-$ST=TS$. 
+Recall that two subgroups $S$ and $T$ of a group $G$ are said to be
+\textbf{permutable} if $ST=TS$. 
 
 \begin{theorem}
-	Let $G$ be a finite group and $S$ be a subgroup of $G$ permutable with any of its conjugates. Then 
-	$S$ is subnormal in $G$. 
+	Let $G$ be a finite group and $S$ be a subgroup of $G$ permutable with any of
+	its conjugates. Then $S$ is subnormal in $G$. 
 \end{theorem}
 
 \begin{proof}
@@ -89,23 +88,23 @@ $ST=TS$.
 \end{theorem}
 
 \begin{proof}
-	If $H\subseteq F(G)$, then $xHx^{-1}\subseteq F(G)$ for all $x\in G$, since 
-	$F(G)$ is normal in $G$. Thus $\langle H,xHx^{-1}\rangle$ is nilpotent, 
-    as it is a subgroup of $F(G)$.
+	If $H\subseteq F(G)$, then $xHx^{-1}\subseteq F(G)$ for all $x\in G$, since
+	$F(G)$ is normal in $G$. Thus $\langle H,xHx^{-1}\rangle$ is nilpotent, as it
+	is a subgroup of $F(G)$.
 
 	Conversely, assume that $\langle H,xHx^{-1}\rangle$ is nilpotent for all  $x\in
-	G$. Since $H\subseteq \langle H,xHx^{-1}\rangle$, $H$ is nilpotent. By Theorem~\ref{thm:F(G)subnormalidad}, 
-    it is enough to see that $H$ is subnormal in $G$. We proceed by induction on $|G|$. 
-	Suppose that $H$ is not subnormal in $G$. If 
-	$H$ is properly contained in some subgroup $K$, then, since 
-	$\langle H,kHk^{-1}\rangle$ is nilpotent for all $k\in K$, $H$ is 
-	subnormal in $K$ by the inductive hypothesis. By Theorem~\ref{thm:zipper}, 
-    there exists a unique maximal subgroup $M$ of $G$ containing $H$. 
-	There are two cases to consider.
+	G$. Since $H\subseteq \langle H,xHx^{-1}\rangle$, $H$ is nilpotent. By
+	Theorem~\ref{thm:F(G)subnormalidad}, it is enough to see that $H$ is subnormal
+	in $G$. We proceed by induction on $|G|$. Suppose that $H$ is not subnormal in
+	$G$. If $H$ is properly contained in some subgroup $K$, then, since $\langle
+	H,kHk^{-1}\rangle$ is nilpotent for all $k\in K$, $H$ is subnormal in $K$ by
+	the inductive hypothesis. By Theorem~\ref{thm:zipper}, there exists a unique
+	maximal subgroup $M$ of $G$ containing $H$. There are two cases to consider.
     
-    Assume first that $G=\langle H,xHx^{-1}\rangle$
-	for some $x\in G$. Since $G$ is nilpotent, $H$ subnormal in $G$ by Theorem~\ref{thm:subnormal}, a contradiction. 
-	
+    Assume first that $G=\langle H,xHx^{-1}\rangle$ for some $x\in G$. Since $G$
+    is nilpotent, $H$ subnormal in $G$ by Theorem~\ref{thm:subnormal}, a
+    contradiction. 
+
     Assume now that $\langle H,xHx^{-1}\rangle\ne G$ for all $x\in G$. For each 
 	$x\in G$, there exists a maximal subgroup containing $\langle
 	H,xHx^{-1}\rangle$. Since $H\subseteq \langle H,xHx^{-1}\rangle$ and $H$
@@ -119,90 +118,95 @@ $ST=TS$.
 \subsection{Zenkov's theorem}
 
 \begin{theorem}[Zenkov]
-	\index{Teorema!de Zenkov}
-	\index{Zenkov!teorema de}
-	\label{theorem:Zenkov}
-	Sean $G$ un grupo finito y $A,B$ subgrupos abelianos de $G$. Sea 
-	$M\in\{A\cap gBg^{-1}:g\in G\}$ tal que ningún $A\cap gBg^{-1}$ está propiamente
-	contenido en $M$. Entonces $M\subseteq F(G)$.
+    \index{Zenkov's!theorem}
+    \label{thm:Zenkov}
+    Let $G$ be a finite group and $A$ and $B$ be abelian subgroups of $G$. Let
+    $M\in\{A\cap gBg^{-1}:g\in G\}$ such that no $A\cap gBg^{-1}$ is properly
+    contained in $M$. Then $M\subseteq F(G)$.
 \end{theorem}
 
 \begin{proof}
-	Sin pérdida de generalidad podemos suponer que $M=A\cap B$. Demostraremos
-	por inducción en $|G|$ que $M\subseteq F(G)$.
+	Without loss of generality, we may assume that $M=A\cap B$. Using induction on 
+	$|G|$, we prove that $M\subseteq F(G)$.
 
-	Supongamos que $G=\langle A,gBg^{-1}\rangle$ para algún $g\in G$. Como $A$
-	y $B$ son abelianos, $A\cap gBg^{-1}\subseteq Z(G)$. Luego
+	Assume first that $G=\langle A,gBg^{-1}\rangle$ for some $g\in G$. Since $A$
+	and $B$ are both abelian, 
+ \[
+ A\cap gBg^{-1}\subseteq Z(G)
+ \]
+ and hence 
 	\[
 		A\cap gBg^{-1}=g^{-1}(A\cap gBg^{-1})g\subseteq A\cap B=M.
 	\]
-	Por la minimalidad de $M$, $M=A\cap gBg^{-1}\subseteq Z(G)\subseteq F(G)$
-	por el corolario~\ref{corollary:Z(G)subsetF(G)}.
+	By the minimality of $M$, 
+    \[
+    M=A\cap gBg^{-1}\subseteq Z(G)\subseteq F(G)
+    \]
+	by Corollary~\ref{cor:Z(G)subsetF(G)}.
 
-	Supongamos ahora que $G\ne \langle A,gBg^{-1}\rangle$ para todo $g\in G$.
-	Fijemos $g\in G$. Sean  $H=\langle A,gBg^{-1}\rangle\ne G$ y $C=B\cap H$.
-	Al usar que $A\subseteq H$ se obtiene fácilmente que 
-	$M=A\cap B=A\cap C$ y que 
+	Assume now that $G\ne \langle A,gBg^{-1}\rangle$ for all $g\in G$.
+	Let $g\in G$, $H=\langle A,gBg^{-1}\rangle\ne G$ and $C=B\cap H$.
+	Since $A\subseteq H$, we obtain that 
+ 	$M=A\cap B=A\cap C$ and 
 	$A\cap hCh^{-1}=A\cap hBh^{-1}$
-	para todo $h\in H$. Esto implica que ningún
-	$A\cap hCh^{-1}$ está propiamente contenido en $A\cap C$. Al aplicar la
-	hipótesis inductiva al subgrupo $H$ obtenemos entonces  
-	\[
+	for all $h\in H$. This implies that no 
+	$A\cap hCh^{-1}$ is properly contained in $A\cap C$. 
+    By the inductive hypothesis on $H$, 
+ 	\[
 		M=A\cap B=A\cap C\subseteq F(H).
 	\]
 
-	Vamos a demostrar ahora que todo $p$-subgrupo de Sylow $P$ de $M$ está
-	contenido en $F(G)$. Como $M$ está generado por sus subgrupos de Sylow,
-	esto implica que $M\subseteq F(G)$.
-	Si $P\in\Syl_p(M)$ entonces $P\subseteq M\subseteq F(H)$. Como $O_p(H)$ es
-	el único $p$-subgrupo de Sylow de $F(H)$, $P\subseteq O_p(H)$. Como
+    We now prove that every Sylow $p$-subgroup $P$ of $M$ is contained in $F(G)$. 
+	Since $M$ is generated by its Sylow subgroups, 
+    $M\subseteq F(G)$.
+	If $P\in\Syl_p(M)$, then $P\subseteq M\subseteq F(H)$. Since $O_p(H)$ is 
+    the only Sylow $p$-subgroup of $F(H)$, $P\subseteq O_p(H)$. Since 
 	$P\subseteq M\subseteq B$, 
 	\[
 	gPg^{-1}\subseteq gBg^{-1}\subseteq H
 	\]
-	para todo $g\in G$. Entonces $O_p(H)(gPg^{-1})$ es un $p$-subgrupo de $H$ que
-	contiene a $\langle P,gPg^{-1}\rangle$. Luego $\langle P,gPg^{-1}\rangle$
-	es nilpotente para todo $g\in G$ por ser un $p$-grupo. Por el teorema de
-	Baer~\ref{theorem:Baer}, $P\subseteq F(G)$ para todo $p$-subgrupo de Sylow $P$ de $M$.
-	%$gPg^{-1}$ normaliza a $O_p(H)$, es decir:
-	%$gPg^{-1}\subseteq N_H(O_p(H))$. 
+	for all $g\in G$. Thus $O_p(H)(gPg^{-1})$ is a $p$-subgroup of $H$ containing 
+	$\langle P,gPg^{-1}\rangle$. Hence $\langle P,gPg^{-1}\rangle$
+	is nilpotent for all $g\in G$, since it is a $p$-group. By Baer's theorem~\ref{thm:Baer}, 
+    $P\subseteq F(G)$ for all Sylow $p$-subgroup $P$ of $M$. 
 \end{proof}
 
 \begin{corollary}
-	\label{corollary:Zenkov}
-	Sea $G$ un grupo finito no trivial y sea $A$ un subgrupo abeliano tal que
-	$|A|\geq(G:A)$. Entonces $A\cap F(G)\ne1$.
+	\label{cor:Zenkov}
+	Let $G$ be a non-trivial finite group and $A$ be an abelian subgroup of $G$ such that 
+ 	$|A|\geq(G:A)$. Then $A\cap F(G)\ne\{1\}$.
 \end{corollary}
 
 \begin{proof}
-	Sea $g\in G$. Podemos suponer que $G\ne A$ y luego $(gAg^{-1})A\ne G$ por
-	el lema~\ref{lemma:H=G}. Como 
+	Let $g\in G$. We may assume that $G\ne A$. Then $(gAg^{-1})A\ne G$ by Lemma~\ref{lem:H=G}. Since 
 	$|gAg^{-1}||A|=|A|^2\geq |A|(G:A)=|G|$, 
 	\[
 		|G|>|gAg^{-1}A|
 		=\frac{|A||gAg^{-1}|}{|A\cap gAg^{-1}|}
 		\geq \frac{|G|}{|A\cap gAg^{-1}|}.
 	\]
-	Luego $A\cap gAg^{-1}\ne 1$ para todo $g\in G$. En particular, ningún
-	$A\cap gAg^{-1}$ está propiamente contenido en $A$ y luego, por el teorema
-	de Zenkov~\ref{theorem:Zenkov}, $A\subseteq F(G)$.
+	Hence $A\cap gAg^{-1}\ne 1$ for all $g\in G$. In particular, no
+	$A\cap gAg^{-1}$ is properly contained in $A$. By 
+	Zenkov's theorem~\ref{thm:Zenkov}, $A\subseteq F(G)$.
 \end{proof}
 
 \begin{corollary}
-	Sea $G=NA$ un grupo finito, donde $N$ es normal en $G$, $A$ es un subgrupo
-	abeliano y $C_A(N)=1$.  Si $F(N)=1$, entonces $|A|<|N|$. 
+	Let $G=NA$ be a finite group, where $N$ is a normal subgroup of $G$, $A$ is an abelian subgroup of $G$ and 
+	$C_A(N)=\{1\}$. If $F(N)=\{1\}$, then $|A|<|N|$. 
 \end{corollary}
 
 \begin{proof}
-	Como $N$ es normal en $G$, 
-	$N\cap F(G)=F(N)=1$ por 
-	el corolario~\ref{corollary:McapF(G)}. Luego $[N,F(G)]=1$ porque
-	$N$ y $F(G)$ son ambos normales en $G$.  Como 
+	Since $N$ is normal in $G$, 
+	\[
+    N\cap F(G)=F(N)=\{1\}
+    \]
+    by Corollary~\ref{cor:McapF(G)}. Thus $[N,F(G)]=\{1\}$, since 
+	both $N$ and $F(G)$ are normal in $G$. Since 
 	\[
 	|A|\geq |N|\geq \frac{|N|}{|N\cap A|}=(NA:A)=(G:A),
 	\]
-	$A\cap F(G)\ne 1$ por el corolario~\ref{corollary:Zenkov}. Si $1\ne a\in
-	A\cap F(G)$, entonces $a\in C_A(N)=1$, una contradicción.
+	$A\cap F(G)\ne\{1\}$ by Corollary~\ref{cor:Zenkov}. If $1\ne a\in
+	A\cap F(G)$, then $a\in C_A(N)=1$, a contradiction. 
 \end{proof}
 
 \subsection{Brodkey's theorem}
