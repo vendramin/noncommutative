@@ -9,6 +9,17 @@
 
 \addcontentsline{toc}{chapter}{Some solutions}
 
+
+\begin{sol}{xca:derived_length}
+    Let $d$ be the derived length of $G$. Thus $d$ is the smallest integer
+    such that $G^{(d)}=\{1\}$. Since $G$ is nilpotent of class $m$, 
+    \[
+    G^{(m+1)}=\{1\}\ne G^{(d-1)}\subseteq G^{2^{d-1}}.
+    \]
+    Hence $2^{d-1}<m+1$. This implies $22^{d-1}\leq m$ and hence
+    $d-1\leq\log_2m$. 
+\end{sol}
+
 \begin{sol}{xca:non_trivial:C2}
     Let $G=\langle g\rangle$ be the cyclic group of order two. 
     Then $1-\frac{\sqrt{2}}{2}g$ is a non-trivial unit, as 
