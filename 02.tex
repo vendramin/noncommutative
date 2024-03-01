@@ -416,6 +416,7 @@ the inductive hypothesis implies that  $A\subseteq \gamma_k(G)$ and $B\subseteq
     the length of the derived series) of $G$ is $\leq 1+\log_2m$.
 \end{exercise}
 
+
 The following lemma is important. It states that nilpotent groups satisfy 
 the \textbf{normalizer condition}. 
 
@@ -512,3 +513,136 @@ If $G$ is a perfect group, then $Z(G/Z(G))=\{1\}$.
     $g\in\zeta_2(G)\subseteq Z(G)$. 
 \end{proof}
 
+\subsection{Berkovich's theorem}
+
+We start with an exercise on the \textbf{normal core} of a subgroup. 
+
+\begin{exercise}
+\label{xca:core}
+	Let $G$ be a group and $A$ be a subgroup of $G$. Prove that
+	\[
+    \Core_{G}(A)=\bigcap_{x\in G}xAx^{-1}
+    \]
+    is the largest normal subgroup of $G$ contained in $A$. 
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Hagamos actuar a $G$ por multiplicación en las coclases de $A$: $g\cdot
+% 	xA=gxA$. Esta acción induce un morfismo $\rho\colon G\to \Sym_{G/A}$ con
+% 	núcleo
+% 	\[
+% 		\ker\rho=\bigcap_{x\in G}xAx^{-1}=\Core_G(A).
+% 	\]
+% 	Es claro entonces que $\Core_G(A)$ es un subgrupo normal de $G$ contenido
+% 	en $A$. Si $K$ es un subgrupo normal de $G$ tal que $K\subseteq A$,
+% 	entonces $K=xKx^{-1}\subseteq xAx^{-1}$ para todo $x\in G$. Luego
+% 	$K\subseteq\Core_G(A)$.
+% \end{svgraybox}
+
+
+\begin{theorem}[Berkovich]
+\index{Berkovich's theorem}
+\label{thm:Berkovich}
+Let $G$ be a finite solvable group and $H$ be a proper subgroup of $G$ with
+the smallest possible index. Then $H$ is normal in $G$. 
+\end{theorem}
+
+\begin{proof}
+    Note that $H$ is a maximal subgroup. Let $C=\Core_G(H)$. There are two cases to consider. 
+
+    Assume first that $C\ne\{1\}$. Let $\pi\colon G\to G/C$ be the canonical map. 
+    By the inductive hypothesis, $\pi(H)$ is normal in $\pi(G)=G/C$, as by the correspondence theorem, 
+    \[
+    (\pi(G):\pi(H))=(G:H)
+    \]
+    is the smallest possible index in $G/C$. Thus $H$ is normal in $G$ again by the correspondence theorem. 
+
+    Assume now that $C=\{1\}$. Let $N$ be a minimal normal subgroup of $G$. 
+    Since $N$ is abelian, $N\cap H$ is normal in $N$. Moreover, since $N$ is normal in $G$, $N\cap H$ is normal in $H$. Thus $N\cap H$ is a normal subgroup of $NH$. 
+    
+    We claim that $N\not\subseteq H$. If $N\subseteq H$, 
+    then, for every $x\in G$, 
+    \[
+        N=xNx{-1}\subseteq xHx^{-1}.
+    \]
+    Therefore 
+    \[
+    N\subseteq \bigcap_{x\in G}xHx^{-1}=\Core_G(H)=\{1\},
+    \]
+    a contradiction. 
+    
+    Since $H$ is maximal, either $NH=G$ or $NH=H$. If $NH=H$, then
+    $N\subseteq NH=H$, a contradiction. Hence $NH=G$. Thus $N\cap H$ is a normal subgroup of $NH=G$. The minimality of $N$ implies then that 
+    $N\cap H=\{1\}$ and therefore  
+    \[
+    |N||H|=\frac{|N||H|}{|N\cap H|}=|G|.
+    \]
+    This implies that $|N|=(G:H)$. 
+
+    Let $H$ act on $N$ by conjugation. 
+    By the fundamental counting principle, 
+    \[
+    |H\cdot x|=(H:H_x)
+    \]
+    for all $x\in N$. Since $H\cdot 1=\{1\}$, every orbit 
+    has at most $|N|-1$ elements, that is 
+    \[
+    (H:H_x)=|H\cdot x|\leq |N|-1.
+    \]
+    for all $x\in N$. 
+    
+    Since $N$ is a normal subgroup of $G$, the set 
+    $NH_x$ is a subgroup of $G$. 
+    Moreover, 
+    \[
+    N\cap H_x\subseteq N\cap H=\{1\}.
+    \]
+    Thus 
+    \[
+    (G:NH_x)=\frac{|G|}{|NH_x|}=\frac{|G|}{|N||H_x|}=\frac{|N||H|}{|N||H_x|}=(H:H_x)
+    \leq |N|-1=(G:H)-1,
+    \]
+    a contradiction. 
+\end{proof}
+
+The solution of the following exercise is implicit in 
+the proof of Berkovich's theorem. 
+
+\begin{exercise}
+\label{xca:corefree_maximal}
+    Let $G$ be a finite solvable group and $H$ a subgroup of $G$. 
+    Assume that $H$ is contained in maximal subgroup $M$ such that $\Core_G(M)=\{1\}$. 
+    Prove that $G$ has a subgroup with index equal to $(M:H)$. 
+\end{exercise}
+
+\subsection{Carter subgroups}
+
+\begin{definition}
+    \index{Carter subgroup}
+    Let $G$ be a finite group. A \textbf{Carter subgroup} of $G$ 
+    is a nilpotent subgroup $C$ of $G$ such that 
+    $C=N_G(C)$. 
+\end{definition}
+
+\begin{theorem}[Carter]
+    \index{Carter's theorem}
+    \label{thm:Carter}
+    Every finite solvable group has a Carter subgroup. Moreover, 
+    every two Carter subgroups are conjugate. 
+\end{theorem}
+
+\begin{proof}
+    See \cite{MR0123603}. 
+\end{proof}
+
+Note that solvability is a needed assumption. For example, the
+group $\Alt_5$ does not have Carter subgroups. 
+
+\begin{exercise}
+    Let $G$ be a finite solvable group and $C$ be a Carter subgroup. Let $N$ be a normal
+    subgroup of $G$ such that $G/N$ is nilpotent. Prove that $NC=G$. 
+\end{exercise}
+
+Vdovin showed that even 
+if a finite group is not solvable then any two Carter subgroups are conjugate. The proof is difficult and uses the classification of finite simple groups. 
+% MR2356523
