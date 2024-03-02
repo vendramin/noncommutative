@@ -295,13 +295,13 @@ Schur--Zassenhaus theorem.
 	Since $K=G$ (because there is no $K$ such that $G=NK$), 
 	$\pi(N)$ is abelian, as 
 	\[
-		\pi(Z(N))=\pi(N)\cap\pi(K)=\pi(N)\cap\pi(G)=\pi(N).
+		\pi(Z(N)=\pi(N)\cap\pi(K)=\pi(N)\cap\pi(G)=\pi(N).
 	\]
 	Thus $N\subseteq Z(N)$ is abelian. By Theorem~\ref{thm:SchurZassenhaus:abeliano}, the subgroup $N$ 
     admits a complement. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Schur--Zassenhaus conjugation theorem]
 	\label{thm:SchurZassenhaus:conjugation}
     Let $G$ be a finite group and $N$ be a normal subgroup of $G$ such that 
     $|N|$ and 
@@ -451,7 +451,7 @@ Schur--Zassenhaus theorem.
 \end{proof}
 
 
-By the Feit--Thompson theorem, int he previous theorem 
+By the Feit--Thompson theorem, in the previous theorem 
 we do not need to assume that either $N$ or $G/N$ is solvable. Since every group of odd order is solvable 
 and $|N|$ and $(G:N)$ are coprime, one of these groups should have odd order. 
 
@@ -502,14 +502,17 @@ See \cite{MR294497} for an elementary proof.
 
 \subsection{*Hall's theory for solvable groups}
 
-As an application of The Schur--Zassenhaus theorem, we present Hall's theory of solvable groups. For an elementary presentation, see \cite{MR600654}. 
+As an application of the Schur--Zassenhaus theorem, 
+we present Hall's theory of solvable groups. 
+For an elementary presentation, see \cite{MR600654}. 
 
 \begin{definition}
 \index{$\pi$-number}
 \index{$\pi$-group}
 \index{$\pi$-subgroup}
 Let $G$ be a finite group and $\pi$ be a set of prime numbers. We say that 
-$G$ is a \textbf{$\pi$-grupo} if every prime dividing $|G|$ belongs to $\pi$. Similarly, a $\pi$-subgroup of $G$ is a subgroup of $G$ that is also a $\pi$-group.  
+$G$ is a \textbf{$\pi$-group} if every prime dividing $|G|$ belongs to $\pi$. 
+Similarly, a $\pi$-subgroup of $G$ is a subgroup of $G$ that is also a $\pi$-group.  
 \end{definition}
 
 For a set $\pi$ of prime numbers, 
@@ -520,112 +523,102 @@ the prime numbers of $\pi$.
 
 \begin{definition}
 	\index{Hall!subgroup}
-	Sea $\pi$ un conjunto de números primos. Un subgrupo $H$ de $G$ se dice un
-	\textbf{$\pi$-subgrupo de Hall} si $H$ es $\pi$-subgrupo de $G$ y el índice $(G:H)$
-	es un $\pi'$-número.
+	Let $G$ be a group and $\pi$ be a set of prime numbers. A subgroup $H$ of $G$ 
+    is a \textbf{Hall $\pi$-subgroup} if $H$ is a $\pi$-subgroup of $G$ and 
+    $(G:H)$ is a $\pi'$-number.
 \end{definition}
 
-\begin{theorem}[Hall]
-	\index{Teorema!de Hall}
-	\index{Hall!teorema de}
-	\label{theorem:HallE}
-	Sea $\pi$ un conjunto de primos y sea $G$ un grupo finito resoluble. Entonces
-	$G$ tiene un $\pi$-subgrupo de Hall.
-%	Si $G$ es un grupo resoluble de orden $nm$ con $(n:m)=1$ entonces $G$
-%	contiene un subgrupo de orden $m$.
+We now prove that a finite solvable group of order $nm$ with $\gcd(n,m)=1$ 
+always admits a subgroup of order $m$. 
+
+\begin{theorem}[Hall's existence theorem]
+	\index{Hall's existence!theorem}
+ 	\label{theorem:HallE}
+	Let $\pi$ be a set of prime numbers and $G$ be a finite solvable group. 
+    Then $G$ has a Hall $\pi$-subgroup. 
 \end{theorem}
 
 \begin{proof}
-	Supongamos que $G$ tiene orden $nm>1$ con $\gcd(n,m)=1$. Demostraremos por
-	inducción en $|G|$ que 	existe un subgrupo de orden $m$. Sea $K$ un
-	subgrupo de $G$ minimal-normal. Sea $\pi\colon G\to G/K$ el morfismo
-	canónico.  Como $G$ es resoluble, $K$ es un $p$-grupo por el
-	lema~\ref{lemma:minimal_normal}.
+	Assume that $|G|=nm>1$ and $\gcd(n,m)=1$. We want to show that $G$ admits a
+	subgroup of order $m$. We proceed by induction on $|G|$. Let $K$ be a minimal
+	normal subgroup of $G$ and $\pi\colon G\to G/N$ be the canonical map. Since $G$
+	is solvable, $K$ is a $p$-group (Lemma~\ref{lem:minimal_normal}).
 	
-	Hay dos casos a considerar.  Supongamos primero que $p$ divide a $m$. Como
-	$|G/K|<|G|$, por hipótesis inductiva y por la correspondencia, existe un
-	subgrupo $J$ de $G$ que contiene a $K$ tal que $\pi(J)$ es un subgrupo de
-	$\pi(G)=G/K$ de orden $m/|K|$. Entonces $J$ tiene orden $m$ pues 
-	\[
+	There are two cases to consider. Assume first that $p$ divides $m$. Since
+	$|G/K|<|G|$, the inductive hypothesis and the correspondence theorem imply that
+	there exists a subgroup $J$ of $G$ containing $K$ such that $\pi(J)$ is a
+	subgroup of 
+    $\pi(G)=G/K$ of order $m/|K|$. Then $J$ has order $m$, as 
+    \[
 	m/|K|=|\pi(J)|=\frac{|J|}{|K\cap J|}=(J:K).
 	\]
 
-	Supongamos ahora que $p$ no divide a $m$. Por hipótesis inductiva y por la
-	correspondencia, existe un subgrupo $H$ de $G$ que contiene a $K$ tal que
-	$\pi(H)$ es un subgrupo de $G/K$ de orden $m$.  Como $|H|=m|K|$, $K$ es
-	normal en $H$ y $|K|$ es coprimo con $|H:K|$, el teorema de
-	Schur--Zassenhaus~\ref{theorem:SchurZassenhaus} implica que existe un
-	complemento $J$ de $K$ en $H$. Luego $J$ es un subgrupo de $G$ de orden
-	$|J|=m$.
+	Assume now that $p$ does not divide $m$. By the inductive hypothesis and the
+	correspondence theorem, there exists a subgroup $H$ of $G$ containing $K$ such
+	that $\pi(H)$ is a subgroup of $G/K$ of order $m$. Since $|H|=m|K|$, $K$ is
+	normal in $H$ and $|K|$ is coprime with $|H:K|$, the Schur--Zassenhaus theorem
+	(Theorem~\ref{thm:SchurZassenhaus}) implies that there exists a complement $J$
+	of $K$ in $H$. Hence $J$ is a subgroup of $G$ such that $|J|=m$.
 \end{proof}
 
 \begin{example}
-	El grupo $\Alt_5$ contiene un $\{2,3\}$-subgrupo de Hall isomorfo a
-	$\Alt_4$.
+	The group $\Alt_5$ contains a Hall $\{2,3\}$-subgroups isomorphic to 
+ 	$\Alt_4$.
 \end{example}
 
 \begin{example}
-	El grupo simple $\PSL_3(2)$ de orden $168$ no contiene $\{2,7\}$-subgrupos
-	de Hall.
+	The simple group $\PSL_3(2)$ of order $168$ does not contain Hall $\{2,7\}$-subgroups.
 \end{example}
 
-El teorema~\ref{theorem:HallE} dice que para todo conjunto de primos $\pi$
-todo grupo finito contiene $\pi$-subgrupos de Hall.
-
-\begin{theorem}[Hall]
-	\index{Teorema!de Hall}
-	\index{Hall!teorema de}
+\begin{theorem}[Hall's conjugation theorem]
+	\index{Hall's conjugation theorem}
 	\label{theorem:HallC}
-	Sea $G$ un grupo finito resoluble y sea $\pi$ un conjunto de primos. Todos los
-	$\pi$-subgrupos de Hall de $G$ son conjugados.
+	Let $G$ be a finite solvable group and $\pi$ be a set of prime numbers. 
+    Then all two Hall $\pi$-subgroups of $G$ are conjugate. 
 \end{theorem}
 
 \begin{proof}
-	Podemos suponer que $G\ne\{1\}$. Procederemos por inducción en $|G|$.  Sean $H$
-	y $K$ dos $\pi$-subgrupos de Hall de $G$. Sea $M$ un subgrupo de $G$
-	minimal-normal y sea $\pi\colon G\to G/M$ el morfismo canónico. Como $G$ es
-	resoluble, el lema~\ref{lemma:minimal_normal} implica que  $M$ es un
-	$p$-grupo para algún primo $p$.  Como $\pi(H)$ y $\pi(K)$ son
-	$\pi$-subgrupos de Hall de $G/M$, los subgrupos $\pi(H)$ y $\pi(K)$ con
-	conjugados en $G/M$. Luego existe $g\in G$ tal que $gHMg^{-1}=KM$. 
+	We may assume that $G\ne\{1\}$. We proceed by induction on $|G|$.  Let $H$
+	and $K$ be Hall $\pi$-subgroups of $G$. Let $M$ be a minimal normal subgroup of 
+    $G$ and $\pi\colon G\to G/M$ be the canonical map. Since $G$ is solvable, 
+	$M$ is a $p$-group for some prime number $p$ (Lemma~\ref{lem:minimal_normal}). 
+    Since $\pi(H)$ and $\pi(K)$ are both Hall 
+	$\pi$-subgroups of $G/M$, by the inductive hypothesis, 
+    the subgroups $\pi(H)$ and $\pi(K)$ are 
+	conjugate in $G/M$. Thus there exists $g\in G$ such that $gHMg^{-1}=KM$. 
 
-	Hay dos casos a considerar. Supongamos primero que $p\in\pi$. Como $|HM|$ y
-	$|KM|$ son $\pi$-números y $|H|=|K|$ es el mayor $\pi$-número que divide al
-	orden de $G$, se concluye que $H=HM$ y $K=KM$. En particular, $gHg^{-1}=K$. 
+	There are two cases to consider. Assume first that $p\in\pi$. Since $|HM|$ and 
+	$|KM|$ are $\pi$-numbers and $|H|=|K|$ is the largest $\pi$-number dividing $|G|$, 
+    we conclude that $H=HM$ and $K=KM$. In particular, $gHg^{-1}=K$. 
 
-	Supongamos ahora que $p\not\in\pi$. Es evidente que $K$ complementa a $M$ en
-	$KM$ pues $K\cap M=1$. Veamos que $gHg^{-1}$ complementa a $M$ en $KM$:
-	como $M$ es normal en $G$, 
-	\[
+	Assume now that $p\not\in\pi$. Then $K$ admits a complement $M$ in 
+ 	$KM$, as $K\cap M=\{1\}$. We claim that $gHg^{-1}$ complements $M$ in $KM$. Since 
+	$M$ is normal in $G$, 
+ 	\[
 	(gHg^{-1})M=gHMg^{-1}=KM,
 	\]
-	y $gHg^{-1}\cap M=1$ ya que $p\not\in\pi$. Estos complementos tienen que
-	ser conjugados por el teorema de
-	Schur--Zassenhaus~\ref{theorem:SchurZassenhaus:conjugacion}.
+	and $gHg^{-1}\cap M=\{1\}$, as $p\not\in\pi$. These complements are conjugate 
+    by the Schur--Zassenhaus theorem~\ref{thm:SchurZassenhaus:conjugation}.
 \end{proof}
 
 \begin{corollary}
-	Sea $G$ un grupo finito y sea $N$ un subgrupo normal de $G$ de orden $n$.
-	Supongamos que $N$ o $G/N$ es resoluble. Si $|G:N|=m$ es coprimo con $n$ y
-	$m_1$ divide a $m$, todo subgrupo de $G$ de orden $m_1$ está contenido en
-	algún subgrupo de orden $m$.
+	Let $G$ be a finite group, $N$ a normal subgroup of $G$ and $n=|N|$. 
+ 	Assume that either $N$ of $G/N$ is solvable. 
+    If $|G:N|=m$ is coprime with $n$ and 
+    $m_1$ divide a $m$, then every subgroup of $G$ of order $m_1$ 
+    is contained in some subgroup of order $m$. 
 \end{corollary}
 
 \begin{proof}
-	Sea $H$ un complemento para $N$ en $G$. Entonces $|H|=m$. Sea $H_1$
-	subgrupo de $G$ tal que $|H_1|=m_1$. 
-	%Entonces,
-	%como  $G=NH$ y $N\subseteq NH_1$, el lema de Dedekind~\ref{lemma:Dedekind}
-	%implica que 
-	%\[
-	%NH_1=NH_1\cap NH=N(H\cap NH_1).
-	%\]
-	Como $n$ y $m$ son coprimos, $m_1=|H_1|=|H\cap NH_1|$ pues
+	Let $H$ be a complement of $N$ in $G$. Then $|H|=m$. Let $H_1$
+	be a subgroup of $G$ such that $|H_1|=m_1$. 
+	Since $\gcd(n,m)=1$, $m_1=|H_1|=|H\cap NH_1|$, as 
 	\[
 	\frac{|H||N||H_1|}{|H\cap NH_1|}=
 	\frac{|H||NH_1|}{|H\cap NH_1|}=|H(NH_1)|=|G|=|NH|=|N||H|.
 	\]
-	Como $H_1$ y $H\cap NH_1$ son complementos para $N$ en $NH_1$, ambos de
-	orden coprimo con $n$, existe $g\in G$ tal que $H_1=g(H\cap NH_1)g^{-1}$. Luego 
-	$H_1\subseteq gHg^{-1}$ y entonces $|gHg^{-1}|=m$. 
+	Since both $H_1$ and $H\cap NH_1$ are complements of $N$ in $NH_1$, and both 
+    groups have orders coprime with $n$, there exists 
+	$g\in G$ such that $H_1=g(H\cap NH_1)g^{-1}$. Thus  
+	$H_1\subseteq gHg^{-1}$ and hence $|gHg^{-1}|=m$. 
 \end{proof}
