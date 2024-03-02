@@ -383,7 +383,7 @@ $G$ admits maximal subgroups.
 Solvable or nilpotent groups do not always admit maximal subgroups. Can you give an example?
 
 \begin{definition}
-	\index{Group!que satisface la condición maximal para subgrupos}
+	\index{Group!satisfying the maximal condition on subgroups}
 A group $G$ satisfies the \textbf{maximal condition on subgroups} if
 for every non-empty subset $\mathcal{S}$ of subgroups contains a maximal 
 subgroup (i.e. a subgroup not contained in any other subgroup of $\mathcal{S}$). 
@@ -665,7 +665,20 @@ if and only if they are finitely generated. For this, we need two lemmas.
 	Hence $T(G)$ is finite by Theorem~\ref{thm:T(G)finito}.
 \end{proof}
 
-\subsection{Formanek's theorem}
+\subsection{*Huppert's super-solvable theorem}
+
+\begin{theorem}[Huppert]
+\index{Hupper's super-solvable theorem}
+\label{thm:Huppert}
+Let $G$ be a finite group such that all its maximal subgroups 
+are of prime index. Then $G$ is super-solvable. 
+\end{theorem}
+
+\begin{proof}
+    See \cite[Theorem 10.5.8]{MR414669}.
+\end{proof}
+
+\subsection{*Formanek's zero divisors theorem}
 
 We start recalling a conjecture formulated by Kaplansky as \cite[Problem 6]{MR0096696} in 1957. 
 
@@ -679,7 +692,8 @@ We start recalling a conjecture formulated by Kaplansky as \cite[Problem 6]{MR00
 In 1973 Formanek proved the following result:
 
 \begin{theorem}[Formanek]
-    \index{Formanek's theorem}
+    \index{Formanek's zero divisors theorem}
+    \label{thm:Formanek:zerodivisors}
         Let $G$ be a torsion-free super-solvable 
         group and $K$ be a field. Then $K[G]$ has no zero divisors. 
 \end{theorem}
