@@ -1,0 +1,139 @@
+\section{}
+
+\subsection{Miller's double cosets theorem}
+
+\index{Double coset}
+Let $G$ be a group and $H$ and $K$ be subgroups of $G$. 
+The group $L=H\times K$ acts on $G$ by
+\[
+(h,k)\cdot g=hgk^{-1},\quad h\in H,k\in K,g\in G.
+\]
+The orbits of this action are the set of the form 
+\[
+HgK=\{hgk:h\in H,\,k\in K\}.
+\]
+A set of the form $HgK$ for some $g\in G$ is called a \textbf{double coset} modulo $(H,K)$ 
+with representative $g$. In particular, 
+any two double cosets are either disjoint or equal, and $G$ decomposes
+as a disjoint union 
+\[
+G=\bigcup_{i\in I}Hg_iK,
+\]
+for some set $I$. Let 
+\[
+L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}.
+\]
+Then
+$|L_g|=|H\cap gKg^{-1}|$, 
+because there is a bijection $L_g\to H\cap gKg^{-1}$.  
+By the fundamental counting principle, 
+\[
+|HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
+\]
+
+We need a lemma. 
+
+\begin{lemma}
+\label{lem:Miller}
+    Let $G$ be a finite group, $x\in G$, and $H$ and $K$ be subgroups of $G$. Then
+    \[
+    \#\{zK:zK\subseteq HxK\}=(H:xKx^{-1}\cap H).
+    \]
+\end{lemma}
+
+\begin{proof}
+    Let $L=xKx^{-1}\cap H$ and 
+    \[
+    \varphi\colon H/L\to\{yK:yK\subseteq H\times K\},\quad 
+    hL\mapsto hxK.
+    \]
+
+    The map $\varphi$ is well-defined. If $hL=h_1L$, then $h^{-1}h_1\in L$. Thus 
+    $h^{-1}h_1=xkx^{-1}$ for some $k\in K$. This means that
+    \[
+    (h_1x)^{-1}(hx)=x^{-1}h_1^{-1}hx=k\in K,
+    \]
+    that is $\varphi(hL)=hxK=h_1xK=\varphi(h_1L)$. 
+
+    The map $\varphi$ is surjective: If $zK$ is such that $zK\subseteq HxK$, then 
+    $z=hxk$ for some $k\in K$. In particular, 
+    $zK=hxK$. Now $\varphi(hL)=hxK=zK$.
+
+    The map $\varphi$ is injective: If $hxK=h_1xK$, then 
+    $x^{-1}h_1^{-1}hx\in K$. Moreover, 
+    $h_1^{-1}h\in xKx^{-1}\cap H=L$. Thus $h_1L=hL$. 
+\end{proof}
+
+\begin{exercise}
+\label{xca:Miller}
+    Let $G$ be a finite group, $H$ and $K$ be subgroups of $G$, and $x\in G$. Prove 
+    that 
+    \[
+    \#\{Hy:Hy\subseteq HxK\}=(K:xHx^{-1}\cap K).
+    \]
+\end{exercise}
+
+\begin{theorem}[Miller]
+\index{Miller' theorem}
+    Let $G$ be a finite group and $H$ and $K$ be subgroups of $G$ 
+    of the same index. Then there exists a common complete set
+    of representatives for the right cosets of $H$ in $G$ and the 
+    left cosets of $K$ in $G$. 
+\end{theorem}
+
+\begin{proof}
+    Let $Hy$ be a right coset and $zK$ be a left coset. Note that 
+    $Hy$ and $zK$ have a common representative
+    if and only if $Hy\cap zK\ne\emptyset$, as 
+    \[
+    Hy=Hx\text{ and }zK=xK
+    \Longleftrightarrow 
+    xy^{-1}\in H\text{ and }z^{-1}x\in K
+    \Longleftrightarrow x\in Hy\cap zK.
+    \]
+
+    The group $G$ decomposes as a  
+    disjoint union of finitely many double cosets. Each doble coset
+    $HxK$ is a disjoint union of finitely many right cosets of $H$ 
+    and a disjoint union of finitely many left cosets of $K$. Thus 
+    \[
+    HxK=\bigcup_{i=1}^kHy_i=\bigcup_{j=1}^lz_jK, 
+    \]
+    where the unions are disjoint. 
+    Since $|H|=|K|$, by applying cardinality, it follows that $k=l$. To prove the theorem
+    it is enough to show that each $Hy_i$ intersects every $z_jK$. 
+    
+    Note that for each $i\in\{1,\dots,k\}$ there exists $j\in\{1,\dots,k\}$ such that
+    $Hy_i\cap z_jK\ne\emptyset$. 
+    Without loss of generality, we may assume (reordering if needed) that 
+    $Hy_1\cap z_jK\ne\emptyset$ for all $j\in\{1,\dots,m\}$, where $1\leq m\leq k$. Then
+    \[
+    Hy_1\subseteq\bigcup_{j=1}^mz_jK. 
+    \]
+    Then
+    \[
+    Hy_1K\subseteq\bigcup_{j=1}^mz_jK\subseteq \bigcup_{j=1}^kz_jK=HxK.
+    \]
+    Since $Hy_1K$ and $HxK$ are double cosets with non-empty intersection, 
+    they are equal. Thus 
+    \[
+    |HxK|=|Hy_1K|\leq \sum_{j=1}^m|z_jK|=m|K|.
+    \]
+    By Lemma~\ref{lem:Miller}, 
+    \[
+    k=\#\{z_jK:z_jK\subseteq HxK\}=(H:xKx^{-1}\cap H). 
+    \]
+    Therefore
+    \[
+    k|K|=\frac{|H||K|}{|H\cap xKx^{-1}|}=|HxK|\leq m|K|
+    \]
+    and hence $k=m$. 
+\end{proof}
+
+\begin{exercise}[Hall]
+\label{xca:Hall:cosets}
+    Let $G$ be a finite group and $H$ be a subgroup of $G$ with $(G:H)=n$. 
+    Then there exists $x_1,\dots,x_n\in G$ such that 
+    $\{Hx_1,Hx_2,\dots,Hx_n\}=\{x_1H,x_2H,\dots,Hx_n\}$. 
+\end{exercise}
+
