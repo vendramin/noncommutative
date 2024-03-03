@@ -144,18 +144,7 @@ Then $G$ is solvable.
         the theorem follows from Wielandt's theorem. 
 \end{proof}
 
-\subsection{Nilpotent groups}
-
-For a group $G$ and $x,y,z\in G$, conjugation will be considered as a left action of $G$ on $G$ 
-and we will use the following notation: $\prescript{x}{}y=xyx^{-1}$. The commutator between $x$ and $y$ 
-will be written as 
-\[
-[x,y]=xyx^{-1}y^{-1}=(\prescript{x}{}y)y^{-1}.
-\]
-
-We will also use the following notation:  
-$[x,y,z]=[x,[y,z]]$. For subgroups $X$, $Y$ and $Z$ of $G$, we write 
-$[X,Y,Z]=\left[ X,[Y,Z] \right]$. Note that $[X,Y]=[Y,X]$. 
+\subsection{Nilpotent groups}\
 
 \begin{exercise}[The Hall--Witt identity]
 	\label{exercise:HallWitt}
@@ -387,8 +376,7 @@ Hence
 \end{proof}
 
 \index{Weigth of a commutator}
-We consider arbitrary commutators, not necessarily associated on the right.   
-For example, both $[x,y,z]=[x,[y,z]]$ and $[[x,y],z]$ are commutators of \textbf{weight} three. 
+We may have to consider commutators with $n$ copies of the group that are not necessarily associated on the right. For example, if $n=3$, we might have something like $[G,G,G]=[G,[G,G]]$ or $[[G,G],G]$. These expressions will be called commutators of \textbf{weight} three. 
 
 \begin{corollary}
 In a group $G$, every weight $n$ commutator is contained in 

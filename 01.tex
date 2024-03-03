@@ -15,6 +15,27 @@ as the maps $x\mapsto gxg^{-1}$ are automorphisms.
     $H$ is normal in $G$. 
 \end{exercise}
 
+For a group $G$ and $x,y,z\in G$, conjugation will be considered as a left action of $G$ on $G$ 
+and we will use the following notation: $\prescript{x}{}y=xyx^{-1}$. The commutator between $x$ and $y$ 
+will be written as 
+\[
+[x,y]=xyx^{-1}y^{-1}=(\prescript{x}{}y)y^{-1}.
+\]
+We will also use the following notation:  
+\[
+[x,y,z]=[x,[y,z]].
+\]
+
+For subgroups $H$ and $K$ of $G$, let 
+\[
+[H,K]=\langle [h,k]:h\in H,\,k\in K\rangle.
+\]
+Note that $[X,Y]=[Y,X]$. 
+For subgroups $X$, $Y$ and $Z$ of $G$, we write 
+\[
+[X,Y,Z]=\left[ X,[Y,Z] \right].
+\]
+
 \index{Derived series}
 For a group $G$, let 
 $G^{(0)}=G$ and 
@@ -23,8 +44,13 @@ The \textbf{derived series} of $G$ is the sequence
 \[
 G=G^{(0)}\supseteq G^{(1)}\supseteq G^{(2)}\supseteq\cdots
 \]
-Each $G^{(i)}$ is a characteristic subgroup of $G$. We say that 
+Each $G^{(i)}$ is a characteristic subgroup of $G$.
+
+\begin{definition}
+\index{Group!solvable}
+We say that a group 
 $G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.  
+\end{definition}
 
 \begin{example}
 	Abelian groups are solvable. 
