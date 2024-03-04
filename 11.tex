@@ -1,1 +1,224 @@
 \section{16/05/2024}
+
+\subsection{*Burnside normal complement theorem}
+
+We first need a way of computing the transfer map.
+
+\begin{lemma}
+	\label{lem:evaluation}
+	Let $G$ be a group and let $H$ be a subgroup of index $n$. Let $T=\{t_1,\dots,t_n\}$ be a transversal of $H$ in $G$. For each $g \in G$, there exists $m\geq1$ and there exist $s_{1},\dots,s_{m} \in T$ and positive integers $n_1,\dots,n_m$ such that $s_i^{-1}g^{n_i}s_i \in H$, $n_1+\cdots+n_m=n$, and 
+	\[
+		\nu(g)=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i.
+	\]
+\end{lemma}
+
+\begin{proof}
+	For each $i$, there exist $h_1,\dots,h_n\in H$ and $\sigma\in\Sym_n$ such that $gt_i=t_{\sigma(i)}h_i$. We write $\sigma$ as a product of disjoint cycles
+	\[
+		\sigma=\alpha_1\cdots\alpha_m.
+	\]
+
+	Fix $i\in\{1,\dots,n\}$ and write    
+	$\alpha_i=(j_{1}\cdots j_{n_i})$. Since  
+	\[
+		g t_{j_k}=t_{\sigma(j_k)}h_{j_k}=\begin{cases}
+			t_{j_1}h_{n_k} & \text{if $k=n_i$},\\
+			t_{j_{k+1}}h_{k} & \text{otherwise},
+		\end{cases}
+	\]
+	then 
+	\begin{align*}
+	t_{j_1}^{-1}g^{n_i}t_{j_1}
+	&=t_{j_1}^{-1}g^{n_i-1}gt_{j_1}\\
+	&=t_{j_1}^{-1}g^{n_i-1}t_{j_2}h_1\\
+	&=t_{j_1}^{-1}g^{n_i-2}gt_{j_2}h_1\\
+	&=t_{j_1}^{-1}g^{n_i-2}t_{j_3}h_2h_1\\
+	&\phantom{=}\vdots\\
+	&=t_{j_1}^{-1}gt_{j_{n_i}}h_{n_{i-1}}\cdots h_2h_1\\
+	&=t_{j_1}^{-1}t_{j_1}h_{n_i}\cdots h_2h_1\in H. 	
+	\end{align*}
+	We then take $s_i=t_{j_1}\in T$. The result is thus demonstrated by observing that $\nu(g)=h_1\cdots h_n$. 
+\end{proof}
+
+
+\begin{lemma}
+	\label{lem:normal_complement}
+	Let $G$ be a finite group and let $p$ be a prime dividing the order of $G$. Let $P\in\Syl_p(G)$. If $g,h\in C_G(P)$ are conjugate in $G$, then they are conjugate in $N_G(P)$.
+\end{lemma}
+
+\begin{proof}
+	Let $x\in G$ such that $g=xhx^{-1}$. Then $g\in C_G(xPx^{-1})$. Hence $P$ and $xPx^{-1}$ are Sylow subgroups of $C_G(g)$. By Sylow's theorem, there exists $c\in C_G(g)$ such that $P=cxP(cx)^{-1}$. Then $cx\in N_G(P)$ and 
+	\[
+	(cx)h(cx)^{-1}=c(xhx^{-1})c^{-1}=cgc^{-1}=g.\qedhere
+	\]
+\end{proof}
+
+\begin{definition}
+	\index{Normal complement}
+	Let $G$ be a finite group and let $p$ be a prime dividing the order of $G$. A \textbf{$p$-normal complement} is a normal subgroup $N$ of $G$ of order coprime to $p$ such that $(G:N)$ is a power of $p$.
+\end{definition}
+
+\begin{definition}
+	\index{$p$-nilpotent}
+	A finite group is said to be \textbf{$p$-nilpotent} 
+    if it has a $p$-normal complement.
+\end{definition}
+
+\begin{proposition}
+	Let $G$ be a finite group with a $p$-normal complement $N$. Then 
+    $N$ is a characteristic subgroup of~$G$.
+\end{proposition}
+
+\begin{proof}
+	Suppose $|G|=p^\alpha n$, where $n$ is coprime to $p$, and let $\pi\colon G\to G/N$ be the canonical homomorphism. By hypothesis, $N$ has order $n$. We will show that $N$ is the unique subgroup of $G$ of order $n$. If $K$ is a subgroup of $G$ of order $n$, then $\pi(K)\simeq K/K\cap N$ and hence the order of $\pi(K)$ divides $n$. But also the order of $\pi(K)$ divides the prime $p$ since $\pi(K)\leq G/N$. Thus $\pi(K)$ is trivial and so $K=N$, 
+    implying that $G$ has a unique subgroup of order $n$. In particular, $N$ is a characteristic subgroup of $G$.
+\end{proof}
+
+\begin{theorem}[Burnside]
+	\index{Burnside!normal complement theorem}
+	\label{thm:Burnside:normal_complement}
+	Let $G$ be a finite group and let $p$ be a prime dividing $|G|$. Let $P\in\Syl_p(G)$ be such that $P\subseteq Z(N_G(P))$. 
+    Then $G$ is $p$-nilpotent.
+\end{theorem}
+
+\begin{proof}
+	The group $P$ is abelian. Let $\nu\colon G\to P$ be the transfer homomorphism and $g\in P$. By Lemma~\ref{lem:evaluation}, there exist $s_1,\dots,s_m\in G$ and there exist $n_1,\dots,n_m$ such that $n_1+\cdots+n_m=n$, $s_i^{-1}g^{n_i}s_i\in P$, and 
+	\[
+		v(g)=\prod_{i=1}^m s_i^{-1}g^{n_i}s_i.
+	\]
+	Since $P$ is abelian, $P\subseteq C_G(P)$. By Lemma~\ref{lem:normal_complement}, 
+    there exist elements $c_i\in N_G(P)$ such that 
+	\[
+	s_i^{-1}g^{n_i}s_i=c_i^{-1}g^{n_i}c_i.
+	\]
+	Then $s_i^{-1}g^{n_i}s_i=g_i^{n_i}$, since $P\subseteq Z(N_G(P))$. Thus $\nu(g)=g^n$, where $n=(G:P)$. Since $n$ and $|P|$ are coprime, there exist $r,s\in\Z$ such that $rn+s|P|=1$. This implies that the 
+    restriction $\nu|_P$ is surjective since 
+	\[
+	g=(g^r)^n=\nu(g^r).
+	\]
+	By the isomorphism theorem, 
+    \[
+    P/\ker\nu\cap P\simeq\nu(P)=P.
+    \]
+    Thus $\ker\nu\cap P=\{1\}$. Moreover, $\nu(G)=\nu(P)$, since $P\supseteq \nu(G)\supseteq \nu(P)=P$.
+	
+	We will show that $\ker\nu$ is a $p$-normal complement in $G$. Clearly, $\ker\nu$ is normal in $G$. Since $(G:\ker\nu)=|\nu(G)|=|P|$ and $P$ is a Sylow $p$-subgroup, we conclude that $\ker\nu$ has order coprime to $p$.
+\end{proof}
+
+\begin{exercise}
+	\label{xca:NC}
+	Let $G$ be a group and $H$ a subgroup of $G$. Prove that
+    $C_G(H)$ is a normal subgroup of $N_G(H)$ and $N_G(H)/C_G(H)$ is isomorphic to a subgroup of $\Aut(H)$.
+\end{exercise}
+
+% \begin{proof}
+% 	Let $\phi\colon N_G(H)\to\Aut(H)$, $\phi(g)=c_g|H$, where $c_g(h)=ghg^{-1}$. The function $\phi$ is well-defined (since its domain is $N_G(H)$) and is a group homomorphism. Since $\ker\phi=C_G(H)$, it follows that $C_G(H)$ is normal in $N_G(H)$. By the first isomorphism theorem, $N_G(H)/C_G(H)\simeq\phi(N_G(H))\leq\Aut(H)$.
+% \end{proof}
+
+\begin{exercise}
+	\label{corollary:Sylow_cyclic}
+	Let $G$ be a finite group and let $p$ be the smallest prime dividing $|G|$. If some $P\in\Syl_p(G)$ is cyclic, then $G$ is $p$-nilpotent.
+\end{exercise}
+
+% \begin{proof}
+% 	Suppose $|P|=p^m$. By Lemma~\ref{lemma:NC}, $N_G(P)/C_G(P)$ is isomorphic to a subgroup of $\Aut(P)$. Since $P$ is cyclic, $|N_G(P)/C_G(P)|$ divides
+% 	\[
+% 		|\Aut(P)|=\phi(|P|)=p^{m-1}(p-1).
+% 	\]
+% 	Since $P\subseteq C_G(P)$ because $P$ is abelian, $p$ is coprime to $|N_G(P)/C_G(P)|$. Therefore, $|N_G(P)/C_G(P)|$ divides $p-1$. But $p-1$ and $|G|$ are coprime, as $p$ is the smallest prime dividing $|G|$. Moreover, $|N_G(P)/C_G(P)|$ divides the order of $G$, so it follows that $|N_G(P)/C_G(P)|=1$, i.e., $N_G(P)=C_G(P)$.
+	
+% 	Since $P$ is abelian, $P\subseteq Z(C_G(P))=Z(N_G(P))$. Burnside's theorem~\ref{theorem:Burnside:normal_complement} then implies that $G$ is $p$-nilpotent.
+% \end{proof}
+
+\begin{exercise}
+	Let $G$ be a finite group such that all its Sylow subgroups are cyclic. Then $G$ is solvable.
+\end{exercise}
+
+Let us prove something stronger:
+
+\begin{proposition}
+	\label{pro:Sylow_cyclic:solvable}
+	Let $G$ be a finite group such that all its Sylow subgroups are cyclic. Then $G$ is super-solvable.   
+\end{proposition}
+
+\begin{proof}
+	Suppose $G$ is nontrivial and Let us induct on $|G|$. If $p$ is the smallest prime dividing $|G|$, by Corollary~\ref{corollary:Sylow_cyclic} the group $G$ has a normal $p$-complement $N$. By the inductive hypothesis, $N$ is solvable. Since $G/N$ is a $p$-group, it is solvable. Hence $G$ is solvable.
+\end{proof}
+
+\begin{exercise}  
+\label{xca:square-free}
+	Let $G$ be a finite group whose order is square-free. Prove that
+    $G$ is solvable. 
+\end{exercise}
+
+% \begin{proof}
+% 	This follows from Corollary~\ref{corollary:Sylow_cyclic:solvable} since in this case every Sylow subgroup is cyclic.
+% \end{proof}
+
+\begin{corollary}
+	Let $G$ be a non-abelian finite simple group and let $p$ be the smallest prime dividing $|G|$. Then either $p^3$ divides $|G|$ or $12$ divides $|G|$.
+\end{corollary}
+
+\begin{proof}
+	Let $P\in\Syl_p(G)$. By Corollary~\ref{corollary:Sylow_cyclic}, $P$ is not cyclic, so $|P|\geq p^2$. If $p^3$ does not divide $|G|$, then $P\simeq C_p\times C_p$ is a $\mathbb{F}_p$-vector space of dimension two. Since $|N_G(P)/C_G(P)|$ divides the order of $G$, the prime divisors of $|N_G(P)/C_G(P)|$ are at least $p$. Moreover, as $N_G(P)/C_G(P)$ is isomorphic to a subgroup of $\Aut(P)$ by Exercise~\ref{xca:NC}, and $\Aut(P)\simeq\GL_2(p)$ has order 
+    \[
+    (p^2-1)(p^2-p)=p(p+1)(p-1)^2,
+    \]
+    it follows that $|N_G(P)/C_G(P)|$ divides $p(p+1)(p-1)^2$. Since $P$ is abelian, $P\subseteq C_G(P)$. Thus $|N_G(P)/C_G(P)|$ is coprime to $p$, so $|N_G(P)/C_G(P)|$ divides $(p+1)(p-1)^2$. Since $p$ is the smallest prime dividing $|G|$, $p-1$ and $|N_G(P)/C_G(P)|$ are coprime, implying that $|N_G(P)/C_G(P)|$ divides $p+1$. Furthermore, by Theorem~\ref{thm:Burnside:normal_complement}, $|N_G(P)/C_G(P)|\ne1$. This implies that $p=2$, because if $p$ is odd, the smallest prime dividing $|N_G(P)/C_G(P)|$ is at least $p+2$. Thus, $p=2$, and consequently $|N_G(P)/C_G(P)|=3$. Hence $|G|$ is divisible by $12=2^23$.
+\end{proof}
+
+\begin{theorem}
+	\label{theorem:[GG]PZNG(P)=1}
+	Let $G$ be a finite group and let $P$ be an abelian Sylow subgroup. Then $[G,G]\cap P\cap Z(N_G(P))=\{1\}$.
+\end{theorem}
+
+\begin{proof}
+	Let $x\in [G,G]\cap P\cap Z(N_G(P))$ and let $\nu\colon G\to P$ be the transfer homomorphism. By Lemma~\ref{lem:evaluation}, there exist $s_1,\dots,s_m\in G$ and $n_1,\dots,n_m$ such that $n_1+\cdots+n_m=(G:P)$, $s_i^{-1}g^{n_i}s_i\in P$, and 
+	\[
+		v(x)=\prod_{i=1}^m s_i^{-1}x^{n_i}s_i.
+	\]
+	Since $P$ is abelian, $P\subseteq C_G(P)$. Then $x^{n_i}$ and $s_i^{-1}x^{n_i}s_i$ are conjugate in $N_G(P)$ by Lemma~\ref{lem:normal_complement}. Since $x^{n_i}$ is central in $N_G(P)$ and $[G,G]\subseteq\ker\nu$, it follows that $x=1$ since $1=\nu(x)=x^{(G:P)}$ and $x\in P$.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a non-abelian finite group and let $P\in\Syl_2(G)$ such that \[
+    P\simeq C_{a_1}\times\cdots\times C_{a_k}
+    \]
+    with $a_1>a_2\geq a_3\geq\cdots\geq a_k\geq 2$. Then $G$ is not simple. 
+\end{corollary}
+
+\begin{proof}
+	Let $S=\{x^{n/2}:x\in P\}$. It's easy to see that $S$ is a subgroup of $P$ and $S$ is characteristic in $P$, i.e., $f(S)\subseteq S$ for every $f\in\Aut(P)$. Since $S\simeq C_2$, we can write $S=\{1,s\}$. Then $s\in Z(N_G(P))$ because $gsg^{-1}\in S$ for every $g\in N_G(P)$. By Theorem~\ref{theorem:[GG]PZNG(P)=1}, $s\not\in[G,G]$, so $[G,G]\ne G$. If $G$ were simple, then $G$ would be abelian since $[G,G]=1$.
+\end{proof}
+
+Finite groups whose Sylow subgroups are cyclic are solvable.
+
+\begin{definition}
+\index{Z-group}
+\index{Group!with cyclic Sylow subgroups}
+	A \textbf{Z-group} is a finite group $G$ such that all its Sylow subgroups are cyclic.
+\end{definition}
+
+\begin{definition}
+\index{Group!metacyclic}
+A group $G$ is called \emph{meta-cyclic} if $G$ has a normal cyclic subgroup $N$ such that $G/N$ is cyclic.
+\end{definition}
+
+\begin{exercise}
+	If $G$ is a solvable group, then $C_G(F(G))=F(G)$.
+	%https://groupprops.subwiki.org/wiki/Solvable_implies_Fitting_subgroup_is_self-centralizing		
+\end{exercise}
+
+\begin{theorem}
+	\label{theorem:Z=>metacyclic}
+	Every Z-group is meta-cyclic.
+\end{theorem}
+
+\begin{proof}
+	Let $G$ be a Z-group. By Proposition~\ref{pro:Sylow_cyclic:solvable}, $G$ is solvable and hence the Fitting subgroup $F(G)$ satisfies $C_G(F(G))\subseteq F(G)$. 
+	
+	Let us show that $F(G)$ is cyclic. Since $F(G)$ is nilpotent, $F(G)$ is the direct product of its Sylow subgroups. Since every Sylow subgroup of $F(G)$ is a $p$-subgroup of $G$, every Sylow subgroup of $F(G)$ is cyclic (as it is contained in some Sylow subgroup of $G$). 
+	
+	Since $F(G)$ is cyclic, $F(G)$ is abelian and hence $F(G)\subseteq C_G(F(G))$. If $G$ acts on $F(G)$ by conjugation, then there is a homomorphism $\gamma\colon G\to\Aut(F(G))$ such that $\ker\gamma=C_G(F(G))=F(G)$ (since $\gamma_g(x)=gxg^{-1}$). In particular, $G/F(G)$ is abelian as it is isomorphic to a subgroup of the abelian group $\Aut(F(G))$. Moreover, since the Sylow subgroups of $G/F(G)$ are cyclic (as they are quotients of Sylow subgroups of $G$), $G/F(G)$ is cyclic.
+\end{proof}
+
