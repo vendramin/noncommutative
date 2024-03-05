@@ -677,3 +677,282 @@ n_{r+1}\leq kn_1\cdots n_r\leq k\prod_{j=1}^k2^{2^{j-1}}=k^{2^k}.\qedhere
 Find good bounds for the order $n$ of a group with a fixed number $k$ of conjugacy classes. It is expected that the bounds will be considerably better than those obtained from Landau's method.
 \end{problem}
 
+\subsection{*How many finite groups are there?}
+\label{cantidad}
+
+In this chapter, we will mention some problems and results related to the number of isomorphism classes of finite groups of a given order. This classification problem is obviously almost as old as group theory itself. When taking the first steps in group theory, we encounter some easy-to-prove results:
+\begin{itemize}
+    \item There exists a unique finite group of prime order, and it is cyclic.
+    \item There are two groups of order four, both abelian.
+    \item There are two groups of order six, one of which is non-abelian.
+    \item Groups of order $p^2$ are abelian.
+\end{itemize}
+
+With the Sylow theorems, we can go a bit further. It is easy to prove, for example, that there exists a unique group of order 15, and it is cyclic. The same result can be shown for other orders, such as 455 and 615.
+
+A natural question arises. For which values of $n$ does a unique group (which will obviously be isomorphic to $C_n$) of order $n$ exist? The answer was given by Burnside.
+
+\begin{definition}
+\index{Cyclic number}
+A number $n\in\mathbb{N}$ is called \textbf{cyclic} if $C_n$ is the only group (up to isomorphism) of order $n$.
+\end{definition}
+
+Some examples of cyclic numbers are: $2$, $3$, $15$, and $615=3\cdot 5\cdot 41$.
+
+\begin{theorem}[Burnside]
+\index{Burnside's cyclic number theorem}
+    Let $n\in\mathbb{N}$. Then $n$ is cyclic if and only if $n$ and $\phi(n)$ are coprime.
+\end{theorem}
+
+\begin{proof}
+    Suppose $n$ is cyclic. Without loss of generality, we can assume that $n$ is square-free (because otherwise, if $n=p^am$ with $m\in\mathbb{N}$, $p$ prime such that $\gcd(p,m)=1$, and $a\geq2$, the group $C_m\times C_p^a$ has order $n$ and is not cyclic). We then write
+    \[
+        n=p_1\cdots p_k
+    \]
+    with the $p_j$ distinct primes and $\phi(n)=(p_1-1)\cdots(p_k-1)$. If $\gcd(n,\phi(n))\ne1$, there exist distinct primes $p$ and $q$ such that $p$ divides $q-1$. The group $G= C_m\times (C_p\rtimes C_q)$ has order $n=pqm$ and is not cyclic.
+
+    Suppose $\gcd(n,\phi(n))=1$ and $n$ is not cyclic. Let $G$ be a group of minimum order $n$ that is not cyclic.
+    Without loss of generality, we can assume that $n$ is square-free: if $n=p^\alpha m$ with $p$ prime, $m$ coprime with $p$ and $\alpha\geq2$, then, as $\phi(n)=p^{\alpha-1}(p-1)\phi(m)$, $p$ divides 
+    $\gcd(n,\phi(n))$. Then
+    \[
+        n=p_1\cdots p_k,
+    \]
+    with the $p_j$ distinct primes.
+
+    \begin{claim}
+    Every subgroup of $G$ and every quotient of $G$ is cyclic.
+    \end{claim}
+
+    If $m$ divides $n$, then $\gcd(m,\phi(m))=1$ since $n$ and $\phi(n)=(p_1-1)\cdots(p_k-1)$ are coprime. Therefore, every subgroup and every proper quotient is cyclic by the minimality of $n$.
+
+    \begin{claim}
+    $Z(G)=\{1\}$.
+    \end{claim}
+
+    For each $i\in\{1,\dots,k\}$, let $x_i\in G$ be an element of order $p_i$. If $G$ were abelian, then $G$ would be cyclic: $x_1\cdots x_k$ would be an element of order $n$. Hence $Z(G)\ne G$. Now, if $1<|Z(G)|<n$, then $G/Z(G)$ would be cyclic (since every quotient of $G$ is), and then $G$ would be abelian.
+
+    \begin{claim}
+    If $M$ is a maximal subgroup of $G$ and $x\in M\setminus\{1\}$, then $M=C_G(x)$. In particular, if $M$ and $N$ are distinct maximal subgroups, then $M\cap N=\{1\}$.
+    \end{claim}
+
+    Since $Z(G)\ne\{1\}$, $C_G(x)\ne G$. And since $M$ is cyclic, $M\subseteq C_G(x)$. Therefore, by maximality, $M=C_G(x)$. If $M$ and $N$ are two maximal subgroups and $x\in M\cap N\setminus\{1\}$, then $M=N=C_G(x)$.
+
+    \begin{claim}
+    If $M$ is a maximal subgroup, then $M=N_G(M)$.
+    \end{claim}
+
+    Let $x\in N_G(M)\setminus\{1\}$ and let $\alpha\in\Aut(M)$ be given by $y\mapsto xyx^{-1}$. Since $M$ is cyclic, if $m=|M|$, then $|\Aut(M)|$ has order $\phi(m)$. On the other hand, since $|x|$ divides $n$, $|\alpha|$ divides $n$. Hence $|\alpha|$ divides $\gcd(n,\phi(m))=1$. This means that $x\in C_G(M)$, i.e., $N_G(M)\subseteq C_G(M)$. Since $M\subseteq N_G(M)\subseteq C_G(M)$, $M=N_G(M)=C_G(M)$.
+
+    Let $M_1,\dots,M_l$ be the representatives of the conjugacy classes of maximal subgroups of $G$. For each $j\in\{1,\dots,l\}$, let $m_j=|M_j|$. Since $M_{j}=N_G(M_j)$ for each $j$, the orbit of $M_j$ has $n/m_j$ elements.
+
+    Since for each $g\in G\setminus\{1\}$ there exists a unique maximal subgroup $M$ such that $g\in M$, we have
+    \begin{equation}
+    \label{eq:particion}
+    n=1+\sum_{j=1}^l \frac{n}{m_j}(m_j-1).
+    \end{equation}
+    If $l=1$ then $n=m_1$, a contradiction. If $l>1$ then, since for each $j$ we have $m_j\geq2$, rewriting~\eqref{eq:particion}, we have
+    \begin{align*}
+    \frac{1}{n}+l-1=\sum_{j=1}^l\frac{1}{m_j}\leq\frac{l}{2}.
+    \end{align*}
+    From this inequality, we obtain $nl\leq 2n-2<2n$ and then $l<2$, a contradiction. 
+\end{proof}
+
+Similarly, abelian and nilpotent numbers can be defined. These numbers are classified, and an elementary proof can be found in \cite{MR1786236}. There is also the notion of a solvable number. Thanks to the Feit--Thompson theorem, every odd number is a solvable number. These numbers are also classified, although the proof is much more difficult as it relies on a very deep theorem of Thompson and the famous Feit--Thompson theorem.
+
+\medskip
+In \cite{MR2410121}, the function $\operatorname{gnu}(n)$ is defined, which returns the number of isomorphism classes of groups of order $n$. For example, $\operatorname{gnu}(1)=\operatorname{gnu}(2)=\operatorname{gnu}(3)=\operatorname{gnu}(5)=1$ and $\operatorname{gnu}(4)=\operatorname{gnu}(6)=2$. The name comes from \emph{\textbf{g}roups \textbf{nu}mber}.
+
+Burnside's theorem can be reformulated as follows:
+\[
+\operatorname{gnu}(n)=1 \Longleftrightarrow \text{$n$ is cyclic} \Longleftrightarrow \gcd(n,\phi(n))=1.
+\]
+
+In \cite{MR2410121}, Conway, Dietrich, and O'Brien characterized the $n\in\mathbb{N}$ such that $\operatorname{gnu}(n)=2$, $\operatorname{gnu}(n)=3$, $\operatorname{gnu}(n)=4$.
+
+In the Encyclopedia of Integer Sequences, the sequence
+\[
+\operatorname{gnu}(1),\operatorname{gnu}(2),\operatorname{gnu}(3),\operatorname{gnu}(4)\dots
+\]
+is \lstinline{A000001}, see \url{http://oeis.org/A000001} for more information.
+
+There exists a powerful database of small groups. It was 
+written by Besche, Eick and O'Brien and is now a fundamental tool in group theory \cite{MR1935567}. In particular, this database allows us to easily compute some values of the function $\operatorname{gnu}$.
+
+The function \lstinline{NrSmallGroups} returns the number of isomorphism classes of groups of a certain order. We then define the function $\operatorname{gnu}$ and compute some examples:
+
+\begin{lstlisting}
+gap> gnu := NrSmallGroups;;
+gap> gnu(16);
+14
+gap> gnu(32);
+51
+gap> gnu(64);
+267
+gap> gnu(27);
+5
+gap> gnu(81);
+15
+gap> gnu(128);
+2328
+gap> gnu(512);
+10494213
+\end{lstlisting}
+
+It is known that $\operatorname{gnu}(1024)=49487365422$, although this value cannot be obtained directly with the computer, as there are way too many 
+groups of order 1024. The groups of order 1024 were classified by Besche, Eick, and O'Brien, and the announcement was made in \cite{MR1826989}.
+
+More than 99\% of the groups of order $<2000$ are of order $1024$. In fact, as we saw, there are 49487365422 groups of order 1024, and the number of isomorphism classes of groups of order $n\ne1024$ with $n<2016$ is 423164131.
+
+\begin{lstlisting}
+gap> Sum([1..1023], gnu);
+423164131
+\end{lstlisting}
+
+The classification of groups is a difficult problem. A particularly difficult case is that of groups of order $p^3$, where $p$ is a prime number. For example, there are exactly 2 groups of order $2^3$ and 5 groups of order $3^3$. For general $p$, the question is open. For example, there are 14 groups of order $2^4$, 51 groups of order $2^5$, and 267 groups of order $2^6$. The sequences are found in the Encyclopedia of Integer Sequences, sequences \lstinline{A000679}, \lstinline{A000880}, and \lstinline{A000881}.
+
+Finally, we mention some references on the subject. The classic book on the classification of finite simple groups is \cite{MR1915964}. For groups of small order, see \cite{MR1250465} and \cite{MR1357169}.
+
+\begin{lstlisting}[language=gap]
+gap> Sum([1..1023], gnu)+Sum(List([1025..2015], gnu));
+423164131
+\end{lstlisting}
+
+These numbers give us approximately 99.15\%.
+
+These observations naturally suggest the following conjecture, which seems to be part of mathematical folklore:
+
+\begin{conjecture}
+Almost every finite group is a $2$-group.
+\end{conjecture}
+
+The numerology we did allows us to avoid having to make precise what \textquotedblleft almost every finite group\textquotedblright\ means. Similar problems appear in Chapter 22 of the book \cite{MR2382539}.
+
+\begin{problem}
+Calculate $\operatorname{gnu}(2048)$.
+\end{problem}
+
+It is known that $\operatorname{gnu}(2048)>1774274116992170$, which is the number of subgroups of order 2048 of a certain class.
+
+\begin{conjecture}
+Let $n\geq1$. The sequence
+\[
+\operatorname{gnu}(n),\operatorname{gnu}^2(n)=\operatorname{gnu}(\operatorname{gnu}(n)),\operatorname{gnu}^3(n)\dots
+\]
+stabilizes at 1.
+\end{conjecture}
+
+It is not difficult to verify that the conjecture is true for $n<2000$.
+
+The following conjecture appeared independently in several places. Apparently, the first more or less explicit appearance was around 1930 and was due to Miller. Independently, MacHale formulated it forty years later.
+
+\begin{conjecture}
+The function $\Z_{\geq1}\to\Z_{\geq1}$, 
+$n\mapsto\operatorname{gnu}(n)$ is surjective.
+\end{conjecture}
+
+For more information about this conjecture, we refer to \cite[\S21.6]{MR2382539}.
+
+Although there are many conjectures about the behavior of the function that counts the number of isomorphism classes of finite groups, there are several results. The following one is completely elementary:
+
+\begin{theorem}
+If $n\geq1$, then $\operatorname{gnu}(n)\leq n^{n\log_2 n}$.
+\end{theorem}
+
+\begin{proof}
+If $G$ is a group, let
+\[
+d(G)=\min\{k:\text{there exist }g_1,\dots,g_k\in G\text{ such that }G=\langle g_1,\dots,g_k\rangle\}.
+\]
+We are going to prove that if $|G|=n$, then $d(G)\leq\log_2 n$. Let
+\[
+\{1\}=G_0\subsetneq G_1\subsetneq\cdots\subsetneq G_r=G
+\]
+be a maximal sequence of subgroups. For each $i\in\{1,\dots,r\}$ let
+$g_i\in G_i\setminus G_{i-1}$. It is easily shown
+that
+\[
+G_i=\langle g_1,\dots,g_i\rangle
+\]
+for all $i$. 
+Indeed, if there exists some $i$ such that $G_i\ne\langle g_1,\dots,g_i\rangle$, then
+there exists $g\in G_i\setminus\langle g_1,\dots,g_i\rangle$ and then
+\[
+\langle g_1,\dots,g_i\rangle\subsetneq \langle G_i,g\rangle\subsetneq G_{i+1}
+\]
+which contradicts the maximality of the sequence of subgroups. In particular, $G$ is generated 
+by $r$ elements.
+
+By Lagrange's theorem, 
+\[
+n=|G|=\prod_{i=1}^r(G_i:G_{i-1})\geq 2^r
+\]
+and then $r\leq\lfloor \log_2 n\rfloor$. 
+As $G$ is isomorphic to a 
+subgroup of $\Sym_n$ by Cayley's theorem, then 
+\begin{align*}
+\operatorname{gnu}(n)
+&\leq\text{number of subgroups of order $n$ of $\Sym_n$}\\
+&\leq\text{number of subgroups of $\Sym_n$ generated by $\lfloor\log_2n\rfloor$ elements}\\
+&\leq\text{number of subsets of $\Sym_n$ of $\lfloor\log_2n\rfloor$ elements}.
+\end{align*}
+Since the number of subsets of $\Sym_n$ of $\lfloor\log_2n\rfloor$ elements
+is
+\[
+\binom{n!}{\lfloor\log_2n\rfloor}\leq(n!)^{\log_2n}
+\]
+since $\binom{n}{k}\leq n^k$, we conclude that $\operatorname{gnu}(n)\leq n^{n\log_2n}$.
+\end{proof}
+% The proof is simple and elementary and can be found in the second
+% chapter of the book \cite{MR2382539}.
+
+In the case of $p$-groups, it can be shown by elementary methods 
+that
+\[
+\operatorname{gnu}(p^n)\leq p^{\frac16(n^3-n)},
+\]
+see \cite[Theorem 5.1]{MR2382539}. Much more sophisticated bounds are known:
+
+\begin{theorem}[Higman--Sims]
+\index{Higman--Sims Theorem}
+If $p$ is a prime number and $n\geq1$, then
+\[
+p^{\frac{2}{27}n^3-O(n^2)}\leq\operatorname{gnu}(p^n)\leq p^{\frac{2}{27}n^3+O(n^{\frac{8}{3}})}.
+\]
+\end{theorem}
+
+The proof of the above theorem results from combining the works of Higman \cite{MR113948}
+and Sims \cite{MR169921}. A modern presentation can be found in the book
+\cite{MR2382539}.
+
+In \cite{MR123605}, Higman conjectured that $\operatorname{gnu}(p^n)$ is a polynomial function of $p$ and $p$ modulo $N$ for a certain
+finite number of integers $N$. 
+
+\begin{conjecture}[Higman]
+\index{Higman's PORC conjecture}
+Let $n\geq1$. Then there exist $N$ polynomials
+\[
+P_{0}(X),P_{1}(X),\dots,P_{N-1}(X)
+\]
+such that
+if $p\equiv i\bmod N$, then $\operatorname{gnu}(p^n)=P_{i}(p)$.
+\end{conjecture}
+
+PORC stands for \textbf{P}olynomial \textbf{O}n \textbf{R}esidue \textbf{C}lasses.
+
+It is known that the conjecture is true for $n\leq7$, although the problem remains open for $n\geq8$.
+In \cite{MR2921623}, a work of over seventy pages,
+du Sautoy and Vaughan--Lee constructed a family of groups
+of order $p^{10}$ suggesting that the PORC conjecture might not be true. Nevertheless, Higman's PORC conjecture remains open.
+
+\begin{theorem}[Pyber]
+\index{Pyber's Theorem}
+If $n\geq1$, then
+\[
+\operatorname{gnu}(n)\leq n^{\frac{2}{27}\mu(n)^2+O\left(\mu(n)^{\frac{5}{3}}\right)},
+\]
+where $\mu(n)$ is the largest exponent
+appearing in the prime factorization of $n$.
+\end{theorem}
+
+The proof appears in \cite{MR1200081} and in the case of non-solvable groups uses the classification of simple groups. A detailed presentation can be found in the book
+\cite{MR2382539} by Blackburn, Neumann, and Venkataraman.
