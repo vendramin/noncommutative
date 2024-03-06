@@ -677,10 +677,9 @@ n_{r+1}\leq kn_1\cdots n_r\leq k\prod_{j=1}^k2^{2^{j-1}}=k^{2^k}.\qedhere
 Find good bounds for the order $n$ of a group with a fixed number $k$ of conjugacy classes. It is expected that the bounds will be considerably better than those obtained from Landau's method.
 \end{problem}
 
-\subsection{*How many finite groups are there?}
-\label{cantidad}
+\subsection{*Burnside's cyclic numbers theorem}
 
-In this chapter, we will mention some problems and results related to the number of isomorphism classes of finite groups of a given order. This classification problem is obviously almost as old as group theory itself. When taking the first steps in group theory, we encounter some easy-to-prove results:
+We now mention some problems and results related to the number of isomorphism classes of finite groups of a given order. This classification problem is obviously almost as old as group theory itself. When taking the first steps in group theory, we encounter some easy-to-prove results:
 \begin{itemize}
     \item There exists a unique finite group of prime order, and it is cyclic.
     \item There are two groups of order four, both abelian.
@@ -759,8 +758,12 @@ Some examples of cyclic numbers are: $2$, $3$, $15$, and $615=3\cdot 5\cdot 41$.
 
 Similarly, abelian and nilpotent numbers can be defined. These numbers are classified, and an elementary proof can be found in \cite{MR1786236}. There is also the notion of a solvable number. Thanks to the Feit--Thompson theorem, every odd number is a solvable number. These numbers are also classified, although the proof is much more difficult as it relies on a very deep theorem of Thompson and the famous Feit--Thompson theorem.
 
-\medskip
-In \cite{MR2410121}, the function $\operatorname{gnu}(n)$ is defined, which returns the number of isomorphism classes of groups of order $n$. For example, $\operatorname{gnu}(1)=\operatorname{gnu}(2)=\operatorname{gnu}(3)=\operatorname{gnu}(5)=1$ and $\operatorname{gnu}(4)=\operatorname{gnu}(6)=2$. The name comes from \emph{\textbf{g}roups \textbf{nu}mber}.
+\subsection{*How many finite groups are there?}
+
+In \cite{MR2410121}, the function $\operatorname{gnu}(n)$ is defined, which returns the number of isomorphism classes of groups of order $n$. For example, \[
+\operatorname{gnu}(1)=\operatorname{gnu}(2)=\operatorname{gnu}(3)=\operatorname{gnu}(5)=1\text{ and }\operatorname{gnu}(4)=\operatorname{gnu}(6)=2.
+\]
+The name comes from \emph{\textbf{g}roups \textbf{nu}mber}.
 
 Burnside's theorem can be reformulated as follows:
 \[
@@ -810,7 +813,7 @@ gap> Sum([1..1023], gnu);
 
 The classification of groups is a difficult problem. A particularly difficult case is that of groups of order $p^3$, where $p$ is a prime number. For example, there are exactly 2 groups of order $2^3$ and 5 groups of order $3^3$. For general $p$, the question is open. For example, there are 14 groups of order $2^4$, 51 groups of order $2^5$, and 267 groups of order $2^6$. The sequences are found in the Encyclopedia of Integer Sequences, sequences \lstinline{A000679}, \lstinline{A000880}, and \lstinline{A000881}.
 
-Finally, we mention some references on the subject. The classic book on the classification of finite simple groups is \cite{MR1915964}. For groups of small order, see \cite{MR1250465} and \cite{MR1357169}.
+% Finally, we mention some references on the subject. The classic book on the classification of finite simple groups is \cite{MR1915964}. For groups of small order, see \cite{MR1250465} and \cite{MR1357169}.
 
 \begin{lstlisting}[language=gap]
 gap> Sum([1..1023], gnu)+Sum(List([1025..2015], gnu));
@@ -834,12 +837,17 @@ Calculate $\operatorname{gnu}(2048)$.
 It is known that $\operatorname{gnu}(2048)>1774274116992170$, which is the number of subgroups of order 2048 of a certain class.
 
 \begin{conjecture}
+\label{conjecture:gnu}x
 Let $n\geq1$. The sequence
 \[
-\operatorname{gnu}(n),\operatorname{gnu}^2(n)=\operatorname{gnu}(\operatorname{gnu}(n)),\operatorname{gnu}^3(n)\dots
+\operatorname{gnu}(n),\operatorname{gnu}^2(n),\operatorname{gnu}^3(n)\dots
 \]
 stabilizes at 1.
 \end{conjecture}
+
+In Conjecture \ref{conjecture:gnu}, 
+$\operatorname{gnu}^{1}(n)=\operatorname{gnu}(n)$ and 
+$\operatorname{gnu}^{k+1}(n)=\operatorname{gnu}(\operatorname{gnu}^k(n))$ for $k\geq1$. 
 
 It is not difficult to verify that the conjecture is true for $n<2000$.
 
@@ -847,7 +855,7 @@ The following conjecture appeared independently in several places. Apparently, t
 
 \begin{conjecture}
 The function $\Z_{\geq1}\to\Z_{\geq1}$, 
-$n\mapsto\operatorname{gnu}(n)$ is surjective.
+$n\mapsto\operatorname{gnu}(n)$, is surjective.
 \end{conjecture}
 
 For more information about this conjecture, we refer to \cite[\S21.6]{MR2382539}.
