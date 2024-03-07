@@ -79,7 +79,7 @@ $N_G(P)\subseteq M$, then $M=N_G(M)$.
 \end{exercise}
 
 % \begin{svgraybox}
-% 	Sea $x\in N_G(M)$. Como $P\subseteq M$ y $M$ es normal en $N_G(M)$,
+% 	Let $x\in N_G(M)$. Como $P\subseteq M$ y $M$ es normal en $N_G(M)$,
 % 	$xPx^{-1}\subseteq M$.  Como $P$ y $xPx^{-1}$ son $p$-subgrupos de Sylow de
 % 	$M$, existe $m\in M$ tal que 
 % 	\[
@@ -104,7 +104,7 @@ Let $G$ be a finite group. Prove that the following statements are equivalent:
 % 	lema~\ref{lemma:normalizadora}. Para demostrar que $(2)\implies(3)$ hacemos
 % 	lo siguiente: si $M$ es un subgrupo maximal, como $M\subsetneq N_G(M)$ por
 % 	hipótesis, $N_G(M)=G$ por maximalidad. Finalmente demostremos que
-% 	$(3)\implies(1)$.  Sea $P\in\Syl_p(G)$. Si $P$ no es normal en $G$,
+% 	$(3)\implies(1)$.  Let $P\in\Syl_p(G)$. Si $P$ no es normal en $G$,
 % 	$N_G(P)\ne G$ y entonces existe un subgrupo maximal $M$ tal que
 % 	$N_G(P)\subseteq M$. Como $M$ es normal en $G$, el
 % 	ejercicio~\ref{exercise:truco} implica que $M=N_G(M)=G$, una contradicción.
@@ -143,14 +143,14 @@ Prove the following statements:
 
 % \begin{svgraybox}
 % 	\begin{enumerate}
-% 		\item Sabemos que $Z(G)\ne1$. Sea $g\in Z(G)$ tal que $g\ne 1$.
+% 		\item Sabemos que $Z(G)\ne1$. Let $g\in Z(G)$ tal que $g\ne 1$.
 % 			Supongamos que el orden de $g$ es $p^k$ para algún $k\geq1$.
 % 			Entonces $g^{p^{k-1}}$ tiene orden $p$ y luego genera un subgrupo
 % 			central de orden $p$. 
 % 		\item Procederemos por inducción en $n$. Si $n=1$ el resultado es
 % 			trivial.  Supongamos entonces que el resultado vale para un cierto
 % 			$n\geq2$. Por el punto anterior, $G$ posee un subgrupo normal $N$
-% 			de orden $p$. Luego $G/N$ tiene orden $p^{n-1}$. Sea $\pi\colon G\to G/N$ el morfismo canónico. 
+% 			de orden $p$. Luego $G/N$ tiene orden $p^{n-1}$. Let $\pi\colon G\to G/N$ el morfismo canónico. 
 % 			Por hipótesis
 % 			inductiva, para cada $j\in\{0,\dots,n-1\}$. Por el teorema de la
 % 			correspondecia, cada subgrupo normal $S_j$ de $G/N$ de orden $p^j$ se
@@ -176,7 +176,7 @@ Let $G$ be a finite group. Prove that the following statements are equivalent:
 % \begin{svgraybox}
 % 	Veamos que $(1)\implies(2)$. Sabemos que $G$ es producto directo de sus
 % 	subgrupos de Sylow, digamos $G=\prod_{i=1}^k S_i$, donde los $S_i$ son los
-% 	distintos subgrupos de Sylow de $G$.  Sean
+% 	distintos subgrupos de Sylow de $G$.  Letn
 % 	$x=(x_1,\dots,x_k),y=(y_1,\dots,y_k)\in G$. Como $|x|$ y $|y|$ son
 % 	coprimos, para cada $i\in\{1,\dots,k\}$ se tiene $x_i=1$ o $y_i=1$. Luego
 % 	\[
@@ -184,7 +184,7 @@ Let $G$ be a finite group. Prove that the following statements are equivalent:
 % 	\]
 % 	Demostremos ahora que $(2)\implies(1)$. Supongamos que
 % 	$|G|=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$, donde los $p_j$ son primos
-% 	distintos y para cada $j$ sea $P_j\in\Syl_{p_j}(G)$. Como elementos de
+% 	distintos y para cada $j$ Let $P_j\in\Syl_{p_j}(G)$. Como elementos de
 % 	órdenes coprimos conmutan, la función $P_1\times\cdots\times P_k\to G$,
 % 	$(x_1,\dots,x_k)\mapsto x_1\cdots x_k$, es un morfismo inyectivo de grupos.
 % 	Como entonces $G\simeq P_1\times\cdots P_k$, y cada $P_j$ es nilpotent,
@@ -492,7 +492,7 @@ Prove that $\Phi(G)$ is a characteristic subgroup of $G$.
 \end{exercise}
 
 \begin{example}
-Sea $G=\Sym_3$. The maximal subgroups of $G$ are 
+Let $G=\Sym_3$. The maximal subgroups of $G$ are 
 \[
 M_1=\langle (123)\rangle,
 \quad
@@ -603,7 +603,7 @@ the group.
 \end{proposition}
 
 \begin{proof}
-We first prove $\supseteq$. Let $x\in G$. If $M$ is a maximal subgroup of $G$ such that $x\not\in M$, then, since $G=\langle
+We first prove $\supseteq$. Let $x\in \{x\in G:\text{if $G=\langle x,Y\rangle$ for some $Y\subseteq G$, then $G=\langle Y\rangle$}\}$. If $M$ is a maximal subgroup of $G$ such that $x\not\in M$, then, since $G=\langle
 	x,M\rangle$, we obtain that $G=\langle M\rangle=M$, a contradiction. Thus $x\in M$ for all maximal subgroup $M$ of $G$. Hence 
  $x\in \Phi(G)$. 
 
@@ -739,370 +739,5 @@ G=\Phi(G)PN_G(P)=\Phi(G)N_G(P),
 \]
 as $P\subseteq N_G(P)$. Thus $G=N_G(P)$ by Lemma~\ref{lem:G=HPhi(G)}). Hence 
 $P$ is normal in $G$ and therefore $G$ is nilpotent. 
-\end{proof}
-
-\begin{theorem}[Hall]
-\index{Hall's!theorem}
-\label{thm:Hall_nilpotent}
-Let $G$ be a finite group with a normal subgroup $N$. If both $N$ and 
-$G/[N,N]$ are nilpotent, then $G$ is nilpotent.
-\end{theorem}
-
-\begin{proof}
-Since $N$ is nilpotent, $[N,N]\subseteq\Phi(N)$ by 
-Wielandt's theorem~\ref{thm:Wielandt}. 
-By Proposition~\ref{pro:phi(N)phi(G)},
-$[N,N]\subseteq\Phi(N)\subseteq\Phi(G)$. 
-By the universal property, there exists a surjective group homomorphism 
-$G/[N,N]\to G/\Phi(G)$ such that the diagram 
-    \[
-    \begin{tikzcd}
-	G & {G/\Phi(G)} \\
-	{G/[N,N]}
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow[dashed, from=2-1, to=1-2]
-    \end{tikzcd}
-    \]
-%     \[
-% 	\xymatrix{
-% 	G
-% 	\ar[d]
-% 	\ar[r]
-% 	& G/\Phi(G)
-% 	\\
-% 	G/[N,N]\ar@{-->}[ur]
-% 	}
-%    \xymatrix{ & P\ar[d]^f\ar@{-->}[ld]_h\\ M\ar[r]^g & N\ar[r] & 0 }
-%    \]
-is commutative. Since $G/[N,N]$ is nilpotent, $G/\Phi(G)$ is nilpotent. Thus $G$ is nilpotent by the previous theorem. 
-\end{proof}
-
-\begin{definition}
-A \textbf{minimal generating set} of a group $G$ is a set 
-$X$ of generators of $G$ such that no proper subset of $X$ generates $G$. 
-\end{definition}
-
-Note that a minimal generating set does not necessarily have minimal size. 
-	
-\begin{example}
-Let $G=\langle g\rangle\simeq C_6$.  If $a=g^2$ and 
-$b=g^3$, then $\{a,b\}$ is a minimal generating set of $G$ that does not have
-minimal size, as $G=\langle ab\rangle$.
-\end{example}
-	
-For a prime number $p$, we write $\F_p$ to denote the field of $p$ elements. 
-
-\begin{lemma}
-\label{lem:Burnside:minimal}
-Let $p$ be a prime number and 
-$G$ be a finite $p$-group. Then $G/\Phi(G)$ is a vector space over $\F_p$.
-\end{lemma}
-
-\begin{proof}
-Let $K$ be a maximal subgroup of $G$. Since $G$ is nilpotent 
-(see Proposition~\ref{pro:nilpotent_pgroups}), 
-$K$ is normal in $G$ (Exercise~\ref{xca:normalizadora}). 
-Thus $G/K\simeq C_p$ because it is a simple $p$-group. 
-	
-It is enough to prove that $G/\Phi(G)$ is an elementary abelian $p$-group. It is a 
-$p$-group because $G$ is a $p$-group. Let $K_1,\dots,K_m$ be the maximal subgroups 
-of $G$. If $x\in G$, then $x^p\in K_j$ for all $j\in\{1,\dots,m\}$. Hence 
-$x^p\in\Phi(G)=\cap_{j=1}^m K_j$. Moreover,  $G/\Phi(G)$ is abelian, as 
-$[G,G]\subseteq \Phi(G)$ because $G$ is nilpotent (Wielandt's theorem~\ref{thm:Wielandt}). 
-\end{proof}
-
-\begin{theorem}[Burnside]
-\label{thm:Burnside:basis}
-Let $p$ be a prime number and $G$ a finite $p$-group. If $X$ is a minimal 
-generating set of $G$, then $|X|=\dim G/\Phi(G)$. 
-\end{theorem}
-
-\begin{proof}
-By Lemma \ref{lem:Burnside:minimal}, $G/\Phi(G)$ is a vector space over $\F_p$. 
-Let $\pi\colon G\to G/\Phi(G)$ be the canonical map and 
-$\{x_1,\dots,x_n\}$ be a minimal generating set of $G$.
-We claim that $\{\pi(x_1),\dots,\pi(x_n)\}$ is a linearly independent subset of $G/\Phi(G)$. 
-Assume this is not the case. Without loss of generality, let us assume that 
-$\pi(x_1)\in\langle \pi(x_2),\dots,\pi(x_n)\rangle$. There exists $y\in
-\langle x_2,\dots,x_n\rangle$ such that $x_1y^{-1}\in\Phi(G)$. Since $G$ is generated by 
-$\{x_1y^{-1},x_2,\dots,x_n\}$ and $x_1y^{-1}\in\Phi(G)$, Proposition~\ref{pro:nongenerators}
-implies that $G$ is generated by 
-$\{x_2,\dots,x_n\}$, a contradiction to the minimality of $\{x_1,\dots,x_n\}$. 
-Therefore $n=\dim G/\Phi(G)$.
-\end{proof}
-
-% TODO: agregar una aplicación (teorema de Hall). Ver Passman permutation groups, 11.7, pag 47
-
-\begin{exercise}
-Let $p$ be a prime number and $G$ a finite $p$-group. Prove that if $x\not\in\Phi(G)$, then 
-$x$ belongs to some minimal set of generators of $G$. 
-\end{exercise}
-
-
-\subsection{The Fitting subgroup}
-
-\begin{definition}
-\index{$p$-radical}
-Let $G$ be a finite group and $p$ be a prime number. 
-The \textbf{$p$-radical} of $G$ is the subgroup 
-\[
-O_p(G)=\bigcap_{P\in\Syl_p(G)}P.
-\]
-\end{definition}
-
-\begin{lemma}
-\label{lem:core:Op(G)}
-Let $G$ be a finite group and $p$ be a prime number. The following statements hold: 
-\begin{enumerate}
-    \item $O_p(G)$ is normal in $G$.
-    \item If $N$ is a normal subgroup of $G$ contained in some 
-    $P\in\Syl_p(G)$, then $N\subseteq O_p(G)$.
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-Let $P\in\Syl_p(G)$. Let $G$ act on $G/P$ by left multiplication. There is a group homomorphism 
-$\rho\colon G\to\Sym_{G/P}$ with kernel 
-\begin{align*}
-		\ker\rho&=\{x\in G:\rho_x=\id\}\\
-		&=\{x\in G:xgP=gP\;\forall g\in G\}\\
-		&=\{x\in G:x\in gPg^{-1}\;\forall g\in G\}\\
-    &=\bigcap_{g\in G}gPg^{-1}\\
-    &=O_p(G).
-\end{align*}
-Then $O_p(G)$ is normal in $G$.
-
-Let $N$ be a normal subgroup of $G$ such that $N\subseteq P$. Since 
-$N=gNg^{-1}\subseteq gPg^{-1}$ for all $g\in G$, we conclude that 
-$N\subseteq O_p(G)$.
-\end{proof}
-
-\begin{definition}
-\index{Fitting!subgroup}
-Let $G$ be a finite group and $p_1,\dots,p_k$ be the prime divisors of 
-$|G|$. The \textbf{Fitting subgroup} of $G$ is the subgroup 
-\[
-F(G)=O_{p_1}(G)\cdots O_{p_k}(G)
-\]
-\end{definition}
-
-\begin{exercise}
-\label{xca:Fitting_char}
-Prove that $F(G)$ is characteristic in $G$.
-\end{exercise}
-
-% \begin{svgraybox}
-% 	Sea $f\in\Aut(G)$ y sea $p$ un primo. Como $f$ 
-% 	permuta los $p$-subgrupos de Sylow de $G$, $f(O_p(G))=O_p(G)$. Luego
-% 	$f(F(G))=F(G)$.
-% \end{svgraybox}
-
-\begin{example}
-Let $G=\Sym_3$. Then $O_2(G)=\{1\}$ and $O_3(G)=\langle
-(123)\rangle$. Hence $F(G)=\langle (123)\rangle$.
-\end{example}
-
-\begin{theorem}[Fitting]
-\label{thm:Fitting}
-\index{Fitting's theorem}
-Let $G$ be a finite group. Then $F(G)$ is a nilpotent and normal in $G$.
-Moreover, $F(G)$ contains every nilpotent normal subgroup of $G$.
-\end{theorem}
-
-\begin{proof}
-By definition, $|F(G)|=\prod_p|O_p(G)|$.
-Since $O_p(G)\in\Syl_p(F(G))$, we conclude that $F(G)$ is nilpotent, as it contains 
-a normal Sylow $p$-subgroup for every prime $p$. 
-Hence $F(G)$ is nilpotent by Theorem~\ref{thm:nilpotent:eq}.
-
-Let $N$ be a nilpotent normal subgroup of $G$ and $P\in\Syl_p(N)$. Since 
-$N$ is nilpotent, $P$ is normal in $N$ and hence $P$ is the only 
-Sylow $p$-subgroup of $N$. Thus $P$ is characteristic in $N$ and 
-$P$ is normal in $G$. Since $N$ is nilpotent, $N$ is a direct product of its Sylow subgroups. 
-Therefore $N\subseteq O_p(G)$ by Lemma~\ref{lem:core:Op(G)}.
-\end{proof}
-
-\begin{corollary}
-\label{cor:Z(G)subsetF(G)}
-If $G$ is a finite group, then $Z(G)\subseteq F(G)$.
-\end{corollary}
-
-\begin{proof}
-Since $Z(G)$ is nilpotent (in fact, it is abelian) and 
-normal in $G$, by Fitting's theorem~\ref{thm:Fitting} we conclude that 
-$Z(G)\subseteq F(G)$ 
-\end{proof}
-
-\begin{corollary}[Fitting]
-\label{cor:Fitting}
-Let $K$ and $L$ be nilpotent normal subgroups of a finite group $G$. 
-Then $KL$ is nilpotent. 
-\end{corollary}
-
-\begin{proof}
-By Fitting's theorem \ref{thm:Fitting}, $K\subseteq F(G)$ and 
-$L\subseteq F(G)$. Then $KL\subseteq F(G)$ and $KL$ is nilpotent, as 
-$F(G)$ is nilpotent. 
-\end{proof}
-
-\begin{corollary}
-\label{cor:McapF(G)}
-Let $N$ be a normal subgroup of a finite group $G$. Then 
-$N\cap F(G)=F(N)$.
-\end{corollary}
-
-\begin{proof}
-Since $F(N)$ is characteristic in $N$, $F(N)$ is normal in $G$. Then 
-$F(N)\subseteq N\cap F(G)$ because $F(N)$ is nilpotent.  
-Conversely, since $F(G)$ is normal in $G$, the subgroup $F(G)\cap N$ is normal in $N$. Since $F(G)\cap N$
-is nilpotent, $F(G)\cap N\subseteq F(N)$. 
-\end{proof}
-
-We now discuss an application to finite solvable groups.
-
-\begin{theorem}
-Let $G$ be a non-trivial solvable group. Every normal non-trivial subgroup $N$ 
-contains a normal abelian non-trivial subgroup. Moreover, this subgroup is contained in $F(N)$. 
-% un grupo finito no trivial y resoluble. Todo subgrupo normal $N$ no
-% trivial contiene un subgrupo normal abeliano no trivial y este subgrupo está en realidad 
-% contenido en $F(N)$. 
-\end{theorem}
-
-\begin{proof}
-Note that $N\cap G^{(0)}=N\ne\{1\}$. Since $G$ is solvable, there exists 
-$m\geq1$ such that $N\cap G^{(m)}=\{1\}$. Let $n$ be the largest positive integer such that 
-$N\cap G^{(n)}\ne\{1\}$. Since $[N,N]\subseteq N$ and $[G^{(n)},G^{(n)}]=G^{(n+1)}$, 
-\[
-[N\cap G^{(n)},N\cap G^{(n)}]\subseteq N\cap G^{(n+1)}=\{1\}.
-\]
-Then $N\cap G^{(n)}$ is an abelian subgroup of $G$. Moreover, it is normal and 
-nilpotent. Hence 
-\[
-N\cap G^{(n)}\subseteq N\cap F(G)=F(N).\qedhere
-\]
-\end{proof}
-
-\begin{theorem}
-\label{thm:F(G)centraliza}
-If $N$ is a minimal normal subgroup of a finite group $G$, then 
-$F(G)\subseteq C_G(N)$.
-\end{theorem}
-
-\begin{proof}
-By Fitting's theorem \ref{thm:Fitting}, $F(G)$ is a normal nilpotent group. 
-The subgroup $N\cap F(G)$ is normal in $G$. Moreover, 
-$[F(G),N]\subseteq N\cap F(G)$. If $N\cap F(G)=\{1\}$, then
-$[F(G),N]=\{1\}$. Otherwise, $N=N\cap F(G)\subseteq F(G)$ by the minimality of $N$. 
-By Hirsch's theorem, $N\cap Z(F(G))\ne \{1\}$ 
-%~\ref{theorem:Z(nilpotent)}. 
-Since $Z(F(G))$ is characteristic in $F(G)$ and 
-$F(G)$ is normal in $G$, $Z(F(G))$ is normal in $G$. Since $\{1\}\ne N\cap Z(F(G))$ is 
-normal in $G$, the minimality of $N$ implies that 
-$N=N\cap Z(F(G))\subseteq
-Z(F(G))$. Hence $[F(G),N]=\{1\}$. 
-\end{proof}
-
-\begin{corollary}
-Let $G$ be a finite solvable group. The following statements hold: 
-\begin{enumerate}
-\item If $N$ is a minimal normal subgroup, then $N\subseteq Z(F(G))$. 
-\item If $H$ is a non-trivial normal subgroup, then $H\cap F(G)\ne\{1\}$.
-\end{enumerate}
-\end{corollary}
-
-\begin{proof}
-Let us prove the first claim. Since $N$ is a $p$-group by Lemma~\ref{lem:minimal_normal}, 
-$N$ is nilpotent and hence $N\subseteq F(G)$. Moreover, $F(G)\subseteq C_G(N)$ by the previous theorem. 
-Therefore $N\subseteq Z(F(G))$. 
-
-Let us prove now the second claim. The subgroup $H$ contains a minimal normal subgroup $N$ and 
-$N\subseteq F(G)$. Then $H\cap F(G)\ne\{1\}$. 
-\end{proof}
-
-\begin{theorem}
-Let $G$ be a finite group. The following statements hold:
-\begin{enumerate}
-\item $\Phi(G)\subseteq F(G)$ and $Z(G)\subseteq F(G)$.
-\item $F(G)/\Phi(G)\simeq F(G/\Phi(G))$.
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-Let us prove the first claim. Since $\Phi(G)$ is normal in $G$, nilpotent by 
-Frattini's Theorem~\ref{thm:Frattini} and $F(G)$ contains every normal nilpotent subgroup of $G$, 
-$\Phi(G)\subseteq F(G)$. Moreover, $Z(G)$ is normal in $G$ and nilpotent. Hence 
-$Z(G)\subseteq F(G)$.
-
-Let us prove the second claim. Let $\pi\colon G\to G/\Phi(G)$ be the canonical map. Since 
-$F(G)$ is nilpotent, $\pi(F(G))$ is nilpotent. Hence 
-\[
-\pi(F(G))\subseteq F(G/\Phi(G))
-\]
-by Fitting's Theorem~\ref{thm:Fitting}. Let 
-$H=\pi^{-1}(F(G/\Phi(G)))$. By the correspondence theorem, $H$ is a normal 
-subgroup of $G$ containing $\Phi(G)$. If $P\in\Syl_p(H)$, then 
-$\pi(P)\in\Syl_p(\pi(H))$. In fact, $\pi(P)\simeq P/P\cap \Phi(G)$ is a $p$-group and 
-$(\pi(H):\pi(P))$ is coprime with $p$ because 
-	\[
-	(\pi(H):\pi(P))
-	=\frac{|\pi(H)|}{|\pi(P)|}
-	=\frac{|H/\Phi(G)|}{|P/P\cap \Phi(G)|}
-	=\frac{(H:P)}{(\Phi(G):P\cap\Phi(G))}
-	\]
-divides $(H:P)$, a number coprime with $p$. Since $\pi(H)$ is nilpotent, 
-$\pi(P)$ is characteristic in $\pi(H)$. Then $\pi(P)$ is normal
-in $\pi(G)=G/\Phi(G)$ and $P\Phi(G)=\pi^{-1}(\pi(P))$ is normal 
-in $G$. Since $P\in\Syl_p(P\Phi(G))$, Frattini's argument (Lemma~\ref{lem:Frattini_argument}) implies that 
-$G=\Phi(G)N_G(P)$. Therefore $P$
-is normal in $G$ by Lemma~\ref{lem:G=HPhi(G)}. Since $P$ is nilpotent and normal in $G$, 
-$P\subseteq F(G)$ by Fitting's theorem~\ref{thm:Fitting}. Hence 
-$H\subseteq F(G)$ and 
-$F(G/\Phi(G))=\pi(H)\subseteq \pi(F(G))$.
-\end{proof}
-
-%\begin{exercise}
-%	Sea $G$ un grupo finito. Demuestre que
-%	$F(G)/Z(G)\simeq F(G/Z(G))$.
-%\end{exercise}
-%
-%\begin{svgraybox}
-%	Sea $\pi\colon G\to G/Z(G)$ el morfismo canónico. 
-%	Como $Z(G)$ es abeliano, $\pi(Z(G))$ es nilpotente y luego $\pi(Z(G))\subseteq F(G/Z(G))$. 
-%\end{svgraybox}<++>
-
-\subsection{*Mann subgroup}
-
-Let $G$ be a finite group with conjugacy classes sizes 
-\[
-1=n_1<n_2<\cdots<n_k.
-\]
-For example, for $G=\Sym_3$ one has $k=3$ and $(n_1,n_2,n_3)=(1,2,3)$. How the number $k$ of class sizes affect the structure of the group?
-
-\begin{problem}
-    What is the connection between the conjugacy classes sizes and the nilpotency of a group? 
-\end{problem}
-
-For example, if $k=1$, then $G$ is abelian. 
-It\^o proved that if $k=2$, then $G$ is nilpotent; see \cite{MR61597}. 
-And Ishikawa proved that the nilpotency class of $G$ is at most three. 
-
-\begin{definition}
-    \index{Mann subgroup}
-    Let $G$ be a finite group. The \textbf{Mann subgroup} $M(G)$ is defined as the subgroup
-    of $G$ generated by all elements lying in conjugacy classes of size $\leq n_2$.
-\end{definition}
-
-Ishikawa's theorem
-follows from the following theorem. 
-
-\begin{theorem}[Mann]
-\label{thm:Mann}
-\index{Mann's theorem}
-Let $G$ be a nilpotent finite group. Then $M(G)$ has nilpotency class $\leq3$.
-\end{theorem}
-
-\begin{proof}
-    See \cite[Theorem 4.14]{MR2426855}.
 \end{proof}
 
