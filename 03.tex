@@ -36,7 +36,7 @@ g=\prod_{k=1}^N [x_k,g_k],
 for some $g_1,\dots,g_N\in\gamma_{i+1}(G)$ and $x_1,\dots,x_N\in G$. By the inductive 
 hypothesis, 
 	\[
-	g_k\in\gamma_i(G)\subseteq\zeta_{c-i}(G)
+	g_k\in\gamma_{i+1}(G)\subseteq\zeta_{c-i}(G)
 	\]
 for all $k$. Hence $[x_k,g_k]\in\zeta_{c-i-1}(G)$ for all $k$. Therefore   
 $g\in\zeta_{c-(i+1)}(G)$. 
@@ -91,7 +91,7 @@ $i\geq0$. Let
 	\[
         \pi_i([G,G_{i-1}])=[\pi_i(G),\pi_i(G_{i-1})]=\{1\}.
         \]
-        Hence $\gamma_{i+1}(G)=[G,G_{i-1}]\subseteq G_i$. 
+        Hence $\gamma_{i+1}(G)\subseteq [G,G_{i-1}]\subseteq G_i$. 
 \end{proof}
 
 % extender el lema para ver qué pasa con zeta_i
@@ -268,7 +268,7 @@ $\langle x,[G,G]\rangle$ is nilpotent of class $<c$.
 \end{lemma}
 
 \begin{proof}
-Let $H=\langle x,[G,G]\rangle$.  If $x\in [G,G]$, the there is nothing to prove. 
+Let $H=\langle x,[G,G]\rangle$.  If $x\in [G,G]$, then there is nothing to prove. 
 So assume that $x\not\in [G,G]$. Note that 
 	\[
 		H=\{x^nc:n\in\Z,c\in [G,G]\},
@@ -357,7 +357,7 @@ example, say $m=3$. In this case, we obtain the following formula:
 \end{align*}
 as $a_1^3=1$.
 
-With this trick, we prove that $ab$ have finite order. Hence $T(G)$ 
+With this trick, we prove that $ab$ has finite order. Hence $T(G)$ 
 is a subgroup of $G$. 
 \end{proof}
 
