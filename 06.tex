@@ -1,5 +1,711 @@
 \section{21/03/2024}
 
+
+\subsection{Super-solvable groups}
+
+\begin{definition}
+\index{Group!super-solvable}
+A group $G$ is said to be \textbf{super-solvable} if there exists a sequence 
+\[
+G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
+\]
+of normal subgroups of $G$ such that every 
+quotient $G_{i-1}/G_i$ is cyclic. 
+\end{definition}
+
+In the previous definition, we do not require the group to be finite. Hence the quotients 
+could be finite cyclic groups or isomorphic to $\Z$. 
+
+\begin{example}
+The dihedral group $\D_{n}$ of order $2n$ is super-solvable, as 
+\[	
+\D_{n}\supseteq \langle
+r\rangle\supseteq \{1\}
+\]
+is a sequence of normal subgroups with cyclic factors. 
+\end{example}
+
+Every solvable group is super-solvable. See Exercise~\ref{xca:solvable}.
+
+\begin{example}
+The alternating group $\Alt_4$ solvable but not super-solvable. The only 
+proper non-trivial normal subgroup of $\Alt_4$ is 
+	\[
+	\{\id,(12)(34),(13)(24),(14)(23)\}\simeq C_2\times C_2.
+	\]
+Thus $\Alt_4$ does not have a sequence of normal subgroups 
+with cyclic factors. 
+\end{example}
+
+\begin{exercise}
+\label{xca:Aff_supersolvable}
+Prove that $\Aff(\Z)$ is super-solvable. 
+\end{exercise}
+% aff(Z) es súper-resoluble
+
+\begin{example}
+The group $\SL_2(3)$ is solvable but not super-solvable. Here is a computer verification: 
+\begin{lstlisting}
+gap> IsSolvable(SL(2,3));
+true
+gap> IsSupersolvable(SL(2,3));
+false
+\end{lstlisting}
+\end{example}
+
+\begin{exercise}
+\label{xca:super}
+Prove the following statements: 
+\begin{enumerate}
+\item Every subgroup of a super-solvable group is super-solvable. 
+\item Quotients of super-solvable groups are super-solvable. 
+\end{enumerate}
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Sea $G$ un grupo súper-resoluble y sea 			
+% 	\[ 
+% 	G=G_0\supseteq G_1\supseteq \cdots\supseteq G_n=1 
+% 	\] 
+% 	una sucesión de subgrupos normales
+% 	donde cada cociente $G_{i-1}/G_{i}$ es cíclico. 
+% 	\begin{enumerate}
+% 		\item Sea $H$ un subgrupo de $G$. Como $G$ es
+% 			súper-resoluble, Sea 
+% 			\[
+% 			H=H\cap G_0\supseteq H\cap G_1\supseteq\cdots\supseteq H\cap G_n=1
+% 			\]
+% 			una sucesión de subgrupos de $H$. Cada $H\cap G_i$ es normal en $H$
+% 			pues $G_i$ es normal en $G$. Fijemos $i\in\{1,\dots,n\}$ y sea
+% 			$\pi_{i-1}\colon G_{i-1}\to G_{i-1}/G_{i}$ el morfismo canónico. La
+% 			restricción de $\pi_{i-1}$ al subgrupo $H\cap G_{i-1}$ es un morfismo con
+% 			núcleo $G_{i}\cap H$.  Al usar el teorema de isomorfismos vemos que 
+% 			\[
+% 			\frac{H\cap G_{i-1}}{H\cap G_{i}}\simeq \pi_{i-1}(H\cap G_i)\subseteq G_{i-1}/G_i
+% 			\]
+% 			es un grupo cíclico por ser subgrupo de un grupo cíclico. 
+% 		\item Sea $K$ un subgrupo normal de $G$ y sea $\pi\colon G\to G/K$ el
+% 			morfismo canónico. Para cada $i$ sea $Q_i=\pi(G_i)$. Cada $Q_i$ es
+% 			normal en $Q_n=\pi(G_n)=G/K$ pues $G_i$ es normal en $G$. Como
+% 			$G_{i-1}K=G_{i-1}(G_iK)$ para todo $i$, 
+% 			el grupo
+% 			\begin{align*}
+% 			Q_{i-1}/Q_i
+% 			&\simeq\frac{G_{i-1}/G_{i-1}\cap K}{G_i/G_i\cap K}
+% 			\simeq \frac{G_{i-1}K/K}{G_{i}K/K}\\
+% 			&\simeq\frac{ G_{i-1}K}{G_iK}
+% 			\simeq\frac{ G_{i-1}(G_iK)}{G_iK}
+% 			\simeq\frac{ G_{i-1}}{G_iK\cap G_{i-1}}
+% 			\simeq\frac{ G_{i-1}/G_i}{G_iK\cap G_{i-1}/G_i}
+% 			\end{align*}
+% 			es cíclico por ser un cociente de un grupo cíclico.
+% 	\end{enumerate}
+% \end{svgraybox}
+
+\begin{exercise}
+\label{xca:directosuper}
+Prove that the direct product of super-solvable groups is super-solvable. 
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Supongamos que $G$ admite una sucesión $G=G_0\supseteq G_1\supseteq
+% 	\cdots\supseteq G_n=1$ de de subgrupos normales tales que cada cociente
+% 	$G_{i-1}/G_i$ es cíclico, y que $H$ admite una sucesión $H=H_0\supseteq
+% 	H_1\supseteq \cdots\supseteq H_m=1$ de subgrupos normales donde cada
+% 	$H_{i-1}/H_i$ es cíclico. Consideramos la sucesión 
+% 	\[
+% 		1=G_0\times H_0\supseteq G_1\times H_0\supseteq\cdots\supseteq G_n\times H_0\supseteq G_n\times H_1\supseteq \cdots\supseteq G_n\times H_m=G\times H
+% 	\]
+% 	tiene factores cíclicos pues 
+% 	cada $G_{i-1}\times H_0/G_i\times H_0\simeq G_{i-1}/G_i$ es cíclico y cada 
+% 	$G_n\times H_{j-1}/G_n\times H_j$ también pues
+% 	\[
+% 	G_n\times H_{j-1}/G_n\times H_j
+% 	\simeq \frac{GH_{j-1}/G}{GH_j/G}
+% 	\simeq \frac{H_{j-1}/H_{j-1}\cap G}{H_j/H_j\cap G}\simeq H_{j-1}/H_j.
+% 	\]
+% \end{svgraybox}
+
+\begin{exercise}
+\label{xca:super_quotient}
+Let $H$ and $K$ be normal subgroups of a group $G$ such that $G/K$ and $G/H$
+are super-solvable. Prove that $G/H\cap K$ is super-solvable. 
+\end{exercise}
+
+% \begin{svgraybox}
+% 	El producto directo $G/H\times G/K$ es súper-resoluble. Sea $\partial\colon
+% 	G\to G/H\times G/K$, $g\mapsto (gH,gK)$.  Como $\ker\partial=H\cap K$, se
+% 	tiene que $G/H\cap K\simeq\partial(G)$, que es súper-resoluble por ser un
+% 	subgrupo de un grupo súper-resoluble.
+% \end{svgraybox}
+
+\begin{exercise}
+\label{xca:Nciclico}
+Let $N$ be a cyclic normal subgroup of $G$. If $G/N$ is super-solvable, then 
+$G$ is super-solvable. 
+\end{exercise}
+
+% todo: arreglar 
+
+% \begin{proof}
+% 	Sea $\pi\colon G\to G/N$ el morfismo canónico y sea $Q=G/N$. Como $Q$ es
+% 	súper-resoluble, tenemos una sucesión
+% 	\[
+% 		Q=Q_0\supseteq Q_1\supseteq \cdots\supseteq Q_n=\{1\}
+% 	\]
+% 	de subgrupos normales de $Q$ tales que cada cociente $Q_{i-1}/Q_i$ es
+% 	cíclico. Cada elemento de la sucesión
+% 	\[
+% 	G=\pi^{-1}(Q)\supseteq\pi^{-1}(Q_1)\supseteq\cdots\supseteq \pi^{-1}(Q_n)=N\supseteq \{1\}
+% 	\]
+% 	es normal en $G$ (por la correspondencia) y dejamos como 
+% 	ejercicio demostrar que cada cociente es cíclico. 
+% % 	cada cociente es cíclico $N$ es cíclico. 
+% % 	Queda como ejercicio demostrar 
+% % 	y cada 
+% % 	\[
+% % 	\frac{\pi^{-1}(Q_j)}{\pi^{-1}(Q_{j+1})}
+% % 		=\frac{Q_jN}{Q_{j+1}N}
+% % 		\simeq\frac{Q_jN/N}{Q_{j+1}N/N}
+% % 		\simeq\frac{Q_j(Q_{j+1}N)}{Q_{j+1}N}
+% % 		\simeq\frac{Q_j/Q_{j+1}}{Q_{j+1}N\cap Q_j}
+% % 	\]
+% % 	es cíclico por ser cociente de un grupo cíclico.
+% \end{proof}
+
+\begin{theorem}
+\label{thm:ZorCp}
+Let $G$ be a super-solvable non-trivial group. Then $G$ admits a sequence 
+\[
+G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
+\]
+of normal subgroups 
+such that every quotient $G_{i-1}/G_i$ is cyclic of prime order or isomorphic to 
+$\Z$.
+\end{theorem}
+
+\begin{proof}
+Let $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ be a sequence of normal subgroups
+of $G$ such that every quotient $G_{i-1}/G_i$ is cyclic. Let 
+$i\in\{1,\dots,n\}$ be such that $G_{i-1}/G_i\simeq C_n$ for some non-prime  
+$n$ and let $\pi\colon G_{i-1}\to G_{i-1}/G_i$ be the canonical map. 
+Let $p$ be a prime divisor of $n$ and $H$ be a subgroup of $G$ such that 
+$\pi(H)$ is a subgroup of $G_{i-1}/G_i$ of order $p$. By the correspondence theorem, 
+$G_{i}\subseteq H\subseteq G_{i-1}$. 
+
+We claim that $H$ is normal in $G$. Let $g\in G$. Since $\pi(gHg^{-1})$ is a subgroup of order $p$ of 
+the cyclic group $G_{i-1}/G_i$, $\pi(gHg^{-1})=\pi(H)$. Then 
+$gHg^{-1}=G_{i}H\subseteq H$ and hence $gHg^{-1}=H$. 
+% 	\[
+% 	\frac{gHg^{-1}}{G_i}=\frac{G_{i}H}{G_{i}}\simeq \frac{H}{G_i\cap H}=\frac{H}{G_i}
+% 	\]
+% 	y entonces $gHg^{-1}\subseteq H$.  
+
+Note that $H/G_i$ is cyclic of prime order, as 
+\[
+H/G_i=H/H\cap G_i\simeq \pi(H)\simeq C_p. 
+\]
+Moreover, $G_{i-1}/H$ is cyclic, as 
+\[
+G_{i-1}/H\simeq\frac{G_{i-1}/G_i}{H/G_i}
+\]
+is the quotient of a cyclic group. 
+	
+We have shown that by adding $H$ to our sequence of normal subgroups, 
+we obtain a sequence with cyclic factors where 
+$H/G_{i}$ is cylic of prime order. Repeating this procedure, we obtain the desired result. 
+\end{proof}
+
+Let us discuss an immediate application. 
+
+\begin{corollary}
+A finite super-solvable group admits a sequence 
+of normal subgroups where each quotient is cyclic of prime order. 
+\end{corollary}
+
+% \begin{proof}
+% 	Es consecuencia inmediata del teorema~\ref{theorem:ZorCp}.
+% \end{proof}
+
+We now discuss other properties of super-solvable groups. 
+
+\begin{theorem}
+\label{thm:super_structure}
+Let $G$ be a super-solvable group. The following statement hold:  
+\begin{enumerate}
+\item If $N$ is minimal normal in $G$, then $N\simeq C_p$ for some prime number $p$.
+\item If $M$ is maximal in $G$, then $(G:M)=p$ for some prime number $p$.
+\item The commutator subgroup $[G,G]$ is nilpotent. 
+\item If $G$ is non-abelian, there exists a normal subgroup $N\ne G$ such that
+	$Z(G)\subsetneq N$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let us prove the first claim. Since $G$ is super-solvable, there exists a sequence 
+\[
+G=G_0\supseteq G_1\supseteq
+G_2\supseteq\cdots\supseteq G_n=\{1\}
+\]
+of normal subgroups with cyclic factors. Since 
+each $G_i\cap N$ is a normal subgroup of $G$ contained in $N$, 
+the minimality implies that 
+each $G_i\cap N$ is either trivial or equal to $N$. Moreover, $N\cap G_0=N$ and $N\cap
+G_n=\{1\}$. Let $j$ be the smallest positive integer such that $N\cap G_j=\{1\}$. 
+Since $N\subseteq G_{j-1}$ (because $N\cap G_{j-1}=N$), the composition 
+	\[
+	N\hookrightarrow G_{j-1}\to G_{j-1}/G_j
+	\]
+is an injective group homomorphism, as its kernel is equal $N\cap G_{j}=\{1\}$. 
+Thus $N$ is cyclic, as it is isomorphic to a subgroup of the cyclic group $G_{i-1}/G_i$. 
+If $G_{i-1}/G_i\simeq\Z$, then $N\simeq\Z$, a contradiction to the fact that $N$ is minimal normal. (For example, 
+$2\Z$ is characteristic subgroup of $\Z$ and hence it is normal in $G$. Thus $N$ is cyclic and finite. Hence $N\simeq C_p$.)
+
+We now prove the second claim. Let $M$ be a maximal subgroup of $G$. If $M$ is normal in $G$, 
+then $G/M$ does not contain non-trivial proper subgroups. Then 
+$G/M\simeq C_p$ for some prime number $p$. Assume that $M$ is not normal in $G$. 
+Let $H=\cap_{g\in G}gMg^{-1}$ and $\pi\colon G\to G/H$ be the canonical map.  
+Since $\pi(M)$ is maximal in 
+	$\pi(G)=G/H$ and 
+	\[
+		(G:M)=(G/H:M/H)=(G/H:M/H\cap M)=(\pi(G):\pi(M)),
+	\]
+we may assume that $M$ does not contain non-trivial normal subgroups of $G$ (if needed, 
+we just replace $G$ by $G/H$). Since $G$ is super-solvable, there exists a sequence 
+$G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ of normal subgroups of $G$ 
+with factors either cyclic of prime order or isomorphic to $\Z$. Let 
+$N=G_{n-1}$. Since $N$ is cyclic, every subgroup of $N$ is characteristic 
+in $N$ and hence normal in $G$. In particular, $M\cap N$ is normal in 
+$G$ and therefore $M\cap N=\{1\}$. Since $M\subseteq
+NM\subseteq G$, the maximality of $M$ implies that either $M=NM$ or $G=NM$.
+Since $N\subseteq NM=M$ yields a contradiction, we conclude that $G=NM$.
+
+If $N\simeq C_p$ for some prime $p$, then $(G:M)=p$ and the proof is complete. 
+Assume that $N\simeq\Z$. Let $H$ be a proper subgroup of $N$. Since 
+$H$ is characteristic in $N$, $H$ is normal in $G$. Since 
+$M\subseteq HM\subseteq NM=G$, the maximality of $M$ implies that either $HM=M$ or 
+$HM=G$. Since $HM=M$ implies $H\subseteq M\cap N=\{1\}$,
+we may assume that $HM=G$. If $n\in N\setminus H$, then $n=hm$ for some 
+$h\in H$ and $m\in M$. Then $h=n$, as $h^{-1}n\in N\cap M=\{1\}$, a contradiction. 
+
+We now prove the third claim. Since $G$ is super-solvable, 
+there exists a sequence
+	\[
+	G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}
+	\]
+of normal subgroups of $G$ such that each 
+$G_i/G_{i+1}$ is cyclic. For  
+	$i\in\{0,\dots,n\}$, let $H_i=[G,G]\cap G_i$. Since $[G,G]$ the each 
+ $G_i$ are normal in $G$, one obtains a sequence 
+	\[
+	[G,G]=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=\{1\}
+	\]
+of normal subgroups of $G$. Since $H_i$ and $H_{i+1}$ are normal in $G$, 
+the group $G$ acts by conjugation on $H_i/H_{i+1}$. Thus there exists a group
+homomorphism 
+	$\gamma\colon G\to\Aut(H_i/H_{i+1})$. Since $H_i/H_{i+1}$ is cyclic, 
+	$\Aut(H_i/H_{i+1})$ is abelian. Thus $[G,G]\subseteq\ker \gamma$. Therefore 
+	$[G,G]$ acts trivially by conjugation on $H_{i}/H_{i+1}$. Hence 
+ 	\[
+	H_i/H_{i+1}\subseteq Z([G,G]/H_{i+1}).
+	\]
+
+ Finally, we prove the fourth claim. Since $G$ is non-abelian,
+	$Z(G)\ne G$. Let $\pi\colon G\to G/Z(G)$ be the canonical map. The group 
+	$G/Z(G)$ is super-solvable and the sequence 
+	\[
+	G/Z(G)=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq \pi(1)=\{1\}
+	\]
+is a sequence of normal subgroups of $G/Z(G)$ with cyclic quotients. 
+In particular, $1\ne \pi(G_1)$ is a proper normal subgroup of $G/Z(G)$. By the correspondence theorem, $\pi^{-1}(\pi(G_1))\ne G$ is a normal subgroup of 
+$G$ properly containing $Z(G)$. 
+\end{proof}
+
+There are solvable groups with a non-nilpotent derived subgroup. 
+
+\begin{example}
+The group $\Sym_4$ is solvable and $[\Sym_4,\Sym_4]=\Alt_4$ is not nilpotent.
+\end{example}
+
+\begin{proposition}
+\label{pro:psuper}
+Let $p$ be a prime number. Every finite $p$-group is super-solvable.
+\end{proposition}
+
+\begin{proof}
+Let $G$ be a minimal counterexample. We may assume that $|G|=p^n$ for some 
+$n>1$ (otherwise, if $n=1$, then $G$ is trivially super-solvable). 
+The group $G$ is nilpotent and contains a normal subgroup $N$ of order $p$. 
+Moreover, since $|G/N|=p^{n-1}$, the group $G/N$ is super-solvable. 
+Since $N$ is cyclic and $G/N$ is super-solvable, 
+$G$ is super-solvable by Exercise~\ref{xca:Nciclico}.
+\end{proof}
+
+% Como todo grupo finito nilpotente es producto directo de (finitos) subgrupos de
+% Sylow, cada $p$-grupo es súper-resoluble y el producto directo de súper-resolubles es súper-resoluble, 
+% se obtiene el siguiente resultado:
+
+\begin{exercise}
+\label{xca:nilpotent=>supersolvable}
+Prove that finite nilpotent groups are super-solvable.
+\end{exercise}
+
+% \begin{proof}
+% 	Todo grupo finito nilpotente es producto directo (finito) de subgrupos de
+% 	Sylow. Como cada $p$-grupo es súper-resoluble por la
+% 	proposición~\ref{proposition:psuper}, el resultado se obtiene
+% 	inmediatamente del ejercicio~\ref{exercise:directosuper}.
+% \end{proof}
+
+\begin{theorem}
+Super-solvable groups have maximal subgroups. 	
+\end{theorem}
+
+\begin{proof} 
+We proceed by induction on the length of the super-solvable series. The claim holds for groups with a super-solvable series of length one, as in this case we are dealing with cyclic groups. So let 
+$G$ be a group admitting a sequence
+	\[
+		G=G_0\supseteq\cdots\supseteq G_k=\{1\}
+	\]
+and suppose the theorem holds for super-solvable groups
+with super-solvable series of length $<k$. Each  
+$G_{k-1}$ is normal in $G$. Let $\pi\colon G\to
+	G/G_{k-1}$ be the canonical map. 
+The sequence 
+ 	\[
+		G/G_{k-1}=\pi(G)\supseteq \pi(G_1)\supseteq\cdots\supseteq\pi(G_{k-1})=\{1\}
+	\]
+has length 
+$<k$ and proves the super-solvability of $\pi(G)$. By the inductive hypothesis, 
+$G/G_{k-1}$ admits maximal subgroups. By the correspondence theorem, 
+$G$ admits maximal subgroups. 
+\end{proof}
+
+Solvable or nilpotent groups do not always admit maximal subgroups. Can you give an example?
+
+\begin{definition}
+	\index{Group!satisfying the maximal condition on subgroups}
+A group $G$ satisfies the \textbf{maximal condition on subgroups} if
+for every non-empty subset $\mathcal{S}$ of subgroups contains a maximal 
+subgroup (i.e. a subgroup not contained in any other subgroup of $\mathcal{S}$). 
+	%toda sucesión creciente
+	%$S_1\subseteq S_2\subseteq S_3\subseteq\cdots$
+	%de subgrupos es finita. 
+	%%si todo subconjunto $\mathcal{S}$ 
+	%%no vacío de subgrupos tiene un elemento maximal, es decir: existe
+	%$M\in\mathcal{S}$ tal que $S\subseteq M$ para todo $S\in\mathcal{S}$.
+\end{definition}
+
+%\begin{lemma}
+%	Un grupo $G$ satisface la la condición maximal para subgrupos si y sólo si
+%	todo subconjunto $\mathcal{S}$ no vacío de subgrupos tiene un subgrupo
+%	maximal (es decir, no contenido en ningún otro subgrupo de $\mathcal{S}$). 
+%\end{lemma}
+
+\begin{exercise}
+\label{xca:MAX=fg}
+A group satisfies the maximal condition on subgroups if and only if
+every subgroup of $G$ is finitely generated. 
+\end{exercise}
+
+% \begin{proof}
+% 	Supongamos que $G$ satisface la condición maximal para subgrupos y sea $H$
+% 	un subgrupo de $G$.  Sea $\mathcal{S}$ el conjunto de subgrupos de $H$
+% 	finitamente generados. Como $\mathcal{S}$ es no vacío (pues
+% 	$1\in\mathcal{S}$), existe un elemento maximal $M\in\mathcal{S}$.  Sea
+% 	$x\in H$. Como $\langle M,x\rangle\in\mathcal{S}$, $M=\langle M,x\rangle$ y
+% 	luego $x\in M$. Como entonces $H=M$, $H$ es finitamente generado.
+% 	%Supongamos que $G$ no es finitamente generado y satisface la condición maximal para subgrupos. Sea $1\ne g\in G$
+% 	%y sea $S_1=\langle g_1\rangle$. Como $S_1\ne G$, existe $g_2\in G\setminus S_1$, y entonces 
+% 	%$S_1\subseteq S_2=\langle x_1,x_2\rangle$. 
+
+% 	Supongamos ahora que todo subgrupo de $G$ es finitamente generado. Si
+% 	$\mathcal{S}$ es un subconjunto no vacío de subgrupos de $G$ sin elemento
+% 	maximal, podemos construir una sucesión de subgrupos $S_1\subseteq
+% 	S_2\subseteq\cdots$ que no se estabiliza (acá necesitamos utilizar el
+% 	axioma de elección). Como la unión 
+% 	\[
+% 		S=\bigcup_{j\geq1}S_j 
+% 	\]
+% 	es un subgrupo de $G$, es finitamente generado y luego $S\subseteq S_k$
+% 	para algún $k$ suficientemente grande, una contradicción.
+% \end{proof}
+
+% Una consecuencia inmediata. 
+
+\begin{exercise}
+Let $H$ be a subgroup of a group $G$. If $G$ satisfies 
+the maximal condition on subgroups, then so does $H$. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:max:G/N}
+Let $G$ be a group and $N$ be a normal subgroup of $G$. If $G/N$ and $N$
+satisfy the maximal condition on subgroups, then so does $G$.
+\end{exercise}
+
+% \begin{proof} 
+% 	Sea $\pi\colon G\to G/N$ el morfismo canónico.  Sea $\mathcal{S}$ un
+% 	subconjunto no vacío de subgrupos de $G$. El conjunto $\{S\cap
+% 	N:S\in\mathcal{S}\}$ tiene un elemento maximal $A$ y el conjunto
+% 	$\{\pi(S):S\in\mathcal{S},S\cap N=A\}$ tiene un elemento maximal $B$. Sea
+% 	$S\in\mathcal{S}$ tal que $\pi(S)=B$ y $S\cap N=A$. Si $S$ no es maximal en
+% 	$\mathcal{S}$, existe $T\in\mathcal{S}$ tal que $S\subseteq T$, $N\cap T=A$
+% 	y $\pi(T)=B$. Sea $x\in T\setminus S$. Como $\pi(xN)=\pi(x)\in\pi(T)=B$,
+% 	existe $y\in S$ tal que $xN=yN$. Luego $y^{-1}x\in N\cap T=A=N\cap S$, una
+% 	contradicción pues $x\not\in S$. 
+% \end{proof}
+
+% TODO: agregar teorema de Huppert (ver por ejemplo Robinson, p. 268)
+% corolario: G super si y sólo G/\Phi(G) super
+% teorema de Iwasawa, Hall 342-345, 19.3
+% teorema de Zappa-Ore, Duke 5 (1939), 431-460, Duke 6 (1940), 511-512
+
+%\begin{definition}
+%	\index{Grupo!que satisface la condición minimal para subgrupos}
+%	Se dice que un grupo $G$ satisface la \textbf{condición minimal para
+%	subgrupos} si todo subconjunto no vacío de subgrupos tiene un elemento
+%	minimal.
+%\end{definition}
+%
+%\begin{example}
+%	El grupo $\Z$ no satisface la condición minimal para subgrupos pues
+%	el conjunto $\{2^n\Z:n\in\N\}$ no posee elemento minimal. 
+%\end{example}
+%
+%\begin{proposition}
+%	Sea $G$ un grupo que satisface la condición minimal sobre subgrupos.
+%	Entonces todo elemento de $G$ tiene orden finito.
+%\end{proposition}
+%
+%\begin{proof}
+%	Si existe $x\in G$ de orden infinito, la sucesión $\mathcal{S}$ de subgrupos 
+%	\[
+%	\langle x\rangle\supsetneq\langle x^2\rangle\supsetneq\langle
+%	x^4\rangle\supsetneq\cdots\supsetneq\langle x^{2^k}\rangle\supsetneq\cdots
+%	\]
+%	tiene infinitos elementos y luego no posee un elemento minimal. 
+%\end{proof}
+%
+%\begin{exercise}
+%	\label{exercise:min:N}
+%	Sea $G$ un grupo y sea $H$ un subgrupo de $G$.  Si $G$ satisface la
+%	condición minimal para subgrupos entonces $H$ también. 
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	Si $\mathcal{S}$ es un subconjunto no vacío de subgrupos de $H$, entonces
+%	$\mathcal{S}$ posee un elemento minimal por ser un subconjunto no vacío de
+%	subgrupos de $G$.
+%\end{svgraybox}
+%
+%\begin{proposition}
+%	\label{proposition:min:G/N}
+%	Sea $G$ un grupo y sea $N$ un subgrupo normal de $G$.  Si $G/N$ y $N$
+%	satisfacen la condición minimal para subgrupos entonces $G$ también. 
+%\end{proposition}
+%
+%\begin{proof}
+%	
+%\end{proof}
+
+\begin{proposition}
+\label{pro:superfg}
+Super-solvable groups satisfy the maximal condition on subgroups. In particular, 
+every super-solvable group is finitely generated. 
+\end{proposition}
+
+\begin{proof}
+We proceed by induction on the length of the super-solvable sequence. If the length
+is one, the result holds as the group is cyclic. 
+So assume the result holds for super-solvable groups with 
+super-solvable series of length $\leq n-1$.  Let $G$
+be a non-trivial super-solvable group and 
+	\[
+	G=G_0\supsetneq
+	G_1\supsetneq\cdots\supsetneq G_n=\{1\}
+	\]
+a sequence of normal subgroups of $G$ with cyclic factors. Since 
+$G_{1}$ is super-solvable (Exercise~\ref{xca:super}),
+	$G_{1}$ satisfies the maximal condition on subgroups by the inductive
+ hypothesis. By Exercise~\ref{xca:max:G/N}, $G$ satisfies the maximal
+ condition on subgroups, as 
+ $G/G_{1}$ is cyclic. 
+\end{proof}
+
+%\begin{proposition}\
+%	\begin{enumerate}
+%		\item Si un grupo súper-resoluble admite una serie de composición,
+%			entonces es finito. 
+%		\item Si un grupo súper-resoluble satisface la condición de minimal en
+%			subgrupos entonces es finito.
+%	\end{enumerate}
+%\end{proposition}
+%
+%\begin{proof}
+%	%Para probar la segunda afirmación obsevemos que todo cociente de $G$ es súper-resoluble 
+%	%y que por el teorema~\ref{theorem:ZorCp} todo factor de la serie debe ser finito pues
+%	%$\Z$ no satisface la condición minimal para subgrupos.
+%\end{proof}
+
+\begin{example}
+The abelian group $\Q$ is nilpotent but not super-solvable, 
+as it is not finitely generated. 
+\end{example}
+
+%	El grupo $\Sym_3$ es súper-resoluble pero no es nilpotente. 
+
+If $G$ is a group and $x_1,\dots,x_{n+1}\in G$, 
+let 
+\[
+[x_1,x_2\dots,x_{n+1}]=\left[ x_1,[x_2,\dots,x_{n+1}]\right],\quad
+n\geq1.
+\]
+
+We will prove in Theorem~\ref{thm:super=fg} that nilpotent groups are super-solvable 
+if and only if they are finitely generated. For this, we need two lemmas. 
+
+\begin{lemma}
+	\label{lem:G_n}
+	Let $G$ be a finite generated group, say $G=\langle X\rangle$ for some finite set $X$.  
+	For $n\geq2$, let 
+ 	\[
+		G_n=\langle g[x_1,\dots,x_n]g^{-1}:x_1,\dots,x_n\in X,\,g\in G\rangle.
+	\]
+	Then $G_n=\gamma_n(G)$ for all $n\geq2$. 
+\end{lemma}
+
+\begin{proof}
+	Note that each $G_n$ is normal in $G$. We proceed by induction on $n$. The case 
+    $n=2$ is trivial. So let us assume that 
+    $\gamma_{n-1}(G)=G_{n-1}$ for some $n\geq2$. Let $x_1,\dots,x_n\in X$. Since 
+	$[x_1,\dots,x_n]\in\gamma_{n}(G)$, $G_{n-1}\subseteq\gamma_n(G)$. Let 
+	$N=G_n$ and $\pi\colon G\to G/N$ be the canonical map. The group $G/N$ is finitely generated. Since 
+	\[
+	[\pi(x_1),[\pi(x_2),\dots,\pi(x_{n})]]=\pi([x_1,\dots,x_n])=1,
+	\]
+	we obtain that $\pi([x_2,\dots,x_{n}])\in Z(G/N)$. Hence 
+	$\pi(g[x_2,\dots,x_n]g^{-1})=1$ for all $g\in G$. By the inductive hypothesis, 
+ 	\[
+	\pi(\gamma_{n-1}(G))=\pi(G_{n-1})\subseteq Z(G/N).
+	\]
+	Since  
+	\[
+	\pi(\gamma_{n}(G))=\pi([G,\gamma_{n-1}(G)])=[\pi(G),\pi(\gamma_{n-1}(G))]=\{1\},
+	\]
+	we conclude that $\gamma_n(G)\subseteq N=G_n$.
+\end{proof}
+
+\begin{lemma}
+	\label{lem:gamma_n/gamma_n+1}
+	Let $G$ be a finitely generated group. Then 
+ 	$\gamma_n(G)/\gamma_{n+1}(G)$ is finitely generated. 
+\end{lemma}
+
+\begin{proof}
+	Assume that $G=\langle X\rangle$ for some finite set $X$. Write 
+	\[
+	g[x_1,\dots,x_n]g^{-1}=[g,[x_1,\dots,x_n]][x_1,\dots,x_n]. 
+	\]
+	By Lemma~\ref{lem:G_n}, 
+    $[g,[x_1,\dots,x_n]]\in \gamma_{n+1}(G)=G_{n+1}$. Then 
+	\[
+	g[x_1,\dots,x_n]g^{-1}\equiv [x_1,\dots,x_n]\bmod \gamma_{n+1}(G). 
+	\]
+	Hence $\gamma_{n}(G)/\gamma_{n+1}(G)$ is generated by the finite set 
+	\[
+	\{[x_1,\dots,x_n]\gamma_{n+1}(G):x_1,\dots,x_n\in X\}. \qedhere 
+	\]
+\end{proof}
+
+\begin{theorem}
+    \label{thm:super=fg}
+    Let $G$ be a nilpotent group. Then $G$ is super-solvable if and only if 
+    $G$ is finitely generated. 
+\end{theorem}
+
+\begin{proof}
+    If $G$ is super-solvable, it is then finitely generated by 
+    Proposition~\ref{pro:superfg}.  
+    
+    Now assume that the nilpotent group $G$ is finitely generated. By Lemma~\ref{lem:gamma_n/gamma_n+1}, 
+    each quotient $\gamma_{n}(G)/\gamma_{n+1}(G)$ is finitely generated, say by 
+    the elements $y_1,\dots,y_m$. Let $\pi\colon G\to G/\gamma_{n+1}(G)$ the canonical map. 
+    For $j\in\{1,\dots,m\}$, let 
+    \[
+    K_j=\langle \gamma_{n+1}(G),y_1,\dots,y_j\rangle.
+    \]
+    Since $[G,K_j]\subseteq [G,\gamma_n(G)]=\gamma_{n+1}(G)$, 
+    we obtain that $\pi(K_j)$ is central in $\pi(G)$. Thus $\pi(K_j)$ is normal
+    in $\pi(G)$. Hence $K_j$ is normal in $G$. Each quotient $K_j/K_{j-1}$
+    is cyclic and generated by $y_jK_{j-1}$. Therefore, in between $\gamma_n(G)$ and 
+    $\gamma_{n+1}(G)$, we have constructed a sequence of normal subgroups of $G$ 
+    with cyclic factors. Since $G$ is nilpotent, there exists an integer $c$ such that 
+    $\gamma_{c+1}(G)=\{1\}$. Hence $G$ is super-solvable. 
+\end{proof}
+
+\begin{corollary}
+	\label{cor:nilpotente=>max}
+    Every finitely generated nilpotent group satisfies the maximal condition on subgroups. 
+\end{corollary}
+
+\begin{proof}
+    This is an immediate consequence of Proposition~\ref{pro:superfg} and 
+    Theorem~\ref{thm:super=fg}.  
+\end{proof}
+
+\begin{theorem}
+    Let $G$ be a nilpotent finitely generated group. Then $T(G)$ is finite. 
+\end{theorem}
+
+\begin{proof}
+    Since $G$ is nilpotent, $G$ satisfies the maximal condition on subgroups 
+    (Corollary~\ref{cor:nilpotente=>max}). Thus 
+	every subgroup of $G$ is finitely generated. Since 
+    $T(G)$ is a subgroup (Theorem~\ref{thm:T(nilpotent)}), it is a torsion finitely generated group. 
+	Hence $T(G)$ is finite by Theorem~\ref{thm:T(G)finito}.
+\end{proof}
+
+\subsection{*Huppert's super-solvable theorem}
+
+\begin{theorem}[Huppert]
+\index{Hupper's super-solvable theorem}
+\label{thm:Huppert}
+Let $G$ be a finite group such that all its maximal subgroups 
+are of prime index. Then $G$ is super-solvable. 
+\end{theorem}
+
+\begin{proof}
+    See \cite[Theorem 10.5.8]{MR414669}.
+\end{proof}
+
+\subsection{*Formanek's zero divisors theorem}
+
+We start recalling a conjecture formulated by Kaplansky as \cite[Problem 6]{MR0096696} in 1957. 
+
+\begin{conjecture}[Kaplansky]
+\index{Kaplansky's zero divisors conjecture}
+\label{conjecture:zero}
+    Let $K$ be a field and $G$ be a torsion-free group. 
+    Then $K[G]$ has no zero divisors. 
+\end{conjecture}
+
+In 1973 Formanek proved the following result:
+
+\begin{theorem}[Formanek]
+    \index{Formanek's zero divisors theorem}
+    \label{thm:Formanek:zerodivisors}
+        Let $G$ be a torsion-free super-solvable 
+        group and $K$ be a field. Then $K[G]$ has no zero divisors. 
+\end{theorem}
+
+\begin{proof}
+    See \cite[Thoerem 13.3.9]{MR798076}.
+\end{proof}
+
+Conjecture \ref{conjecture:zero} is also known to hold, for example, when $G$ admits a bi-order (proved by Malcev and independently by Neumann), when $G$ is polycyclic-by-finite (proved by Brown and Farkas--Snider), or when $G$ has the unique product property (proved by Cohen).  In full generality, the conjecture is still open. See~\cite[Chapter 13]{MR798076} for more information. 
+
+
 \subsection{The Schur--Zassenhaus theorem}
 
 % Para leer este capítulo es conveniente haber entendido el capítulo \ref{derivaciones}, ya
