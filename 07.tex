@@ -1,5 +1,629 @@
 \section{28/03/2024}
 
+\subsection{The Schur--Zassenhaus theorem}
+
+% Para leer este capítulo es conveniente haber entendido el capítulo \ref{derivaciones}, ya
+% que demostraremos el teorema de Schur--Zassenhaus gracias al uso de algunos trucos que
+% involucran derivaciones. También es necesario utilizar el subgrupo de Frattini, capítulo \ref{Frattini}. 
+% Daremos una aplicación 
+% del teorema de Schur--Zassenhaus a grupos súper-resolubles, estudiados en el capítulo \ref{super_resoluble}. 
+
+Recall that a group $Q$ \textbf{acts by automorphisms} on a group $K$ if 
+there exists a map $Q\times K\to K$, $(q,k)\mapsto q\cdot k$, 
+such that 
+\begin{enumerate}
+    \item $1\cdot a=a$ for all $a\in K$, 
+    \item $x\cdot (y\cdot a)=(xy)\cdot a$ for all $x,y\in Q$ and $a\in K$, 
+    \item $x\cdot 1=1$ for all $x\in Q$, and 
+    \item $x\cdot (ab)=(x\cdot a)(x\cdot b)$ for all $x\in Q$ and $a,b\in K$, 
+\end{enumerate}
+For example, if $K$ is a normal subgroup of $G$, 
+then $G$ acts by automorphisms on $K$ by conjugation. 
+
+\begin{definition}
+\index{1-cocycle}
+Let $Q$ and $K$ be groups, where $Q$ acts by automorphisms on $K$. 
+A map 
+$\varphi\colon Q\to K$ is said to be a \textbf{1-cocycle} if 
+\[
+	\varphi(xy)=\varphi(x)(x\cdot\varphi(y))
+\]
+for all $x,y\in Q$.  
+\end{definition}
+
+Let $Q$ and $K$ be groups, where $Q$ acts by automorphisms on $K$. 
+The set of 1-cocycles $Q\to K$ will be denoted by 
+\[
+Z^1(Q,K)=\{\delta\colon Q\to K:\text{$\delta$ is a 1-cocycle}\}.
+\]
+
+\begin{example}
+Let $Q$ be a group acting by automorphisms on $K$. 
+The semidirect product $K\rtimes Q$ 
+is a group $G$ that contains a normal subgroup isomorphic to $K$ 
+and a subgroup isomorphic to such that 
+$G=KQ$ and $K\cap Q=\{1\}$. Under the obvious identifications, 
+$Q$ acts on $K$ by conjugation. For each $k\in K$, the map 
+$Q\to K$, $x\mapsto [k,x]=kxk^{-1}x^{-1}$, is a 1-cocycle. 
+\end{example}
+
+\begin{exercise}
+\label{xca:1cocycle}
+Let $\varphi\colon Q\to K$ be a 1-cocycle. Prove the following statements:
+\begin{enumerate}
+	\item $\varphi(1)=1$.
+	\item $\varphi(y^{-1})=(y^{-1}\cdot\phi(y))^{-1}=y^{-1}\cdot\phi(y)^{-1}$.
+	\item The set $\ker\varphi=\{x\in Q:\varphi(x)=1\}$ is a subgroup of $Q$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{lemma}
+\label{lem:1cocycle}
+Let $G$ be a group with a normal subgroup $N$. 
+If $\varphi\colon G\to N$ is a 1-cocycle (where $G$ acts on $N$ by conjugation)
+with kernel 
+\[
+K=\ker\varphi=\{g\in G:\varphi(g)=1\}, 
+\]
+then 
+$\varphi(x)=\varphi(y)$ if and only if $xK=yK$. In particular,
+$(G:K)=|\varphi(G)|$. 
+\end{lemma}
+
+\begin{proof}
+If $\varphi(x)=\varphi(y)$, then, since  
+\[
+\varphi(x^{-1}y)
+=\varphi(x^{-1})(x^{-1}\cdot\varphi(y))
+=\varphi(x^{-1})(x^{-1}\cdot\varphi(x))
+=\varphi(x^{-1}x)=\varphi(1)
+=1,
+\]
+we obtain that $xK=yK$. Conversely, if $x^{-1}y\in K$, then, since 
+\[
+1=\varphi(x^{-1}y)=\varphi(x^{-1})(x^{-1}\cdot \varphi(y)),
+\]
+we obtain that $\varphi(y)=x\cdot\varphi(x^{-1})^{-1}$. We conclude that 
+$\varphi(x)=\varphi(y)$.
+
+The second claim now is clear, as $\varphi$ is constant in each coclass of $K$ 
+and takes $(G:K)$ different values. 
+\end{proof}
+
+\begin{lemma}
+	\label{lem:d}
+	Let $G$ be a finite group, $N$ be an abelian normal subgroup of $G$ and $S$, $T$ and $U$
+    be transversals of $N$ in $G$. Let 
+	\[
+	d(S,T)=\prod st^{-1}\in N,
+	\]
+	where the product runs over all elements $s\in S$ and $t\in T$ such that 
+	$sN=tN$. The following statements hold: 
+	\begin{enumerate}
+		\item $d(S,T)d(T,U)=d(S,U)$.
+		\item $d(gS,gT)=gd(S,T)g^{-1}$ for all $g\in G$.
+		\item $d(nS,S)=n^{(G:N)}$ for all $n\in N$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	If $s\in S$, $t\in T$ and $u\in U$ are such that $sN=tN=uN$, then, since $N$ is 
+	abelian and $(st^{-1})(tu^{-1})=su^{-1}$, we obtain that 
+	\[
+		d(S,T)d(T,U)=\prod (st^{-1})(tu^{-1})=\prod su^{-1}=d(S,U).
+	\]
+
+	Since $sN=tN$ if and only if $gsN=gtN$ for all $g\in G$, 
+	\[
+	g\left(\prod st^{-1}\right)g^{-1}=\prod gst^{-1}g^{-1}=\prod (gs)(gt)^{-1}=d(gS,gT).
+	\]
+
+	Finally, since $N$ is normal in $G$, $nsN=sN$ for all $n\in N$. Thus 
+	\[
+		d(nS,S)=\prod (ns)s^{-1}=n^{(G:N)}.\qedhere
+	\]
+\end{proof}
+
+Recall that a subgroup $K$ of $G$ admits a \textbf{complement} $Q$ 
+if $G$ factorizes as 
+$G=KQ$ with $K\cap Q=\{1\}$. 
+A typical example is the semidirect product $G=K\rtimes Q$, where $K$ is a normal subgroup of 
+$G$ and $Q$ is a subgroup of $G$ such that $K\cap Q=\{1\}$. 
+
+\begin{exercise}
+\label{xca:complementos}
+Let $Q$ act by automorphisms on $K$. Prove that there is a bijection 
+between the set of complements of $K$ in $K\rtimes Q$ and the set 
+$Z^1(Q,K)$.
+\end{exercise}
+
+% \begin{sol}{xca:complementos}
+% 	El grupo $Q$ actúa en $K$ por conjugación, entonces $\delta\in\Der(Q,K)$ si
+% 	y sólo si $\delta(xy)=\delta(x)x\delta(y)x^{-1}$, $x,y\in Q$. En este caso,
+% 	las fórmulas del ejercicio anterior quedan así:
+% 	$\delta(1)=1$, $\delta(x^{-1})=x^{-1}\delta(x)^{-1}x$.
+	
+% 	Sea $\mathcal{C}$ el conjunto de complementos de $K$ en $K\rtimes Q$.  Sea
+% 	$C\in\mathcal{C}$. Si $x\in Q$, sabemos que 
+% 	existen únicos $k\in K$ y $c\in C$ tales que $x=k^{-1}c$. Queda bien
+% 	definida entonces la función $\delta_C\colon Q\to K$, $x\mapsto k$. Vale
+% 	que $\delta(x)x=c\in C$. 
+	
+% 	Veamos que $\delta_C\in\Der(Q,K)$. Si $x,x_1\in Q$, escribimos $x=k^{-1}c$
+% 	y $x_1=k_1^{-1}c_1$, donde $k,k_1\in K$ y $c,c_1\in C$. Como $K$ es normal
+% 	en $K\rtimes Q$, podemos escribir a $xx_1$ como $xx_1=k_2c_2$, donde
+% 	$k_2=k^{-1}(ck_1^{-1}c^{-1})\in K$, $c_2=cc_1\in C$. Luego 
+% 	\[
+% 		\delta(xx_1)xx_1=cc_1=\delta(x)x\delta(x_1)x_1
+% 	\]
+% 	implica que $\delta(xx_1)=\delta(x)x\delta(x_1)x^{-1}$. 
+% 	Tenemos así una función $F\colon\mathcal{C}\to\Der(Q,K)$, $F(C)=\delta_C$.
+
+% 	Vamos a construir ahora $G\colon\Der(Q,K)\to\mathcal{C}$. 
+% 	Para
+% 	cada $\delta\in\Der(Q,K)$ vamos a definir un complemento $\Delta$ de $K$ en $K\rtimes Q$: 
+% 	\[
+% 	\Delta=\{\delta(x)x:x\in Q\}.
+% 	\]
+
+% 	Veamos que $\Delta$ es un subgrupo de $K\rtimes Q$. Como $\delta(1)=1$,
+% 	$1\in X$. Si $x,y\in Q$ entonces
+% 	$\delta(x)x\delta(y)y=\delta(x)x\delta(y)x^{-1}xy=\delta(xy)xy\in \Delta$.
+% 	Por último si $x\in Q$ entonces
+% 	$(\delta(x)x)^{-1}=x^{-1}\delta(x)^{-1}xx^{-1}=\delta(x^{-1})x^{-1}$.
+	
+	
+% 	Veamos que $\Delta\cap K=\{1\}$. Si $x\in Q$ es tal que $\delta(x)x\in K$
+% 	entonces, como $\delta(x)\in K$, $x\in K\cap Q=\{1\}$. Si $g\in G$ entonces
+% 	existen únicos $k\in K$, $x\in Q$ tales que $g=kx$. Escribimos
+% 	$g=k\delta(x)^{-1}\delta(x)x$. Como $k\delta(x)^{-1}\in K$ y $\delta(x)x\in
+% 	\Delta$, se concluye que $G=K\Delta$. Queda bien definida entonces la
+% 	función $G\colon\Der(Q,K)\to\mathcal{C}$, $G(\delta)=\Delta$.
+
+% 	Veamos ahora que $G\circ F=\id_{\mathcal{C}}$. 
+% 	Sea $C\in\mathcal{C}$. Entonces 
+% 	\[
+% 	G(F(C))=G(\delta_C)=\{\delta_C(x)x:x\in
+% 	Q\}=C,
+% 	\]
+% 	por construcción. (Vimos que $\delta_C(x)x\in C$. Recíprocamente,  si $c\in
+% 	C$, escribimos $c=kx$ para únicos $k\in K$, $x\in Q$ y luego $x=k^{-1}c$
+% 	que implica $c=\delta_c(x)x$.)
+
+% 	Por último veamos que $F\circ G=\id_{\Der(Q,K)}$. Sea $\delta\in\Der(Q,K)$.
+% 	Entonces 
+% 	\[
+% 	F(G(\delta))=F(\Delta)=\delta_{\Delta}.
+% 	\]
+% 	Queremos demostrar que $\delta_\Delta=\delta$.  Sea $x\in Q$. Existe
+% 	$\delta(y)y\in\Delta$ para algún $y\in Q$ tal que $x=k^{-1}\delta(y)y$.
+% 	Luego $\delta_{\Delta}(x)x=\delta(y)y$ y luego $\delta(x)=\delta(y)$ por la
+% 	unicidad de la escritura.
+% \end{sol}
+
+We are now ready to prove the first version of the
+Schur--Zassenhaus theorem. 
+
+\begin{theorem}[Schur--Zassenhaus]
+	\index{Schur--Zassenhaus!theorem}
+	\label{thm:SchurZassenhaus:abeliano}
+	Let $G$ be a finite group and $N$ be an abelian normal subgroup of $G$. If 
+ 	$|N|$ and $(G:N)$ are coprime, then $N$ admits a complement in $G$. Moreover, 
+    all complements of $N$ are conjugate. 
+\end{theorem}
+
+\begin{proof}
+	Let $T$ be a transversal of $N$ in $G$ and $\theta\colon G\to N$,
+	$\theta(g)=d(gT,T)$. Since $N$ is abelian, Lemma~\ref{lem:d} implies that 
+	$\theta$ is a 1-cocycle, where $G$ acts on $N$ by conjugation: 
+	\begin{align*}
+		\theta(xy)&=d(xyT,T)
+		=d(xyT,xT)d(xT,T)\\
+		&=(xd(yT,T)x^{-1})d(xT,T)=(x\cdot\theta(y))\theta(x).
+	\end{align*}
+
+	\begin{claim}
+		$\theta|_N\colon N\to N$ is surjective. 
+	\end{claim}
+
+	If $n\in N$, Lemma~\ref{lem:d} implies that 
+	$\theta(n)=d(nT,T)=n^{(G:N)}$. Since $|N|$ and $(G:N)$ are coprime, 
+	there exist $r,s\in\Z$ such that $r|N|+s(G:N)=1$. Thus 
+	\[
+		n=n^{r|N|+s(G:N)}=(n^s)^{(G:N)}=\theta(n^s).
+	\]
+
+	Let $H=\ker\theta$. We prove that $H$ is a complement of $N$. 
+	By Exercise~\ref{xca:1cocycle}, $H$ is a subgroup of $G$. By Lemma~\ref{lem:1cocycle}, 
+	\[
+		|N|=|\theta(G)|=(G:H)=\frac{|G|}{|H|}. 
+	\]
+	
+	Since $N\cap H$ is a subgroup of $N$ and a subgroup of $H$, $N\cap H=\{1\}$, as the numbers 
+	$|N|$ and $(G:N)=|H|$ are coprime. Since $|NH|=|N||H|=|G|$, we conclude that 
+	$G=NH$. Hence $H$ is a complement of~$N$. 
+
+	We now prove that two complements of $N$ are conjugate. 
+	Let $K$ be a complement of $N$ in $G$. Since $NK=G$ and $N\cap K=\{1\}$, $K$ is a transversal of $N$. 
+ Let $m=d(T,K)\in N$. Since the restriction map $\theta|_N$ is surjective, 
+	there exists $n\in N$ such that $\theta(n)=m$. By Lemma~\ref{lem:d}, 
+	\[
+	kmk^{-1}=kd(T,K)k^{-1}=d(kT,kK)=d(kT,K)=d(kT,T)d(T,K)=\theta(k)m
+	\]
+    for all $k\in K$. 
+	Since $N$ is abelian,
+	$\theta(n^{-1})=m^{-1}$. Thus 
+	\begin{align*}
+		\theta(nkn^{-1})&=\theta(n)n\theta(kn^{-1})n^{-1}
+		=m\theta(kn^{-1})\\
+		&=m\theta(k)k\theta(n^{-1})k^{-1}
+		=m\theta(k)km^{-1}k^{-1}=1.
+	\end{align*}
+	Therefore $nKn^{-1}\subseteq H=\ker\theta$. Since 
+	$|K|=(G:N)=|H|$, we conclude that $nKn^{-1}=H$.
+\end{proof}
+
+
+\begin{theorem}[Schur--Zassenhaus]
+	\index{Schur--Zassenhaus!theorem}
+	\label{thm:SchurZassenhaus}
+	Let $G$ be a finite group and $N$ be a normal subgroup of $G$. If $|N|$ and 
+	$(G:N)$ are coprime, then $N$ admits a complement in $G$. 
+\end{theorem}
+
+\begin{proof}
+	We proceed by induction on $|G|$. If there is a proper subgroup $K$ of 
+	$G$ such that $NK=G$, then, since $(K:K\cap N)=(G:N)$ and $|N|$ are coprime,
+	$(K:K\cap N)=(G:N)$ is coprime with $|K\cap N|$. Since $K\cap N$ is normal in $K$,
+	the inductive hypothesis implies that $K\cap N$ admits a complement in $K$. Thus there exists 
+    a subgroup $H$ of $K$ such that $|H|=(K:K\cap N)=(G:N)$. 
+
+    Assume that there is no proper subgroup $K$ of $G$ such that 
+	$NK=G$. We may assume that $N\ne\{1\}$ (otherwise, $G$ would be a complement of $N$ in $G$). Since $N$ is contained in 
+    every maximal subgroup of $G$ (because, if there is a maximal subgroup $M\subsetneq G$ such that 
+	$N\not\subseteq M$, then $NM=G$), it follows that $N\subseteq\Phi(G)$. By Frattini's theorem~\ref{thm:Frattini}, 
+    $\Phi(G)$ is nilpotent. Thus $N$ is nilpotent and then $Z(N)\ne\{1\}$. Let $\pi\colon G\to
+	G/Z(N)$ be the canonical map. Since $N$ is normal in $G$ and $Z(N)$ is characteristic in $N$, 
+    $Z(N)$ is normal in $G$.  Moreover, 
+	\[
+	(\pi(G):\pi(N))=\frac{|\pi(G)|}{|\pi(N)|}=\frac{|G/Z(N)|}{|N/N\cap Z(N)|}=(G:N)
+	\]
+	is coprime with $|N|$. Then $(\pi(G):\pi(N))$ is coprime with $|\pi(N)|$. By the inductive hypothesis, 
+	$\pi(N)$ admits a complement in $G/Z(N)$, say $\pi(K)$
+	for some subgroup $K$ of $G$. Hence $G=NK$, as 
+	$\pi(G)=\pi(N)\pi(K)=\pi(NK)$. 
+	Since $K=G$ (because there is no $K$ such that $G=NK$), 
+	$\pi(N)$ is abelian, as 
+	\[
+		\pi(Z(N)=\pi(N)\cap\pi(K)=\pi(N)\cap\pi(G)=\pi(N).
+	\]
+	Thus $N\subseteq Z(N)$ is abelian. By Theorem~\ref{thm:SchurZassenhaus:abeliano}, the subgroup $N$ 
+    admits a complement. 
+\end{proof}
+
+\begin{theorem}[Schur--Zassenhaus conjugation theorem]
+	\label{thm:SchurZassenhaus:conjugation}
+    Let $G$ be a finite group and $N$ be a normal subgroup of $G$ such that 
+    $|N|$ and 
+	$(G:N)$ are coprime. If either $N$ or $G/N$ is solvable, then 
+    all complements of $N$ in $G$ are conjugate. 
+\end{theorem}
+
+%\begin{proof}
+%	Sea $G$ un contraejemplo minimal, es decir: existen complementos $K_1$ y
+%	$K_2$ a $N$ en $G$ que no son conjugados.
+%
+%	\begin{claim}
+%		$N$ es minimal en $G$.
+%	\end{claim}
+%
+%	Si $M\subseteq N$ es minimal normal en $G$, $M\ne1$ pues $N\ne1$. Sea
+%	$\pi\colon G\to G/M$ el morfismo canónico. El grupo $\pi(G)$ contiene un
+%	subgrupo normal $\pi(N)$ de índice coprimo con $|\pi(N)|$. Además
+%	$\pi(K_1)$ y $\pi(K_2)$ complementan a $\pi(N)$. Como $|G|$ es minimal,
+%	$\pi(K_1)$ y $\pi(K_2)$ son conjugados en $\pi(G)$, es decir: existe $x\in G$ tal que 
+%	$\pi(K_1)=\pi(xK_2x^{-1})$.
+%
+%\end{proof}
+
+\begin{proof}
+	Let $G$ be a minimal counterexample to the theorem, that is there are complements $K_1$ and 
+	$K_2$ of $N$ in $G$ such that $K_1$ and $K_2$ are not conjugate. 
+
+	\begin{claim}
+		Every subgroup $U$ of $G$ satisfies the assumptions of the theorem with respect to the normal subgroup 
+        $U\cap N$.
+%		Sea $U$ un subgrupo de $G$. Entonces $U$ satisface las hipótesis del
+%		teorema con respecto al subgrupo normal $U\cap N$. Si $U$ contiene un
+%		complemento $H$ para $N$ en $G$, entonces $H$ complementa a $U\cap N$
+%		en $U$.
+	\end{claim}
+	
+	Since $N$ is normal in $G$, $U\cap N$ is normal in $U$. Moreover, $|U\cap N|$ and 
+	$(U:U\cap N)$ are coprime, as $|U\cap N|$ divides $|N|$ and $(U:U\cap
+	N)=(UN:N)$ divides $(G:N)$.  If $G/N$ is solvable, then $U/U\cap N$
+	is solvable, as $U/U\cap N$ is isomorphic to a subgroup of $G/N$. If $N$ is 
+	solvable, then so is $U\cap N$.
+%
+%	Como $|H|$ divide a $|U|$ y $|H|$ es coprimo con $|U\cap N|$, se tiene que
+%	$|H|$ divide a $(U:U\cap N)$. Como además $(U:U\cap N)$ divide a
+%	$(G:N)=|H|$, se concluye que $|H|=|U:U\cap N|$. Luego $H$ complementa a
+%	$U\cap N$ en $U$.
+
+	\begin{claim}
+		If there is a normal subgroup $L$ of $G$ such that $\pi(N)$ is normal in 
+		$\pi(G)$, where $\pi\colon G\to G/L$ is the canonical map, then 
+    	$\pi(G)$ satisfies the theorem's assumptions with respect to $\pi(N)$.
+		In this case, if $H$  is a complement of $N$ in $G$, then $\pi(H)$ 
+		is a complement of $\pi(N)$ in $\pi(G)$.
+	\end{claim}
+
+	If $N$ is solvable, then so is $\pi(N)$. If $G/N$ is solvable, then so is 
+	$\pi(G)/\pi(N)\simeq G/NL$. Moreover, 
+	$(\pi(G):\pi(N))=\frac{|G/L|}{|N/N\cap L|}$ divides $(G:N)$. 
+	
+	If $H$ is a complement of $N$ in $G$, $|\pi(H)|$ and $|\pi(N)|$ are 
+	coprime. Then $\pi(H)$ is a complement of $\pi(N)$, as 
+	$\pi(G)=\pi(N)\pi(H)=\pi(NH)$ and 
+	$\pi(N)\cap\pi(H)=\{1\}$. 
+
+	\begin{claim}
+		$N$ is minimal normal in $G$.
+	\end{claim}
+
+	Let $M\ne\{1\}$ be a normal subgroup of $G$ such that $M\subseteq N$. Let $\pi\colon G\to G/M$ be the canonical map. 
+	Then $\pi(G)$ satisfies the theorem's assumptions with respect to the normal subgroup 
+	$\pi(N)$. By the minimality of $|G|$, there exists 
+	$x\in G$ such that $\pi(xK_1x^{-1})=\pi(K_2)$. The subgroup 
+	$U=MK_2$ satisfies the theorem's assumptions with respect to the normal subgroup 
+	$U\cap N$. Since $xK_1x^{-1}\cup K_2\subseteq U$,
+	we conclude that both $xK_1x^{-1}$ and $K_2$ complement $U\cap N$ in $U$.
+	Hence $MK_2=G$, as $xK_1x^{-1}$ and $K_2$ are not conjugate and $G$ is a minimal counterexample. 
+	minimal. Therefore $M=N$, as 
+	\[
+		\frac{|K_2|}{|M\cap K_2|}=(MK_2:M)=(G:M)=\frac{|NK_2|}{|M|}=(N:M)|K_2|.
+	\]
+
+	\begin{claim}
+		$N$ is not solvable and $G/N$ is solvable. 
+	\end{claim}
+	
+	Otherwise, by Lemma~\ref{lem:minimal_normal}, $N$ is abelian (because it is minimal normal). This contradicts
+    Theorem~\ref{thm:SchurZassenhaus:abeliano}, as it states that 
+	$K_1$ and $K_2$ are conjugate. 
+ 
+	\medskip
+	Let $p\colon G\to G/N$ be the canonical map and $S$ be a subgroup such that $p(S)$
+	is minimal normal in $p(G)=G/N$.  By Lemma~\ref{lem:minimal_normal},
+	$p(S)$ is a $p$-group for some prime number $p$. Since $G=NK_1=NK_2$ and $N\subseteq
+	S$, Dedekind's lemma~\ref{lem:Dedekind} implies that 
+	\[
+	S=N(S\cap K_1)=N(S\cap K_2).
+	\]
+	Hence both $S\cap K_1$ and $S\cap K_2$
+	complement $N$ in $S$. Since $p(S)=p(S\cap K_1)=p(S\cap K_2)$  is a $p$-group, 
+ 	$p$ divides $|S|$. The theorem's assumptions hold for $S$ with respect to the normal subgroup $N$, 
+    so $|N|$ and $(S:N)$ are coprime. If $p\mid |N|$, then 
+	$p\nmid (S:N)=|S\cap K_1|=|S\cap K_2|$, a contradiction. Thus $p\nmid |N|$ and 
+	hence $p\nmid |S|$. This implies that both $S\cap K_1$ and $S\cap K_2$ are Sylow 
+	$p$-subgroups of $S$, as 
+	\[
+		|S\cap K_1|=(S:N)=|S\cap K_2|.
+	\]
+	By Sylow's theorem, there exists $s\in
+	S$ such that 
+    \[
+	S\cap sK_1s^{-1}=S\cap K_2.
+	\]
+	In particular, $S\ne G$ by the minimality of $G$.
+	Let 
+	\[
+		L=S\cap K_2=S\cap sK_1s^{-1}\ne\{1\}.
+	\]
+	Since $S$ is normal in $G$, $sK_1s^{-1}\cup K_2\subseteq N_G(L)$ (because $L$
+	is both normal in $sK_1s^{-1}$ and in $K_2$). The subgroups $sK_1s^{-1}\subseteq
+	N_G(L)$ and $K_2\subseteq N_G(L)$ complement $N\cap N_G(L)$ in $N_G(L)$. Hence 
+	$N_G(L)=G$ by the minimality of $G$ (if $N_G(L)\ne G$, then both 
+	$sK_1s^{-1}$ and $K_2$ are conjugate in $G$ because they are conjugate in  $N_G(L)$). Therefore 
+	$L$ is normal in $G$. 
+	
+	Let $\pi_L\colon G\to G/L$ be the canonical map. Since both 
+	$\pi_L(K_1)$ and $\pi_L(K_2)$ complement $\pi_L(N)$ in $\pi_L(G)$, the minimality of 
+	$|G|$ implies that there exists $g\in G$ such that $\pi_L(gK_1g^{-1})=\pi_L(K_2)$, that is 
+	there exists $g\in G$ such that $(gK_1g^{-1})L=K_2L$.  Hence $gK_1g^{-1}\cup
+	K_2\subseteq \langle K_2,L\rangle=K_2$, because $L\subseteq K_2$. In conclusion, 
+	$gK_1g^{-1}=K_2$, a contradiction to the minimality of $|G|$. 
+%	Sea $L$ un subgrupo maximal normal de $G$ tal que $N\subseteq L$. Por
+%	definición $L\ne G$. Como $L\cap K_1$ y $L\cap K_2$ complementan a $N$ en
+%	$L$, la minimalidad de $G$ implica que existe $x\in G$ tal que 
+%	\[ 
+%	L\cap K_2=x(L\cap K_1)x^{-1}=L\cap xK_1x^{-1}.
+%	\]
+%	Sea $D=L\cap K_2$. Como $L$ es normal en $G$, $D$ es normal en $K_2$ y en
+%	$xK_1x^{-1}$. Como $K_2$ y $xK_1x^{-1}$ son complementos para 
+%	$N$ en $G$ y además
+%	$xK_1x^{-1}\cup K_2\subseteq N_G(D)$, la minimalidad de $G$ implica que $N_G(D)=G$.
+%	Si $N$ es resoluble, $N\ne1$ (pues de lo contrario $G=H=K$ y no hay nada
+%	para demostrar). Sea $L\subseteq N$ un subgrupo minimal normal de $G$. Por
+%	el lema~\ref{lemma:minimal_normal}, $L$ es abeliano\dots
+%
+%	Si $G/N$ es resoluble,\dots 
+\end{proof}
+
+
+By the Feit--Thompson theorem, in the previous theorem 
+we do not need to assume that either $N$ or $G/N$ is solvable. Since every group of odd order is solvable 
+and $|N|$ and $(G:N)$ are coprime, one of these groups should have odd order. 
+
+\begin{theorem}
+	\label{thm:solvable_maximal}
+	Let $G$ be a finite solvable group and $p$ a prime number dividing $|G|$. There exists a maximal 
+    subgroup $M$ of $G$ of index a power of $p$. 
+\end{theorem}
+
+\begin{proof}
+	We proceed by induction on $|G|$. If $G$ is a $p$-group, the result clearly holds. So we may assume that $|G|$ is divisible by at least two different prime numbers. 
+    Let $p$ be a prime dividing $|G|$, $N$ be a minimal normal subgroup of $G$ and 
+    $\pi\colon G\to G/N$ be the canonical map. Since $G$ is solvable, by Lemma~\ref{lem:minimal_normal}, 
+    $N$ is a $q$-group for some prime $q$. Since $G/N$ is solvable, if $p$ divides 
+	$(G:N)$, then, by the inductive hypothesis, $G/N$ has a maximal subgroup 
+ 	$M_1$ of index a power of $p$. By the correspondence theorem, 
+  $M=\pi^{-1}(M_1)$ is a maximal subgroup of $G$ of index a power of $p$. 
+  $p$. If $p$ does not divide $(G:N)$, then $p$ divides $|N|$. Thus 
+	$N\in\Syl_p(G)$. Since $N$ is normal in $G$ and $|N|$ and $|G/N|$ are coprime, by 
+	Schur--Zassenhaus theorem~\ref{thm:SchurZassenhaus}, 
+	there exists a complement $K$ of $N$ in $G$, that is $G=NK$ and $N\cap K=\{1\}$. Let 
+	$M$ be a maximal subgroup containing $K$. Then $(G:M)$ is a power of $p$. 
+\end{proof}
+
+We now discuss an application to finite super-solvable groups. 
+
+\begin{definition}
+	\index{Group!lagrangian}
+	A finite group $G$ is said to be \textbf{lagrangian} if for each $d$ dividing $|G|$ 
+	there exists a subgroup of $G$ of order $d$.
+\end{definition}
+
+The group $\Alt_4$ is not lagrangian, as it has no subgroups of order six. 
+
+\begin{theorem}
+	Every finite super-solvable group is lagrangian. 
+\end{theorem}
+
+\begin{proof}
+	Let $p$ be a prime number dividing $|G|$. Since subgroups of super-solvable groups are super-solvable, it is enough to 
+    show that there exists a subgroup of index $p$. 
+	Since $G$ is solvable, there exists a maxima subgroup $M$ of index 
+	$p^{\alpha}$ by Theorem~\ref{thm:solvable_maximal}. Since maximal subgroups of super-solvable groups have prime index 
+    by Theorem~\ref{thm:super_structure}, we conclude that $\alpha=1$.
+\end{proof}
+
+See \cite{MR294497} for an elementary proof. 
+
+\subsection{*Hall's theory for solvable groups}
+
+As an application of the Schur--Zassenhaus theorem, 
+we present Hall's theory of solvable groups. 
+For an elementary presentation, see \cite{MR600654}. 
+
+\begin{definition}
+\index{$\pi$-number}
+\index{$\pi$-group}
+\index{$\pi$-subgroup}
+Let $G$ be a finite group and $\pi$ be a set of prime numbers. We say that 
+$G$ is a \textbf{$\pi$-group} if every prime dividing $|G|$ belongs to $\pi$. 
+Similarly, a $\pi$-subgroup of $G$ is a subgroup of $G$ that is also a $\pi$-group.  
+\end{definition}
+
+For a set $\pi$ of prime numbers, 
+we define a $\pi$-number as an integer whose prime divisors 
+belong to $\pi$. The set of prime numbers not belonging to $\pi$ will be denoted 
+as $\pi'$. Thus a $\pi'$-number is an integers not divisible by 
+the prime numbers of $\pi$. 
+
+\begin{definition}
+	\index{Hall!subgroup}
+	Let $G$ be a group and $\pi$ be a set of prime numbers. A subgroup $H$ of $G$ 
+    is a \textbf{Hall $\pi$-subgroup} if $H$ is a $\pi$-subgroup of $G$ and 
+    $(G:H)$ is a $\pi'$-number.
+\end{definition}
+
+We now prove that a finite solvable group of order $nm$ with $\gcd(n,m)=1$ 
+always admits a subgroup of order $m$. 
+
+\begin{theorem}[Hall's!existence theorem]
+	\index{Hall!existence theorem}
+ 	\label{theorem:HallE}
+	Let $\pi$ be a set of prime numbers and $G$ be a finite solvable group. 
+    Then $G$ has a Hall $\pi$-subgroup. 
+\end{theorem}
+
+\begin{proof}
+	Assume that $|G|=nm>1$ and $\gcd(n,m)=1$. We want to show that $G$ admits a
+	subgroup of order $m$. We proceed by induction on $|G|$. Let $K$ be a minimal
+	normal subgroup of $G$ and $\pi\colon G\to G/N$ be the canonical map. Since $G$
+	is solvable, $K$ is a $p$-group (Lemma~\ref{lem:minimal_normal}).
+	
+	There are two cases to consider. Assume first that $p$ divides $m$. Since
+	$|G/K|<|G|$, the inductive hypothesis and the correspondence theorem imply that
+	there exists a subgroup $J$ of $G$ containing $K$ such that $\pi(J)$ is a
+	subgroup of 
+    $\pi(G)=G/K$ of order $m/|K|$. Then $J$ has order $m$, as 
+    \[
+	m/|K|=|\pi(J)|=\frac{|J|}{|K\cap J|}=(J:K).
+	\]
+
+	Assume now that $p$ does not divide $m$. By the inductive hypothesis and the
+	correspondence theorem, there exists a subgroup $H$ of $G$ containing $K$ such
+	that $\pi(H)$ is a subgroup of $G/K$ of order $m$. Since $|H|=m|K|$, $K$ is
+	normal in $H$ and $|K|$ is coprime with $|H:K|$, the Schur--Zassenhaus theorem
+	(Theorem~\ref{thm:SchurZassenhaus}) implies that there exists a complement $J$
+	of $K$ in $H$. Hence $J$ is a subgroup of $G$ such that $|J|=m$.
+\end{proof}
+
+\begin{example}
+	The group $\Alt_5$ contains a Hall $\{2,3\}$-subgroups isomorphic to 
+ 	$\Alt_4$.
+\end{example}
+
+\begin{example}
+	The simple group $\PSL_3(2)$ of order $168$ does not contain Hall $\{2,7\}$-subgroups.
+\end{example}
+
+\begin{theorem}[Hall's conjugation theorem]
+	\index{Hall!conjugation theorem}
+	\label{theorem:HallC}
+	Let $G$ be a finite solvable group and $\pi$ be a set of prime numbers. 
+    Then all two Hall $\pi$-subgroups of $G$ are conjugate. 
+\end{theorem}
+
+\begin{proof}
+	We may assume that $G\ne\{1\}$. We proceed by induction on $|G|$.  Let $H$
+	and $K$ be Hall $\pi$-subgroups of $G$. Let $M$ be a minimal normal subgroup of 
+    $G$ and $\pi\colon G\to G/M$ be the canonical map. Since $G$ is solvable, 
+	$M$ is a $p$-group for some prime number $p$ (Lemma~\ref{lem:minimal_normal}). 
+    Since $\pi(H)$ and $\pi(K)$ are both Hall 
+	$\pi$-subgroups of $G/M$, by the inductive hypothesis, 
+    the subgroups $\pi(H)$ and $\pi(K)$ are 
+	conjugate in $G/M$. Thus there exists $g\in G$ such that $gHMg^{-1}=KM$. 
+
+	There are two cases to consider. Assume first that $p\in\pi$. Since $|HM|$ and 
+	$|KM|$ are $\pi$-numbers and $|H|=|K|$ is the largest $\pi$-number dividing $|G|$, 
+    we conclude that $H=HM$ and $K=KM$. In particular, $gHg^{-1}=K$. 
+
+	Assume now that $p\not\in\pi$. Then $K$ admits a complement $M$ in 
+ 	$KM$, as $K\cap M=\{1\}$. We claim that $gHg^{-1}$ complements $M$ in $KM$. Since 
+	$M$ is normal in $G$, 
+ 	\[
+	(gHg^{-1})M=gHMg^{-1}=KM,
+	\]
+	and $gHg^{-1}\cap M=\{1\}$, as $p\not\in\pi$. These complements are conjugate 
+    by the Schur--Zassenhaus theorem~\ref{thm:SchurZassenhaus:conjugation}.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a finite group, $N$ a normal subgroup of $G$ and $n=|N|$. 
+ 	Assume that either $N$ of $G/N$ is solvable. 
+    If $|G:N|=m$ is coprime with $n$ and 
+    $m_1$ divide a $m$, then every subgroup of $G$ of order $m_1$ 
+    is contained in some subgroup of order $m$. 
+\end{corollary}
+
+\begin{proof}
+	Let $H$ be a complement of $N$ in $G$. Then $|H|=m$. Let $H_1$
+	be a subgroup of $G$ such that $|H_1|=m_1$. 
+	Since $\gcd(n,m)=1$, $m_1=|H_1|=|H\cap NH_1|$, as 
+	\[
+	\frac{|H||N||H_1|}{|H\cap NH_1|}=
+	\frac{|H||NH_1|}{|H\cap NH_1|}=|H(NH_1)|=|G|=|NH|=|N||H|.
+	\]
+	Since both $H_1$ and $H\cap NH_1$ are complements of $N$ in $NH_1$, and both 
+    groups have orders coprime with $n$, there exists 
+	$g\in G$ such that $H_1=g(H\cap NH_1)g^{-1}$. Thus  
+	$H_1\subseteq gHg^{-1}$ and hence $|gHg^{-1}|=m$. 
+\end{proof}
+
+
 \subsection{Subnormality}
 
 \begin{definition}
