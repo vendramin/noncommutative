@@ -1,5 +1,569 @@
 \section{18/04/2024}
 
+\begin{theorem}
+	\label{thm:solvable_maximal}
+	Let $G$ be a finite solvable group and $p$ a prime number dividing $|G|$. There exists a maximal 
+    subgroup $M$ of $G$ of index a power of $p$. 
+\end{theorem}
+
+\begin{proof}
+	We proceed by induction on $|G|$. If $G$ is a $p$-group, the result clearly holds. So we may assume that $|G|$ is divisible by at least two different prime numbers. 
+    Let $p$ be a prime dividing $|G|$, $N$ be a minimal normal subgroup of $G$ and 
+    $\pi\colon G\to G/N$ be the canonical map. Since $G$ is solvable, by Lemma~\ref{lem:minimal_normal}, 
+    $N$ is a $q$-group for some prime $q$. Since $G/N$ is solvable, if $p$ divides 
+	$(G:N)$, then, by the inductive hypothesis, $G/N$ has a maximal subgroup 
+ 	$M_1$ of index a power of $p$. By the correspondence theorem, 
+  $M=\pi^{-1}(M_1)$ is a maximal subgroup of $G$ of index a power of $p$. 
+  $p$. If $p$ does not divide $(G:N)$, then $p$ divides $|N|$. Thus 
+	$N\in\Syl_p(G)$. Since $N$ is normal in $G$ and $|N|$ and $|G/N|$ are coprime, by 
+	Schur--Zassenhaus theorem~\ref{thm:SchurZassenhaus}, 
+	there exists a complement $K$ of $N$ in $G$, that is $G=NK$ and $N\cap K=\{1\}$. Let 
+	$M$ be a maximal subgroup containing $K$. Then $(G:M)$ is a power of $p$. 
+\end{proof}
+
+We now discuss an application to finite super-solvable groups. 
+
+\begin{definition}
+	\index{Group!lagrangian}
+	A finite group $G$ is said to be \textbf{lagrangian} if for each $d$ dividing $|G|$ 
+	there exists a subgroup of $G$ of order $d$.
+\end{definition}
+
+The group $\Alt_4$ is not lagrangian, as it has no subgroups of order six. 
+
+\begin{theorem}
+	Every finite super-solvable group is lagrangian. 
+\end{theorem}
+
+\begin{proof}
+	Let $p$ be a prime number dividing $|G|$. Since subgroups of super-solvable groups are super-solvable, it is enough to 
+    show that there exists a subgroup of index $p$. 
+	Since $G$ is solvable, there exists a maxima subgroup $M$ of index 
+	$p^{\alpha}$ by Theorem~\ref{thm:solvable_maximal}. Since maximal subgroups of super-solvable groups have prime index 
+    by Theorem~\ref{thm:super_structure}, we conclude that $\alpha=1$.
+\end{proof}
+
+See \cite{MR294497} for an elementary proof. 
+
+\subsection{*Hall's theory for solvable groups}
+
+As an application of the Schur--Zassenhaus theorem, 
+we present Hall's theory of solvable groups. 
+For an elementary presentation, see \cite{MR600654}. 
+
+\begin{definition}
+\index{$\pi$-number}
+\index{$\pi$-group}
+\index{$\pi$-subgroup}
+Let $G$ be a finite group and $\pi$ be a set of prime numbers. We say that 
+$G$ is a \textbf{$\pi$-group} if every prime dividing $|G|$ belongs to $\pi$. 
+Similarly, a $\pi$-subgroup of $G$ is a subgroup of $G$ that is also a $\pi$-group.  
+\end{definition}
+
+For a set $\pi$ of prime numbers, 
+we define a $\pi$-number as an integer whose prime divisors 
+belong to $\pi$. The set of prime numbers not belonging to $\pi$ will be denoted 
+as $\pi'$. Thus a $\pi'$-number is an integers not divisible by 
+the prime numbers of $\pi$. 
+
+\begin{definition}
+	\index{Hall!subgroup}
+	Let $G$ be a group and $\pi$ be a set of prime numbers. A subgroup $H$ of $G$ 
+    is a \textbf{Hall $\pi$-subgroup} if $H$ is a $\pi$-subgroup of $G$ and 
+    $(G:H)$ is a $\pi'$-number.
+\end{definition}
+
+We now prove that a finite solvable group of order $nm$ with $\gcd(n,m)=1$ 
+always admits a subgroup of order $m$. 
+
+\begin{theorem}[Hall's!existence theorem]
+	\index{Hall!existence theorem}
+ 	\label{theorem:HallE}
+	Let $\pi$ be a set of prime numbers and $G$ be a finite solvable group. 
+    Then $G$ has a Hall $\pi$-subgroup. 
+\end{theorem}
+
+\begin{proof}
+	Assume that $|G|=nm>1$ and $\gcd(n,m)=1$. We want to show that $G$ admits a
+	subgroup of order $m$. We proceed by induction on $|G|$. Let $K$ be a minimal
+	normal subgroup of $G$ and $\pi\colon G\to G/N$ be the canonical map. Since $G$
+	is solvable, $K$ is a $p$-group (Lemma~\ref{lem:minimal_normal}).
+	
+	There are two cases to consider. Assume first that $p$ divides $m$. Since
+	$|G/K|<|G|$, the inductive hypothesis and the correspondence theorem imply that
+	there exists a subgroup $J$ of $G$ containing $K$ such that $\pi(J)$ is a
+	subgroup of 
+    $\pi(G)=G/K$ of order $m/|K|$. Then $J$ has order $m$, as 
+    \[
+	m/|K|=|\pi(J)|=\frac{|J|}{|K\cap J|}=(J:K).
+	\]
+
+	Assume now that $p$ does not divide $m$. By the inductive hypothesis and the
+	correspondence theorem, there exists a subgroup $H$ of $G$ containing $K$ such
+	that $\pi(H)$ is a subgroup of $G/K$ of order $m$. Since $|H|=m|K|$, $K$ is
+	normal in $H$ and $|K|$ is coprime with $|H:K|$, the Schur--Zassenhaus theorem
+	(Theorem~\ref{thm:SchurZassenhaus}) implies that there exists a complement $J$
+	of $K$ in $H$. Hence $J$ is a subgroup of $G$ such that $|J|=m$.
+\end{proof}
+
+\begin{example}
+	The group $\Alt_5$ contains a Hall $\{2,3\}$-subgroups isomorphic to 
+ 	$\Alt_4$.
+\end{example}
+
+\begin{example}
+	The simple group $\PSL_3(2)$ of order $168$ does not contain Hall $\{2,7\}$-subgroups.
+\end{example}
+
+\begin{theorem}[Hall's conjugation theorem]
+	\index{Hall!conjugation theorem}
+	\label{theorem:HallC}
+	Let $G$ be a finite solvable group and $\pi$ be a set of prime numbers. 
+    Then all two Hall $\pi$-subgroups of $G$ are conjugate. 
+\end{theorem}
+
+\begin{proof}
+	We may assume that $G\ne\{1\}$. We proceed by induction on $|G|$.  Let $H$
+	and $K$ be Hall $\pi$-subgroups of $G$. Let $M$ be a minimal normal subgroup of 
+    $G$ and $\pi\colon G\to G/M$ be the canonical map. Since $G$ is solvable, 
+	$M$ is a $p$-group for some prime number $p$ (Lemma~\ref{lem:minimal_normal}). 
+    Since $\pi(H)$ and $\pi(K)$ are both Hall 
+	$\pi$-subgroups of $G/M$, by the inductive hypothesis, 
+    the subgroups $\pi(H)$ and $\pi(K)$ are 
+	conjugate in $G/M$. Thus there exists $g\in G$ such that $gHMg^{-1}=KM$. 
+
+	There are two cases to consider. Assume first that $p\in\pi$. Since $|HM|$ and 
+	$|KM|$ are $\pi$-numbers and $|H|=|K|$ is the largest $\pi$-number dividing $|G|$, 
+    we conclude that $H=HM$ and $K=KM$. In particular, $gHg^{-1}=K$. 
+
+	Assume now that $p\not\in\pi$. Then $K$ admits a complement $M$ in 
+ 	$KM$, as $K\cap M=\{1\}$. We claim that $gHg^{-1}$ complements $M$ in $KM$. Since 
+	$M$ is normal in $G$, 
+ 	\[
+	(gHg^{-1})M=gHMg^{-1}=KM,
+	\]
+	and $gHg^{-1}\cap M=\{1\}$, as $p\not\in\pi$. These complements are conjugate 
+    by the Schur--Zassenhaus theorem~\ref{thm:SchurZassenhaus:conjugation}.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a finite group, $N$ a normal subgroup of $G$ and $n=|N|$. 
+ 	Assume that either $N$ of $G/N$ is solvable. 
+    If $|G:N|=m$ is coprime with $n$ and 
+    $m_1$ divide a $m$, then every subgroup of $G$ of order $m_1$ 
+    is contained in some subgroup of order $m$. 
+\end{corollary}
+
+\begin{proof}
+	Let $H$ be a complement of $N$ in $G$. Then $|H|=m$. Let $H_1$
+	be a subgroup of $G$ such that $|H_1|=m_1$. 
+	Since $\gcd(n,m)=1$, $m_1=|H_1|=|H\cap NH_1|$, as 
+	\[
+	\frac{|H||N||H_1|}{|H\cap NH_1|}=
+	\frac{|H||NH_1|}{|H\cap NH_1|}=|H(NH_1)|=|G|=|NH|=|N||H|.
+	\]
+	Since both $H_1$ and $H\cap NH_1$ are complements of $N$ in $NH_1$, and both 
+    groups have orders coprime with $n$, there exists 
+	$g\in G$ such that $H_1=g(H\cap NH_1)g^{-1}$. Thus  
+	$H_1\subseteq gHg^{-1}$ and hence $|gHg^{-1}|=m$. 
+\end{proof}
+
+
+\subsection{Subnormality}
+
+\begin{definition}
+	\index{Subgroup!subnormal}
+	Let $G$ be a group. A subgroup $H$ of $G$ is said to be \text{subnormal} in $G$ if there is a sequence 
+    of subgroups 
+	\[
+		H=H_0\subseteq H_1\subseteq\cdots\subseteq H_k=G		
+	\]
+	with $H_i$ normal in $H_{i+1}$ for all $i\in\{0,\dots,k-1\}$. 
+\end{definition}
+
+\begin{example}
+	Let $G=\Sym_4$. Then $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ is normal in $G$. 
+	The subgroup $L=\{\id,(12)(34)\}$ is subnormal in $G$ (and not normal). 
+	es subnormal. 
+\end{example}
+
+\begin{exercise}
+\label{xca:correspondence_subnormality}
+    Prove that the correspondence theorem preserves subnormality. 
+\end{exercise}
+
+\begin{theorem}
+	\label{thm:subnormal}
+	Let $G$ be a finite group. Then $G$ is nilpotent if and only if every subgroup of $G$ is subnormal in $G$. 
+\end{theorem}
+
+\begin{proof}
+	Assume first that every subgroup of $G$ is subnormal in $G$. Let $H$ be a subnormal subgroup of $G$, where 
+	\[
+		H=H_0\subseteq H_1\subseteq\cdots\subseteq H_k=G
+	\]
+	with $H_i$ normal in $H_{i+1}$. Without loss of generality, we may assume that 
+	$H\subsetneq H_1$. Since $H\subsetneq H_1\subseteq N_G(H)$, 
+	$G$ is nilpotent by Exercise~\ref{xca:normalizadora}.
+
+	Assume now that $G$ is nilpotent. Let $H$ be a subgroup of $G$.
+	We proceed by induction on $(G:H)$. If $(G:H)=1$, then $H=G$ and the theorem holds. If 
+	$H\ne G$, since $H\subsetneq N_G(H)$ by Lemma~\ref{lem:normalizadora}, 
+	\[
+		(G:N_G(H))<(G:H).
+	\]
+	By the inductive hypothesis, $N_G(H)$ is subnormal in $G$. Since $H$ is 
+	normal in $N_G(H)$, we conclude that $H$ is subnormal in $G$.
+\end{proof}
+
+\index{Subgroup!central}
+
+\begin{corollary}
+	Let $G$ be a group and $K$ be a central subgroup of $G$ (that is, $K\subseteq Z(G)$).
+	Then $G$ is nilpotent if and only if $G/K$ is nilpotent. 
+\end{corollary}
+
+\begin{proof}
+	If $G$ is nilpotent, then so is $G/K$. Conversely, let 
+	$\pi\colon G\to G/K$ be the canonical map and $U$ be a subgroup of $G$. Since 
+	$G/K$ is nilpotent, Theorem~\ref{thm:subnormal} implies that 
+	$\pi(U)$ is a subnormal subgroup of $G/K$. By the correspondence theorem, 
+ 	$UK$ is a subnormal subgroup of $G$. Since $K$ is central, $U$ is normal in 
+	$UZ$. Hence $U$ is subnormal in $G$ and therefore $G$ is nilpotent by Theorem~\ref{thm:subnormal}.
+\end{proof}
+
+\begin{theorem}
+	\label{thm:F(G)subnormalidad}
+	Let $G$ be a finite group and $H$ be a subgroup of $G$. Then $H$ is nilpotent and subnormal in $G$ if and only if 
+    $H\subseteq F(G)$.
+\end{theorem}
+
+\begin{proof}
+	Assume first that $H\subseteq F(G)$. Since $F(G)$ is nilpotent by Theorem~\ref{thm:Fitting}, 
+    so is $H$. Moreover, since $H$ is subnormal in $F(G)$ (Theorem~\ref{thm:subnormal}) 
+    and $F(G)$ is normal in $G$, $H$ is
+	subnormal in $G$.
+
+	Assume now that $H$ is nilpotent and subnormal in $G$. We proceed by induction on $|G|$. 
+    If $H=G$, then the result holds. Assume then that $H\ne G$. Since $H$ is subnormal in $G$, there is a sequence 
+	\[
+		H=H_0\subseteq H_1\subseteq\cdots\subseteq H_k=G
+	\]
+    of subgroups of $G$ with $H_i$ normal in $H_{i+1}$ for all $i$. 
+	Let $M=H_{k-1}$. Since $M\ne G$ and $M$ is normal in $G$, 
+	$H\subseteq F(M)$ by the inductive hypothesis. Thus $H\subseteq F(M)=M\cap
+	F(G)\subseteq F(G)$ by Corollary~\ref{cor:McapF(G)}.
+\end{proof}
+
+Before proving another important theorem of Wielandt, we need a lemma. 
+
+\begin{lemma}
+	\label{lem:McapN=1}
+	Let $M$ and $N$ be normal subgroups of $G$ such that $M\cap N=\{1\}$.
+	Then $M\subseteq C_G(N)$.
+\end{lemma}
+
+\begin{proof}
+	Let $m\in M$ and $n\in N$. Then $[n,m]=(nmn^{-1})m\in M$, since $M$ is normal in $G$ and 
+	Moreover, $[n,m]=n(mn^{-1}m^{-1})\in N$, since $N$ is normal in 
+	$G$. Thus $[n,m]\in M\cap N=\{1\}$.
+\end{proof}
+
+\begin{exercise}
+\label{xca:characteristically_simple}
+\index{Group!characteristically simple}
+    A group $G$ is said to be \textbf{characteristically simple} if $G$ is non-trivial 
+    and has no proper characteristic subgroups. 
+    Prove that any minimal normal subgroup of $G$ is characteristically simple. 
+\end{exercise}
+
+\begin{definition}
+    \index{Socle}
+    Let $G$ be a group. If $G$ admits minimal normal subgroups, the \textbf{socle} of $G$ 
+    is defined as the subgroup $\Soc(G)$ of $G$ generated by all minimal normal subgroups of $G$. If $G$ admits no minimal normal subgroups, 
+    then $\Soc(G)=\{1\}$. 
+\end{definition}
+
+For example, $\Soc(\Z)=\{0\}$ and $\Soc(\SL_2(3))\simeq C_2$. 
+
+\begin{exercise}
+\label{xca:Soc_direct_product}
+% Robinson 3.3.11 with $\Omega=Inn(G)$
+    Prove that the socle of a group is a direct product of minimal normal subgroups. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:caracteristically_simple}
+% Robinson 3.3.15, page 87
+Prove the following statements:
+    \begin{enumerate}
+        \item A direct product of isomorphic simple groups is characteristically simple.
+        \item A characteristically simple group with at least one minimal normal subgroup is a direct product of isomorphic simple groups. 
+    \end{enumerate}
+\end{exercise}
+
+\begin{theorem}[Wielandt]
+	\label{thm:MsubsetNG(S)}
+    \index{Wielandt's!theorem}
+	Let $G$ be a finite group. If $S$ is a subnormal group of $G$ and 
+	$M$ is a minimal normal subgroup of $G$, then $M\subseteq N_G(S)$.
+\end{theorem}
+
+\begin{proof}
+	We proceed by induction on $|G|$. If $S=G$ the result holds. So assume that 
+	$S\ne G$.  Since $S$ is subnormal in $G$, there exists a sequence 
+	\[
+		S=S_0\subseteq S_1\subseteq\cdots\subseteq S_{k-1}\subseteq S_k=G
+	\]
+    of subgroups of $G$ such that $S_i$ is normal in $S_{i+1}$ for all $i$. 
+	Let $N=S_{k-1}$. 
+
+	If $M\cap N\ne\{1\}$, then $M\subseteq N$ (because since $M$ and $N$ are both normal in $G$, 
+	$M\cap N=M$ by the minimality of $M$). We claim that 
+	$M\subseteq\Soc(N)$.  Since $M\ne\{1\}$ and $M$ is normal in $N$,
+	$M\cap\Soc(N)\ne\{1\}$. Moreover, since $\Soc(N)$ is characteristic in $N$ and $N$ is 
+	normal in $G$, it follows that $\Soc(N)$ is normal in $G$. Hence $M\cap\Soc(N)$ is a normal subgroup of $G$. 
+	Since $\{1\}\ne M\cap\Soc(N)\subseteq M$, we conclude that 
+	$M\cap\Soc(N)=M$ by the minimality of $M$. By the inductive hypothesis, 
+	every minimal normal subgroup of $N$ normalizes $S$. Thus 
+	$\Soc(N)\subseteq N_N(S)\subseteq N_G(S)$ and therefore 
+	\[
+	M\subseteq\Soc(N)\subseteq N_G(S).
+	\]
+	If $M\cap N=1$, Lemma~\ref{lem:McapN=1} implies that 
+	\[
+	M\subseteq C_G(N)\subseteq C_G(S)\subseteq N_G(S). \qedhere
+	\]
+\end{proof}
+
+\begin{corollary}
+    Let $G$ be a finite group and $S$ be a subnormal subgroup of $G$. Then 
+    \[
+    \Soc(G)\subseteq N_G(S).
+    \]
+\end{corollary}
+
+\begin{proof}
+	By Theorem~\ref{thm:MsubsetNG(S)}, every minimal normal subgroup of $G$ is contained in $N_G(S)$. Then 
+	$\Soc(G)=\langle M:M\text{ minimal normal subgroup of $G$}\rangle\subseteq N_G(S)$.
+\end{proof}
+
+\begin{theorem}[Wielandt]
+	\label{thm:STsubnormal}
+    \index{Wielandt's lattice theorem}
+	Let $G$ be a finite group and $S$ and $T$ be subnormal subgroups of $G$. Then $S\cap T$ and 
+	$\langle S,T\rangle$ are subnormal in $G$.
+\end{theorem}
+
+\begin{proof}
+	We first prove that $S\cap T$ is subnormal in $G$. Since subnormality is a transitive relation, it is enough to see that 
+	$S\cap T$ is subnormal in $T$.
+	Since $S$ is subnormal in $G$, there exists a sequence 
+	\[
+		S=S_0\subseteq S_1\subseteq \cdots\subseteq S_k=G
+	\]
+    of subgroups of $G$ such that $S_i$ is normal in $S_{i+1}$ for all $i$. 
+	Each $S_{j-1}\cap T$ is normal in $S_j\cap T$. Then $S\cap T$ is 
+	subnormal in $T$.
+	
+	
+	We now prove that $\langle S,T\rangle$ is subnormal in $G$ 
+	We proceed by induction on $|G|$. Assume that $G\ne\{1\}$. Let $M$ be a minimal normal subgroup of $G$ and 
+    $\pi\colon G\to G/M$ be the canonical map. Since 
+	both $\pi(S)$ and $\pi(T)$ subnormal in $G/M$ and $|G/M|<|G|$,
+	the inductive hypothesis implies that 
+	\[
+	\pi(\langle S,T\rangle M)=\pi(\langle S,T\rangle)=\langle \pi(S),\pi(T)\rangle
+	\]
+	is subnormal in $G/M$. By the correspondence theorem, $\langle S,T\rangle M$ is 
+	subnormal in $G$. Theorem~\ref{thm:MsubsetNG(S)}
+	implies that $M\subseteq N_G(S)$ and $M\subseteq N_G(T)$. Hence $M\subseteq
+	N_G(\langle S,T\rangle)$. Since $\langle S,T\rangle$ is normal in
+	$\langle S,T\rangle M$ and $\langle S,T\rangle M$ is subnormal in $G$, we conclude that 
+	$\langle S,T\rangle$ is subnormal in $G$.
+\end{proof}
+
+
+%\section{Torres de automorfismos}
+%
+%\begin{exercise}
+%	\label{exercise:Inn(G)}
+%	Sea $G$ un grupo. Demuestre las siguientes afirmaciones:
+%	\begin{enumerate}
+%		\item La conjugación $\gamma\colon G\to\Inn(G)$, $g\mapsto \gamma_g$,
+%			es morfismo con núcleo $Z(G)$.
+%		\item $\Inn(G)$ es normal en $\Aut(G)$.
+%		\item Si $Z(G)=1$ entonces $C_{\Aut(G)}(\Inn(G))=1$.
+%		\item Si $Z(G)=1$ entonces $Z(\Aut(G))=1$.
+%	\end{enumerate}
+%\end{exercise}
+%
+%\begin{svgraybox}
+%	\begin{enumerate}
+%		\item Es morfismo pues
+%			\[
+%			\gamma_{gh}(x)=(gh)x(gh)^{-1}=\gamma_g\gamma_h(x)
+%			\]
+%			y el núcleo es
+%			\[
+%			\ker\gamma=\{g\in G:\gamma_g=\id\}=\{g\in G:gxg^{-1}=x\text{ para todo $x\in G$}\}=Z(G).
+%			\]
+%		\item Es trivial pues $f\gamma_gf^{-1}=\gamma_{f(g)}$.
+%		\item Sea $f\in C_{\Aut(G)}(\Inn(G))$. Como
+%			$f\gamma_gf^{-1}=\gamma_{f(g)}$, 
+%	Sea $\sigma\in\Aut(\Aut(G))$. Sabemos por el
+%	ejercicio~\ref{exercise:Inn(G)} que $\Inn(G)$ es normal en $\Aut(G)$, y
+%	entonces $\sigma(\Inn(G))$ es normal en $\Aut(G)$. El grupo
+%	\[
+%	\Inn(G)\simeq G/Z(G)\simeq G
+%	\]
+%	es simple y $\sigma(\Inn(G))\cap \Inn(G)$ es normal en $\Inn(G)$; entonces
+%	hay dos posibilidades: $\Inn(G)\cap\sigma(\Inn(G))=1$ o bien
+%	$\Inn(G)\cap\sigma(\Inn(G))=\sigma(\Inn(G))$. Basta demostrar que
+%	$\Inn(G)\cap\sigma(\Inn(G))\ne1$. 
+%
+%	Si $\Inn(G)\cap\sigma(\Inn(G))=1$ entonces, al usar la normalidad de
+%	$\sigma(\Inn(G)$ y de $\Inn(G)$ en $\Aut(G)$, tendríamos
+%	$[\Inn(G),\sigma(\Inn(G))]\in \Inn(G)\cap \sigma(\Inn(G))=1$.  Luego, por
+%	el el ejercicio ~\ref{exercise:Inn(G)}, 
+%	\[
+%	G\simeq \Inn(G)\simeq\sigma(\Inn(G))\subseteq
+%	C_{\Aut(G)}(\Inn(G))=1,
+%	\]
+%	una contradicción.
+%\end{proof}
+%
+%\begin{theorem}
+%	\label{theorem:simple=>completo}
+%	Sea $G$ un grupo simple no abeliano. Entonces $\Aut(G)$ es completo.
+%\end{theorem}
+%
+%\begin{proof}
+%	Como $Z(G)=1$, el ejercicio~\ref{exercise:Inn(G)} implica que
+%	$Z(\Aut(G))=1$. Por el lema~\ref{lemma:Inn(G)char}, $\Inn(G)$ es
+%	característico en $\Aut(G)$. Queremos demostrar que 
+%	$\Aut(G)\subseteq \Inn(G)$.
+%	
+%	Sean $\sigma\in\Aut(\Aut(G))$, $g\in G$ y $\gamma_g\in\Inn(G)$. Como
+%	$\sigma(\Inn(G))\subseteq\Inn(G)$, existe $\alpha(g)\in G$ tal que
+%	$\sigma(\gamma_g)=\gamma_{\alpha(g)}$. Queda definida entonces una función
+%	$\alpha\colon G\to G$ tal que $\sigma(\gamma_g)=\gamma_{\alpha(g)}$ para
+%	todo $g\in G$.
+%
+%	\begin{claim}
+%		$\alpha\in\Aut(G)$. 
+%	\end{claim}
+%
+%	Veamos que $\alpha$ es inyectiva: si $\alpha(g)=\alpha(h)$ entonces
+%	\[
+%	\sigma(\gamma_g)=\gamma_{\alpha(g)}=\gamma_{\alpha(h)}=\sigma(\gamma_h)
+%	\]
+%	y luego $\gamma_g=\gamma_h$; esto implica que $h=g$ pues
+%	$\ker(\gamma)=Z(G)=1$.  Luego $\alpha$ es biyectiva. Además $\alpha$ es
+%	morfismo pues 
+%	\[
+%	\gamma_{\alpha(gh)}=\sigma(\gamma_{gh})=\sigma(\gamma_h\gamma_h)=\sigma(\gamma_h)\sigma(\gamma_h)=\gamma_{\alpha(g)}\gamma_{\alpha(h)}.
+%	\]
+%
+%	\begin{claim}
+%		$\sigma=\gamma_\alpha$.
+%	\end{claim}
+%
+%	Sea $\tau=\sigma\gamma_{\alpha}^{-1}$ y sea $h\in G$. Entonces
+%	\[
+%		\tau(\gamma_h)=\sigma\gamma_{\alpha}^{-1}\gamma_h
+%		=\sigma(\alpha^{-1}\gamma_h\alpha)
+%		=\sigma\gamma_{\alpha^{-1}(h)}
+%		=\gamma_{\alpha\alpha^{-1}(h)}=\gamma_h.
+%	\]
+%	Si $\beta\in\Aut(G)$ y $g\in G$ entonces 
+%	\[
+%		\beta\gamma_g\beta^{-1}
+%		=\gamma_{\beta(g)}
+%		=\tau(\gamma_{\beta(g)})
+%		=\tau(\beta)\tau(\gamma_g)\tau(\beta)^{-1}
+%		=\tau(\beta)\gamma_g\tau(\beta)^{-1}.
+%	\]
+%	Como entonces $\tau(\beta)\beta^{-1}\in C_{\Aut(G)}(\Inn(G))=1$ para todo
+%	$\beta$, $\tau=\id$ y luego $\sigma=\gamma_{\alpha}$.
+%\end{proof}
+%
+%Si $G$ es un grupo con centro trivial entonces $G\hookrightarrow\Aut(G)$ pues 
+%\[
+%G\simeq
+%G/Z(G)\simeq\Inn(G)\subseteq\Aut(G).
+%\]
+%Como también $\Aut(G)$ tiene centro trivial, al iterar este procedimiento
+%obtenemos una sucesión
+%\begin{equation}
+%	\label{equation:Aut(G)}
+%G\hookrightarrow\Aut(G)\hookrightarrow\Aut(\Aut(G))\hookrightarrow\cdots
+%\end{equation}
+%Como aplicación del concepto de subnormalidad veremos un teorema de Wielandt
+%que afirma que la sucesión~\eqref{equation:Aut(G)} se estabiliza. 
+%
+%\begin{lemma}
+%	\label{lemma:CG(S)=1}
+%	Sea $G$ un grupo y sea $S=S_1\triangleleft
+%	S_2\triangleleft\cdots\triangleleft S_r=G$.  Si $C_{S_{i+1}}(S_i)=1$ para
+%	todo $i\in\{1,\dots,r-1\}$ entonces $C_G(S)=1$. 
+%\end{lemma}
+%
+%\begin{proof}
+%	Procederemos por inducción en $r$. El caso $r=2$ es trivial pues
+%	$C_{G}(S)=C_{S_2}(S_1)=1$. Supongamos entonces que $r>2$. Al usar la
+%	hipótesis inductiva al grupo $S_{r-1}$ obtenemos 
+%	$C_G(S)\cap S_{r-1}=C_{S_{r-1}}(S)=1$.
+%	Como $S_1$ es normal en $S_2$, $C_{G}(S)$ también es normal en $S_2$ pues
+%	si $x\in C_G(S)$, $s_1\in S_1$, $s_2\in S_2$ entonces $s_2^{-1}s_1s_2\in
+%	S_1$ y luego 
+%	\[
+%		[s_2xs_2^{-1},s_1]=s_2x(s_2^{-1}s_1s_2)x^{-1}s_2^{-1}s_1^{-1}=1.
+%	\]
+%	La normalidad de $S_{r-1}$ en $G$ implica que 
+%	$[C_G(S),S_2]\subseteq C_G(S)\cap S_{r-1}=1$.
+%	Luego $C_G(S)\subseteq C_G(S_2)$
+%	Al usar la hipótesis inductiva en la sucesión 
+%	$S_2\triangleleft\cdots\triangleleft S_r=G$, se concluye que $C_G(S)=1$.
+%\end{proof}
+%
+%\begin{lemma}
+%	\label{lemma:CG(N)=Z(N)}
+%	Sea $N$ un subgrupo normal de un grupo finito $G$ tal que $C_G(N)\subseteq
+%	N$. Entonces $|G|$ divide a $|Z(N)||\Aut(N)|$. En particular, $|G|$ divide
+%	al factorial de $|N|$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Al hacer actuar a $G$ en $N$ por conjugación obtenemos un morfismo
+%	$\rho\colon G\to\Aut(N)$ con núcleo
+%	\[
+%	\ker\rho=\{g\in G:gng^{-1}=n\text{ para todo $n\in N$}\}=C_G(N).
+%	\]
+%	Como $C_G(N)\subseteq N$, $\ker\rho=C_G(N)=Z(N)$ y luego $G/Z(N)$ es
+%	isomorfo a un subgrupo de $\Aut(N)$. 
+%
+%	Por el teorema de Lagrange, $|Z(N)|$ divide a $|N|$. Como 
+%	$\Aut(N)$ actúa fielmente en el conjunto $N\setminus\{1\}$, se tiene 
+%	un morfismo inyectivo $\Aut(N)\to\Sym_{|N|-1}$. Luego $|G|$ divide a $|N|!=|N|(|N|-1)!$.
+%	% recordemos que actuar fielmente quiere decir que $f\cdot n=n$ para todo $n$ implica que $f=\id$. 
+%\end{proof}
+%
+%Recordemos que si $G$ es un grupo, existe un único subgrupo normal minimal
+%$G^{\infty}$ con la siguiente propiedad: el cociente $G/G^{\infty}$ es
+%nilpotente.
+%
+%\begin{lemma}
+%	\label{lemma:Ginf=Sinf}
+%	Sea $G$ un grupo finito tal que $G=SF$ para algún subgrupo $S$ subnormal en
+%	$G$ y algún subgrupo nilpotente $F$ normal en $G$. Entonces
+%	$G^{\infty}=S^{\infty}$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Sin perder generalidad podemos suponer que $S\ne G$.
+%\end{proof}
+
 \subsection{Wielandt's zipper theorem}
 
 \begin{theorem}[Wielandt]
