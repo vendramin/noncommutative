@@ -232,14 +232,8 @@
 	\end{claim}
 
 	If $G=EA$, then, since $A\cap F(G)$ is a normal subgroup of $G$
-	contained in $A$, we conclude that $\{1\}\ne A\cap F(G)\subseteq K=1$, a 
+	contained in $A$, we conclude that $\{1\}\ne A\cap F(G)\subseteq K=\{1\}$, a 
 	contradiction. 
-%como $F(G)$ es normal en $G$, 
-%	\[
-%	A\cap F(G)=g(A\cap F(G))g^{-1}=gAg^{-1}\cap F(G)\subseteq gAg^{-1}
-%	\]
-	%para todo $g\in G$. 
-%    Luego $1\ne A\cap F(G)\subseteq K$, una contradicción pues $K=1$.
 
 	\medskip
 	Let $p\colon G\to G/E$ the canonical map. By the correspondence theorem,
@@ -296,9 +290,9 @@
 	Suppose that $M$ is abelian. The map $f\colon M\to M$, $m\mapsto
 	m^p$, is a group homomorphism such that $E \subseteq\ker f$. Since $M=EB$,
 	$f(M)\subseteq f(B)\subseteq B\subseteq A$. Since $M$ is normal in $G$,
-	$f(M)$ is normal in $G$. Thus $f(M)=\{1\}$, as $K=\Core_G(A)=\{1\}$ is the largest normal subgroup of $G$ contained in $A$. In particular, since $B$ is normal in $M=EB$, $M/B$ is a $p$-group. Since $B\subseteq M$,  $f(B)=\{1\}$. Moreover, since 
-	$B\subseteq A$ is cyclic, $|B|\leq p$. By using~\eqref{eq:(M:B)leq|B|}, 
-	$(M:B)<|B|\leq p$. This implies that $M=B\subseteq A$ and $M=E=1$ (because 
+	$f(M)$ is normal in $G$. Thus $f(M)=\{1\}$, as $f(M)\subseteq\Core_G(A)=\{1\}$ is the largest normal subgroup of $G$ contained in $A$. In particular, since $B$ is normal in $M=EB$ (because $M$ is normal), $M/B$ is a $p$-group. Since $B\subseteq M$,  $f(B)=\{1\}$. Moreover, since 
+	$B\subseteq A$ is cyclic, ~\eqref{eq:(M:B)leq|B|} implies that  
+	$(M:B)<|B|\leq p$. Thus $M=B\subseteq A$ and $M=E=\{1\}$ (because 
 	$M$ is normal in $G$ and $\Core_G(A)=K=\{1\}$ is the largest normal subgroup of $G$ containing $A$), a contradiction. 
 	
 	\begin{claim}
@@ -319,10 +313,14 @@
 	and therefore $Z(M)$ is cyclic, since $p(A)$ is cylic. 
 
 	\medskip
-	Since $B\subseteq A$ is abelian and $(M:B)<|B|$, $B\cap F(M)\ne1$ by Corollary~\ref{cor:Zenkov}. Then $[E,F(M)]=1$ (because $E\subseteq
+	Since $B\subseteq A$ is abelian and $(M:B)<|B|$, $B\cap F(M)\ne\{1\}$ by Corollary~\ref{cor:Zenkov}. Then 
+ \[
+ [E,F(M)]=\{1\},
+ \]
+ because $E\subseteq
 	Z(F(G))$ and $F(M)\subseteq F(G)$ by Corollary~\ref{cor:McapF(G)}).
 	Hence $B\cap F(M)\subseteq Z(M)$, since $M=BE$, $[B\cap F(M),E]\subseteq
-	[F(M),E]=1$ and $[B\cap F(M),B]=1$ as $B$ is abelian. Since 
+	[F(M),E]=\{1\}$ and $[B\cap F(M),B]=1$ as $B$ is abelian. Since 
 	$Z(M)$ is cyclic, $B\cap F(M)$ is characteristic in $Z(M)$. Since 
 	$Z(M)$ is normal in $G$, $\{1\}\ne B\cap F(M)$ is a normal subgroup of $G$
 	contained in $A$, a contradiction. 
