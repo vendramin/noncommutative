@@ -229,7 +229,7 @@ This is precisely the content of the following lemma.
 	$\alpha_i=(j_{1}\cdots j_{n_i})$. Since   
 	\[
 		g t_{j_k}=t_{\sigma(j_k)}h_{j_k}=\begin{cases}
-			t_{j_1}h_{j_k} & \text{si $k=n_i$},\\
+			t_{j_1}h_{j_k} & \text{if $k=n_i$},\\
 			t_{j_{k+1}}h_{j_k} & \text{otherwise},
 		\end{cases}
 	\]
@@ -280,8 +280,8 @@ Gauss's lemma in number theory gives conditions for an integer to be a quadratic
 	\item For a transversal $T=\{1,2,\dots,\frac{p-1}{2}\}$ and elements $x\in G$ and $t\in T$, let 
  	\[
 	\epsilon(x,t)=\begin{cases}
-		1 & \text{si $xt\in T$},\\
-		-1 & \text{si $xt\not\in T$}.
+		1 & \text{if $xt\in T$},\\
+		-1 & \text{if $xt\not\in T$}.
 	\end{cases}
 	\]
 	Prove that  
@@ -338,7 +338,7 @@ Gauss's lemma in number theory gives conditions for an integer to be a quadratic
 	\]
 
 	Since $P$ is abelian, $[G,G]\subseteq\ker\nu$. Thus $\nu(z)=1$, a contradiction, since 
-    $1\ne z\in P$ y $z^{(G:P)}=1$ implies that $z$ has order not divisible by $p$. 
+    $1\ne z\in P$ and $z^{(G:P)}=1$ implies that $z$ has order not divisible by $p$. 
 \end{proof}
 
 
@@ -458,7 +458,7 @@ application to infinite groups taken from Serre's book
 	$N$ contains a finite-index subgroup isomorphic to $\Z$. Let $g\in G\setminus N$. 
 	Since $N$ is normal in $G$, $G$ acts by conjugation on $N$ and hence 
 	there exists a group homomorphism $c_g\in\Aut(N)\simeq\{-1,1\}$. Since
-	$K\subseteq N$ y $g$ acts non-trivially on $K$, 
+	$K\subseteq N$ and $g$ acts non-trivially on $K$, 
 	\[
 	c_g(n)=gng^{-1}=n^{-1}
 	\]
@@ -606,7 +606,7 @@ We conclude the section with some results similar to that of Schur.
 		\quad
 		y\mapsto ([x_1,y],\dots,[x_n,y]).
 	\]
-	Note that $f$ is well-defined: If $y\in G$ y $z\in Z(G)$, then $[x_i,y]=[x_i,yz]$ for all $i$. 
+	Note that $f$ is well-defined: If $y\in G$ and $z\in Z(G)$, then $[x_i,y]=[x_i,yz]$ for all $i$. 
 	Then $f(yz)=f(y)$.
 	 
 	The map $f$ is injective. Assume that $f(xZ(G))=f(yZ(G))$. Then 
@@ -1045,8 +1045,8 @@ holds for all $r\in R$, $s\in S$ and $m\in M$.
 	as  
 	\[
 		\pi_H(x^{-1}y)=\begin{cases}
-		1 & \text{si $x=y$},\\
-		0 & \text{si $x\ne y$}.
+		1 & \text{if $x=y$},\\
+		0 & \text{if $x\ne y$}.
 	\end{cases}\qedhere 
 	\]
 \end{proof}
