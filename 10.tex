@@ -937,6 +937,41 @@ also yields a solution to Question~\ref{question:J}.
 We now want to prove that an affirmative answer to 
 Question~\ref{question:reduced} yields an affirmative answer to Question~\ref{question:zero}. We first need some preliminaries. 
 
+For a group $G$ we consider
+\[
+        \Delta(G)=\{g\in G:(G:C_G(g))<\infty\}.
+\]
+
+\begin{exercise}
+    Prove that $\Delta(\Delta(G))=\Delta(G)$.
+\end{exercise}
+
+\begin{proposition}
+    If $G$ is a group, then $\Delta(G)$
+    is a characteristic subgroup of $G$.
+\end{proposition}
+
+\begin{proof}
+        We first prove that $\Delta(G)$ is a subgroup of $G$. If $x,y\in\Delta(G)$
+        and $g\in G$, then 
+        \[
+        g(xy^{-1})g^{-1}=(gxg^{-1})(gyg^{-1})^{-1}.
+        \]
+        Moreover,
+        $1\in\Delta(G)$. Let us show now that $\Delta(G)$ is characteristic in $G$. If
+        $f\in\Aut(G)$ and $x\in G$, then, since
+        \[
+        f(gxg^{-1})=f(g)f(x)f(g)^{-1},
+        \]
+        it follows that $f(x)\in\Delta(G)$.
+\end{proof}
+
+
+\begin{exercise}
+        Prove that if $G=\langle r,s:s^2=1,srs=r^{-1}\rangle$ is the
+        infinite dihedral group, then $\Delta(G)=\langle r\rangle$.
+\end{exercise}
+
 \begin{proposition}
 	\label{pro:FCabeliano}
 	If $G$ is a torsion-free group such 
@@ -976,7 +1011,7 @@ Question~\ref{question:reduced} yields an affirmative answer to Question~\ref{qu
 	Since $H_1b\subseteq\bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}$, 
 	it follows that 
 	\[
-		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n H_1a_{ij}b^{-1}a_{1k}.
+		H_1a_{1k}\subseteq \bigcup_{i=2}^m\bigcup_{j=1}^n H_ia_{ij}b^{-1}a_{1k}.
 	\]
 	Hence $G$ can be covered by finitely many cosets of $H_2,\dots,H_m$. By the inductive hypothesis, 
 	some of these $H_j$ has finite index in $G$.
@@ -1066,6 +1101,10 @@ holds for all $r\in R$, $s\in S$ and $m\in M$.
 	\alpha_y=\pi_H(y^{-1}\alpha)\in\pi_H(I)$ ($y^{-1}\alpha\in I$ since $I$ is 
     a left ideal).
 \end{proof}
+
+Lemma \ref{lem:ideal_pi} 
+can also be proved directly, without using Lemma~\ref{lem:escritura}. The proof goes as follows: if $\alpha\ne 0$, then by taking $g$ in the
+support of $\alpha$, we have that $\pi_H (g^{-1}\alpha)\ne0$. 
 
 \begin{exercise}
 	Let $G$ be a group, $H$ be a subgroup of $G$ and $\alpha\in K[H]$. The following statements hold:
