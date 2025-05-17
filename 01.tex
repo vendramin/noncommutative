@@ -1,9 +1,9 @@
-\section{15/02/2024}
+\section{Lecture: Week 1}
 
 \subsection{Solvable groups}
 
 \index{Subgroup!characteristic}
-A subgroup $H$ of $G$ is said to be \textbf{characteristic} if 
+A subgroup $H$ of $G$ is said to be \emph{characteristic} if 
 $f(H)\subseteq H$ for all $f\in\Aut(G)$. 
 The center and the commutator subgroup are
 characteristic subgroups. 
@@ -40,7 +40,7 @@ For subgroups $X$, $Y$ and $Z$ of $G$, we write
 For a group $G$, let 
 $G^{(0)}=G$ and 
 $G^{(i+1)}=[G^{(i)},G^{(i)}]$ for $i\geq0$.
-The \textbf{derived series} of $G$ is the sequence
+The \emph{derived series} of $G$ is the sequence
 \[
 G=G^{(0)}\supseteq G^{(1)}\supseteq G^{(2)}\supseteq\cdots
 \]
@@ -49,7 +49,7 @@ Each $G^{(i)}$ is a characteristic subgroup of $G$.
 \begin{definition}
 \index{Group!solvable}
 We say that a group 
-$G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.  
+$G$ is \emph{solvable} if $G^{(n)}=\{1\}$ for some $n$.  
 \end{definition}
 
 \begin{example}
@@ -109,124 +109,127 @@ Let $p$ be a prime number. Prove that finite $p$-groups are solvable.
 \end{theorem}
 
 The easiest way to prove Theorem \ref{thm:Burnside}
-is using character theory. 
+is using character theory. % See the course
+% representation theory of algebras
 
 \begin{theorem}[Burnside]
   \index{Burnside's theorem}
   Let $p$ and $q$ be prime numbers. If $G$ has order $p^aq^b$, then $G$ is solvable.
 \end{theorem}
 
-\begin{proof}
-	If $G$ is abelian, then it is solvable.
-	Suppose now $G$ is non-abelian.
-	Let us assume that the theorem is not true. Let $G$ be a group
-	of minimal order $p^aq^b$
-	that is not solvable. Since $|G|$ is minimal, $G$ is a non-abelian simple group.
-	By the previous theorem, 
-	$G$ has no conjugacy classes of size $p^k$ nor 
-	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
-	of every conjugacy class of $G$ is one or divisible by $pq$. 
-	Note that, since $G$ is a non-abelian simple group,
-	the center of $G$ is trivial.
-	Thus there is only one conjugacy class of size one.
-	By the class
-	equation,
-	\[
-		|G|=1+\sum_{C:|C|>1}|C|\equiv 1 \bmod pq,
-	\]
-	where the sum is taken over all conjugacy classes 
-	with more than one element, a contradiction.
-\end{proof}
+% \begin{proof}
+% 	If $G$ is abelian, then it is solvable.
+% 	Suppose now $G$ is non-abelian.
+% 	Let us assume that the theorem is not true. Let $G$ be a group
+% 	of minimal order $p^aq^b$
+% 	that is not solvable. Since $|G|$ is minimal, $G$ is a non-abelian simple group.
+% 	By the previous theorem, 
+% 	$G$ has no conjugacy classes of size $p^k$ nor 
+% 	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
+% 	of every conjugacy class of $G$ is one or divisible by $pq$. 
+% 	Note that, since $G$ is a non-abelian simple group,
+% 	the center of $G$ is trivial.
+% 	Thus there is only one conjugacy class of size one.
+% 	By the class
+% 	equation,
+% 	\[
+% 		|G|=1+\sum_{C:|C|>1}|C|\equiv 1 \bmod pq,
+% 	\]
+% 	where the sum is taken over all conjugacy classes 
+% 	with more than one element, a contradiction.
+% \end{proof}
 
-A recent generalization of Burnside's theorem
-is based on \emph{word maps}. A word map
-of a group $G$ is a map 
-\[
-G^k\to G,\quad 
-(x_1,\dots,x_k)\mapsto w(x_1,\dots,x_k)
-\]
-for some word $w(x_1,\dots,x_k)$ of the free group $F_k$ of rank $k$. 
-Some word maps are surjective in certain families of groups. For example, 
-Ore's conjecture is precisely the surjectivity of the word map
-$(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ in every finite non-abelian simple 
-group. 
+% A recent generalization of Burnside's theorem
+% is based on \emph{word maps}. A word map
+% of a group $G$ is a map 
+% \[
+% G^k\to G,\quad 
+% (x_1,\dots,x_k)\mapsto w(x_1,\dots,x_k)
+% \]
+% for some word $w(x_1,\dots,x_k)$ of the free group $F_k$ of rank $k$. 
+% Some word maps are surjective in certain families of groups. For example, 
+% Ore's conjecture is precisely the surjectivity of the word map
+% $(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ in every finite non-abelian simple 
+% group. 
 
-\begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
-    Let $a,b\geq0$, $p$ and $q$ be prime numbers and $N=p^aq^b$. The map 
-    $(x,y)\mapsto x^Ny^N$ is surjective in every non-abelian 
-    finite simple group. 
-\end{theorem}
+% \begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
+%     Let $a,b\geq0$, $p$ and $q$ be prime numbers and $N=p^aq^b$. The map 
+%     $(x,y)\mapsto x^Ny^N$ is surjective in every non-abelian 
+%     finite simple group. 
+% \end{theorem}
 
-The proof appears in~\cite{MR3827208}. 
+% The proof appears in~\cite{MR3827208}. 
 
-The theorem implies Burnside's theorem. Let $G$ be a group of order
-$N=p^aq^b$. Assume that $G$ is not solvable. 
-Fix a composition series of $G$. There is a non-abelian factor $S$ 
-of order dividing $N$. Since 
-$S$ is simple non-abelian and $s^N=1$ for all $s\in S$, 
-it follows that the word map
-$(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
-to the theorem. 
+% The theorem implies Burnside's theorem. Let $G$ be a group of order
+% $N=p^aq^b$. Assume that $G$ is not solvable. 
+% Fix a composition series of $G$. There is a non-abelian factor $S$ 
+% of order dividing $N$. Since 
+% $S$ is simple non-abelian and $s^N=1$ for all $s\in S$, 
+% it follows that the word map
+% $(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
+% to the theorem. 
+
+% There are several generalizations, see the notes. There is one, we want to mention here. 
 
 \begin{theorem}[Feit--Thompson]
     \index{Feit--Thompson!theorem}
     Groups of odd order are solvable. 
 \end{theorem}
 
-The proof of Feit--Thompson theorem is extremely hard. 
-It occupies a full volume of the 
-\emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
-A formal verification of the proof 
-(based on the computer software Coq) 
-was announced in~\cite{MR3111271}.  This motivates a natural problem: To formally verify 
-the classification of finite simple groups.  
-Will mathematics move away from depending on just humans to verify proofs? Formal verification with computer-proof assistants 
-could become the new standard for rigor in mathematics. 
+% The proof of Feit--Thompson theorem is extremely hard. 
+% It occupies a full volume of the 
+% \emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
+% A formal verification of the proof 
+% (based on the computer software Coq) 
+% was announced in~\cite{MR3111271}.  This motivates a natural problem: To formally verify 
+% the classification of finite simple groups.  
+% Will mathematics move away from depending on just humans to verify proofs? Formal verification with computer-proof assistants 
+% could become the new standard for rigor in mathematics. 
 
-Back in the day, it was believed that if a certain divisibility 
-conjecture is true, 
-the proof of Feit--Thompson theorem 
-could be simplified. 
+% Back in the day, it was believed that if a certain divisibility 
+% conjecture is true, 
+% the proof of Feit--Thompson theorem 
+% could be simplified. 
 
-\begin{conjecture}[Feit--Thompson]
-\index{Feit--Thompson!conjecture}
-    There are no prime numbers $p$ and $q$ such that
-    $\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
-\end{conjecture}
+% \begin{conjecture}[Feit--Thompson]
+% \index{Feit--Thompson!conjecture}
+%     There are no prime numbers $p$ and $q$ such that
+%     $\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
+% \end{conjecture}
 
-The conjecture remains open. However, now we know that 
-proving the conjecture will not simplify further
-the proof of Feit--Thompson theorem. 
+% The conjecture remains open. However, now we know that 
+% proving the conjecture will not simplify further
+% the proof of Feit--Thompson theorem. 
 
-In 2012, Le proved that the conjecture is true for $q=3$, see 
-\cite{MR2900154}. 
+% In 2012, Le proved that the conjecture is true for $q=3$, see 
+% \cite{MR2900154}. 
 
-In~\cite{MR297686} 
-Stephens proved that a certain stronger version of the conjecture 
-does not hold, as the integers 
-$\frac {p^{q}-1}{p-1}$ and $\frac{q^{p} - 1}{q - 1}$ 
-could have common factors. In fact, if $p=17$ and $q=3313$, 
-then 
-\[
-\gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
-\]
-Nowadays we can check this easily on almost every desktop computer:
-\begin{lstlisting}
-gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
-112643
-\end{lstlisting}
-No other counterexamples have been found of Stephen’s 
-stronger version of the conjecture.
+% In~\cite{MR297686} 
+% Stephens proved that a certain stronger version of the conjecture 
+% does not hold, as the integers 
+% $\frac {p^{q}-1}{p-1}$ and $\frac{q^{p} - 1}{q - 1}$ 
+% could have common factors. In fact, if $p=17$ and $q=3313$, 
+% then 
+% \[
+% \gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
+% \]
+% Nowadays we can check this easily on almost every desktop computer:
+% \begin{lstlisting}
+% gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
+% 112643
+% \end{lstlisting}
+% No other counterexamples have been found of Stephen’s 
+% stronger version of the conjecture.
 
 \begin{definition}
 \index{Subgroup!elementary abelian}
 Let $p$ be a prime number. A $p$-group $P$ is said to be 
-\textbf{elementary abelian} if $x^p=1$ for all $x\in P$.
+\emph{elementary abelian} if $x^p=1$ for all $x\in P$.
 \end{definition}
 
 \begin{definition}
 \index{Subgroup!minimal normal}
-A subgroup $M$ of $G$ is said to be \textbf{minimal normal} if $M\ne\{1\}$
+A subgroup $M$ of $G$ is said to be \emph{minimal normal} if $M\ne\{1\}$
 (or $G = \{1\}$),
 $M$ is normal in $G$ and the only normal 
 subgroup of $G$ properly contained in $M$ is $\{1\}$. 

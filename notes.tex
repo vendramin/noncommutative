@@ -3,16 +3,59 @@
 \newcommand{\course}{Non-commutative algebra}
 \input{mystuff}
 
+\usepackage{makecell}
+\setcellgapes{3pt}
+
+
+\renewcommand{\sl}{\mathfrak{sl}}
+\newcommand{\cC}{\mathcal{C}}
+\renewcommand{\cf}{\operatorname{ClassFun}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\Sets}{\mathfrak{Sets}}
+\newcommand{\Groups}{\mathfrak{Groups}}
+\newcommand{\AbelianGroups}{\mathfrak{AbelianGroups}}
+\newcommand{\Rings}{\mathfrak{Rings}}
+\newcommand{\Vect}{\mathfrak{Vec}}
+
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\Tchar}{\mathbf{1}}
+
+%\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\F}{\mathbb{F}}
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\C}{\mathbb{C}}
+%\renewcommand{\H}{\mathbb{H}}
+
+%\usepackage{mathptmx}
+%\usepackage{newtxtext}
+
 \begin{document}
 
+ \begin{abstract}
+ The notes correspond to the master
+ course \textbf{Non-commutative algebra} of the
+ Vrije Universiteit Brussel,
+ Faculty of Sciences,
+ Department of Mathematics and Data Sciences. \end{abstract}
+
 \maketitle
+
 \setcounter{tocdepth}{1}
-\tableofcontents 
+\tableofcontents
 
+\TOCpart{Part 1}
 
-% \mainmatter
-\input{introduction}
+\include{introduction}
+%\include{subsections}
 
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyfoot[R]{\thepage}
+% \fancyhead[L]{\course}
+% \fancyhead[R]{Lecture \thesection}
+% \setlength{\headheight}{14pt}
 
 \include{01}
 \include{02}
@@ -26,21 +69,34 @@
 \include{10}
 \include{11}
 \include{12}
-\include{13}
 
-\include{topics}
+\TOCpart{Part 2}
 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{\course}
+\fancyhead[R]{Final projects}
+\setlength{\headheight}{14pt}
+\newpage
 
-%\appendix
-%    Include appendix "chapters" here.
+\input{topics/carter}
+\include{topics/chermak_delgado}
+\include{topics/deaconescu_walls} 
+\include{topics/landau}
+\include{topics/burnside}
+\include{topics/porc}
+
+\TOCpart{Part 3}
+\newpage
+
+\input{topics}
 %\include{solutions}
 
+\newpage 
 \bibliographystyle{abbrv}
 \bibliography{refs}
 \printindex
 
 \end{document}
 
-%-----------------------------------------------------------------------
-% End of memo-l-template.tex
-%-----------------------------------------------------------------------

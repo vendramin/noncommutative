@@ -1,4 +1,4 @@
-\section{22/02/2024}
+\section{Lecture: Week 2}
 
 \subsection{Wielandt's solvability theorem}
 
@@ -30,7 +30,7 @@
 \begin{definition}
 \index{Normal closure}
 Let $G$ be a group and $H$ be a subgroup of $G$. The 
-\textbf{normal closure} $H^G$ of $H$ in $G$ is the subgroup 
+\emph{normal closure} $H^G$ of $H$ in $G$ is the subgroup 
 $H^G=\langle xHx^{-1}:x\in G\rangle$.
 \end{definition}
 
@@ -105,7 +105,7 @@ is
 \index{$p$-complement}
 Let $G$ be a finite group of order $p^{\alpha}m$, where $p$ is a prime number such that 
 $\gcd(p,m)=1$. A subgroup 
-$H$ of $G$ is said to be a \textbf{$p$-complement} if $|H|=m$. 
+$H$ of $G$ is said to be a \emph{$p$-complement} if $|H|=m$. 
 \end{definition}
 
 \begin{example}
@@ -207,7 +207,7 @@ $[Z,X,Y]\subseteq N$.
 
 \begin{definition}
 \index{Lower central series}
-Let $G$ be a group. The \textbf{lower central series} 
+Let $G$ be a group. The \emph{lower central series} 
 is the sequence $\gamma_k(G)$ of subgroups defined inductively 
 as 
 \[
@@ -219,9 +219,9 @@ as
 \begin{definition}
 \index{Group!nilpotent}
 \index{Nilpotency index}
-A group $G$ is said to be \textbf{nilpotent} if there exists a positive integer $c$ such that 
+A group $G$ is said to be \emph{nilpotent} if there exists a positive integer $c$ such that 
 $\gamma_{c+1}(G)=\{1\}$. The smallest $c$ with $\gamma_{c+1}(G)=\{1\}$ is 
-the \textbf{nilpotency class} of $G$.
+the \emph{nilpotency class} of $G$.
 \end{definition}
 
 \begin{exercise}
@@ -374,7 +374,7 @@ Hence
 \end{proof}
 
 \index{Weigth of a commutator}
-We may have to consider commutators with $n$ copies of the group that are not necessarily associated on the right. For example, if $n=3$, we might have something like $[G,G,G]=[G,[G,G]]$ or $[[G,G],G]$. These expressions will be called commutators of \textbf{weight} three. 
+We may have to consider commutators with $n$ copies of the group that are not necessarily associated on the right. For example, if $n=3$, we might have something like $[G,G,G]=[G,[G,G]]$ or $[[G,G],G]$. These expressions will be called commutators of \emph{weight} three. 
 
 \begin{corollary}
 In a group $G$, every weight $n$ commutator is contained in 
@@ -405,7 +405,7 @@ the inductive hypothesis implies that  $A\subseteq \gamma_k(G)$ and $B\subseteq
 
 
 The following lemma is important. It states that nilpotent groups satisfy 
-the \textbf{normalizer condition}. 
+the \emph{normalizer condition}. 
 
 \begin{lemma}[normalizer condition]
 \label{lem:normalizadora}
@@ -461,7 +461,7 @@ for all $y\in G$, we obtain that $xgx^{-1}\in\zeta_{i+1}(G)$.
 
 \begin{definition}
 \index{Ascending central series}
-Let $G$ be a group. The \textbf{ascending central series} of $G$ 
+Let $G$ be a group. The \emph{ascending central series} of $G$ 
 is the sequence 
 \[
 \{1\}=\zeta_0(G)\subseteq\zeta_1(G)\subseteq\zeta_2(G)\subseteq\cdots
@@ -470,7 +470,7 @@ is the sequence
 
 \begin{definition}
 \index{Group!perfect}
-A group $G$ is said to be \textbf{perfect} if $[G,G]=G$.
+A group $G$ is said to be \emph{perfect} if $[G,G]=G$.
 \end{definition}
 
 \begin{theorem}[Gr\"un]
@@ -502,7 +502,7 @@ If $G$ is a perfect group, then $Z(G/Z(G))=\{1\}$.
 
 \subsection{Berkovich's theorem}
 
-We start with an exercise on the \textbf{normal core} of a subgroup. 
+We start with an exercise on the \emph{normal core} of a subgroup. 
 
 \begin{exercise}
 \label{xca:core}
@@ -601,35 +601,3 @@ the proof of Berkovich's theorem.
     Assume that $H$ is contained in maximal subgroup $M$ such that $\Core_G(M)=\{1\}$. 
     Prove that $G$ has a subgroup with index equal to $(M:H)$. 
 \end{exercise}
-
-\subsection{*Carter subgroups}
-
-\begin{definition}
-    \index{Carter subgroup}
-    Let $G$ be a finite group. A \textbf{Carter subgroup} of $G$ 
-    is a nilpotent subgroup $C$ of $G$ such that 
-    $C=N_G(C)$. 
-\end{definition}
-
-\begin{theorem}[Carter]
-    \index{Carter's theorem}
-    \label{thm:Carter}
-    Every finite solvable group has a Carter subgroup. Moreover, 
-    every two Carter subgroups are conjugate. 
-\end{theorem}
-
-\begin{proof}
-    See \cite{MR0123603}. 
-\end{proof}
-
-Note that solvability is a needed assumption. For example, the
-group $\Alt_5$ does not have Carter subgroups. 
-
-\begin{exercise}
-    Let $G$ be a finite solvable group and $C$ be a Carter subgroup. Let $N$ be a normal
-    subgroup of $G$ such that $G/N$ is nilpotent. Prove that $NC=G$. 
-\end{exercise}
-
-Vdovin showed that even 
-if a finite group is not solvable then any two Carter subgroups are conjugate. The proof is difficult and uses the classification of finite simple groups. 
-% MR2356523
