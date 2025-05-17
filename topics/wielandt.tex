@@ -1,0 +1,91 @@
+\section{Project: Wielandt's automorphism tower theorem}
+
+We now present without proof a beautiful theorem of Wielandt. 
+For $G$ a finite group with trivial center, let 
+$A_1=G$ and $A_{k+1}=\Aut(A_k)$ for $k\geq1$. Note that 
+identifying $G$ with $\Inn(G)$, one gets a sequence
+\begin{equation}
+\label{eq:automorphism_groups}
+A_1\subseteq A_2\subseteq A_3\subseteq\cdots 
+\end{equation}
+where $A_i$ is normal in $A_{i+1}$. 
+
+\begin{definition}
+    \index{Group!complete}
+    A group $G$ is said to be \emph{complete} if $Z(G)=\{1\}$ and
+    $\Aut(G)=\Inn(G)$. 
+\end{definition}
+
+\begin{example}
+For example, the group $\Sym_3$ is complete:
+\begin{lstlisting}
+gap> G := SymmetricGroup(3);;
+gap> IsTrivial(Center(G));
+true
+gap> AutomorphismGroup(G)=InnerAutomorphismGroup(G);
+true    
+\end{lstlisting}
+In particular, the sequence \eqref{eq:automorphism_groups}
+stabilizes. 
+\end{example}
+
+\begin{example}
+    Let $G=\Sym_3\times\Sym_3$. Then $|G|=36$ and $Z(G)=\{1\}$. Moreover, 
+    $|\Aut(G)|=72$ and $|\Aut(\Aut(G))|=144$. Since the group
+    $\Aut(\Aut(G))$ is complete, the sequence \eqref{eq:automorphism_groups} stabilizes. Let us do this 
+    with the computer: 
+\begin{lstlisting}
+gap> G := DirectProduct(SymmetricGroup(3),SymmetricGroup(3));;
+gap> A1 := G;;
+gap> A2 := AutomorphismGroup(G);;
+gap> A3 := AutomorphismGroup(A2);;
+gap> Order(A2);
+72
+gap> Order(A3);
+144
+gap> IsTrivial(Center(A3));
+true
+gap> AutomorphismGroup(A3)=InnerAutomorphismGroup(A3);
+true    
+\end{lstlisting}
+\end{example}
+
+Let $G$ be a group and $g\in G$. Let
+$\gamma_g\colon G\to G$, $x\mapsto gxg^{-1}$, denote the
+conjugation map. Then 
+\[
+\Inn(G)=\{\gamma_g:g\in G\}
+\]
+is a normal subgroup of $\Aut(G)$. Moreover, $G/Z(G)\simeq\Inn(G)$. 
+
+% Rotman 
+\begin{exercise}
+\label{xca:Aut}
+    Let $G$ be a non-abelian simple group, $A=\Aut(G)$ and
+    $I=\Inn(G)$. Prove the following statements:
+    \begin{enumerate}
+        \item $C_A(I)=\{\id\}$. 
+        \item $f(I)=I$ for all $f\in \Aut(A)$.
+        \item Every $f\in\Aut(A)$ is inner. 
+        \item $\Aut(G)$ is complete. 
+    \end{enumerate}    
+\end{exercise}
+
+% \begin{sol}{xca:Aut}
+%     \begin{enumerate}
+%     \item 
+%     \end{enumerate}
+% \end{sol}
+
+The following result is known as the \emph{Wielandt automorphism tower theorem}. 
+
+\begin{theorem}[Wielandt]
+    \index{Wielandt's automorphism tower theorem}
+    \label{thm:Wielandt:automorphism}
+    Let $G$ be a finite group with trivial center. Up to isomorphism, there
+    are finitely many groups among the terms of the sequence \eqref{eq:automorphism_groups}.  
+\end{theorem}
+
+\begin{proof}
+    See \cite[Theorem 9.10]{MR2426855}.
+\end{proof}
