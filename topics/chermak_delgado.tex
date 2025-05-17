@@ -1,0 +1,324 @@
+\section{Project: The Chermak--Delgado subgroup}
+
+\begin{definition}
+\index{Chermak--Delgado!measure}
+Let $G$ be a finite group and $H$ a subgroup of $G$. 
+The \emph{Chermak--Delgado measure} of $H$ 
+is the number 
+$m_G(H)=|H||C_G(H)|$.
+\end{definition}
+
+\begin{example}
+If $G$ is abelian and $H$ is a subgroup of $G$, then 
+$m_G(H)=|H||G|$.
+\end{example}
+
+\begin{example}
+Let $G=\Sym_3$. The subgroups of $G$ are 
+	\[
+		H_0=1,\quad
+		H_1=\langle (23)\rangle,\quad
+		H_2=\langle (12)\rangle,\quad
+		H_3=\langle (13)\rangle,\quad
+		H_4=\langle (123)\rangle,\quad
+		H_5=\Sym_3.
+	\]
+	A direct calculation shows that 
+	\[
+		m_G(H_j)=\begin{cases}
+			6 & \text{if $j\in\{0,5\}$},\\
+			4 & \text{if $j\in\{1,2,3\}$},\\
+			9 & \text{if $j=4$}.
+		\end{cases}
+	\]
+\end{example}
+
+\begin{lemma}
+\label{lem:CD1}
+Let $G$ be a finite group and $H$ be a subgroup of $G$. Then 
+\[
+m_G(H)\leq m_G(C_G(H)).
+\]
+If the equality holds, then $H=C_G(C_G(H))$.
+\end{lemma}
+
+\begin{proof}
+Let $C=C_G(H)$. 
+Since $H\subseteq C_G(C)$, 
+\[
+m_G(C)=|C||C_G(C)|\geq |C||H|=m_G(H). 
+\]
+If $m_G(H)=m_G(C_G(H))$, then $|H|=|C_G(C_G(H))|$ and 
+hence $H=C_G(C_G(H))$, as $H\subseteq C_G(C_G(H))$. 
+\end{proof}
+
+\begin{lemma}
+	Let $G$ be a finite group and 
+	$H$ and $,K$ be subgroups of $G$. Let $D=H\cap K$ and
+    $J=\langle H,K\rangle$. Then 
+	\[
+		m_G(H)m_G(K)\leq m_G(D)m_G(J).
+	\]
+	If the equality holds, then $J=HK$ and $C_G(D)=C_G(H)C_G(K)$.
+	\label{lem:CD2}
+\end{lemma}
+
+\begin{proof}
+	Let $C_H=C_G(H)$, $C_K=C_G(K)$, $C_D=C_G(D)$, and $C_J=C_G(J)$. Then
+	$C_J=C_H\cap C_K$ and $C_H\cup C_K\subseteq C_D$. Since 
+	\[
+		|J|\geq |HK|=\frac{|H||K|}{|D|},
+		\quad
+		|C_D|\geq |C_HC_K|=\frac{|C_H||C_K|}{|C_J|},
+	\]
+	we obtain that 
+	\[
+		m_G(D)
+		=|D||C_D|\geq \frac{|H||K|}{|J|}\frac{|C_H||C_K|}{|C_J|}
+		=\frac{m_G(H)m_G(K)}{m_G(J)}.
+	\]
+	The second claim is clear. 
+\end{proof}
+
+\begin{definition}
+\index{Lattice of subgroups}
+Let $G$ be a finite group and $\mathcal{L}$ be a collection of subgroups of $G$. We say that $\mathcal{L}$ is a \emph{lattice} if for every $H,K\in\mathcal{L}$ one has that
+$H\cap K\in\mathcal{L}$ and $\langle H,K\rangle\in\mathcal{L}$. 
+\end{definition}
+
+Since $G$ is finite, it makes sense to consider the set $\mathcal{L}(G)$ of 
+subgroups of $G$ $G$ where the Chermak--Delgado gets its largest value,
+say $M_G$. 
+
+\begin{exercise}
+	\label{xca:M_S}
+	Let $G$ be a finite group and $H$ be a subgroup of $G$. Prove that 
+	$M_H\leq M_G$.
+\end{exercise}
+
+% \begin{svgraybox}
+% 	Sabemos que existe algún subgrupo $K$ de $H$ tal que $M_H=m_H(K)$. Como
+% 	$C_H(K)\subseteq C_G(K)$, 
+% 	\[
+% 		M_H=m_H(K)=|H||C_H(K)|\leq |H||C_G(K)|\leq m_G(H)\leq M_G.
+% 	\]
+% \end{svgraybox}
+
+\begin{example}
+	\label{exa:D8_CD}
+    Let $G=\D_8=\langle r,s:r^4=s^2=1,srs=r^{-1}\rangle$ be the dihedral group
+    of eight elements. In the subgroups 
+    \[
+		G,
+		\quad
+		Z(G)=\{1,r^2\},\quad
+		A=\{1,r,r^2,r^3\},\quad
+		B=\{1, s,sr^2,r^2\},\quad
+		C=\{1,sr,sr^3,r^2\},
+	\]
+	the Chermak--Delgado measure is $16$ and this is the largest possible value. Thus and $M_G=16$ and $\mathcal{L}(G)=\{G,Z(G),A,B,C\}$. 
+	\begin{lstlisting}
+gap> ChermakDelgado := function(group, subgroup)
+> return Size(subgroup)\
+> *Size(Centralizer(group, subgroup));
+> end;
+function( group, subgroup ) ... end
+gap> gr := DihedralGroup(IsPermGroup, 8);;
+gap> r := gr.1;;
+gap> s := gr.2;;
+gap> ChermakDelgado(gr, Subgroup(gr, [r]));
+16
+gap> ChermakDelgado(gr, Subgroup(gr, [s*r,s*r^3]));
+16
+gap> ChermakDelgado(gr, Subgroup(gr, [s,s*r^2]));
+16
+gap> ChermakDelgado(gr, Subgroup(gr, [r^2]));
+16
+gap> List(AllSubgroups(gr), x->ChermakDelgado(gr, x));
+[ 8, 16, 8, 8, 8, 8, 16, 16, 16, 16 ]
+	\end{lstlisting}
+\end{example}
+
+\begin{theorem}
+	Let $G$ be a finite group. The following statements hold: 
+	\begin{enumerate}
+		\item $\mathcal{L}(G)$ is a lattice. 
+		\item If $H,K\in\mathcal{L}(G)$, then $\langle H,K\rangle=HK$.
+		\item If $H\in\mathcal{L}(G)$, then $C_G(H)\in\mathcal{L}(G)$ and $C_G(C_G(H))=H$.
+	\end{enumerate}
+	\label{thm:lattice}
+\end{theorem}
+
+\begin{proof}
+	If $H,K\in\mathcal{L}(G)$, then $m_G(H)=m_G(K)=M_G$. Let $D=H\cap K$ and $J=\langle
+	H,K\rangle$. By Lemma~\ref{lem:CD2}, 
+	\[
+		M_G^2=m_G(H)m_G(K)\leq m_G(D)m_G(J).
+	\]
+	Since $m_G(D)\leq M_G$ and $m_G(J)\leq M_G$ (because $M_G$ is the largest possible value), we conclude that $m_G(D)=m_G(J)=M_G$. Hence $\mathcal{L}(G)$ is a lattice. 
+
+	Since $m_G(H)m_G(K)=m_G(D)m_G(J)=M_G^2$, Lemma~\ref{lem:CD2} implies that 
+	$J=HK$. 
+
+	By Lemma~\ref{lem:CD1}, 
+	\[
+	M_G=m_G(H)\leq m_G(C_G(H)).
+	\]
+	Since $M_G$ is the largest possible value, $m_G(C_G(H))=M_G$. Thus 
+    $C_G(H)\in\mathcal{L}(G)$.  By Lemma~\ref{lem:CD1}, $C_G(C_G(H))=H$.
+\end{proof}
+
+\index{Chermak--Delgado!subgroup}
+Theorem~\ref{thm:lattice} implies the existence 
+of the \emph{Chermak--Delgado subgroup}.
+
+\begin{corollary}
+	\label{cor:ChermakDelgado}
+	Let $G$ be a finite group. There exists a unique subgroup $M$ minimal 
+    suc that $m_G(M)$ is the largest possible value among all the subgroups 
+    of $G$. Moreover, $M$ is characteristic, abelian and $Z(G)\subseteq M$. 
+\end{corollary}
+
+% f(C_G(H))=C_G(f(H))$ para todo $H$ y todo $f\in\Aut(G)$.
+
+\begin{proof}
+	By Theorem~\ref{thm:lattice}, $\mathcal{L}(G)$ is a lattice. Let 
+	\[
+		M=\bigcap_{H\in\mathcal{L}(G)}H\in\mathcal{L}(G).
+	\]
+	By Theorem~\ref{thm:lattice},  
+	\[
+    C_G(M)\in\mathcal{L}(G)
+    \text{ and }M=C_G(C_G(M))\supseteq Z(G).
+    \]Since $C_G(M)\in\mathcal{L}(G)$, $M\subseteq C_G(M)$. Hence $M$ is abelian. Moreover, $M$ is characteristic in $G$ because $f(M)\in\mathcal{L}(G)$
+	for all $f\in\Aut(G)$.
+\end{proof}
+
+\begin{example}
+	Let $G=\D_8$ be the dihedral group of eight elements. The Chermak--Delgado subgroup of $G$ is $Z(G)\simeq C_2$. See Example~\ref{exa:D8_CD}.
+\end{example}
+
+\begin{theorem}[Chermak--Delgado]
+	\index{Chermak--Delgado!theorem}
+ 	\label{thm:ChermakDelgado}
+	Let $G$ be a finite group. Then $G$ has an abelian characteristic subgroup $M$ such that $(G:M)\leq (G:A)^2$ for every abelian subgroup 
+	$A$ of $G$. 
+\end{theorem}
+
+\begin{proof}
+	Let $M$ be the Chermak--Delgado subgroup of Corollary~\ref{cor:ChermakDelgado} 
+    and $A$ be an abelian subgroup of 
+	$G$. Then $A\subseteq C_G(A)$. Hence 
+	\[
+		m_G(M)\geq m_G(A)=|A||C_G(A)|\geq|A|^2
+	\]
+	and 
+	\[
+	(G:A)^2
+	=\frac{|G|^2}{|A|^2}\geq\frac{|G|^2}{m_G(M)}
+	=\frac{|G|}{|M|}\frac{|G|}{|C_G(M)|}
+	=\frac{|G|}{|M|}
+	=(G:M).\qedhere 
+	\]
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a non-abelian finite group and $H$ be a subgroup of $G$ such that 
+	\[
+	|H||C_G(H)|>|G|.
+	\]
+	Then $G$ is not simple. 
+\end{corollary}
+
+\begin{proof}
+	Let $M$ be the Chermak--Delgado subgroup of $G$. 
+	Then 
+	\begin{equation}
+		\label{equation:mG}
+	m_G(M)\geq m_G(H)>|G|.
+	\end{equation}
+	This implies that $M\ne\{1\}$, since $m_G(M)=m_G(1)=|G|$. If $G$ is simple, then $G=M$ is abelian. 
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a non-abelian finite group and $P\in\Syl_p(G)$. If $P$ is abelian and $|P|^2>|G|$, then $G$ is not simple. 
+\end{corollary}
+
+\begin{proof}
+	Let $M$ be the Chermak--Delgado subgroup of $G$. Since $P$ is abelian, 
+    \[
+    (G:M)\leq (G:P)^2<|G|
+    \]
+    by Theorem~\ref{thm:ChermakDelgado}. Hence 
+    $M\ne\{1\}$. If $G$ is simple, then $G=M$ is abelian. 
+\end{proof}
+
+We now discuss an application of the Wielandt zipper theorem 
+to the Chermak--Delgado lattice. 
+
+\begin{lemma}
+	\label{lem:L(G)L(S)}
+	Let $G$ be a finite group, $H\in\mathcal{L}(G)$ and  $S$ be a subgroup of $G$ such that 
+	$HC_G(H)\subseteq S$. Then $H\in\mathcal{L}(S)$.
+\end{lemma}
+
+\begin{proof}
+	Since $C_G(H)\subseteq S$, $C_G(H)=C_S(H)$. By Exercise~\ref{xca:M_S},
+    $M_S\leq M_G$. Thus $M_G=M_S$, since 
+	\[
+		M_G=m_G(H)=|H||C_G(H)|=|H||C_S(H)|=m_S(H)\leq M_S.\qedhere 
+	\]
+\end{proof}
+
+\begin{theorem}
+	\label{thm:L(G)subnormal}
+	Let $G$ be a finite group. Every $H\in\mathcal{L}(G)$ is subnormal in $G$.
+\end{theorem}
+
+\begin{proof}
+	We proceed by induction on $|G|$. If $|G|=1$, the result is trivial. So assume the group $G$ is non-trivial. Let $H\in\mathcal{L}(G)$ and $K=HC_G(H)$. Since $H$ is normal in $K$, by the inductive hypothesis, 
+    it is enough to show that 
+	$K$ is subnormal in $G$. If $K=G$, the claim holds. So assume that 
+	$K\ne G$. 
+
+	Assume that $K$ is not subnormal in $G$. By the inductive hypothesis and 
+    Wielandt's zipper theorem (Theorem~\ref{thm:zipper}), there exists a unique 
+    maximal subgroup $M$ containing $K$. By Theorem~\ref{thm:lattice},
+	$C_G(H)\in\mathcal{L}(G)$ and $K=HC_G(H)\in\mathcal{L}(G)$. By Lemma~\ref{lem:L(G)L(S)},
+	$H\in\mathcal{L}(M)$. Hence $K\in\mathcal{L}(M)$. By the inductive hypothesis, $K$ is subnormal in $M$. We claim that $M$ is normal in $G$. Let $x\in G$. Since 
+	$m_G(xKx^{-1})=m_G(K)$, the subgroup $xKx^{-1}\in\mathcal{L}(G)$. Hence 
+	$K(xKx^{-1})\in\mathcal{L}(G)$. 
+	
+	If $K(xKx^{-1})=G$, then, since there exist $k_1,k_2\in K$ such that 
+	$k_1(xk_2x^{-1})=x^{-1}$, we obtain that $x\in K$, since $x^{-1}=k_2k_1\in K$. This implies that $xKx^{-1}\subseteq K$. Therefore $K=G$, a contradiction.
+
+	Since $K(xKx^{-1})\ne G$, there exists a maximal subgroup $N$ such that 
+	$K(xKx^{-1})\subseteq N$. Since $K\subseteq N$, $N=M$ because $M$ is the unique
+	maximal subgroup containing $K$. Since $xKx^{-1}\subseteq M$, $K\subseteq
+	x^{-1}Mx$. Hence $x^{-1}Mx=M$, because $x^{-1}Mx$ is a maximal subgroup containing $K$ and $M$ is the only maximal subgroup containing $K$. 
+\end{proof}
+
+\begin{corollary}
+	Let$G$ be a non-abelian finite Then $\mathcal{L}(G)=\{1,G\}$. 
+\end{corollary}
+
+\begin{proof}
+	Let $K\in\mathcal{L}(G)$. Then $K$ is subnormal in $G$ by Theorem~\ref{thm:L(G)subnormal}. Hence $K\in\{1,G\}$. Now the claim follows from $m_G(1)=m_G(G)$. 
+\end{proof}
+
+\begin{exercise}
+	Let $n\geq5$. Prove that $\mathcal{L}(\Sym_n)=\{1,\Sym_n\}$. 
+\end{exercise}
+
+% \begin{proof}
+% 	Let $G=\Sym_n$ y sea $K\in\mathcal{L}(G)$. Por el
+% 	teorema~\ref{thm:L(G)subnormal}, $K$ es subnormal en $G$. Si $K\ne G$
+% 	entonces se tiene una sucesión estrictamente creciente de subgrupos 
+% 	\[
+% 	K=K_1\triangleleft
+% 	K_2\triangleleft\cdots\triangleleft K_{n-1}\triangleleft K_n=G.
+% 	\]
+% 	Como $K_{n-1}$ es normal en $G$, $K_{n-1}\in\{1,\Alt_n\}$ y luego $K=1$. 
+% 	El corolario queda demostrado al observar que $m_G(1)=m_G(G)$. 
+% \end{proof}
+

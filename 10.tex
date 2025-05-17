@@ -1,4 +1,4 @@
-\section{02/05/2024}
+\section{Lecture: Week 10}
 
 
 \subsection{*Wielandt's automorphism tower theorem}
@@ -1226,60 +1226,3 @@ support of $\alpha$, we have that $\pi_H (g^{-1}\alpha)\ne0$.
     since $\Delta(G)$ is an abelian group.
 \end{proof}
 
-
-
-\subsection{*The isomorphism problem for group algebras}
-
-If $R$ is a commutative ring (with 1) 
-and $G$ is a group, then one defines the group ring $R[G]$. More precisely,
-$R[G]$ is the set of finite linear combinations
-\[
-    \sum_{g\in G}\lambda_gg
-\]
-where $\lambda_g\in R$ and $\lambda_g=0$ for all but finitely many $g\in G$. 
-One easily proves that $R[G]$ is a ring with 
-addition
-\[
-\left(\sum_{g\in G}\lambda_gg\right)+\left(\sum_{g\in G}\mu_gg\right)
-=\sum_{g\in G}(\lambda_g+\mu_g)(g)
-\]
-and multiplication 
-\[
-\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
-=\sum_{g,h\in G}\lambda_g\mu_h(gh).
-\]
-Moreover, $R[G]$ is a left $R$-module with
-\[
-\lambda(\sum_{g\in G}\lambda_gg)=\sum_{g\in G}(\lambda\lambda_g)g.
-\]
-
-\begin{exercise}
-    Let $G$ be a group. Prove that if 
-    $\Z[G]\simeq\Z[H]$, then $R[G]\simeq R[H]$ for any commutative ring $R$.      
-\end{exercise}
-
-\begin{question}[The isomorphism problem]
-\index{Isomorphism problem}
-\label{question:IP}
-    Let $G$ and $H$ be groups. Does $\Z[G]\simeq\Z[H]$ imply $G\simeq H$?
-\end{question}   
-
-Although there are several cases where 
-the isomorphism problem has an affirmative answer (e.g. abelian groups, 
-metabelian groups, nilpotent groups, nilpotent-by-abelian groups, simple groups, 
-abelian-by-nilpotent groups), it is false in general. In~\cite{MR1847590},    
-Hertweck found a counterexample of order $2^{21}97^{28}$.
-
-\begin{question}[The modular isomorphism problem]
-\label{question:MIP}
-\index{Modular isomorphism problem}
-    Let $p$ be a prime number. Let 
-    $G$ and $H$ be finite $p$-groups and let $K$ be a field of characteristic $p$. 
-    Does $K[G]\simeq K[H]$ imply $G\simeq H$?
-\end{question}   
-
-Question \ref{question:MIP} has an affirmative answer in several cases. However, 
-this is not true in general. This question was recently answered by Garc\'ia, Margolis and
-del R\'io \cite{MR4373245}. They found two non-isomorphic groups $G$ and $H$ both of order $512$ 
-such that $K[G]\simeq K[H]$ for all field $K$ 
-of characteristic two. 

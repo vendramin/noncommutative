@@ -1,0 +1,80 @@
+\section{Project: Burnside's cyclic numbers theorem}
+
+We now mention some problems and results related to the number of isomorphism classes of finite groups of a given order. This classification problem is obviously almost as old as group theory itself. When taking the first steps in group theory, we encounter some easy-to-prove results:
+\begin{itemize}
+    \item There exists a unique finite group of prime order, and it is cyclic.
+    \item There are two groups of order four, both abelian.
+    \item There are two groups of order six, one of which is non-abelian.
+    \item Groups of order $p^2$ are abelian.
+\end{itemize}
+
+With the Sylow theorems, we can go a bit further. It is easy to prove, for example, that there exists a unique group of order 15, and it is cyclic. The same result can be shown for other orders, such as 455 and 615.
+
+A natural question arises. For which values of $n$ does a unique group (which will obviously be isomorphic to $C_n$) of order $n$ exist? The answer was given by Burnside.
+
+\begin{definition}
+\index{Cyclic number}
+A number $n\in\mathbb{N}$ is called \textbf{cyclic} if $C_n$ is the only group (up to isomorphism) of order $n$.
+\end{definition}
+
+Some examples of cyclic numbers are: $2$, $3$, $15$, and $615=3\cdot 5\cdot 41$.
+
+\begin{theorem}[Burnside]
+\index{Burnside's cyclic number theorem}
+    Let $n\in\mathbb{N}$. Then $n$ is cyclic if and only if $n$ and $\phi(n)$ are coprime.
+\end{theorem}
+
+\begin{proof}
+    Suppose $n$ is cyclic. Without loss of generality, we can assume that $n$ is square-free (because otherwise, if $n=p^am$ with $m\in\mathbb{N}$, $p$ prime such that $\gcd(p,m)=1$, and $a\geq2$, the group $C_m\times C_p^a$ has order $n$ and is not cyclic). We then write
+    \[
+        n=p_1\cdots p_k
+    \]
+    with the $p_j$ distinct primes and $\phi(n)=(p_1-1)\cdots(p_k-1)$. If $\gcd(n,\phi(n))\ne1$, there exist distinct primes $p$ and $q$ such that $p$ divides $q-1$. The group $G= C_m\times (C_p\rtimes C_q)$ has order $n=pqm$ and is not cyclic.
+
+    Suppose $\gcd(n,\phi(n))=1$ and $n$ is not cyclic. Let $G$ be a group of minimum order $n$ that is not cyclic.
+    Without loss of generality, we can assume that $n$ is square-free: if $n=p^\alpha m$ with $p$ prime, $m$ coprime with $p$ and $\alpha\geq2$, then, as $\phi(n)=p^{\alpha-1}(p-1)\phi(m)$, $p$ divides 
+    $\gcd(n,\phi(n))$. Then
+    \[
+        n=p_1\cdots p_k,
+    \]
+    with the $p_j$ distinct primes.
+
+    \begin{claim}
+    Every subgroup of $G$ and every quotient of $G$ is cyclic.
+    \end{claim}
+
+    If $m$ divides $n$, then $\gcd(m,\phi(m))=1$ since $n$ and $\phi(n)=(p_1-1)\cdots(p_k-1)$ are coprime. Therefore, every subgroup and every proper quotient is cyclic by the minimality of $n$.
+
+    \begin{claim}
+    $Z(G)=\{1\}$.
+    \end{claim}
+
+    For each $i\in\{1,\dots,k\}$, let $x_i\in G$ be an element of order $p_i$. If $G$ were abelian, then $G$ would be cyclic: $x_1\cdots x_k$ would be an element of order $n$. Hence $Z(G)\ne G$. Now, if $1<|Z(G)|<n$, then $G/Z(G)$ would be cyclic (since every quotient of $G$ is), and then $G$ would be abelian.
+
+    \begin{claim}
+    If $M$ is a maximal subgroup of $G$ and $x\in M\setminus\{1\}$, then $M=C_G(x)$. In particular, if $M$ and $N$ are distinct maximal subgroups, then $M\cap N=\{1\}$.
+    \end{claim}
+
+    Since $Z(G)\ne\{1\}$, $C_G(x)\ne G$. And since $M$ is cyclic, $M\subseteq C_G(x)$. Therefore, by maximality, $M=C_G(x)$. If $M$ and $N$ are two maximal subgroups and $x\in M\cap N\setminus\{1\}$, then $M=N=C_G(x)$.
+
+    \begin{claim}
+    If $M$ is a maximal subgroup, then $M=N_G(M)$.
+    \end{claim}
+
+    Let $x\in N_G(M)\setminus\{1\}$ and let $\alpha\in\Aut(M)$ be given by $y\mapsto xyx^{-1}$. Since $M$ is cyclic, if $m=|M|$, then $|\Aut(M)|$ has order $\phi(m)$. On the other hand, since $|x|$ divides $n$, $|\alpha|$ divides $n$. Hence $|\alpha|$ divides $\gcd(n,\phi(m))=1$. This means that $x\in C_G(M)$, i.e., $N_G(M)\subseteq C_G(M)$. Since $M\subseteq N_G(M)\subseteq C_G(M)$, $M=N_G(M)=C_G(M)$.
+
+    Let $M_1,\dots,M_l$ be the representatives of the conjugacy classes of maximal subgroups of $G$. For each $j\in\{1,\dots,l\}$, let $m_j=|M_j|$. Since $M_{j}=N_G(M_j)$ for each $j$, the orbit of $M_j$ has $n/m_j$ elements.
+
+    Since for each $g\in G\setminus\{1\}$ there exists a unique maximal subgroup $M$ such that $g\in M$, we have
+    \begin{equation}
+    \label{eq:particion}
+    n=1+\sum_{j=1}^l \frac{n}{m_j}(m_j-1).
+    \end{equation}
+    If $l=1$ then $n=m_1$, a contradiction. If $l>1$ then, since for each $j$ we have $m_j\geq2$, rewriting~\eqref{eq:particion}, we have
+    \begin{align*}
+    \frac{1}{n}+l-1=\sum_{j=1}^l\frac{1}{m_j}\leq\frac{l}{2}.
+    \end{align*}
+    From this inequality, we obtain $nl\leq 2n-2<2n$ and then $l<2$, a contradiction. 
+\end{proof}
+
+Similarly, abelian and nilpotent numbers can be defined. These numbers are classified, and an elementary proof can be found in \cite{MR1786236}. There is also the notion of a solvable number. Thanks to the Feit--Thompson theorem, every odd number is a solvable number. These numbers are also classified, although the proof is much more difficult as it relies on a very deep theorem of Thompson and the famous Feit--Thompson theorem.
