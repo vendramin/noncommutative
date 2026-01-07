@@ -32,30 +32,40 @@
 
 \begin{document}
 
- \begin{abstract}
- The notes correspond to the master
- course \textbf{Non-commutative algebra} of the
- Vrije Universiteit Brussel,
- Faculty of Sciences,
- Department of Mathematics and Data Sciences. \end{abstract}
+\pagenumbering{roman}
+
+\begin{abstract}
+The notes correspond to the master course \textbf{Non-commutative algebra} of
+the Vrije Universiteit Brussel, Faculty of Sciences, Department of Mathematics
+and Data Sciences. 
+\end{abstract}
 
 \maketitle
 
 \setcounter{tocdepth}{1}
 \tableofcontents
 
-\TOCpart{Part 1}
+%\TOCpart{Part 1}
+
+\fancyhf{}
+%\fancyfoot[R]{\thepage}
+%\fancyhead[L]{\course}
+%\setlength{\headheight}{14pt}
 
 \include{introduction}
 %\include{subsections}
 
 % \usepackage{fancyhdr}
-% \pagestyle{fancy}
-% \fancyhf{}
-% \fancyfoot[R]{\thepage}
-% \fancyhead[L]{\course}
-% \fancyhead[R]{Lecture \thesection}
-% \setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{\course}
+%\fancyhead[R]{Lecture \thesection}
+\setlength{\headheight}{14pt}
+
+\clearpage 
+\pagenumbering{arabic}
+
 
 \include{01}
 \include{02}
@@ -70,27 +80,27 @@
 \include{11}
 \include{12}
 
-\TOCpart{Part 2}
+%\TOCpart{Part 2}
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[R]{\thepage}
-\fancyhead[L]{\course}
-\fancyhead[R]{Final projects}
-\setlength{\headheight}{14pt}
-\newpage
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyfoot[R]{\thepage}
+%\fancyhead[L]{\course}
+%\fancyhead[R]{Final projects}
+%\setlength{\headheight}{14pt}
+%\newpage
 
-\input{topics/carter}
-\include{topics/chermak_delgado}
-\include{topics/deaconescu_walls} 
-\include{topics/landau}
-\include{topics/burnside}
-\include{topics/porc}
+%\input{topics/carter}
+%\include{topics/chermak_delgado}
+%\include{topics/deaconescu_walls} 
+%\include{topics/landau}
+%\include{topics/burnside}
+%\include{topics/porc}
 
-\TOCpart{Part 3}
-\newpage
+%\TOCpart{Part 3}
+%\newpage
 
-\input{topics}
+\include{topics}
 %\include{solutions}
 
 \newpage 
